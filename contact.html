@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>お問い合わせ | 受験診断ドットコム</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .doc{padding:60px 0 40px;}
+  .doc h1{font-size:clamp(24px,4.5vw,32px); font-weight:800; margin:0 0 8px;}
+  .doc .lead{font-size:14px; color:var(--text-on-ink-muted); margin-bottom:36px; max-width:52ch;}
+  .doc-card{background:var(--paper); color:var(--text-on-paper); border-radius:14px; padding:38px 34px;}
+
+  .field{margin-bottom:20px;}
+  .field label{
+    display:block;
+    font-size:13px;
+    font-weight:700;
+    margin-bottom:6px;
+  }
+  .field input, .field textarea{
+    width:100%;
+    padding:12px 14px;
+    border-radius:8px;
+    border:1px solid rgba(27,33,48,0.18);
+    font-family:'Zen Kaku Gothic New', sans-serif;
+    font-size:14px;
+    background:#fff;
+    color:var(--text-on-paper);
+  }
+  .field textarea{min-height:140px; resize:vertical;}
+  .field input:focus, .field textarea:focus{
+    outline:none;
+    border-color:var(--amber-deep);
+  }
+  .required{color:var(--lv4); font-size:11px; margin-left:4px;}
+  .submit-note{
+    font-size:12px;
+    color:#6b6250;
+    margin-top:6px;
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="logo"><span class="mark">診</span>受験診断ドットコム</a>
+    <nav class="nav-links">
+      <a href="index.html#diagnosis">診断一覧</a>
+      <a href="index.html#articles">記事</a>
+      <a href="contact.html">お問い合わせ</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="doc">
+    <div class="eyebrow">CONTACT</div>
+    <h1>お問い合わせ</h1>
+    <p class="lead">診断結果の内容、参考書ルートに関するご意見・ご指摘、掲載情報の誤りなどがありましたら、下記フォームよりご連絡ください。</p>
+
+    <div class="doc-card">
+      <form id="contact-form">
+        <div class="field">
+          <label for="name">お名前<span class="required">必須</span></label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="field">
+          <label for="email">メールアドレス<span class="required">必須</span></label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="field">
+          <label for="subject">件名</label>
+          <input type="text" id="subject" name="subject" placeholder="例：数学参考書診断について">
+        </div>
+        <div class="field">
+          <label for="message">お問い合わせ内容<span class="required">必須</span></label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="border:none; cursor:pointer;">送信する</button>
+        <p class="submit-note">送信すると、お使いのメールソフトが開きます。（現在フォームは簡易版です）</p>
+      </form>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>&copy; 2026 受験診断ドットコム</span>
+    <div class="footer-links">
+      <a href="privacy-policy.html">プライバシーポリシー</a>
+      <a href="contact.html">お問い合わせ</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ※現在はバックエンドがないため mailto: で仮運用。
+  // 将来的にはFormspreeなどの無料フォームサービスへの差し替えを推奨。
+  document.getElementById('contact-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const subject = document.getElementById('subject').value || 'お問い合わせ';
+    const message = document.getElementById('message').value;
+
+    const body = `お名前: ${name}\nメールアドレス: ${email}\n\n${message}`;
+    const mailto = `mailto:CONTACT_EMAIL_HERE@example.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailto;
+  });
+</script>
+
+</body>
+</html>

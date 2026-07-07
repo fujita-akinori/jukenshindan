@@ -1,0 +1,168 @@
+/* ===========================================================
+   受験診断ドットコム - 共通スタイル
+   トークン: インク紺 × 紙クリーム × アンバー(卓上ライト) × レベル別配色
+   =========================================================== */
+
+:root{
+  --ink:#0e0e11;
+  --ink-soft:#1a1a1f;
+  --ink-softer:#232329;
+  --paper:#f6f1e4;
+  --paper-dim:#eee7d4;
+  --text-on-ink:#f3f1ea;
+  --text-on-ink-muted:#8c8c94;
+  --text-on-paper:#1b2130;
+  --amber:#e8a33d;
+  --amber-deep:#c47f1f;
+  --lv1:#4b8b6b; /* 基礎 */
+  --lv2:#3d6fb4; /* 標準 */
+  --lv3:#db7f2e; /* 応用 */
+  --lv4:#b23a3a; /* 難関 */
+}
+
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:
+    radial-gradient(ellipse 900px 500px at 15% -10%, rgba(232,163,61,0.10), transparent 60%),
+    var(--ink);
+  color:var(--text-on-ink);
+  font-family:'Zen Kaku Gothic New', sans-serif;
+  min-height:100vh;
+  line-height:1.7;
+}
+a{color:inherit;}
+
+.wrap{
+  max-width:960px;
+  margin:0 auto;
+  padding:0 20px;
+}
+
+/* --- header / nav --- */
+.site-header{
+  padding:26px 0 0;
+}
+.site-header .wrap{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.logo{
+  font-family:'Shippori Mincho', serif;
+  font-weight:800;
+  font-size:18px;
+  letter-spacing:0.03em;
+  text-decoration:none;
+  color:var(--text-on-ink);
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.logo .mark{
+  width:26px;
+  height:26px;
+  border-radius:5px;
+  background:var(--amber);
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  font-size:13px;
+  color:var(--ink);
+  font-weight:900;
+}
+.nav-links{
+  display:flex;
+  gap:22px;
+  font-size:13.5px;
+  font-weight:700;
+}
+.nav-links a{
+  text-decoration:none;
+  color:var(--text-on-ink-muted);
+  transition:color .15s ease;
+}
+.nav-links a:hover{color:var(--amber);}
+
+/* --- footer --- */
+.site-footer{
+  margin-top:80px;
+  border-top:1px solid rgba(255,255,255,0.08);
+  padding:28px 0 40px;
+}
+.site-footer .wrap{
+  display:flex;
+  flex-wrap:wrap;
+  gap:16px;
+  justify-content:space-between;
+  align-items:center;
+  font-size:12.5px;
+  color:var(--text-on-ink-muted);
+}
+.footer-links{
+  display:flex;
+  gap:18px;
+}
+.footer-links a{
+  text-decoration:none;
+  color:var(--text-on-ink-muted);
+}
+.footer-links a:hover{color:var(--amber);}
+
+/* --- generic card (paper) --- */
+.card{
+  background:var(--paper);
+  color:var(--text-on-paper);
+  border-radius:14px;
+  padding:36px 32px;
+  box-shadow:0 24px 60px -20px rgba(0,0,0,0.55);
+  position:relative;
+  overflow:hidden;
+}
+.card::before{
+  content:'';
+  position:absolute;
+  top:0; left:0; bottom:0;
+  width:5px;
+  background:var(--amber);
+}
+
+.eyebrow{
+  font-size:13px;
+  letter-spacing:0.14em;
+  color:var(--amber);
+  font-weight:700;
+  margin-bottom:10px;
+}
+h1,h2,h3{
+  font-family:'Shippori Mincho', serif;
+}
+
+.btn{
+  display:inline-block;
+  font-family:'Zen Kaku Gothic New', sans-serif;
+  font-weight:700;
+  font-size:14px;
+  padding:12px 24px;
+  border-radius:999px;
+  text-decoration:none;
+  cursor:pointer;
+}
+.btn-primary{
+  background:var(--amber);
+  color:var(--ink);
+  border:none;
+}
+.btn-primary:hover{background:#f0b357;}
+.btn-ghost{
+  background:none;
+  border:1px solid rgba(255,255,255,0.25);
+  color:var(--text-on-ink);
+}
+.btn-ghost:hover{border-color:var(--amber); color:var(--amber);}
+
+.disclaimer{
+  font-size:11.5px;
+  color:var(--text-on-ink-muted);
+  line-height:1.8;
+}

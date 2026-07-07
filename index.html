@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>受験診断ドットコム | 参考書・志望校の自分診断サイト</title>
+<meta name="description" content="いくつかの質問に答えるだけで、今の自分に合った参考書ルートや学び方が分かる診断サイト。数学からスタートし、順次科目を追加予定。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  /* --- hero --- */
+  .hero{
+    padding:60px 0 30px;
+  }
+  .hero h1{
+    font-weight:800;
+    font-size:clamp(28px, 5.2vw, 44px);
+    line-height:1.5;
+    margin:0 0 18px;
+  }
+  .hero .lead{
+    color:var(--text-on-ink-muted);
+    font-size:15.5px;
+    max-width:56ch;
+    margin:0 0 30px;
+  }
+  .hero .cta-row{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+
+  /* --- shelf grid (signature element, reused from 診断ページ) --- */
+  .section{
+    margin-top:64px;
+  }
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    margin-bottom:22px;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .section-head h2{
+    font-size:22px;
+    font-weight:800;
+    margin:0;
+  }
+  .section-head .note{
+    font-size:12.5px;
+    color:var(--text-on-ink-muted);
+  }
+
+  .diag-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:16px;
+  }
+  .diag-card{
+    background:var(--ink-soft);
+    border:1px solid rgba(255,255,255,0.07);
+    border-radius:12px;
+    padding:22px 20px;
+    position:relative;
+    text-decoration:none;
+    color:var(--text-on-ink);
+    display:flex;
+    flex-direction:column;
+    min-height:190px;
+    transition:transform .15s ease, border-color .15s ease;
+  }
+  .diag-card::before{
+    content:'';
+    position:absolute;
+    top:0; left:0;
+    width:100%;
+    height:5px;
+    border-radius:12px 12px 0 0;
+  }
+  .diag-card.available{cursor:pointer;}
+  .diag-card.available:hover{
+    transform:translateY(-4px);
+    border-color:var(--amber);
+  }
+  .diag-card.soon{
+    opacity:0.55;
+    cursor:default;
+  }
+  .diag-card .subject-tag{
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:0.08em;
+    color:var(--text-on-ink-muted);
+    margin-bottom:10px;
+  }
+  .diag-card h3{
+    font-size:18px;
+    font-weight:700;
+    margin:0 0 10px;
+    line-height:1.5;
+  }
+  .diag-card p{
+    font-size:12.5px;
+    color:var(--text-on-ink-muted);
+    margin:0;
+    flex:1;
+  }
+  .diag-card .status{
+    margin-top:14px;
+    font-size:11.5px;
+    font-weight:700;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+  }
+  .status-dot{
+    width:7px;height:7px;border-radius:50%;
+    display:inline-block;
+  }
+
+  .card.philosophy{
+    margin-top:16px;
+  }
+  .philosophy h2{
+    font-size:20px;
+    margin:0 0 12px;
+  }
+  .philosophy p{
+    font-size:14px;
+    margin:0 0 10px;
+  }
+  .philosophy p:last-child{margin-bottom:0;}
+
+  .article-empty{
+    border:1px dashed rgba(255,255,255,0.15);
+    border-radius:12px;
+    padding:36px 24px;
+    text-align:center;
+    color:var(--text-on-ink-muted);
+    font-size:13px;
+  }
+
+  @media (max-width:760px){
+    .diag-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="logo"><span class="mark">診</span>受験診断ドットコム</a>
+    <nav class="nav-links">
+      <a href="#diagnosis">診断一覧</a>
+      <a href="#articles">記事</a>
+      <a href="contact.html">お問い合わせ</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero">
+    <div class="eyebrow">JUKEN SHINDAN LABO</div>
+    <h1>いくつかの質問に答えるだけで、<br>今の自分に合う参考書ルートが分かる。</h1>
+    <p class="lead">
+      「どの参考書をいつやればいいか分からない」を、レベル別・志望校別の診断で解決します。
+      現役チューターが監修する参考書ルートを、基礎固めから最難関対策まで診断1つで確認できます。
+    </p>
+    <div class="cta-row">
+      <a href="sugaku-shindan.html" class="btn btn-primary">数学の診断を始める →</a>
+      <a href="#diagnosis" class="btn btn-ghost">他の診断を見る</a>
+    </div>
+  </section>
+
+  <section class="section" id="diagnosis">
+    <div class="section-head">
+      <h2>診断一覧</h2>
+      <span class="note">科目は順次追加予定です</span>
+    </div>
+    <div class="diag-grid">
+
+      <a href="sugaku-shindan.html" class="diag-card available" style="--tag-color:var(--lv2);">
+        <div class="subject-tag" style="color:var(--lv2);">MATHEMATICS</div>
+        <h3>数学 参考書診断</h3>
+        <p>「何の対策がしたいか」から始まる分岐診断。定期テスト・共通テスト・二次試験、それぞれに合わせたおすすめルートが分かります。</p>
+        <span class="status" style="color:var(--lv2);"><span class="status-dot" style="background:var(--lv2);"></span>公開中</span>
+      </a>
+
+      <div class="diag-card soon" style="--tag-color:var(--lv3);">
+        <div class="subject-tag" style="color:var(--lv3);">ENGLISH</div>
+        <h3>英語 参考書診断</h3>
+        <p>単語・文法・長文それぞれの到達度から、最適な参考書ルートを診断します。</p>
+        <span class="status" style="color:var(--text-on-ink-muted);"><span class="status-dot" style="background:var(--text-on-ink-muted);"></span>準備中</span>
+      </div>
+
+      <div class="diag-card soon" style="--tag-color:var(--lv4);">
+        <div class="subject-tag" style="color:var(--lv4);">SCIENCE / SOCIAL</div>
+        <h3>理科・社会 参考書診断</h3>
+        <p>物理・化学・生物・日本史・世界史など、選択科目ごとの診断を順次公開予定です。</p>
+        <span class="status" style="color:var(--text-on-ink-muted);"><span class="status-dot" style="background:var(--text-on-ink-muted);"></span>準備中</span>
+      </div>
+
+      <!--
+        新しい科目の診断を追加する手順:
+        1. 例えば eigo-shindan.html のような新しいファイルを作る（sugaku-shindan.htmlを複製して中身を差し替えるのが早い）
+        2. 上の <div class="diag-card soon"> を <a href="eigo-shindan.html" class="diag-card available"> に書き換えて公開状態にする
+        3. 色は --lv1〜--lv4（もしくは --lv5）から重複しないものを選ぶと見分けやすい
+      -->
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="card philosophy">
+      <h2>このサイトについて</h2>
+      <p>市販の参考書は種類が多く、「どれをいつやればいいか」が分かりにくいのが受験生の悩みです。受験診断ドットコムは、いくつかの質問に答えるだけで、今の目的とレベルに合った参考書ルートを提示する診断サイトです。</p>
+      <p>診断ロジックは、実際の指導経験をもとに作成しています。あくまで一般的な目安としてご活用ください。</p>
+    </div>
+  </section>
+
+  <section class="section" id="articles">
+    <div class="section-head">
+      <h2>記事</h2>
+      <span class="note"><a href="articles/index.html" style="color:var(--text-on-ink-muted);">すべての記事を見る →</a></span>
+    </div>
+    <div class="diag-grid">
+      <a href="articles/aoi-chart-vs-focus-gold.html" class="diag-card available" style="--tag-color:var(--lv2);">
+        <div class="subject-tag" style="color:var(--lv2);">参考書比較</div>
+        <h3>青チャートとFocus Gold、結局どっちを選ぶべきか</h3>
+        <p>数学の網羅系参考書の2大巨頭を、収録問題数・解説の丁寧さ・レイアウトの3つの観点で比較します。</p>
+        <span class="status" style="color:var(--lv2);"><span class="status-dot" style="background:var(--lv2);"></span>2026.07.07</span>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>&copy; 2026 受験診断ドットコム</span>
+    <div class="footer-links">
+      <a href="privacy-policy.html">プライバシーポリシー</a>
+      <a href="contact.html">お問い合わせ</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

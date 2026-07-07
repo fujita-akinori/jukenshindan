@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>記事一覧 | 受験診断ドットコム</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+  .page-wrap{ padding-top:44px; padding-bottom:120px; }
+  h1.page-title{
+    font-family:'Shippori Mincho', serif; font-weight:800;
+    font-size:clamp(26px, 4.8vw, 38px); margin:0 0 6px; line-height:1.4;
+  }
+  .page-title-rule{ width:56px; height:3px; background:var(--amber); border:none; margin:14px 0 22px; border-radius:2px; }
+  .page-lead{ color:var(--text-on-ink-muted); font-size:14.5px; margin:0 0 36px; max-width:56ch; }
+
+  .filter-row{ display:flex; gap:10px; flex-wrap:wrap; margin-bottom:30px; }
+  .filter-chip{
+    font-size:12.5px; font-weight:700; padding:7px 16px; border-radius:999px;
+    background:var(--ink-soft); color:var(--text-on-ink-muted);
+    border:1px solid rgba(255,255,255,0.08); cursor:pointer;
+  }
+  .filter-chip.active{ background:var(--amber); color:var(--ink); border-color:var(--amber); }
+
+  .article-grid{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+  .article-card{
+    background:var(--ink-soft); border:1px solid rgba(255,255,255,0.07); border-radius:12px;
+    padding:24px 22px; text-decoration:none; color:var(--text-on-ink); display:flex; flex-direction:column;
+    transition:transform .15s ease, border-color .15s ease;
+  }
+  .article-card:hover{ transform:translateY(-4px); border-color:var(--amber); }
+  .article-card .tag{
+    font-size:11px; font-weight:700; letter-spacing:0.08em; color:var(--lv2); margin-bottom:10px;
+  }
+  .article-card h2{ font-family:'Shippori Mincho', serif; font-size:17px; font-weight:700; margin:0 0 10px; line-height:1.6; }
+  .article-card p{ font-size:12.5px; color:var(--text-on-ink-muted); margin:0 0 14px; flex:1; line-height:1.8; }
+  .article-card .meta{ font-size:11.5px; color:var(--text-on-ink-muted); opacity:.7; }
+
+  .empty-note{
+    border:1px dashed rgba(255,255,255,0.15); border-radius:12px; padding:36px 24px;
+    text-align:center; color:var(--text-on-ink-muted); font-size:13px;
+  }
+
+  @media (max-width:700px){ .article-grid{ grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="../index.html" class="logo"><span class="mark">診</span>受験診断ドットコム</a>
+    <nav class="nav-links">
+      <a href="../index.html#diagnosis">診断一覧</a>
+      <a href="index.html">記事</a>
+      <a href="../contact.html">お問い合わせ</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap page-wrap">
+  <div class="eyebrow">ARTICLES</div>
+  <h1 class="page-title">記事一覧</h1>
+  <hr class="page-title-rule">
+  <p class="page-lead">参考書の選び方、使い方、比較など、診断だけでは伝えきれない内容を記事にしています。</p>
+
+  <div class="filter-row">
+    <span class="filter-chip active">すべて</span>
+    <span class="filter-chip">参考書比較</span>
+    <span class="filter-chip">科目別対策</span>
+    <span class="filter-chip">受験戦略</span>
+  </div>
+
+  <div class="article-grid">
+    <a href="aoi-chart-vs-focus-gold.html" class="article-card">
+      <span class="tag">参考書比較</span>
+      <h2>青チャートとFocus Gold、結局どっちを選ぶべきか</h2>
+      <p>数学の網羅系参考書の2大巨頭を、収録問題数・解説の丁寧さ・レイアウトの3つの観点で比較します。</p>
+      <span class="meta">2026.07.07</span>
+    </a>
+  </div>
+
+  <!--
+    記事を追加する場合はこの下に <a class="article-card"> を1つ増やしてください。
+    実際の記事ファイルは同じ articles/ フォルダの中に作成し、href で指定します。
+  -->
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>&copy; 2026 受験診断ドットコム</span>
+    <div class="footer-links">
+      <a href="../privacy-policy.html">プライバシーポリシー</a>
+      <a href="../contact.html">お問い合わせ</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
