@@ -19,10 +19,13 @@
 
   .filter-row{ display:flex; gap:10px; flex-wrap:wrap; margin-bottom:30px; }
   .filter-chip{
+    font-family:'Zen Kaku Gothic New', sans-serif;
     font-size:12.5px; font-weight:700; padding:7px 16px; border-radius:999px;
     background:var(--ink-soft); color:var(--text-on-ink-muted);
     border:1px solid rgba(255,255,255,0.08); cursor:pointer;
+    transition:background .12s ease, color .12s ease, border-color .12s ease;
   }
+  .filter-chip:hover{ border-color:var(--amber); }
   .filter-chip.active{ background:var(--amber); color:var(--ink); border-color:var(--amber); }
 
   .article-grid{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
@@ -66,69 +69,69 @@
   <hr class="page-title-rule">
   <p class="page-lead">参考書の選び方、使い方、比較など、診断だけでは伝えきれない内容を記事にしています。</p>
 
-  <div class="filter-row">
-    <span class="filter-chip active">すべて</span>
-    <span class="filter-chip">参考書比較</span>
-    <span class="filter-chip">科目別対策</span>
-    <span class="filter-chip">受験戦略</span>
+  <div class="filter-row" id="filter-row">
+    <button class="filter-chip active" data-filter="all">すべて</button>
+    <button class="filter-chip" data-filter="参考書比較">参考書比較</button>
+    <button class="filter-chip" data-filter="科目別対策">科目別対策</button>
+    <button class="filter-chip" data-filter="受験戦略">受験戦略</button>
   </div>
 
-  <div class="article-grid">
-    <a href="aoi-chart-vs-focus-gold.html" class="article-card">
+  <div class="article-grid" id="article-grid">
+    <a href="aoi-chart-vs-focus-gold.html" class="article-card" data-tag="参考書比較">
       <span class="tag">参考書比較</span>
       <h2>青チャートとFocus Gold、結局どっちを選ぶべきか</h2>
       <p>数学の網羅系参考書の2大巨頭を、収録問題数・解説の丁寧さ・レイアウトの3つの観点で比較します。</p>
       <span class="meta">2026.07.07</span>
     </a>
-    <a href="kaihou-anki-vs-rikai.html" class="article-card">
+    <a href="kaihou-anki-vs-rikai.html" class="article-card" data-tag="受験戦略">
       <span class="tag">受験戦略</span>
       <h2>解法暗記VS理解、受験数学はどっちが正解か</h2>
       <p>「解法は暗記すべきか理解すべきか」という永遠の論争を、学習段階という観点から整理します。</p>
       <span class="meta">2026.07.08</span>
     </a>
-    <a href="suujaku-suukyou-ronri.html" class="article-card">
+    <a href="suujaku-suukyou-ronri.html" class="article-card" data-tag="受験戦略">
       <span class="tag">受験戦略</span>
       <h2>数弱が数強になるための武器：論理</h2>
       <p>数学が苦手な受験生の多くがつまずいているのは計算力ではなく論理力。伸び悩みを打開する視点を整理します。</p>
       <span class="meta">2026.07.08</span>
     </a>
-    <a href="keisanryoku-9wari.html" class="article-card">
+    <a href="keisanryoku-9wari.html" class="article-card" data-tag="受験戦略">
       <span class="tag">受験戦略</span>
       <h2>受験数学は計算力が9割</h2>
       <p>発想力よりも計算力。受験数学の得点を左右する地味だが決定的な要素と、その鍛え方を解説します。</p>
       <span class="meta">2026.07.08</span>
     </a>
-    <a href="pomodoro-syuuchuuryoku.html" class="article-card">
+    <a href="pomodoro-syuuchuuryoku.html" class="article-card" data-tag="受験戦略">
       <span class="tag">受験戦略</span>
       <h2>集中力を持続させる方法：ポモドーロ・テクニック</h2>
       <p>受験勉強の集中力が続かない人向けに、時間管理法「ポモドーロ・テクニック」の仕組みと取り入れ方を解説します。</p>
       <span class="meta">2026.07.08</span>
     </a>
-    <a href="zeppan-kami-sankousho-3sen.html" class="article-card">
+    <a href="zeppan-kami-sankousho-3sen.html" class="article-card" data-tag="参考書比較">
       <span class="tag">参考書比較</span>
       <h2>絶版になってしまった神参考書3選</h2>
       <p>長岡亮介『総合的研究』、松田聡平『最高の演習』、秋山仁『発見的教授法による数学シリーズ』。今は入手困難な伝説の参考書と著者の経歴を紹介します。</p>
       <span class="meta">2026.07.08</span>
     </a>
-    <a href="yobiko-no-jugyou-3sen.html" class="article-card">
+    <a href="yobiko-no-jugyou-3sen.html" class="article-card" data-tag="参考書比較">
       <span class="tag">参考書比較</span>
       <h2>まるで予備校の授業な数学の参考書3選</h2>
       <p>ハイレベル完全攻略・世界一わかりやすい京大の理系数学/文系数学・真解法への道の3冊を、著者の講師経歴と合わせて紹介します。</p>
       <span class="meta">2026.07.08</span>
     </a>
-    <a href="shin-kaihou-eno-michi.html" class="article-card">
+    <a href="shin-kaihou-eno-michi.html" class="article-card" data-tag="参考書比較">
       <span class="tag">参考書比較</span>
       <h2>これさえやれば大丈夫？難関大受験の新定番「真・解法への道」を紹介</h2>
       <p>網羅系参考書を終えたのに難関大の過去問で手が止まる受験生に向けて、特徴と使い方を解説します。</p>
       <span class="meta">2026.07.08</span>
     </a>
-    <a href="sankousho-root-no-yami.html" class="article-card">
+    <a href="sankousho-root-no-yami.html" class="article-card" data-tag="受験戦略">
       <span class="tag">受験戦略</span>
       <h2>参考書ルートの闇：参考書診断がなぜ必要なのか</h2>
       <p>ネット上に溢れる「参考書ルート」コンテンツに共通する3つの問題点と、個別診断という形が必要な理由を解説します。</p>
       <span class="meta">2026.07.08</span>
     </a>
-    <a href="sawaruna-sankousho-3sen.html" class="article-card">
+    <a href="sawaruna-sankousho-3sen.html" class="article-card" data-tag="参考書比較">
       <span class="tag">参考書比較</span>
       <h2>触れるな注意 難しすぎる受験参考書3選</h2>
       <p>内容は良書でも、対象読者を間違えると挫折を招く難関参考書3冊を紹介。自分に合うレベルの見極め方を解説します。</p>
@@ -136,8 +139,10 @@
     </a>
   </div>
 
+  <p class="empty-note" id="empty-note" style="display:none;">このカテゴリの記事はまだありません。</p>
+
   <!--
-    記事を追加する場合はこの下に <a class="article-card"> を1つ増やしてください。
+    記事を追加する場合はこの下（article-gridの中）に <a class="article-card" data-tag="タグ名"> を1つ増やしてください。
     実際の記事ファイルは同じ articles/ フォルダの中に作成し、href で指定します。
   -->
 
@@ -152,6 +157,27 @@
     </div>
   </div>
 </footer>
+
+<script>
+  const chips = document.querySelectorAll('.filter-chip');
+  const cards = document.querySelectorAll('.article-card');
+  const emptyNote = document.getElementById('empty-note');
+
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      chips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      const filter = chip.dataset.filter;
+      let visibleCount = 0;
+      cards.forEach(card => {
+        const match = (filter === 'all' || card.dataset.tag === filter);
+        card.style.display = match ? '' : 'none';
+        if (match) visibleCount++;
+      });
+      emptyNote.style.display = visibleCount === 0 ? '' : 'none';
+    });
+  });
+</script>
 
 </body>
 </html>
