@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>運営者情報 | 受験診断ドットコム</title>
+<meta name="description" content="受験診断ドットコムは、現役京大生（理学部・工学部・農学部）のメンバーが運営する参考書診断・受験情報サイトです。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .page-wrap{ padding-top:44px; padding-bottom:120px; }
+  h1.page-title{
+    font-family:'Shippori Mincho', serif; font-weight:800;
+    font-size:clamp(24px,4.5vw,32px); margin:0 0 8px;
+  }
+  .page-title-rule{ width:56px; height:3px; background:var(--amber); border:none; margin:14px 0 30px; border-radius:2px; }
+
+  .doc-card{ background:var(--paper); color:var(--text-on-paper); border-radius:14px; padding:38px 34px; margin-bottom:20px; }
+  .doc-card h2{ font-size:17px; font-weight:800; margin:32px 0 12px; }
+  .doc-card h2:first-child{ margin-top:0; }
+  .doc-card p, .doc-card li{ font-size:14px; line-height:1.9; }
+  .doc-card ul{ padding-left:22px; margin:8px 0; }
+
+  .member-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:14px; margin:16px 0 8px; }
+  .member-card{
+    background:#fff; border:1px solid rgba(27,33,48,0.1); border-radius:10px; padding:16px 18px;
+  }
+  .member-card .faculty{ font-size:11px; font-weight:700; letter-spacing:0.06em; color:var(--amber-deep); margin-bottom:6px; }
+  .member-card .role{ font-size:13px; font-weight:700; margin-bottom:4px; }
+  .member-card .desc{ font-size:12px; color:#6b6250; line-height:1.7; }
+
+  .recruit-box{
+    background:var(--ink-soft); border-radius:12px; padding:26px 28px; margin-top:24px;
+    border:1px solid rgba(255,255,255,0.08);
+  }
+  .recruit-box h2{ font-size:17px; font-weight:800; margin:0 0 12px; color:var(--text-on-ink); }
+  .recruit-box p{ font-size:14px; color:var(--text-on-ink-muted); line-height:1.9; margin:0 0 16px; }
+
+  @media (max-width:700px){ .member-grid{ grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="logo"><span class="mark">診</span>受験診断ドットコム</a>
+    <nav class="nav-links">
+      <a href="index.html#diagnosis">診断一覧</a>
+      <a href="articles/index.html">記事</a>
+      <a href="contact.html">お問い合わせ</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap page-wrap">
+  <div class="eyebrow">ABOUT US</div>
+  <h1 class="page-title">運営者情報</h1>
+  <hr class="page-title-rule">
+
+  <div class="doc-card">
+    <h2>受験診断ドットコムについて</h2>
+    <p>受験診断ドットコムは、現役の京都大学生からなるメンバーが運営する、参考書診断・受験情報サイトです。「どの参考書をいつやればいいか分からない」という受験生の悩みを、実際の指導経験に基づいた診断ロジックと記事コンテンツで解決することを目指しています。</p>
+
+    <h2>運営メンバー</h2>
+    <p>理学部・工学部・農学部に所属する現役京大生が、それぞれの得意分野を活かして診断ロジックの設計や記事の執筆・監修を行っています。</p>
+    <div class="member-grid">
+      <div class="member-card">
+        <div class="faculty">理学部</div>
+        <div class="role">数学・理論分野を担当</div>
+        <div class="desc">参考書診断ロジックの設計、数学分野の記事監修を中心に担当。</div>
+      </div>
+      <div class="member-card">
+        <div class="faculty">工学部</div>
+        <div class="role">サイト設計・実装を担当</div>
+        <div class="desc">診断ツールのシステム設計、サイト全体の構築・運用を担当。</div>
+      </div>
+      <div class="member-card">
+        <div class="faculty">農学部</div>
+        <div class="role">コンテンツ企画を担当</div>
+        <div class="desc">記事の企画・執筆、受験生目線でのコンテンツ設計を担当。</div>
+      </div>
+    </div>
+
+    <h2>編集方針</h2>
+    <ul>
+      <li>参考書の情報（出版社・著者・レベル感など）は、可能な限り一次情報を確認した上で掲載しています</li>
+      <li>診断結果はあくまで一般的な目安であり、個々の学力・志望校の出題傾向によって最適な選択は異なります</li>
+      <li>内容に誤りを見つけた場合は、お問い合わせページよりご連絡いただけますと幸いです</li>
+    </ul>
+  </div>
+
+  <div class="recruit-box">
+    <h2>メンバー募集中</h2>
+    <p>受験診断ドットコムでは、記事執筆や参考書診断の監修に携わっていただけるメンバーを随時募集しています。得意科目の記事執筆、参考書のレベル感の監修など、ご自身の経験を活かして関わっていただける形を歓迎します。興味のある方は、お問い合わせページよりご連絡ください。</p>
+    <a href="contact.html" class="btn btn-primary">お問い合わせはこちら →</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>&copy; 2026 受験診断ドットコム</span>
+    <div class="footer-links">
+      <a href="about.html">運営者情報</a>
+      <a href="privacy-policy.html">プライバシーポリシー</a>
+      <a href="contact.html">お問い合わせ</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
