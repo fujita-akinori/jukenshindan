@@ -165,6 +165,42 @@
   }
 
   .book-list{ margin-top:26px; display:flex; flex-direction:column; gap:12px; }
+
+  /* -------------------- 表彰台（ベスト3ランキング） -------------------- */
+  .podium{
+    display:flex; align-items:flex-end; justify-content:center; gap:14px;
+    margin:30px 0 8px; padding:0 10px;
+  }
+  .podium-col{
+    display:flex; flex-direction:column; align-items:center;
+    width:96px;
+  }
+  .podium-book{
+    width:100%; border-radius:10px 10px 0 0;
+    display:flex; align-items:flex-start; justify-content:center;
+    padding-top:12px;
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.35), 0 6px 14px rgba(0,0,0,0.3);
+  }
+  .podium-rank{
+    font-family:'Shippori Mincho', serif; font-weight:900; font-size:22px; color:var(--ink);
+  }
+  .podium-base{
+    width:100%; border-radius:0 0 6px 6px;
+    box-shadow: inset 0 -3px 0 rgba(0,0,0,0.15);
+  }
+  .podium-1 .podium-book{ height:76px; }
+  .podium-1 .podium-base{ height:56px; }
+  .podium-2 .podium-book{ height:58px; }
+  .podium-2 .podium-base{ height:40px; }
+  .podium-3 .podium-book{ height:46px; }
+  .podium-3 .podium-base{ height:30px; }
+  .podium-1{ transform:translateY(0); z-index:2; }
+  .podium-2, .podium-3{ margin-bottom:2px; }
+
+  .book-item.rank-1{
+    border-color:rgba(232,163,61,0.4); background:linear-gradient(135deg, rgba(232,163,61,0.10), var(--ink-soft) 60%);
+  }
+  .book-item.rank-1 .book-chip{ font-size:11px; padding:0 6px; width:auto; min-width:30px; white-space:nowrap; }
   .book-item{
     background:var(--ink-soft); border-radius:10px; padding:15px 17px;
     display:flex; gap:13px; align-items:flex-start; border:1px solid rgba(255,255,255,0.06);
@@ -172,9 +208,9 @@
   }
   .book-item:hover{ border-color:rgba(232,163,61,0.3); }
   .book-chip{
-    flex:0 0 auto; width:30px; height:30px; border-radius:8px; display:flex;
+    flex:0 0 auto; min-width:30px; height:30px; padding:0 8px; border-radius:8px; display:flex;
     align-items:center; justify-content:center; font-family:'Shippori Mincho', serif;
-    font-weight:800; font-size:13px; color:#fff;
+    font-weight:800; font-size:12px; color:#fff; white-space:nowrap;
   }
   .book-info{ flex:1; }
   .book-info .name{ font-weight:700; font-size:14.5px; margin:0 0 4px; line-height:1.5; }
@@ -276,7 +312,7 @@ const BOOKS = [
   {name:"数学の計算革命〈三訂版〉",scope:"common",tier:1,purposes:["bunyabetsu"],type:"quantity",bunya:["計算"]},
 
   // ---- Tier2 標準・共テ ----
-  {name:"鉄緑会 基礎力完成 数学I・A+II・B",scope:"common",tier:2,purposes:["bunyabetsu","mouraikei"],type:"quantity",bunya:["計算"]},
+  {name:"鉄緑会 基礎力完成 数学I・A+II・B",scope:"common",tier:2,purposes:["mouraikei"],type:"quantity",bunya:[]},
   {name:"青チャート／Focus Gold",scope:"common",tier:2,purposes:["mouraikei"],type:"quality",bunya:[]},
   {name:"共通テスト数学 予想問題集（数学I・A）",scope:"common",tier:2,purposes:["kyoutsuu"],type:"quantity",bunya:[],krange:"IA"},
   {name:"共通テスト数学 予想問題集（数学II・B・C）",scope:"common",tier:2,purposes:["kyoutsuu"],type:"quantity",bunya:[],krange:"IIBC"},
@@ -288,7 +324,7 @@ const BOOKS = [
   {name:"合格る数学",scope:"common",tier:2,purposes:["kyoutsuu","niji"],type:"quantity",bunya:[]},
   {name:"大学入試 最短でマスターする数学I〜C（赤本プラス）",scope:"common",tier:2,purposes:["mouraikei","kyoutsuu"],type:"quality",bunya:[]},
   {name:"志田晶の 数列が面白いほどわかる本",scope:"common",tier:2,purposes:["bunyabetsu"],type:"quality",bunya:["数列"]},
-  {name:"志田晶の 集合・論理、整数が面白いほどわかる本",scope:"common",tier:2,purposes:["bunyabetsu"],type:"quality",bunya:["整数","論理"]},
+  {name:"志田晶の 集合・論理、整数が面白いほどわかる本",scope:"common",tier:2,purposes:["bunyabetsu"],type:"quality",bunya:["整数","論理・軌跡と領域"]},
   {name:"志田晶の ベクトルが面白いほどわかる本",scope:"common",tier:2,purposes:["bunyabetsu"],type:"quality",bunya:["ベクトル"]},
   {name:"共通テスト数学I・Aの点数が面白いほどとれる本",scope:"common",tier:2,purposes:["kyoutsuu"],type:"quality",bunya:[],krange:"IA"},
   {name:"共通テスト数学II・B・Cの点数が面白いほどとれる本",scope:"common",tier:2,purposes:["kyoutsuu"],type:"quality",bunya:[],krange:"IIBC"},
@@ -320,13 +356,13 @@ const BOOKS = [
   {name:"東進 最重要問題集",scope:"common",tier:3,purposes:["niji","kyoutsuu"],type:"quality",bunya:[]},
   {name:"世界一わかりやすい 九大の理系数学",scope:"rikei",tier:3,purposes:["niji"],type:"quality",bunya:[]},
   {name:"世界一わかりやすい 九大の文系数学",scope:"bunkei",tier:3,purposes:["niji"],type:"quality",bunya:[]},
-  {name:"入試数学「実力強化」問題集（駿台）",scope:"common",tier:3,purposes:["bunyabetsu","niji"],type:"quantity",bunya:["計算"]},
+  {name:"入試数学「実力強化」問題集（駿台）",scope:"common",tier:3,purposes:["mouraikei","niji"],type:"quantity",bunya:[]},
   {name:"入試のツボを押さえる重点学習 数学IA2BC",scope:"common",tier:3,purposes:["niji"],type:"quality",bunya:[]},
   {name:"入試のツボを押さえる重点学習 数学3C",scope:"rikei",tier:3,purposes:["niji"],type:"quality",bunya:[]},
   {name:"総合的研究 記述式答案の書き方",scope:"common",tier:3,purposes:["niji"],type:"quality",bunya:[]},
   {name:"ハッとめざめる確率",scope:"common",tier:3,purposes:["bunyabetsu"],type:"quality",bunya:["場合の数・確率"]},
   {name:"理系数学の極み",scope:"rikei",tier:3,purposes:["niji"],type:"quality",bunya:[]},
-  {name:"方程式・図形・関数からとらえる数学の基礎 分野別標準問題精講",scope:"common",tier:3,purposes:["niji","bunyabetsu"],type:"quality",bunya:["図形と方程式"]},
+  {name:"方程式・図形・関数からとらえる数学の基礎 分野別標準問題精講",scope:"common",tier:3,purposes:["niji","bunyabetsu"],type:"quality",bunya:["論理・軌跡と領域"]},
   {name:"大学入試 数学の発想力が1冊でしっかり身につく本",scope:"common",tier:3,purposes:["niji"],type:"quality",bunya:[]},
 
   // ---- Tier4 最難関 ----
@@ -342,19 +378,19 @@ const BOOKS = [
   {name:"世界一わかりやすい 京大の理系数学",scope:"rikei",tier:4,purposes:["niji"],type:"quality",bunya:[]},
   {name:"世界一わかりやすい 京大の文系数学",scope:"bunkei",tier:4,purposes:["niji"],type:"quality",bunya:[]},
   {name:"Z会 理系数学の核心 難関大編",scope:"rikei",tier:4,purposes:["niji"],type:"quality",bunya:[]},
-  {name:"数学の真髄（論理・写像）",scope:"common",tier:4,purposes:["niji","bunyabetsu"],type:"quality",bunya:["論理"]},
+  {name:"数学の真髄（論理・写像）",scope:"common",tier:4,purposes:["niji","bunyabetsu"],type:"quality",bunya:["論理・軌跡と領域"]},
   {name:"数学の真髄（ベクトル）",scope:"common",tier:4,purposes:["bunyabetsu"],type:"quality",bunya:["ベクトル"]},
   {name:"やさしい理系数学",scope:"rikei",tier:4,purposes:["niji"],type:"quantity",bunya:[]},
   {name:"入試数学の掌握（3部作）",scope:"common",tier:4,purposes:["niji"],type:"quality",bunya:[]},
   {name:"微積分 基礎の極意",scope:"rikei",tier:4,purposes:["bunyabetsu"],type:"quality",bunya:["微積分（数III）"]},
   {name:"マスターオブ整数",scope:"common",tier:4,purposes:["bunyabetsu"],type:"quality",bunya:["整数"]},
-  {name:"総合的研究 論理学で学ぶ数学",scope:"common",tier:4,purposes:["bunyabetsu","niji"],type:"quality",bunya:["論理"]},
+  {name:"総合的研究 論理学で学ぶ数学",scope:"common",tier:4,purposes:["bunyabetsu","niji"],type:"quality",bunya:["論理・軌跡と領域"]},
 
   // ---- Tier5 超級 ----
   {name:"難問ラプソディ",scope:"common",tier:5,purposes:["niji"],type:"quantity",bunya:[]},
 ];
 
-const BUNYA_LIST = ["場合の数・確率","整数","計算","図形と方程式","微積分（数II）","微積分（数III）","数列","複素数平面","三角関数","ベクトル","指数・対数","論理"];
+const BUNYA_LIST = ["場合の数・確率","整数","計算","図形と方程式","図形","微積分（数II）","微積分（数III）","数列","複素数平面","三角関数","ベクトル","指数・対数","論理・軌跡と領域"];
 
 /* ============================================================
    フロー定義：状態遷移
@@ -676,19 +712,19 @@ function scoreBook(b, targetTier, scopes, purpose, style, bunya, bunyaHasMatch, 
   // 共通テストルート：範囲タグがある本は、選んだ範囲(IA/IIBC)と一致しないなら除外
   if(krangeWanted && b.krange && b.krange!=="both" && b.krange!==krangeWanted) return -Infinity;
   let s = 0;
-  // tier近さ
-  s += 5 - Math.abs(b.tier - targetTier)*2;
+  // tier近さ（差がつきやすいよう重み強化）
+  s += 8 - Math.abs(b.tier - targetTier) * 4;
   // 目的一致
-  if(b.purposes.includes(purpose)) s += 3;
+  if(b.purposes.includes(purpose)) s += 5;
   // 分野別
   if(bunya){
-    if(b.bunya.includes(bunya)) s += 6;
-    else if(bunyaHasMatch) s -= 4; // その分野の専門書が他にある場合だけ減点
+    if(b.bunya.includes(bunya)) s += 10;
+    else if(bunyaHasMatch) s -= 8; // その分野の専門書が他にある場合だけ減点
     // 専門書が存在しない分野は、減点せず総合的な演習書をそのまま候補にする（フォールバック）
   }
   // スタイル
-  if(style==="quality" && b.type==="quality") s += 2;
-  if((style==="quantity"||style==="jissen") && b.type==="quantity") s += 2;
+  if(style==="quality" && b.type==="quality") s += 3;
+  if((style==="quantity"||style==="jissen") && b.type==="quantity") s += 3;
   return s;
 }
 
@@ -703,13 +739,13 @@ function renderResult(){
   let scored = BOOKS.map(b => ({b, s:scoreBook(b, targetTier, scopes, purposeForMatch, answers.style, bunya, bunyaHasMatch, krangeWanted)}))
                     .filter(x => x.s > -Infinity)
                     .sort((a,b)=> b.s - a.s);
-  let picks = scored.slice(0, 6).map(x=>x.b);
+  let picks = scored.slice(0, 3).map(x=>x.b);
 
   const color = routeColor[answers.purpose];
   const rname = routeName[answers.purpose];
 
   document.getElementById("page-title").innerHTML = "診断結果";
-  document.getElementById("page-lead").innerHTML = "あなたにおすすめの参考書ルートはこちら。";
+  document.getElementById("page-lead").innerHTML = "あなたに一番合う参考書、ベスト3はこちら。";
 
   let summaryParts = [];
   if(answers.teikiRange) summaryParts.push(answers.teikiRange);
@@ -719,20 +755,36 @@ function renderResult(){
   if(answers.hensachi) summaryParts.push("偏差値"+answers.hensachi);
   if(answers.shibouLabel) summaryParts.push(answers.shibouLabel+"志望");
 
-  let shelfHtml = '<div class="shelf">';
-  picks.forEach((b,i)=>{
-    shelfHtml += `<div class="spine ${i%2===0?'tall':'short'}" style="background:${color}"><span>${b.name}</span><div class="rank">Lv.${b.tier}</div></div>`;
-  });
-  shelfHtml += '</div>';
+  const MEDAL = ["var(--amber)", "#C7CDD6", "#C98A4B"]; // 金・銀・銅
+  const MEDAL_LABEL = ["No.1 イチオシ", "No.2", "No.3"];
 
-  let listHtml = '<div class="book-list">';
+  let bodyHtml;
   if(picks.length===0){
-    listHtml = '<div class="empty-note">条件に合う参考書が見つかりませんでした。選択を変えてもう一度お試しください。</div>';
+    bodyHtml = '<div class="empty-note">条件に合う参考書が見つかりませんでした。選択を変えてもう一度お試しください。</div>';
   } else {
+    // --- 表彰台（podium） ---
+    const podiumOrder = picks.length===3 ? [1,0,2] : picks.map((_,i)=>i); // 2位・1位・3位の並びで表示
+    let podiumHtml = '<div class="podium">';
+    podiumOrder.forEach(idx=>{
+      if(idx===undefined || !picks[idx]) return;
+      const b = picks[idx];
+      const heightClass = idx===0 ? "podium-1" : (idx===1 ? "podium-2" : "podium-3");
+      podiumHtml += `
+        <div class="podium-col ${heightClass}">
+          <div class="podium-book" style="background:${MEDAL[idx]}">
+            <span class="podium-rank">${idx+1}</span>
+          </div>
+          <div class="podium-base" style="background:${MEDAL[idx]}"></div>
+        </div>`;
+    });
+    podiumHtml += '</div>';
+
+    // --- 詳細リスト ---
+    let listHtml = '<div class="book-list">';
     picks.forEach((b,i)=>{
       const scopeLabel = b.scope==="rikei"?"理系範囲":(b.scope==="bunkei"?"文系範囲":"");
-      listHtml += `<div class="book-item">
-        <div class="book-chip" style="background:${color}">${i+1}</div>
+      listHtml += `<div class="book-item rank-${i+1}">
+        <div class="book-chip" style="background:${MEDAL[i]}; color:var(--ink);">${MEDAL_LABEL[i]}</div>
         <div class="book-info">
           <p class="name">${b.name}${scopeLabel?`<span class="scope-tag">${scopeLabel}</span>`:''}</p>
           <p class="desc">${b.note||''}</p>
@@ -741,20 +793,18 @@ function renderResult(){
       </div>`;
     });
     listHtml += '</div>';
+
+    bodyHtml = podiumHtml + listHtml;
   }
 
   quizArea.innerHTML = `
     <div class="result-head">
       <span class="route-badge" style="background:${color}">${rname}</span>
       <h2>${summaryParts.join(" ・ ")}</h2>
-      <p>あなたの回答に合わせて、${picks.length}冊の参考書を選びました。</p>
+      <p>あなたの回答から、ベスト${picks.length}冊に絞り込みました。</p>
       ${(bunya && !bunyaHasMatch) ? `<p style="margin-top:8px; color:var(--amber);">※「${bunya}」に特化した参考書は現在データベースにないため、総合的な演習書からおすすめしています。</p>` : ''}
     </div>
-    <div class="shelf-wrap">
-      <div class="shelf-label">YOUR BOOKSHELF —— あなたにおすすめの本棚</div>
-      ${shelfHtml}
-    </div>
-    ${listHtml}
+    ${bodyHtml}
     <div style="text-align:center;">
       <button class="retry-btn" id="retry-btn">もう一度診断する</button>
     </div>
