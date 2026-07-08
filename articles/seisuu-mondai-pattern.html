@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>整数問題が苦手な人へ：頻出解法パターンの整理 | 受験診断ドットコム</title>
+<meta name="description" content="整数問題に苦手意識を持つ受験生に向けて、因数分解・余りによる分類・不等式による絞り込みなど頻出の解法パターンを整理します。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+  .page-wrap{ padding-top:44px; padding-bottom:120px; }
+  .article-header{ max-width:680px; margin:0 auto 36px; }
+  .article-header .tag{ font-size:12px; font-weight:700; letter-spacing:0.1em; color:var(--lv3); margin-bottom:12px; display:block; }
+  .article-header h1{
+    font-family:'Shippori Mincho', serif; font-weight:800; font-size:clamp(24px,4.6vw,33px);
+    line-height:1.5; margin:0 0 14px;
+  }
+  .article-header .meta{ font-size:12.5px; color:var(--text-on-ink-muted); }
+
+  .article-body{ max-width:680px; margin:0 auto; font-size:15.5px; line-height:2; }
+  .article-body h2{
+    font-family:'Shippori Mincho', serif; font-size:20px; font-weight:800; margin:44px 0 16px;
+    border-top:1px solid rgba(255,255,255,0.08); padding-top:20px;
+  }
+  .article-body h2:first-child{ border-top:none; margin-top:0; padding-top:0; }
+  .article-body p{ margin:0 0 20px; color:var(--text-on-ink); }
+  .article-body strong{ color:var(--amber); font-weight:700; }
+  .article-body ul{ margin:0 0 20px; padding-left:22px; color:var(--text-on-ink); }
+  .article-body li{ margin-bottom:10px; }
+
+  .callout{
+    background:var(--ink-soft); border-left:3px solid var(--amber); border-radius:6px;
+    padding:16px 20px; margin:24px 0; font-size:14px; color:var(--text-on-ink-muted);
+  }
+
+  .book-cta-row{ display:flex; gap:14px; margin:28px 0; flex-wrap:wrap; }
+  .book-cta{
+    flex:1; min-width:200px; background:var(--ink-soft); border:1px solid rgba(255,255,255,0.08);
+    border-radius:10px; padding:16px 18px;
+  }
+  .book-cta .name{ font-weight:700; font-size:13.5px; margin:0 0 8px; }
+  .book-cta .buy-link{
+    display:inline-block; font-size:12px; font-weight:700; color:var(--ink);
+    background:var(--amber); padding:6px 14px; border-radius:999px; text-decoration:none; margin-top:4px;
+  }
+
+  .diag-cta{
+    margin:40px auto 0; max-width:680px; background:var(--ink-soft); border-radius:12px;
+    padding:24px 26px; border:1px solid rgba(255,255,255,0.08);
+  }
+  .diag-cta p{ font-size:13.5px; color:var(--text-on-ink-muted); margin:0 0 14px; }
+
+  .back-to-list{ display:block; max-width:680px; margin:36px auto 0; font-size:13px; color:var(--text-on-ink-muted); text-decoration:none; }
+  .back-to-list:hover{ color:var(--amber); }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="../index.html" class="logo"><span class="mark">診</span>受験診断ドットコム</a>
+    <nav class="nav-links">
+      <a href="../index.html#diagnosis">診断一覧</a>
+      <a href="index.html">記事</a>
+      <a href="../contact.html">お問い合わせ</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap page-wrap">
+
+  <div class="article-header">
+    <span class="tag">科目別対策</span>
+    <h1>整数問題が苦手な人へ：頻出解法パターンの整理</h1>
+    <span class="meta">2026.07.08 公開</span>
+  </div>
+
+  <div class="article-body">
+
+    <p>整数問題は、多くの受験生が苦手意識を持つ分野の1つです。公式に当てはめるだけでは解けない問題が多く、「発想力が必要」と敬遠されがちですが、実際には頻出の解法パターンを押さえるだけで対応できる問題が大半です。</p>
+
+    <h2>整数問題が苦手に感じる理由</h2>
+    <p>整数問題は、他の分野と違って決まった公式が少なく、状況に応じて複数の手法を組み合わせる必要があります。この「どの手法を使えばいいか分からない」という感覚が、苦手意識の正体です。逆に言えば、代表的な手法のレパートリーを増やせば、対応できる問題の幅は大きく広がります。</p>
+
+    <h2>頻出の解法パターン</h2>
+    <ul>
+      <li><strong>積の形に持ち込む（因数分解）</strong>：整数の性質を使う問題の多くは、式を積の形に変形し、約数の組み合わせで絞り込みます</li>
+      <li><strong>余りで分類する（合同式・剰余類）</strong>：「〇で割った余りで場合分けする」という発想は、割り切れる・割り切れないを判定する問題で頻出です</li>
+      <li><strong>不等式で範囲を絞る</strong>：整数解の候補を無限に探すのではなく、不等式を作って候補の範囲を有限に絞り込みます</li>
+      <li><strong>具体的に小さい値で試す</strong>：規則性が見えない場合、小さい整数から実際に代入して規則を見つけるアプローチも有効です</li>
+    </ul>
+
+    <h2>典型パターンを整理して覚える意義</h2>
+    <p>整数問題は「発想力の勝負」と言われがちですが、実際に難関大の過去問を分析すると、上記のような限られたパターンの組み合わせで解ける問題が多数を占めます。パターンを知らずに毎回ゼロから発想しようとするのと、パターンを知った上で「この問題はどのパターンが使えそうか」と当てはめていくのとでは、解答スピードも正答率も大きく変わります。</p>
+
+    <h2>演習の進め方</h2>
+    <p>整数問題を克服したい場合は、分野を絞った演習書で集中的にパターンを学ぶのが効率的です。網羅系参考書の整数の単元だけを繰り返すよりも、整数問題専門の演習書で多くの問題に触れる方が、パターンの引き出しが早く増えます。</p>
+
+    <h2>まとめ</h2>
+    <p>整数問題は「センスが必要な分野」ではなく「パターンを知っているかどうかで差がつく分野」です。因数分解・余りによる分類・不等式による範囲の絞り込みという基本パターンを押さえることから始めましょう。</p>
+
+  </div>
+
+  <div class="diag-cta">
+    <p>整数分野に特化した参考書ルートは、数学参考書診断の「分野別集中特訓」から確認できます。</p>
+    <a href="../sugaku-shindan.html" class="btn btn-primary">数学の参考書診断を試す →</a>
+  </div>
+
+  <a href="index.html" class="back-to-list">← 記事一覧に戻る</a>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>&copy; 2026 受験診断ドットコム</span>
+    <div class="footer-links">
+      <a href="../privacy-policy.html">プライバシーポリシー</a>
+      <a href="../contact.html">お問い合わせ</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

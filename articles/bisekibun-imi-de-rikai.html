@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>微積分は「公式より意味」で理解しろ | 受験診断ドットコム</title>
+<meta name="description" content="微分・積分の公式暗記だけでは対応できない理由と、変化率・細分化という本質的な意味から理解する重要性を解説します。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+  .page-wrap{ padding-top:44px; padding-bottom:120px; }
+  .article-header{ max-width:680px; margin:0 auto 36px; }
+  .article-header .tag{ font-size:12px; font-weight:700; letter-spacing:0.1em; color:var(--lv3); margin-bottom:12px; display:block; }
+  .article-header h1{
+    font-family:'Shippori Mincho', serif; font-weight:800; font-size:clamp(24px,4.6vw,33px);
+    line-height:1.5; margin:0 0 14px;
+  }
+  .article-header .meta{ font-size:12.5px; color:var(--text-on-ink-muted); }
+
+  .article-body{ max-width:680px; margin:0 auto; font-size:15.5px; line-height:2; }
+  .article-body h2{
+    font-family:'Shippori Mincho', serif; font-size:20px; font-weight:800; margin:44px 0 16px;
+    border-top:1px solid rgba(255,255,255,0.08); padding-top:20px;
+  }
+  .article-body h2:first-child{ border-top:none; margin-top:0; padding-top:0; }
+  .article-body p{ margin:0 0 20px; color:var(--text-on-ink); }
+  .article-body strong{ color:var(--amber); font-weight:700; }
+  .article-body ul{ margin:0 0 20px; padding-left:22px; color:var(--text-on-ink); }
+  .article-body li{ margin-bottom:10px; }
+
+  .callout{
+    background:var(--ink-soft); border-left:3px solid var(--amber); border-radius:6px;
+    padding:16px 20px; margin:24px 0; font-size:14px; color:var(--text-on-ink-muted);
+  }
+
+  .book-cta-row{ display:flex; gap:14px; margin:28px 0; flex-wrap:wrap; }
+  .book-cta{
+    flex:1; min-width:200px; background:var(--ink-soft); border:1px solid rgba(255,255,255,0.08);
+    border-radius:10px; padding:16px 18px;
+  }
+  .book-cta .name{ font-weight:700; font-size:13.5px; margin:0 0 8px; }
+  .book-cta .buy-link{
+    display:inline-block; font-size:12px; font-weight:700; color:var(--ink);
+    background:var(--amber); padding:6px 14px; border-radius:999px; text-decoration:none; margin-top:4px;
+  }
+
+  .diag-cta{
+    margin:40px auto 0; max-width:680px; background:var(--ink-soft); border-radius:12px;
+    padding:24px 26px; border:1px solid rgba(255,255,255,0.08);
+  }
+  .diag-cta p{ font-size:13.5px; color:var(--text-on-ink-muted); margin:0 0 14px; }
+
+  .back-to-list{ display:block; max-width:680px; margin:36px auto 0; font-size:13px; color:var(--text-on-ink-muted); text-decoration:none; }
+  .back-to-list:hover{ color:var(--amber); }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="../index.html" class="logo"><span class="mark">診</span>受験診断ドットコム</a>
+    <nav class="nav-links">
+      <a href="../index.html#diagnosis">診断一覧</a>
+      <a href="index.html">記事</a>
+      <a href="../contact.html">お問い合わせ</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap page-wrap">
+
+  <div class="article-header">
+    <span class="tag">科目別対策</span>
+    <h1>微積分は「公式より意味」で理解しろ</h1>
+    <span class="meta">2026.07.08 公開</span>
+  </div>
+
+  <div class="article-body">
+
+    <p>微分・積分は、公式の数が多く、暗記量で押し切ろうとする受験生が少なくありません。しかし、公式の「意味」を理解せずに丸暗記だけで進めると、応用問題や複合問題で対応できなくなります。</p>
+
+    <h2>公式暗記だけでは対応できない理由</h2>
+    <p>微積分の公式は、単独で使う場面より、複数の公式を組み合わせて使う場面の方が入試では多く出題されます。公式を「形」だけで覚えていると、少しひねられた問題設定になった瞬間に、どの公式を使えばいいか判断できなくなります。一方で、公式の意味（微分は瞬間の変化率、積分は面積や体積の集積）を理解していれば、初見の設定でも「これは何を求めている問題か」から逆算して手法を選べます。</p>
+
+    <h2>微分は「変化の割合の極限」</h2>
+    <p>微分係数の定義に立ち返ると、微分とは「限りなく小さい区間での変化の割合」を表しています。この意味を理解していれば、接線の傾きを求める問題も、関数の増減を調べる問題も、根っこは同じ考え方でつながっていることが見えてきます。公式を個別に暗記するのではなく、「変化率」という一本の軸で捉え直すことが理解の近道です。</p>
+
+    <h2>積分は「細かく分けて足し合わせる」</h2>
+    <p>積分の本質は、面積や体積を求める際に、対象を極限まで細かく分割し、それぞれの微小な部分を足し合わせるという発想にあります。区分求積法や体積の積分公式は、すべてこの「細分化して足し合わせる」という考え方の応用です。この意味を理解していれば、公式を忘れてしまっても、定義に立ち返って導出することができます。</p>
+
+    <h2>複合問題への対応力</h2>
+    <p>難関大の入試では、微分と積分を組み合わせた問題（面積を求めてから最大値を考える、など）が頻出です。公式を形だけで覚えていると、どこで微分を使い、どこで積分を使うのか、問題文から読み取れなくなります。意味から理解していれば、「増減を調べたいから微分」「面積を求めたいから積分」と、目的から手法を選べるようになります。</p>
+
+    <h2>まとめ</h2>
+    <p>微積分は公式の暗記量が多い分野ですが、それぞれの公式が「何を表しているか」という意味を理解することで、暗記の負担が減り、応用問題への対応力も高まります。定義に立ち返って考える習慣を、日頃の演習から意識してみてください。</p>
+
+  </div>
+
+  <div class="diag-cta">
+    <p>微積分分野に特化した参考書ルートは、数学参考書診断の「分野別集中特訓」から確認できます。</p>
+    <a href="../sugaku-shindan.html" class="btn btn-primary">数学の参考書診断を試す →</a>
+  </div>
+
+  <a href="index.html" class="back-to-list">← 記事一覧に戻る</a>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>&copy; 2026 受験診断ドットコム</span>
+    <div class="footer-links">
+      <a href="../privacy-policy.html">プライバシーポリシー</a>
+      <a href="../contact.html">お問い合わせ</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

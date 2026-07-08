@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ベクトルは図で考えろ：計算に逃げると伸びない理由 | 受験診断ドットコム</title>
+<meta name="description" content="ベクトル分野で計算だけに頼ると応用問題で詰まる理由と、図を描く習慣が対応力を伸ばす仕組みを解説します。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+  .page-wrap{ padding-top:44px; padding-bottom:120px; }
+  .article-header{ max-width:680px; margin:0 auto 36px; }
+  .article-header .tag{ font-size:12px; font-weight:700; letter-spacing:0.1em; color:var(--lv3); margin-bottom:12px; display:block; }
+  .article-header h1{
+    font-family:'Shippori Mincho', serif; font-weight:800; font-size:clamp(24px,4.6vw,33px);
+    line-height:1.5; margin:0 0 14px;
+  }
+  .article-header .meta{ font-size:12.5px; color:var(--text-on-ink-muted); }
+
+  .article-body{ max-width:680px; margin:0 auto; font-size:15.5px; line-height:2; }
+  .article-body h2{
+    font-family:'Shippori Mincho', serif; font-size:20px; font-weight:800; margin:44px 0 16px;
+    border-top:1px solid rgba(255,255,255,0.08); padding-top:20px;
+  }
+  .article-body h2:first-child{ border-top:none; margin-top:0; padding-top:0; }
+  .article-body p{ margin:0 0 20px; color:var(--text-on-ink); }
+  .article-body strong{ color:var(--amber); font-weight:700; }
+  .article-body ul{ margin:0 0 20px; padding-left:22px; color:var(--text-on-ink); }
+  .article-body li{ margin-bottom:10px; }
+
+  .callout{
+    background:var(--ink-soft); border-left:3px solid var(--amber); border-radius:6px;
+    padding:16px 20px; margin:24px 0; font-size:14px; color:var(--text-on-ink-muted);
+  }
+
+  .book-cta-row{ display:flex; gap:14px; margin:28px 0; flex-wrap:wrap; }
+  .book-cta{
+    flex:1; min-width:200px; background:var(--ink-soft); border:1px solid rgba(255,255,255,0.08);
+    border-radius:10px; padding:16px 18px;
+  }
+  .book-cta .name{ font-weight:700; font-size:13.5px; margin:0 0 8px; }
+  .book-cta .buy-link{
+    display:inline-block; font-size:12px; font-weight:700; color:var(--ink);
+    background:var(--amber); padding:6px 14px; border-radius:999px; text-decoration:none; margin-top:4px;
+  }
+
+  .diag-cta{
+    margin:40px auto 0; max-width:680px; background:var(--ink-soft); border-radius:12px;
+    padding:24px 26px; border:1px solid rgba(255,255,255,0.08);
+  }
+  .diag-cta p{ font-size:13.5px; color:var(--text-on-ink-muted); margin:0 0 14px; }
+
+  .back-to-list{ display:block; max-width:680px; margin:36px auto 0; font-size:13px; color:var(--text-on-ink-muted); text-decoration:none; }
+  .back-to-list:hover{ color:var(--amber); }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="../index.html" class="logo"><span class="mark">診</span>受験診断ドットコム</a>
+    <nav class="nav-links">
+      <a href="../index.html#diagnosis">診断一覧</a>
+      <a href="index.html">記事</a>
+      <a href="../contact.html">お問い合わせ</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap page-wrap">
+
+  <div class="article-header">
+    <span class="tag">科目別対策</span>
+    <h1>ベクトルは図で考えろ：計算に逃げると伸びない理由</h1>
+    <span class="meta">2026.07.08 公開</span>
+  </div>
+
+  <div class="article-body">
+
+    <p>ベクトルは、公式や計算のルールが多く、機械的な処理に走りやすい分野です。しかし、計算だけに頼って図をおろそかにすると、応用問題で急に手が止まってしまいます。</p>
+
+    <h2>計算だけに頼るとどこで詰まるか</h2>
+    <p>内積の計算や成分計算そのものは、ルールさえ覚えれば機械的に処理できます。しかし、「どのベクトルを基準にして表すか」「どの図形的な条件を式に落とし込むか」といった、問題の設定を数式に翻訳する部分は、計算力だけでは対応できません。ここでつまずく受験生が非常に多いのがベクトル分野の特徴です。</p>
+
+    <h2>図を描く習慣が差を生む理由</h2>
+    <p>ベクトルは、そもそも「大きさと向きを持つ量」を扱う分野であり、図形的な意味を持っています。問題を解く前に簡単な図を描くことで、次のようなメリットがあります。</p>
+    <ul>
+      <li>どのベクトルを基準（始点）に取ると式が簡潔になるかが見えやすくなる</li>
+      <li>「平行」「垂直」「内分・外分」といった条件が、図の上でイメージしやすくなる</li>
+      <li>計算結果が図形的に妥当かどうか、検算的にチェックできる</li>
+    </ul>
+    <p>特に空間ベクトルでは、図がないまま数式だけで進めると、途中で状況を見失いやすくなります。多少雑でも構わないので、問題を読んだ直後に図を描く習慣をつけることが重要です。</p>
+
+    <h2>典型的な出題テーマ</h2>
+    <p>ベクトルの入試問題では、「内分点・外分点の位置ベクトル」「平面上の点が3点を通る条件」「垂直条件を使った最小値問題」などが頻出です。いずれも、図形的なイメージと式変形を行き来しながら解く構成になっており、どちらか一方だけでは対応しきれません。</p>
+
+    <h2>おすすめの練習方法</h2>
+    <p>問題を解く際、最初の30秒〜1分は手を止めて図を描く時間に充てる、というルールを決めて練習するのがおすすめです。慣れないうちは面倒に感じますが、繰り返すうちに「この設定ならこの基準点を取ればいい」という感覚が身につき、結果的に解答スピードも上がっていきます。</p>
+
+    <h2>まとめ</h2>
+    <p>ベクトルは計算のルールを覚えるだけでは頭打ちになりやすい分野です。問題を読んだらまず図を描く習慣をつけ、図形的なイメージと数式処理を結びつける練習を重ねることで、応用問題への対応力が大きく伸びます。</p>
+
+  </div>
+
+  <div class="diag-cta">
+    <p>ベクトル分野に特化した参考書ルートは、数学参考書診断の「分野別集中特訓」から確認できます。</p>
+    <a href="../sugaku-shindan.html" class="btn btn-primary">数学の参考書診断を試す →</a>
+  </div>
+
+  <a href="index.html" class="back-to-list">← 記事一覧に戻る</a>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>&copy; 2026 受験診断ドットコム</span>
+    <div class="footer-links">
+      <a href="../privacy-policy.html">プライバシーポリシー</a>
+      <a href="../contact.html">お問い合わせ</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
