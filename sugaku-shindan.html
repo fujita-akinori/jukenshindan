@@ -341,9 +341,11 @@ const BOOKS = [
   {name:"標準問題精講",scope:"common",tier:3,purposes:["niji"],type:"quality",bunya:[]},
   {name:"標準問題精講 分野別（数列）",scope:"common",tier:3,purposes:["bunyabetsu"],type:"quality",bunya:["数列"]},
   {name:"標準問題精講 分野別（整数）",scope:"common",tier:3,purposes:["bunyabetsu"],type:"quality",bunya:["整数"]},
-  {name:"数学 二次曲線・複素数平面 分野別標準問題精講",scope:"rikei",tier:3,purposes:["bunyabetsu"],type:"quality",bunya:["複素数平面"]},
-  {name:"教科書だけでは足りない 大学入試攻略 複素数平面（河合塾）",scope:"rikei",tier:3,purposes:["bunyabetsu"],type:"quality",bunya:["複素数平面"]},
-  {name:"大学入試10日で極める複素数平面（理系のための分野別問題集）",scope:"rikei",tier:2,purposes:["bunyabetsu"],type:"quantity",bunya:["複素数平面"]},
+  {name:"数学 二次曲線・複素数平面 分野別標準問題精講",scope:"rikei",tier:3,purposes:["bunyabetsu"],type:"quantity",bunya:["複素数平面"],profile:"workbook"},
+  {name:"教科書だけでは足りない 大学入試攻略 複素数平面（河合塾）",scope:"rikei",tier:4,purposes:["bunyabetsu"],type:"quantity",bunya:["複素数平面"],profile:"workbook"},
+  {name:"坂田アキラの複素数平面が面白いほどわかる本",scope:"rikei",tier:1,purposes:["bunyabetsu"],type:"quality",bunya:["複素数平面"],unconditional:true},
+  {name:"改訂版 志田晶の 複素数平面・式と曲線が面白いほどわかる本",scope:"rikei",tier:2,purposes:["bunyabetsu"],type:"quality",bunya:["複素数平面"],profile:"lecture"},
+  {name:"数学の受験教科書 7 複素数平面（カラー版）",scope:"rikei",tier:3,purposes:["bunyabetsu"],type:"quality",bunya:["複素数平面"],profile:"lecture"},
   {name:"合格る確率",scope:"common",tier:3,purposes:["bunyabetsu"],type:"quantity",bunya:["場合の数・確率"]},
   {name:"場合の数・確率 解法のパターン30（技術評論社）",scope:"common",tier:3,purposes:["bunyabetsu"],type:"quantity",bunya:["場合の数・確率"]},
   {name:"坂田アキラの場合の数・確率・データの分析が面白いほどわかる本",scope:"common",tier:1,purposes:["bunyabetsu"],type:"quality",bunya:["場合の数・確率"]},
@@ -408,6 +410,13 @@ const BUNYA_EXTRA = {
     choices: [
       { label:"じっくり理解を深めたい", sub:"概念・図形的意味から", value:"deepen" },
       { label:"解法パターンを学びたい", sub:"入試問題の解き方から", value:"solve" },
+    ]
+  },
+  "複素数平面": {
+    text: "複素数平面の学び方は？",
+    choices: [
+      { label:"講義形式でじっくり学びたい", sub:"仕組み・考え方から理解", value:"lecture" },
+      { label:"問題集でどんどん解きたい", sub:"演習量で慣れる", value:"workbook" },
     ]
   }
 };
@@ -735,7 +744,9 @@ function pickTier(){
   if(answers.purpose==="kyoutsuu") return answers.status==="none" ? 1 : 2;
   // 二次
   if(answers.nijiType==="bunya") {
-    // 偏差値と志望校の高い方を採用
+    // 偏差値50未満は、志望校に関わらず無条件で基礎固め（tier1）から
+    if(answers.hensachiKey === "lt50") return 1;
+    // それ以外は偏差値と志望校の高い方を採用
     return Math.max(hensachiToTier(answers.hensachiKey), shibouToTier(answers.shibou));
   }
   // 総合
@@ -755,6 +766,8 @@ function scoreBook(b, targetTier, scopes, purpose, style, bunya, bunyaHasMatch, 
   // 総合診断（分野別以外）：分野別専用タグを持つ本は逆に一切候補にしない
   // （「総合」を選んだのに特定分野の本が紛れ込むのを防ぐ）
   if(excludeBunyaSpecific && b.bunya && b.bunya.length > 0) return -Infinity;
+  // 「無条件で最優先」フラグ：目標tierと一致する場合、質/量やprofileに関わらず最優先にする
+  if(b.unconditional && b.tier === targetTier) return 1000;
   let s = 0;
   // tier近さ
   s += 5 - Math.abs(b.tier - targetTier)*2;
