@@ -743,7 +743,7 @@ function pickTier(){
   return shibouToTier(answers.shibou);
 }
 
-function scoreBook(b, targetTier, scopes, purpose, style, bunya, bunyaHasMatch, krangeWanted, bunyaProfile){
+function scoreBook(b, targetTier, scopes, purpose, style, bunya, bunyaHasMatch, krangeWanted, bunyaProfile, excludeBunyaSpecific){
   if(!scopes.includes(b.scope)) return -Infinity;
   // 共通テストルート：範囲タグがある本は、選んだ範囲(IA/IIBC)と一致しないなら除外
   if(krangeWanted && b.krange && b.krange!=="both" && b.krange!==krangeWanted) return -Infinity;
@@ -752,6 +752,9 @@ function scoreBook(b, targetTier, scopes, purpose, style, bunya, bunyaHasMatch, 
   // 分野別診断：分野が指定されている場合、その分野の専用タグを持たない本は一切候補にしない
   // （総合書へのフォールバックは行わない。該当0冊なら「該当なし」を表示する）
   if(bunya && !b.bunya.includes(bunya)) return -Infinity;
+  // 総合診断（分野別以外）：分野別専用タグを持つ本は逆に一切候補にしない
+  // （「総合」を選んだのに特定分野の本が紛れ込むのを防ぐ）
+  if(excludeBunyaSpecific && b.bunya && b.bunya.length > 0) return -Infinity;
   let s = 0;
   // tier近さ
   s += 5 - Math.abs(b.tier - targetTier)*2;
@@ -769,8 +772,10 @@ function renderResult(){
   const purposeForMatch = answers.purpose==="niji" ? "niji" : answers.purpose;
   const bunya = answers.bunya || null;
   const krangeWanted = answers.purpose==="kyoutsuu" ? (answers.kyoRange==="数IA" ? "IA" : "IIBC") : null;
+  // 二次試験ルートで「総合」を選んだ場合は、分野別専用の本を除外する
+  const excludeBunyaSpecific = (answers.purpose==="niji" && answers.nijiType==="sougou");
 
-  let scored = BOOKS.map(b => ({b, s:scoreBook(b, targetTier, scopes, purposeForMatch, answers.style, bunya, null, krangeWanted, answers.bunyaProfile)}))
+  let scored = BOOKS.map(b => ({b, s:scoreBook(b, targetTier, scopes, purposeForMatch, answers.style, bunya, null, krangeWanted, answers.bunyaProfile, excludeBunyaSpecific)}))
                     .filter(x => x.s > -Infinity)
                     .sort((a,b)=> b.s - a.s);
   let picks = scored.slice(0, 3).map(x=>x.b);
