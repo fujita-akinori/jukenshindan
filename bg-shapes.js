@@ -15,13 +15,13 @@
   }
   window.addEventListener('resize', resize);
 
-  const COLORS = ['rgba(232,163,61,0.16)', 'rgba(232,163,61,0.10)', 'rgba(246,241,228,0.07)', 'rgba(246,241,228,0.045)'];
+  const COLORS = ['rgba(160,160,168,0.16)', 'rgba(160,160,168,0.10)', 'rgba(200,200,206,0.07)', 'rgba(200,200,206,0.045)'];
   const COUNT = 16;
   let shapes = [];
 
   function makeShape(){
-    const w = 14 + Math.random() * 22;
-    const h = w * (2.2 + Math.random() * 1.4);
+    const w = 16 + Math.random() * 26;
+    const h = w; // 正方形
     return {
       x: Math.random() * W,
       y: Math.random() * H,
