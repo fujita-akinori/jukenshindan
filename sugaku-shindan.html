@@ -314,6 +314,9 @@ const BOOKS = [
   {name:"合格る数学",scope:"common",tier:2,purposes:["kyoutsuu","niji"],type:"quantity",bunya:[]},
   {name:"大学入試 最短でマスターする数学I〜C（赤本プラス）",scope:"common",tier:2,purposes:["mouraikei","kyoutsuu"],type:"quality",bunya:[]},
   {name:"志田晶の 数列が面白いほどわかる本",scope:"common",tier:2,purposes:["bunyabetsu"],type:"quality",bunya:["数列"]},
+  {name:"坂田アキラの数列が面白いほどわかる本",scope:"common",tier:1,purposes:["bunyabetsu"],type:"quality",bunya:["数列"]},
+  {name:"教科書Next 数列の集中講義（東京出版）",scope:"common",tier:3,purposes:["bunyabetsu"],type:"quality",bunya:["数列"],profile:"deepen"},
+  {name:"教科書だけでは足りない 大学入試攻略 数列",scope:"common",tier:3,purposes:["bunyabetsu"],type:"quality",bunya:["数列"],profile:"solve"},
   {name:"志田晶の 集合・論理、整数が面白いほどわかる本",scope:"common",tier:2,purposes:["bunyabetsu"],type:"quality",bunya:["整数"]},
   {name:"志田晶の ベクトルが面白いほどわかる本",scope:"common",tier:2,purposes:["bunyabetsu"],type:"quality",bunya:["ベクトル"],profile:"solve"},
   {name:"坂田アキラのベクトルが面白いほどわかる本",scope:"common",tier:1,purposes:["bunyabetsu"],type:"quality",bunya:["ベクトル"],profile:"solve"},
@@ -339,7 +342,6 @@ const BOOKS = [
   {name:"マスターキー 数学I・A・II・B＋ベクトル",scope:"common",tier:3,purposes:["niji"],type:"quality",bunya:[]},
   {name:"入試数学 解法のセオリー",scope:"common",tier:3,purposes:["niji"],type:"quality",bunya:[]},
   {name:"標準問題精講",scope:"common",tier:3,purposes:["niji"],type:"quality",bunya:[]},
-  {name:"標準問題精講 分野別（数列）",scope:"common",tier:3,purposes:["bunyabetsu"],type:"quality",bunya:["数列"]},
   {name:"標準問題精講 分野別（整数）",scope:"common",tier:3,purposes:["bunyabetsu"],type:"quality",bunya:["整数"]},
   {name:"数学 二次曲線・複素数平面 分野別標準問題精講",scope:"rikei",tier:3,purposes:["bunyabetsu"],type:"quantity",bunya:["複素数平面"],profile:"workbook"},
   {name:"教科書だけでは足りない 大学入試攻略 複素数平面（河合塾）",scope:"rikei",tier:4,purposes:["bunyabetsu"],type:"quantity",bunya:["複素数平面"],profile:"workbook"},
@@ -369,7 +371,10 @@ const BOOKS = [
   {name:"世界一わかりやすい 阪大の文系数学",scope:"bunkei",tier:4,purposes:["niji"],type:"quality",bunya:[]},
   {name:"上級問題精講",scope:"common",tier:4,purposes:["niji"],type:"quality",bunya:[]},
   {name:"真・解法への道",scope:"common",tier:4,purposes:["niji"],type:"quality",bunya:[]},
-  {name:"ハイレベル完全攻略（分野別）",scope:"common",tier:4,purposes:["bunyabetsu"],type:"quality",bunya:["微積分（数III）"]},
+  {name:"坂田アキラの数IIIの微分積分が面白いほどわかる本",scope:"rikei",tier:1,purposes:["bunyabetsu"],type:"quality",bunya:["微積分（数III）"]},
+  {name:"教科書だけでは足りない 大学入試攻略 数II・数III微分・積分",scope:"rikei",tier:2,purposes:["bunyabetsu"],type:"quality",bunya:["微積分（数III）"]},
+  {name:"解法の探求・微積分（東京出版）",scope:"rikei",tier:4,purposes:["bunyabetsu"],type:"quality",bunya:["微積分（数III）"],shibouOnly:["tokyoikko"]},
+  {name:"微積分 基礎の極意",scope:"rikei",tier:4,purposes:["bunyabetsu"],type:"quality",bunya:["微積分（数III）"],shibouExclude:["tokyoikko"]},
   {name:"志望大学の過去問（赤本／青本）",scope:"common",tier:4,purposes:["niji"],type:"quantity",bunya:[]},
   {name:"ハイレベル理系数学",scope:"rikei",tier:4,purposes:["niji"],type:"quantity",bunya:[]},
   {name:"東大数学プレミアム",scope:"rikei",tier:4,purposes:["niji"],type:"quality",bunya:[]},
@@ -382,7 +387,6 @@ const BOOKS = [
   {name:"数学の真髄（ベクトル）",scope:"common",tier:4,purposes:["bunyabetsu"],type:"quality",bunya:["ベクトル"],profile:"deepen"},
   {name:"やさしい理系数学",scope:"rikei",tier:4,purposes:["niji"],type:"quantity",bunya:[]},
   {name:"入試数学の掌握（3部作）",scope:"common",tier:4,purposes:["niji"],type:"quality",bunya:[]},
-  {name:"微積分 基礎の極意",scope:"rikei",tier:4,purposes:["bunyabetsu"],type:"quality",bunya:["微積分（数III）"]},
   {name:"マスターオブ整数",scope:"common",tier:4,purposes:["bunyabetsu"],type:"quantity",bunya:["整数"]},
   {name:"整数問題 解法のパターン30（技術評論社）",scope:"common",tier:3,purposes:["bunyabetsu"],type:"quantity",bunya:["整数"]},
   {name:"教科書だけでは足りない 大学入試攻略 整数",scope:"common",tier:3,purposes:["bunyabetsu"],type:"quality",bunya:["整数"]},
@@ -417,6 +421,13 @@ const BUNYA_EXTRA = {
     choices: [
       { label:"講義形式でじっくり学びたい", sub:"仕組み・考え方から理解", value:"lecture" },
       { label:"問題集でどんどん解きたい", sub:"演習量で慣れる", value:"workbook" },
+    ]
+  },
+  "数列": {
+    text: "数列の学び方は？",
+    choices: [
+      { label:"理解を深めたい", sub:"教科書レベルから丁寧に", value:"deepen" },
+      { label:"難関問題の解法を学びたい", sub:"入試の頻出パターンから", value:"solve" },
     ]
   }
 };
@@ -754,12 +765,15 @@ function pickTier(){
   return shibouToTier(answers.shibou);
 }
 
-function scoreBook(b, targetTier, scopes, purpose, style, bunya, bunyaHasMatch, krangeWanted, bunyaProfile, excludeBunyaSpecific){
+function scoreBook(b, targetTier, scopes, purpose, style, bunya, bunyaHasMatch, krangeWanted, bunyaProfile, excludeBunyaSpecific, shibou){
   if(!scopes.includes(b.scope)) return -Infinity;
   // 共通テストルート：範囲タグがある本は、選んだ範囲(IA/IIBC)と一致しないなら除外
   if(krangeWanted && b.krange && b.krange!=="both" && b.krange!==krangeWanted) return -Infinity;
   // 分野固有の追加質問（計算・ベクトルなど）：profileタグを持つ本は、選んだ方針と厳密一致しないと除外
   if(bunyaProfile && b.profile && b.profile !== bunyaProfile) return -Infinity;
+  // 志望校限定タグ：特定の志望校専用の本は、一致しない場合除外
+  if(b.shibouOnly && !b.shibouOnly.includes(shibou)) return -Infinity;
+  if(b.shibouExclude && b.shibouExclude.includes(shibou)) return -Infinity;
   // 分野別診断：分野が指定されている場合、その分野の専用タグを持たない本は一切候補にしない
   // （総合書へのフォールバックは行わない。該当0冊なら「該当なし」を表示する）
   if(bunya && !b.bunya.includes(bunya)) return -Infinity;
@@ -788,7 +802,7 @@ function renderResult(){
   // 二次試験ルートで「総合」を選んだ場合は、分野別専用の本を除外する
   const excludeBunyaSpecific = (answers.purpose==="niji" && answers.nijiType==="sougou");
 
-  let scored = BOOKS.map(b => ({b, s:scoreBook(b, targetTier, scopes, purposeForMatch, answers.style, bunya, null, krangeWanted, answers.bunyaProfile, excludeBunyaSpecific)}))
+  let scored = BOOKS.map(b => ({b, s:scoreBook(b, targetTier, scopes, purposeForMatch, answers.style, bunya, null, krangeWanted, answers.bunyaProfile, excludeBunyaSpecific, answers.shibou)}))
                     .filter(x => x.s > -Infinity)
                     .sort((a,b)=> b.s - a.s);
   let picks = scored.slice(0, 3).map(x=>x.b);
