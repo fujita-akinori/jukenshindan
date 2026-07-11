@@ -281,7 +281,7 @@ const BOOKS = [
   {name:"基礎問題精講（数学III）",scope:"rikei",tier:1,purposes:["teiki"],type:"quantity",bunya:[]},
   {name:"はじめからはじめる数学（マセマ）",scope:"common",tier:1,purposes:["teiki"],type:"quality",bunya:[]},
   {name:"入門問題精講",scope:"common",tier:1,purposes:["teiki"],type:"quality",bunya:[]},
-  {name:"黄チャート",scope:"common",tier:1,purposes:["teiki","mouraikei"],type:"quality",bunya:[]},
+  {name:"黄チャート",scope:"common",tier:1,purposes:["teiki","mouraikei","niji"],type:"quantity",bunya:[],mouraikei:true},
   {name:"NEW ACTION FRONTIER",scope:"common",tier:1,purposes:["teiki","mouraikei"],type:"quality",bunya:[]},
   {name:"技216 数学I・A（大学合格のための基礎知識と解法）",scope:"common",tier:1,purposes:["teiki","mouraikei"],type:"quality",bunya:[]},
   {name:"Super Quick 数学I+A",scope:"common",tier:1,purposes:["mouraikei","kyoutsuu"],type:"quantity",bunya:[],krange:"IA"},
@@ -293,7 +293,7 @@ const BOOKS = [
   {name:"やさしい高校数学（数学I・A）",scope:"common",tier:1,purposes:["teiki"],type:"quality",bunya:[]},
   {name:"やさしい高校数学（数学II・B）",scope:"common",tier:1,purposes:["teiki"],type:"quality",bunya:[]},
   {name:"やさしい高校数学（数学III・C）",scope:"rikei",tier:1,purposes:["teiki"],type:"quality",bunya:[]},
-  {name:"白チャート",scope:"common",tier:1,purposes:["teiki","mouraikei"],type:"quality",bunya:[]},
+  {name:"白チャート",scope:"common",tier:1,purposes:["teiki","mouraikei","niji"],type:"quality",bunya:[],mouraikei:true},
   {name:"きめる!共通テスト 数学I・A",scope:"common",tier:1,purposes:["kyoutsuu"],type:"quality",bunya:[],krange:"IA"},
   {name:"きめる!共通テスト 数学II・B・C",scope:"common",tier:1,purposes:["kyoutsuu"],type:"quality",bunya:[],krange:"IIBC"},
   {name:"数学のトリセツ！数学I・A",scope:"common",tier:1,purposes:["teiki","mouraikei"],type:"quality",bunya:[]},
@@ -302,16 +302,17 @@ const BOOKS = [
   {name:"数学の計算革命〈三訂版〉",scope:"common",tier:1,purposes:["bunyabetsu"],type:"quantity",bunya:["計算"],profile:"speed_steady"},
 
   // ---- Tier2 標準・共テ ----
-  {name:"鉄緑会 基礎力完成 数学I・A+II・B",scope:"common",tier:2,purposes:["mouraikei"],type:"quantity",bunya:[]},
-  {name:"青チャート／Focus Gold",scope:"common",tier:2,purposes:["mouraikei"],type:"quality",bunya:[]},
+  {name:"鉄緑会 基礎力完成 数学I・A+II・B",scope:"common",tier:2,purposes:["mouraikei"],type:"quantity",bunya:[],mouraikei:true},
+  {name:"青チャート",scope:"common",tier:2,purposes:["mouraikei","niji"],type:"quality",bunya:[],mouraikei:true,shibouExclude:["tokyoikko","kyutei"]},
+  {name:"Focus Gold",scope:"common",tier:2,purposes:["mouraikei","niji"],type:"quality",bunya:[],mouraikei:true,shibouOnly:["tokyoikko"]},
   {name:"共通テスト数学 予想問題集（数学I・A）",scope:"common",tier:2,purposes:["kyoutsuu"],type:"quantity",bunya:[],krange:"IA"},
   {name:"共通テスト数学 予想問題集（数学II・B・C）",scope:"common",tier:2,purposes:["kyoutsuu"],type:"quantity",bunya:[],krange:"IIBC"},
   {name:"青チャート（数学III）",scope:"rikei",tier:2,purposes:["mouraikei"],type:"quality",bunya:[]},
-  {name:"NEW ACTION LEGEND",scope:"common",tier:2,purposes:["mouraikei"],type:"quality",bunya:[]},
+  {name:"NEW ACTION LEGEND",scope:"common",tier:2,purposes:["mouraikei","niji"],type:"quality",bunya:[],mouraikei:true,shibouOnly:["kyutei"]},
   {name:"解法のエウレカ 数学I・A",scope:"common",tier:2,purposes:["mouraikei","kyoutsuu"],type:"quality",bunya:[],krange:"IA"},
   {name:"解法のエウレカ 数学II・B＋ベクトル",scope:"common",tier:2,purposes:["mouraikei","kyoutsuu"],type:"quality",bunya:[],krange:"IIBC"},
   {name:"解法のエウレカ 数学III・C",scope:"rikei",tier:2,purposes:["mouraikei","kyoutsuu"],type:"quality",bunya:[],krange:"IIBC"},
-  {name:"合格る数学",scope:"common",tier:2,purposes:["kyoutsuu","niji"],type:"quantity",bunya:[]},
+  {name:"合格る数学",scope:"common",tier:3,purposes:["kyoutsuu","niji"],type:"quality",bunya:[],mouraikei:true},
   {name:"大学入試 最短でマスターする数学I〜C（赤本プラス）",scope:"common",tier:2,purposes:["mouraikei","kyoutsuu"],type:"quality",bunya:[]},
   {name:"志田晶の 数列が面白いほどわかる本",scope:"common",tier:2,purposes:["bunyabetsu"],type:"quality",bunya:["数列"]},
   {name:"坂田アキラの数列が面白いほどわかる本",scope:"common",tier:1,purposes:["bunyabetsu"],type:"quality",bunya:["数列"]},
@@ -355,9 +356,9 @@ const BOOKS = [
   {name:"マスターオブ場合の数",scope:"common",tier:3,purposes:["bunyabetsu"],type:"quality",bunya:["場合の数・確率"]},
   {name:"Z会 理系数学の核心 標準編",scope:"rikei",tier:3,purposes:["niji"],type:"quality",bunya:[]},
   {name:"東進 最重要問題集",scope:"common",tier:3,purposes:["niji","kyoutsuu"],type:"quality",bunya:[]},
-  {name:"世界一わかりやすい 九大の理系数学",scope:"rikei",tier:3,purposes:["niji"],type:"quality",bunya:[]},
-  {name:"世界一わかりやすい 九大の文系数学",scope:"bunkei",tier:3,purposes:["niji"],type:"quality",bunya:[]},
-  {name:"入試数学「実力強化」問題集（駿台）",scope:"common",tier:3,purposes:["mouraikei","niji"],type:"quantity",bunya:[]},
+  {name:"世界一わかりやすい 九大の理系数学",scope:"rikei",tier:3,purposes:["niji"],type:"quality",bunya:[],shibouDetailOnly:["kyudai"]},
+  {name:"世界一わかりやすい 九大の文系数学",scope:"bunkei",tier:3,purposes:["niji"],type:"quality",bunya:[],shibouDetailOnly:["kyudai"]},
+  {name:"入試数学「実力強化」問題集（駿台）",scope:"common",tier:3,purposes:["mouraikei","niji"],type:"quantity",bunya:[],mouraikei:true},
   {name:"入試のツボを押さえる重点学習 数学IA2BC",scope:"common",tier:3,purposes:["niji"],type:"quality",bunya:[]},
   {name:"入試のツボを押さえる重点学習 数学3C",scope:"rikei",tier:3,purposes:["niji"],type:"quality",bunya:[]},
   {name:"総合的研究 記述式答案の書き方",scope:"common",tier:3,purposes:["niji"],type:"quality",bunya:[]},
@@ -367,20 +368,22 @@ const BOOKS = [
   {name:"大学入試 数学の発想力が1冊でしっかり身につく本",scope:"common",tier:3,purposes:["niji"],type:"quality",bunya:[]},
 
   // ---- Tier4 最難関 ----
-  {name:"世界一わかりやすい 阪大の理系数学 合格講座",scope:"rikei",tier:4,purposes:["niji"],type:"quality",bunya:[]},
-  {name:"世界一わかりやすい 阪大の文系数学",scope:"bunkei",tier:4,purposes:["niji"],type:"quality",bunya:[]},
+  {name:"世界一わかりやすい 阪大の理系数学 合格講座",scope:"rikei",tier:4,purposes:["niji"],type:"quality",bunya:[],shibouDetailOnly:["handai"]},
+  {name:"世界一わかりやすい 阪大の文系数学",scope:"bunkei",tier:4,purposes:["niji"],type:"quality",bunya:[],shibouDetailOnly:["handai"]},
   {name:"上級問題精講",scope:"common",tier:4,purposes:["niji"],type:"quality",bunya:[]},
   {name:"真・解法への道",scope:"common",tier:4,purposes:["niji"],type:"quality",bunya:[]},
+  {name:"医学部攻略の数学I・A・II・B",scope:"common",tier:4,purposes:["niji"],type:"quality",bunya:[],shibouOnly:["igaku"]},
+  {name:"医学部攻略の数学III",scope:"rikei",tier:4,purposes:["niji"],type:"quality",bunya:[],shibouOnly:["igaku"]},
   {name:"坂田アキラの数IIIの微分積分が面白いほどわかる本",scope:"rikei",tier:1,purposes:["bunyabetsu"],type:"quality",bunya:["微積分（数III）"]},
   {name:"教科書だけでは足りない 大学入試攻略 数II・数III微分・積分",scope:"rikei",tier:2,purposes:["bunyabetsu"],type:"quality",bunya:["微積分（数III）"]},
   {name:"解法の探求・微積分（東京出版）",scope:"rikei",tier:4,purposes:["bunyabetsu"],type:"quality",bunya:["微積分（数III）"],shibouOnly:["tokyoikko"]},
   {name:"微積分 基礎の極意",scope:"rikei",tier:4,purposes:["bunyabetsu"],type:"quality",bunya:["微積分（数III）"],shibouExclude:["tokyoikko"]},
   {name:"志望大学の過去問（赤本／青本）",scope:"common",tier:4,purposes:["niji"],type:"quantity",bunya:[]},
   {name:"ハイレベル理系数学",scope:"rikei",tier:4,purposes:["niji"],type:"quantity",bunya:[]},
-  {name:"東大数学プレミアム",scope:"rikei",tier:4,purposes:["niji"],type:"quality",bunya:[]},
-  {name:"京大数学プレミアム",scope:"rikei",tier:4,purposes:["niji"],type:"quality",bunya:[]},
-  {name:"世界一わかりやすい 京大の理系数学",scope:"rikei",tier:4,purposes:["niji"],type:"quality",bunya:[]},
-  {name:"世界一わかりやすい 京大の文系数学",scope:"bunkei",tier:4,purposes:["niji"],type:"quality",bunya:[]},
+  {name:"東大数学プレミアム",scope:"rikei",tier:4,purposes:["niji"],type:"quality",bunya:[],shibouDetailOnly:["todai"]},
+  {name:"京大数学プレミアム",scope:"rikei",tier:4,purposes:["niji"],type:"quality",bunya:[],shibouDetailOnly:["kyodai"]},
+  {name:"世界一わかりやすい 京大の理系数学",scope:"rikei",tier:4,purposes:["niji"],type:"quality",bunya:[],shibouDetailOnly:["kyodai"]},
+  {name:"世界一わかりやすい 京大の文系数学",scope:"bunkei",tier:4,purposes:["niji"],type:"quality",bunya:[],shibouDetailOnly:["kyodai"]},
   {name:"Z会 理系数学の核心 難関大編",scope:"rikei",tier:4,purposes:["niji"],type:"quality",bunya:[]},
   {name:"数学の真髄（論理・写像）",scope:"common",tier:4,purposes:["niji","bunyabetsu"],type:"quality",bunya:["論理・軌跡と領域"]},
   {name:"坂田アキラの軌跡・領域が面白いほどわかる本",scope:"common",tier:1,purposes:["bunyabetsu"],type:"quality",bunya:["論理・軌跡と領域"]},
@@ -459,8 +462,10 @@ function renderCrumbs(){
     if(choice) labels.push(["方針", choice.label]);
   }
   if(answers.sougouRange) labels.push(["範囲", answers.sougouRange]);
+  if(answers.mouraikeiLabel) labels.push(["方針", answers.mouraikeiLabel]);
   if(answers.hensachi) labels.push(["偏差値", answers.hensachi]);
   if(answers.shibou) labels.push(["志望", answers.shibouLabel]);
+  if(answers.shibouDetailLabel) labels.push(["大学", answers.shibouDetailLabel]);
   if(answers.style) labels.push(["参考書", answers.style === "quality" ? "解説・講義" : "問題集"]);
   crumbsEl.innerHTML = labels.map(([k,v], i) =>
     (i>0?'<span class="crumb-arrow">→</span>':'') + `<span class="crumb"><span class="k">${k}</span><b>${v}</b></span>`
@@ -532,11 +537,14 @@ function renderStep(step){
     case "niji_bunya_extra": return stepNijiBunyaExtra();
     case "niji_bunya_hensachi": return stepBunyaHensachi();
     case "niji_bunya_shibou": return stepBunyaShibou();
+    case "niji_bunya_shibou_detail": return stepBunyaShibouDetail();
     case "niji_bunya_book": return stepBunyaBook();
     case "niji_sougou_range": return stepSougouRange();
+    case "niji_sougou_mouraikei": return stepSougouMouraikei();
     case "niji_sougou_status": return stepSougouStatus();
     case "niji_sougou_hensachi": return stepSougouHensachi();
     case "niji_sougou_shibou": return stepSougouShibou();
+    case "niji_sougou_shibou_detail": return stepSougouShibouDetail();
     case "niji_sougou_book": return stepSougouBook();
     case "result": return renderResult();
   }
@@ -658,9 +666,12 @@ function stepBunyaShibou(){
   bindChoice(btns, (v)=>{
     answers.shibou = v;
     answers.shibouLabel = {tokyoikko:"東京一科",kyutei:"旧帝",igaku:"医学部",other:"その他"}[v];
-    go("niji_bunya_book");
+    answers.shibouDetail = null;
+    if(v==="tokyoikko" || v==="kyutei") go("niji_bunya_shibou_detail");
+    else go("niji_bunya_book");
   });
 }
+function stepBunyaShibouDetail(){ renderShibouDetail("niji_bunya_book"); }
 function stepBunyaBook(){
   const btns = renderQ("二次・分野別", "", "どんな参考書がいい？", [
     {label:"問題集", sub:"量重視", value:"quantity"},
@@ -673,7 +684,18 @@ function stepSougouRange(){
     {label:"数IAIIB＋ベクトル", value:"IAIIB"},
     {label:"数III＋複素数平面", value:"III"},
   ]);
-  bindChoice(btns, (v)=>{ answers.sougouRange = v==="IAIIB" ? "数IAIIB+ベクトル" : "数III+複素数平面"; answers.sougouRangeKey=v; go("niji_sougou_status"); });
+  bindChoice(btns, (v)=>{ answers.sougouRange = v==="IAIIB" ? "数IAIIB+ベクトル" : "数III+複素数平面"; answers.sougouRangeKey=v; go("niji_sougou_mouraikei"); });
+}
+function stepSougouMouraikei(){
+  const btns = renderQ("二次・総合", "", "網羅系参考書を使いたいですか？", [
+    {label:"網羅系を使いたい", sub:"典型解法を一通り総まとめしたい", value:"yes"},
+    {label:"網羅系以外がいい", sub:"応用力を鍛える演習書がいい", value:"no"},
+  ]);
+  bindChoice(btns, (v)=>{
+    answers.mouraikeiChoice = v;
+    answers.mouraikeiLabel = {yes:"網羅系希望",no:"網羅系以外"}[v];
+    go("niji_sougou_status");
+  });
 }
 function stepSougouStatus(){
   const btns = renderQ("二次・総合", "", "今の状況は？", [
@@ -703,7 +725,23 @@ function stepSougouShibou(){
   bindChoice(btns, (v)=>{
     answers.shibou = v;
     answers.shibouLabel = {tokyoikko:"東京一科",kyutei:"旧帝",igaku:"医学部",other:"その他"}[v];
-    go("niji_sougou_book");
+    answers.shibouDetail = null;
+    if(v==="tokyoikko" || v==="kyutei") go("niji_sougou_shibou_detail");
+    else go("niji_sougou_book");
+  });
+}
+function stepSougouShibouDetail(){ renderShibouDetail("niji_sougou_book"); }
+function renderShibouDetail(nextStep){
+  const isTokyo = answers.shibou === "tokyoikko";
+  const choices = isTokyo
+    ? [{label:"東大", value:"todai"},{label:"京大", value:"kyodai"},{label:"一橋・東工大など", value:"other_tokyo"}]
+    : [{label:"阪大", value:"handai"},{label:"九大", value:"kyudai"},{label:"北大・東北・名大など", value:"other_kyutei"}];
+  const label = answers.nijiType==="bunya" ? "二次・分野別" : "二次・総合";
+  const btns = renderQ(label, "", "具体的にはどこ？", choices, "cols-1");
+  bindChoice(btns, (v)=>{
+    answers.shibouDetail = v;
+    answers.shibouDetailLabel = choices.find(c=>c.value===v).label;
+    go(nextStep);
   });
 }
 function stepSougouBook(){
@@ -718,6 +756,8 @@ function stepSougouBook(){
    結果算出
    ============================================================ */
 function hensachiToTier(key){ return key==="lt50"?1 : key==="mid"?3 : 4; }
+// 総合ルート専用：tier2（網羅系の標準帯）をきちんと拾えるように分野別とは別マッピングにする
+function sougouHensachiToTier(key){ return key==="lt50"?1 : key==="mid"?2 : 4; }
 function shibouToTier(key){
   if(key==="tokyoikko") return 4;
   if(key==="igaku") return 4;
@@ -761,19 +801,26 @@ function pickTier(){
     return Math.max(hensachiToTier(answers.hensachiKey), shibouToTier(answers.shibou));
   }
   // 総合
-  if(answers.status==="hajime") return hensachiToTier(answers.hensachiKey);
+  if(answers.status==="hajime") return sougouHensachiToTier(answers.hensachiKey);
   return shibouToTier(answers.shibou);
 }
 
-function scoreBook(b, targetTier, scopes, purpose, style, bunya, bunyaHasMatch, krangeWanted, bunyaProfile, excludeBunyaSpecific, shibou){
+function scoreBook(b, targetTier, scopes, purpose, style, bunya, bunyaHasMatch, krangeWanted, bunyaProfile, excludeBunyaSpecific, shibou, shibouDetail, mouraikeiChoice){
   if(!scopes.includes(b.scope)) return -Infinity;
   // 共通テストルート：範囲タグがある本は、選んだ範囲(IA/IIBC)と一致しないなら除外
   if(krangeWanted && b.krange && b.krange!=="both" && b.krange!==krangeWanted) return -Infinity;
   // 分野固有の追加質問（計算・ベクトルなど）：profileタグを持つ本は、選んだ方針と厳密一致しないと除外
   if(bunyaProfile && b.profile && b.profile !== bunyaProfile) return -Infinity;
-  // 志望校限定タグ：特定の志望校専用の本は、一致しない場合除外
+  // 志望校限定タグ（粗め：東京一科/旧帝単位）：一致しない場合除外
   if(b.shibouOnly && !b.shibouOnly.includes(shibou)) return -Infinity;
   if(b.shibouExclude && b.shibouExclude.includes(shibou)) return -Infinity;
+  // 志望校限定タグ（詳細：大学名単位）：一致しない場合除外
+  if(b.shibouDetailOnly && !b.shibouDetailOnly.includes(shibouDetail)) return -Infinity;
+  // 志望校ピンポイント一致：大学名指定の本は、同格の汎用書より優先する
+  const shibouBonus = ((b.shibouOnly && b.shibouOnly.includes(shibou)) || (b.shibouDetailOnly && b.shibouDetailOnly.includes(shibouDetail))) ? 4 : 0;
+  // 網羅系の希望：総合ルートで「網羅系を使いたい/使いたくない」を選んだ場合、厳密に一致する本だけ残す
+  if(mouraikeiChoice==="yes" && !b.mouraikei) return -Infinity;
+  if(mouraikeiChoice==="no" && b.mouraikei) return -Infinity;
   // 分野別診断：分野が指定されている場合、その分野の専用タグを持たない本は一切候補にしない
   // （総合書へのフォールバックは行わない。該当0冊なら「該当なし」を表示する）
   if(bunya && !b.bunya.includes(bunya)) return -Infinity;
@@ -790,7 +837,7 @@ function scoreBook(b, targetTier, scopes, purpose, style, bunya, bunyaHasMatch, 
   // スタイル
   if(style==="quality" && b.type==="quality") s += 2;
   if((style==="quantity"||style==="jissen") && b.type==="quantity") s += 2;
-  return s;
+  return s + shibouBonus;
 }
 
 function renderResult(){
@@ -802,7 +849,7 @@ function renderResult(){
   // 二次試験ルートで「総合」を選んだ場合は、分野別専用の本を除外する
   const excludeBunyaSpecific = (answers.purpose==="niji" && answers.nijiType==="sougou");
 
-  let scored = BOOKS.map(b => ({b, s:scoreBook(b, targetTier, scopes, purposeForMatch, answers.style, bunya, null, krangeWanted, answers.bunyaProfile, excludeBunyaSpecific, answers.shibou)}))
+  let scored = BOOKS.map(b => ({b, s:scoreBook(b, targetTier, scopes, purposeForMatch, answers.style, bunya, null, krangeWanted, answers.bunyaProfile, excludeBunyaSpecific, answers.shibou, answers.shibouDetail, answers.mouraikeiChoice)}))
                     .filter(x => x.s > -Infinity)
                     .sort((a,b)=> b.s - a.s);
   let picks = scored.slice(0, 3).map(x=>x.b);
