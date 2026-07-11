@@ -705,15 +705,20 @@ function stepSougouStatus(){
   bindChoice(btns, (v)=>{
     answers.status = v;
     answers.statusLabel = {hajime:"初学・先取り",done:"範囲学習済"}[v];
-    if(v==="hajime") go("niji_sougou_hensachi");
-    else go("niji_sougou_shibou");
+    // 状況に関わらず、まず偏差値を聞く（志望校だけで判定すると精度が落ちるため）
+    go("niji_sougou_hensachi");
   });
 }
 function stepSougouHensachi(){
   const btns = renderQ("二次・総合", "", "あなたの偏差値は？", [
     {label:"50未満", value:"lt50"},{label:"50〜65", value:"mid"},{label:"65以上", value:"gte65"},
   ], "cols-3");
-  bindChoice(btns, (v)=>{ answers.hensachi = {lt50:"50未満",mid:"50〜65",gte65:"65以上"}[v]; answers.hensachiKey=v; go("niji_sougou_book"); });
+  bindChoice(btns, (v)=>{
+    answers.hensachi = {lt50:"50未満",mid:"50〜65",gte65:"65以上"}[v]; answers.hensachiKey=v;
+    // 範囲学習済みなら、続けて志望校も聞いて精度を上げる。初学なら偏差値だけで参考書タイプへ
+    if(answers.status==="done") go("niji_sougou_shibou");
+    else go("niji_sougou_book");
+  });
 }
 function stepSougouShibou(){
   const btns = renderQ("二次・総合", "", "あなたの志望校は？", [
@@ -802,7 +807,9 @@ function pickTier(){
   }
   // 総合
   if(answers.status==="hajime") return sougouHensachiToTier(answers.hensachiKey);
-  return shibouToTier(answers.shibou);
+  // 範囲学習済み：偏差値50未満は志望校に関わらず無条件でtier1、それ以外は偏差値と志望校の高い方
+  if(answers.hensachiKey === "lt50") return 1;
+  return Math.max(sougouHensachiToTier(answers.hensachiKey), shibouToTier(answers.shibou));
 }
 
 function scoreBook(b, targetTier, scopes, purpose, style, bunya, bunyaHasMatch, krangeWanted, bunyaProfile, excludeBunyaSpecific, shibou, shibouDetail, mouraikeiChoice){
@@ -816,8 +823,8 @@ function scoreBook(b, targetTier, scopes, purpose, style, bunya, bunyaHasMatch, 
   if(b.shibouExclude && b.shibouExclude.includes(shibou)) return -Infinity;
   // 志望校限定タグ（詳細：大学名単位）：一致しない場合除外
   if(b.shibouDetailOnly && !b.shibouDetailOnly.includes(shibouDetail)) return -Infinity;
-  // 志望校ピンポイント一致：大学名指定の本は、同格の汎用書より優先する
-  const shibouBonus = ((b.shibouOnly && b.shibouOnly.includes(shibou)) || (b.shibouDetailOnly && b.shibouDetailOnly.includes(shibouDetail))) ? 4 : 0;
+  // 志望校ピンポイント一致：大学名指定の本は、同格の汎用書より優先する（ただしtierが完全一致する場合のみ。tierが離れた本にボーナスで下駄を履かせない）
+  const shibouBonus = (b.tier === targetTier && ((b.shibouOnly && b.shibouOnly.includes(shibou)) || (b.shibouDetailOnly && b.shibouDetailOnly.includes(shibouDetail)))) ? 4 : 0;
   // 網羅系の希望：総合ルートで「網羅系を使いたい/使いたくない」を選んだ場合、厳密に一致する本だけ残す
   if(mouraikeiChoice==="yes" && !b.mouraikei) return -Infinity;
   if(mouraikeiChoice==="no" && b.mouraikei) return -Infinity;
