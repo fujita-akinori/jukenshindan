@@ -185,6 +185,38 @@
   .podium-1{ z-index:2; }
   .podium-2, .podium-3{ margin-bottom:2px; }
 
+  /* 進捗 */
+  .progress{ margin:0 0 14px; }
+  .progress .p-label{ display:flex; justify-content:space-between; font-size:12.5px; font-weight:700; color:var(--text-on-ink-muted); margin-bottom:7px; }
+  .progress .p-label b{ color:var(--amber); font-size:14px; }
+  .progress .p-bar{ height:6px; border-radius:999px; background:rgba(255,255,255,0.10); overflow:hidden; }
+  .progress .p-bar i{ display:block; height:100%; border-radius:999px; background:var(--amber); transition:width .3s cubic-bezier(.2,.8,.2,1); }
+  .back-btn{
+    font-family:'Zen Kaku Gothic New', sans-serif; font-size:13.5px; font-weight:700; cursor:pointer;
+    background:none; border:1px solid rgba(255,255,255,0.25); color:var(--text-on-ink);
+    padding:9px 18px; border-radius:999px; transition:border-color .14s ease, color .14s ease;
+  }
+  .back-btn:hover{ border-color:var(--amber); color:var(--amber); }
+
+  /* 一致度・理由 */
+  .match{ display:flex; align-items:center; gap:9px; margin:2px 0 8px; }
+  .match .m-num{ font-weight:800; font-size:13px; color:var(--amber); white-space:nowrap; }
+  .match .m-bar{ flex:1; max-width:160px; height:5px; border-radius:999px; background:rgba(255,255,255,0.10); overflow:hidden; }
+  .match .m-bar i{ display:block; height:100%; background:var(--amber); border-radius:999px; }
+  .reasons{ display:flex; flex-wrap:wrap; gap:6px; margin:0 0 10px; }
+  .reasons span{ font-size:11px; font-weight:700; padding:3px 9px; border-radius:999px; background:rgba(232,163,61,0.12); color:#f0c27a; }
+  .reasons span.warn{ background:rgba(255,255,255,0.08); color:var(--text-on-ink-muted); }
+  .book-actions{ display:flex; flex-wrap:wrap; align-items:center; gap:14px; }
+  .article-link{ font-size:12px; font-weight:700; color:var(--text-on-ink-muted); text-decoration:none; }
+  .article-link:hover{ color:var(--amber); }
+  .more-books{ margin-top:14px; border:1px solid rgba(255,255,255,0.08); border-radius:10px; background:rgba(255,255,255,0.02); }
+  .more-books summary{ cursor:pointer; padding:13px 17px; font-size:13.5px; font-weight:700; color:var(--text-on-ink); list-style:none; }
+  .more-books summary::-webkit-details-marker{ display:none; }
+  .more-books summary::after{ content:"＋"; float:right; color:var(--text-on-ink-muted); }
+  .more-books[open] summary::after{ content:"－"; }
+  .more-books .book-list{ padding:0 12px 12px; }
+  .book-chip.sub-rank{ background:rgba(255,255,255,0.12) !important; color:var(--text-on-ink) !important; }
+
   .book-item.rank-1{
     border-color:rgba(232,163,61,0.4); background:linear-gradient(135deg, rgba(232,163,61,0.10), var(--ink-soft) 60%);
   }
@@ -408,6 +440,19 @@ const BOOKS = [
   {name:"難問ラプソディ",asin:"4908003564",scope:"common",tier:5,purposes:["niji"],type:"quantity",bunya:[]},
 ];
 
+/* 当サイトの解説記事がある本 */
+const ARTICLE_OF = {
+  "青チャート":"aoi-chart-vs-focus-gold", "青チャート（数学III）":"aoi-chart-vs-focus-gold", "Focus Gold":"aoi-chart-vs-focus-gold",
+  "文系の数学 良問プラチカ":"bunkei-purachika", "理系数学の良問プラチカ":"bunkei-purachika",
+  "1対1対応の演習（数学I・A/II・B）":"ichitaichi-vs-shinsuta", "1対1対応の演習（数学III）":"ichitaichi-vs-shinsuta", "新数学スタンダード演習":"ichitaichi-vs-shinsuta",
+  "合格る計算 数学I・A・II・B［数列］・C［ベクトル］":"keisanryoku-9wari", "合格る計算 数学III・C［複素数平面・2次曲線］":"keisanryoku-9wari", "数学の計算革命〈三訂版〉":"keisanryoku-9wari",
+  "難問ラプソディ":"sawaruna-sankousho-3sen", "入試数学の掌握（3部作）":"sawaruna-sankousho-3sen",
+  "総合的研究 論理学で学ぶ数学":"suujaku-suukyou-ronri", "志田晶の 集合・論理、整数が面白いほどわかる本":"suujaku-suukyou-ronri",
+  "真・解法への道":"shin-kaihou-eno-michi",
+  "世界一わかりやすい 京大の理系数学":"yobiko-no-jugyou-3sen", "世界一わかりやすい 京大の文系数学":"yobiko-no-jugyou-3sen"
+};
+BOOKS.forEach(b => { if(ARTICLE_OF[b.name]) b.article = ARTICLE_OF[b.name]; });
+
 const BUNYA_LIST = ["場合の数・確率","整数","計算","微積分（数III）","数列","複素数平面","ベクトル","論理・軌跡と領域"];
 
 /* 分野固有の追加質問（既存の偏差値・志望校・質量だけでは1冊に絞れない分野のみ設定）
@@ -452,7 +497,9 @@ const routeColor = { teiki:"var(--lv1)", kyoutsuu:"var(--lv2)", niji:"var(--lv3)
 const routeName = { teiki:"定期テスト対策", kyoutsuu:"共通テスト対策", niji:"二次試験対策" };
 
 let answers = {};
-let history = []; // 戻る用に step 名を積む
+// 戻る用：各ステップに入った時点の回答を保存しておき、戻るときはそこへ復元する
+let stack = [{step:"start", snap:{}}];
+const clone = o => JSON.parse(JSON.stringify(o));
 
 const quizArea = document.getElementById("quiz-area");
 const crumbsEl = document.getElementById("crumbs");
@@ -481,30 +528,48 @@ function renderCrumbs(){
   ).join("");
 }
 
-function go(step){ history.push(step); renderStep(step); }
+function go(step){ stack.push({step, snap:clone(answers)}); renderStep(step); }
 function back(){
-  history.pop(); // 現在のステップを捨てる
-  const prev = history[history.length-1] || "start";
-  // answers を巻き戻す（step に応じて該当キーを消す）
-  rollback(prev);
-  renderStep(prev, true);
+  if(stack.length<=1) return;
+  stack.pop();
+  const top = stack[stack.length-1];
+  answers = clone(top.snap);
+  renderStep(top.step);
 }
-function rollback(toStep){
-  // 単純化のため、戻る時は現ステップで入れた値のみクリア
-  const clearMap = {
-    start:["purpose"],
-    teiki_range:["teikiRange"], teiki_status:["status","statusLabel"], teiki_book:["style"],
-    kyo_range:["kyoRange"], kyo_status:["status","statusLabel"], kyo_book:["style"],
-    niji_type:["nijiType"], niji_bunya:["bunya"], niji_bunya_hensachi:["hensachi"],
-    niji_bunya_shibou:["shibou","shibouLabel"], niji_bunya_book:["style"],
-    niji_sougou_range:["sougouRange"], niji_sougou_status:["status","statusLabel"],
-    niji_sougou_hensachi:["hensachi"], niji_sougou_shibou:["shibou","shibouLabel"], niji_sougou_book:["style"]
-  };
-  // toStep より後の値を消すのは複雑なので、履歴に無いキーを一括クリア
+
+/* 進捗：回答済みの内容からこのルートの問数を見積もる */
+function plannedSteps(){
+  const a = answers, list = ["start"];
+  if(!a.purpose) return null;
+  if(a.purpose==="teiki") return list.concat(["teiki_range","teiki_status","teiki_book"]);
+  if(a.purpose==="kyoutsuu") return list.concat(["kyo_range","kyo_status"], a.status==="none" ? [] : ["kyo_book"]);
+  list.push("niji_type");
+  if(!a.nijiType) return null;
+  const detail = (a.shibou==="tokyoikko"||a.shibou==="kyutei");
+  if(a.nijiType==="bunya"){
+    list.push("niji_bunya");
+    if(a.bunya && BUNYA_EXTRA[a.bunya]) list.push("niji_bunya_extra");
+    list.push("niji_bunya_hensachi","niji_bunya_shibou");
+    if(detail) list.push("niji_bunya_shibou_detail");
+    list.push("niji_bunya_book");
+    return list;
+  }
+  list.push("niji_sougou_range","niji_sougou_mouraikei","niji_sougou_status","niji_sougou_hensachi");
+  if(a.status!=="hajime"){ list.push("niji_sougou_shibou"); if(detail) list.push("niji_sougou_shibou_detail"); }
+  list.push("niji_sougou_book");
+  return list;
+}
+function progressHtml(){
+  const cur = stack.length;
+  const plan = plannedSteps();
+  const total = plan ? Math.max(plan.length, cur) : null;
+  const pct = total ? Math.round((cur-1)/total*100) : 6;
+  return `<div class="progress"><div class="p-label"><span><b>Q${cur}</b>${total?` / ${total}`:''}</span><span>${total?`あと${total-cur+1}問`:''}</span></div>
+    <div class="p-bar"><i style="width:${pct}%"></i></div></div>`;
 }
 
 function renderQ(index, total, qText, choices, colClass){
-  let html = `<div class="card">
+  let html = progressHtml() + `<div class="card">
     <div class="q-index">${index}${total?` / ${total}`:''}</div>
     <p class="q-text">${qText}</p>
     <div class="choices ${colClass||''}">`;
@@ -514,8 +579,8 @@ function renderQ(index, total, qText, choices, colClass){
     </button>`;
   });
   html += `</div></div>`;
-  if(history.length > 0){
-    html += `<div class="nav-row"><a class="back-link" id="back-btn">← 前に戻る</a></div>`;
+  if(stack.length > 1){
+    html += `<div class="nav-row"><button class="back-btn" id="back-btn">← 前の質問に戻る</button></div>`;
   }
   quizArea.innerHTML = html;
   renderCrumbs();
@@ -856,6 +921,44 @@ function scoreBook(b, targetTier, scopes, purpose, style, bunya, bunyaHasMatch, 
   return s + shibouBonus;
 }
 
+/* 一致度と「選ばれた理由」：scoreBook と同じ基準で内訳を出す */
+const PURPOSE_TAG = { teiki:"定期テスト向け", kyoutsuu:"共通テスト向け", niji:"二次試験向け" };
+function hasShibouBonus(b, targetTier){
+  return b.tier === targetTier && ((b.shibouOnly && b.shibouOnly.includes(answers.shibou)) || (b.shibouDetailOnly && b.shibouDetailOnly.includes(answers.shibouDetail)));
+}
+function explainBook(b, s, targetTier, purpose, maxScore){
+  const tags = [];
+  if(b.unconditional && b.tier === targetTier) tags.push({t:"この条件の定番"});
+  const d = b.tier - targetTier;
+  if(d===0) tags.push({t:"レベルがぴったり"});
+  else if(d>0) tags.push({t:"やや難しめ", warn:true});
+  else tags.push({t:"やや易しめ", warn:true});
+  if(b.purposes.includes(purpose)) tags.push({t:PURPOSE_TAG[answers.purpose]});
+  const st = answers.style;
+  if(st==="quality" && b.type==="quality") tags.push({t:"解説・講義型"});
+  if((st==="quantity"||st==="jissen") && b.type==="quantity") tags.push({t:"問題演習型"});
+  if(answers.bunya) tags.push({t:`${answers.bunya}に特化`});
+  if(hasShibouBonus(b, targetTier)) tags.push({t:`${answers.shibouDetailLabel || answers.shibouLabel}志望向け`});
+  const pct = s >= 1000 ? 100 : Math.max(0, Math.min(100, Math.round(s / maxScore * 100)));
+  return {pct, tags};
+}
+function bookItemHtml(b, i, chipLabel, chipBg, ex, isSub){
+  const scopeLabel = b.scope==="rikei"?"理系範囲":(b.scope==="bunkei"?"文系範囲":"");
+  return `<div class="book-item rank-${i+1}">
+    <div class="book-chip${isSub?' sub-rank':''}" style="background:${chipBg}; color:var(--ink);">${chipLabel}</div>
+    <div class="book-info">
+      <p class="name">${b.name}${scopeLabel?`<span class="scope-tag">${scopeLabel}</span>`:''}</p>
+      <div class="match"><span class="m-num">一致度 ${ex.pct}%</span><span class="m-bar"><i style="width:${ex.pct}%"></i></span></div>
+      <div class="reasons">${ex.tags.map(x=>`<span${x.warn?' class="warn"':''}>${x.t}</span>`).join('')}</div>
+      ${b.note?`<p class="desc">${b.note}</p>`:''}
+      <div class="book-actions">
+        <a class="buy-link" href="${amazonUrl(b)}" target="_blank" rel="sponsored noopener">Amazonで見る</a>
+        ${b.article?`<a class="article-link" href="articles/${b.article}.html">解説記事を読む →</a>`:''}
+      </div>
+    </div>
+  </div>`;
+}
+
 function renderResult(){
   const targetTier = pickTier();
   const scopes = rangeToScopes();
@@ -869,6 +972,9 @@ function renderResult(){
                     .filter(x => x.s > -Infinity)
                     .sort((a,b)=> b.s - a.s);
   let picks = scored.slice(0, 3).map(x=>x.b);
+  const others = scored.slice(3, 6);
+  const maxScore = 10 + (scored.some(x => hasShibouBonus(x.b, targetTier)) ? 4 : 0);
+  const exOf = x => explainBook(x.b, x.s, targetTier, purposeForMatch, maxScore);
 
   const color = routeColor[answers.purpose];
   const rname = routeName[answers.purpose];
@@ -912,19 +1018,16 @@ function renderResult(){
     }
 
     let listHtml = '<div class="book-list">';
-    picks.forEach((b,i)=>{
-      const scopeLabel = b.scope==="rikei"?"理系範囲":(b.scope==="bunkei"?"文系範囲":"");
+    scored.slice(0,3).forEach((x,i)=>{
       const chipLabel = picks.length===1 ? "イチオシ" : MEDAL_LABEL[i];
-      listHtml += `<div class="book-item rank-${i+1}">
-        <div class="book-chip" style="background:${MEDAL[i]}; color:var(--ink);">${chipLabel}</div>
-        <div class="book-info">
-          <p class="name">${b.name}${scopeLabel?`<span class="scope-tag">${scopeLabel}</span>`:''}</p>
-          <p class="desc">${b.note||''}</p>
-          <a class="buy-link" href="${amazonUrl(b)}" target="_blank" rel="sponsored noopener">Amazonで見る</a>
-        </div>
-      </div>`;
+      listHtml += bookItemHtml(x.b, i, chipLabel, MEDAL[i], exOf(x), false);
     });
     listHtml += '</div>';
+    if(others.length){
+      listHtml += `<details class="more-books"><summary>ほかの候補（${others.length}冊）</summary><div class="book-list">`;
+      others.forEach((x,k)=>{ listHtml += bookItemHtml(x.b, 3+k, `No.${4+k}`, "", exOf(x), true); });
+      listHtml += '</div></details>';
+    }
 
     const prHtml = '<p class="pr-note"><span class="pr-tag">PR</span>このページにはアフィリエイト広告が含まれています</p>';
     bodyHtml = prHtml + podiumHtml + listHtml;
@@ -946,7 +1049,7 @@ function renderResult(){
   `;
   renderCrumbs();
   document.getElementById("retry-btn").addEventListener("click", ()=>{
-    answers = {}; history = [];
+    answers = {}; stack = [{step:"start", snap:{}}];
     document.getElementById("page-title").innerHTML = "目的別・数学参考書診断";
     document.getElementById("page-lead").innerHTML = "「何の対策がしたいか」から始めて、あなたにぴったりの参考書を診断します。";
     renderStep("start");
