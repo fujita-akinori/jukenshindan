@@ -65,7 +65,11 @@
     <p class="lead">診断結果の内容、参考書に関するご意見・ご指摘、掲載情報の誤りなどがありましたら、下記フォームよりご連絡ください。</p>
 
     <div class="doc-card">
-      <form id="contact-form">
+      <form id="contact-form" action="https://formsubmit.co/sinsengumisoutyou@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="【受験診断ドットコム】お問い合わせ">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://jukenshindan.com/contact.html?sent=1">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
         <div class="field">
           <label for="name">お名前<span class="required">必須</span></label>
           <input type="text" id="name" name="name" required>
@@ -83,7 +87,7 @@
           <textarea id="message" name="message" required></textarea>
         </div>
         <button type="submit" class="btn btn-primary" style="border:none; cursor:pointer;">送信する</button>
-        <p class="submit-note">送信すると、お使いのメールソフトが開きます。（現在フォームは簡易版です）</p>
+        <p class="submit-note" id="submit-note">内容を確認のうえ、ご入力のメールアドレスへ順次返信します。</p>
       </form>
     </div>
   </div>
@@ -101,19 +105,13 @@
 </footer>
 
 <script>
-  // ※現在はバックエンドがないため mailto: で仮運用。
-  // 将来的にはFormspreeなどの無料フォームサービスへの差し替えを推奨。
-  document.getElementById('contact-form').addEventListener('submit', function(e){
-    e.preventDefault();
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const subject = document.getElementById('subject').value || 'お問い合わせ';
-    const message = document.getElementById('message').value;
-
-    const body = `お名前: ${name}\nメールアドレス: ${email}\n\n${message}`;
-    const mailto = `mailto:CONTACT_EMAIL_HERE@example.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailto;
-  });
+  // 送信完了後（?sent=1）はお礼メッセージを表示
+  if(new URLSearchParams(location.search).get('sent')==='1'){
+    const n=document.getElementById('submit-note');
+    n.textContent='お問い合わせを受け付けました。ありがとうございます。';
+    n.style.color='var(--amber)'; n.style.fontWeight='700';
+    n.scrollIntoView({block:'center'});
+  }
 </script>
 
 </body>

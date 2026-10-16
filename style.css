@@ -174,3 +174,11 @@ div.aff-box li:first-child{ border-top:none; }
 .aff-btn{ flex-shrink:0; font-size:12.5px; font-weight:700; padding:7px 14px; border-radius:6px; background:var(--amber); color:var(--ink); text-decoration:none; transition:background .15s, transform .15s; }
 .aff-btn:hover{ background:#f0b357; transform:translateY(-1px); }
 .aff-box .aff-disclosure{ margin:12px 0 0; font-size:11.5px; color:var(--text-on-ink-muted); }
+
+/* ===== 関連記事 ===== */
+.related{ max-width:680px; margin:40px auto 0; }
+.related .related-title{ font-size:15px; font-weight:700; margin:0 0 12px; color:var(--text-on-ink); }
+.related ul{ list-style:none; margin:0; padding:0; display:grid; gap:10px; }
+.related li a{ display:block; padding:14px 16px; border-radius:10px; background:var(--ink-soft); border:1px solid rgba(255,255,255,0.06); color:var(--text-on-ink); text-decoration:none; font-size:14px; font-weight:500; line-height:1.6; transition:border-color .15s ease; }
+.related li a:hover{ border-color:rgba(232,163,61,0.35); }
+.related .r-tag{ display:block; font-size:11px; font-weight:700; color:var(--amber); margin-bottom:3px; }
