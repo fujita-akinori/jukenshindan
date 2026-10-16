@@ -211,6 +211,8 @@
     background:var(--amber); padding:6px 14px; border-radius:999px; text-decoration:none;
     transition:background .12s ease, transform .12s ease;
   }
+  .pr-note{ text-align:center; font-size:12px; color:var(--text-on-ink-muted); margin:-20px 0 22px; }
+  .pr-note .pr-tag{ display:inline-block; font-weight:700; font-size:11px; padding:1px 7px; margin-right:6px; border:1px solid currentColor; border-radius:4px; }
   .buy-link:hover{ background:#f0b357; transform:translateY(-1px); }
 
   .empty-note{
@@ -275,6 +277,13 @@
    purposes: niji / kyoutsuu / teiki / bunyabetsu / mouraikei
    type: quality / quantity
    ============================================================ */
+/* Amazonアソシエイト：asin があれば商品ページ、なければ書籍カテゴリで書名検索 */
+const AMAZON_TAG = "jukenshindan-22";
+function amazonUrl(b){
+  if(b.asin) return `https://www.amazon.co.jp/dp/${b.asin}?tag=${AMAZON_TAG}`;
+  return `https://www.amazon.co.jp/s?k=${encodeURIComponent(b.name)}&i=stripbooks&tag=${AMAZON_TAG}`;
+}
+
 const BOOKS = [
   // ---- Tier1 基礎 ----
   {name:"基礎問題精講（数学I・A/II・B）",scope:"common",tier:1,purposes:["teiki"],type:"quantity",bunya:[]},
@@ -911,13 +920,14 @@ function renderResult(){
         <div class="book-info">
           <p class="name">${b.name}${scopeLabel?`<span class="scope-tag">${scopeLabel}</span>`:''}</p>
           <p class="desc">${b.note||''}</p>
-          <a class="buy-link" href="#" target="_blank" rel="noopener">Amazonで見る（準備中）</a>
+          <a class="buy-link" href="${amazonUrl(b)}" target="_blank" rel="sponsored noopener">Amazonで見る</a>
         </div>
       </div>`;
     });
     listHtml += '</div>';
 
-    bodyHtml = podiumHtml + listHtml;
+    const prHtml = '<p class="pr-note"><span class="pr-tag">PR</span>このページにはアフィリエイト広告が含まれています</p>';
+    bodyHtml = prHtml + podiumHtml + listHtml;
   }
 
   quizArea.innerHTML = `
@@ -931,7 +941,7 @@ function renderResult(){
     </div>
     <p class="disclaimer" style="margin-top:28px;">
       ※本診断は一般的な学習ルートの目安であり、個々の学力・志望校の出題傾向によって最適な参考書は異なります。<br>
-      ※本ページはAmazonアソシエイト・プログラムの参加により紹介料を得ることがあります。
+      ※Amazonのアソシエイトとして、当メンバーは適格販売により収入を得ています。
     </p>
   `;
   renderCrumbs();
