@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>化学の勉強法：初学から難関大までの参考書ルート | 受験診断ドットコム</title>
+<meta name="description" content="Doシリーズと入門・基礎・標準・上級問題精講で完結する化学の参考書ルートを、著者紹介と志望校別の止めどころとあわせて解説します。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+  .page-wrap{ padding-top:44px; padding-bottom:120px; }
+  .article-header{ max-width:680px; margin:0 auto 36px; }
+  .article-header .tag{ font-size:12px; font-weight:700; letter-spacing:0.1em; color:var(--lv3); margin-bottom:12px; display:block; }
+  .article-header h1{
+    font-family:'Shippori Mincho', serif; font-weight:800; font-size:clamp(24px,4.6vw,33px);
+    line-height:1.5; margin:0 0 14px;
+  }
+  .article-header .meta{ font-size:12.5px; color:var(--text-on-ink-muted); }
+
+  .article-body{ max-width:680px; margin:0 auto; font-size:15.5px; line-height:2; }
+  .article-body h2{
+    font-family:'Shippori Mincho', serif; font-size:20px; font-weight:800; margin:44px 0 16px;
+    border-top:1px solid rgba(255,255,255,0.08); padding-top:20px;
+  }
+  .article-body h2:first-child{ border-top:none; margin-top:0; padding-top:0; }
+  .article-body p{ margin:0 0 20px; color:var(--text-on-ink); }
+  .article-body strong{ color:var(--amber); font-weight:700; }
+  .article-body ul{ margin:0 0 20px; padding-left:22px; color:var(--text-on-ink); }
+  .article-body li{ margin-bottom:10px; }
+
+  .callout{
+    background:var(--ink-soft); border-left:3px solid var(--amber); border-radius:6px;
+    padding:16px 20px; margin:24px 0; font-size:14px; color:var(--text-on-ink-muted);
+  }
+
+  .book-cta-row{ display:flex; gap:14px; margin:28px 0; flex-wrap:wrap; }
+  .book-cta{
+    flex:1; min-width:200px; background:var(--ink-soft); border:1px solid rgba(255,255,255,0.08);
+    border-radius:10px; padding:16px 18px;
+  }
+  .book-cta .name{ font-weight:700; font-size:13.5px; margin:0 0 8px; }
+  .book-cta .buy-link{
+    display:inline-block; font-size:12px; font-weight:700; color:var(--ink);
+    background:var(--amber); padding:6px 14px; border-radius:999px; text-decoration:none; margin-top:4px;
+  }
+
+  .diag-cta{
+    margin:40px auto 0; max-width:680px; background:var(--ink-soft); border-radius:12px;
+    padding:24px 26px; border:1px solid rgba(255,255,255,0.08);
+  }
+  .diag-cta p{ font-size:13.5px; color:var(--text-on-ink-muted); margin:0 0 14px; }
+
+  .back-to-list{ display:block; max-width:680px; margin:36px auto 0; font-size:13px; color:var(--text-on-ink-muted); text-decoration:none; }
+  .back-to-list:hover{ color:var(--amber); }
+
+  .article-body h3{ font-size:16.5px; font-weight:700; margin:30px 0 10px; color:var(--text-on-ink); }
+  .article-body ol{ margin:0 0 20px; padding-left:24px; color:var(--text-on-ink); }
+  .article-body ol li{ margin-bottom:10px; }
+  .article-body a{ color:var(--amber); }
+  .point-label{ display:block; font-weight:700; font-size:14px; color:var(--amber); margin:0 0 6px; }
+  .point-box{ background:var(--ink-soft); border-radius:8px; padding:16px 20px; margin:0 0 24px; }
+  .point-box p, .point-box ul{ margin-bottom:0; }
+  .point-box ul{ margin-top:0; }
+  .point-box + .point-box{ margin-top:-10px; }
+  .table-scroll{ overflow-x:auto; margin:20px 0 28px; -webkit-overflow-scrolling:touch; }
+  .compare-table{ width:100%; min-width:520px; border-collapse:collapse; font-size:13.5px; line-height:1.7; }
+  .compare-table th, .compare-table td{ padding:12px 14px; border:1px solid rgba(255,255,255,0.1); text-align:left; vertical-align:top; }
+  .compare-table th{ background:var(--ink-soft); font-weight:700; color:var(--amber); white-space:nowrap; }
+  .compare-table td{ color:var(--text-on-ink-muted); }
+  .compare-table td:first-child{ color:var(--text-on-ink); font-weight:700; }
+  .route{ display:flex; flex-direction:column; align-items:stretch; margin:24px 0 28px; }
+  .route-step{ background:var(--ink-soft); border:1px solid rgba(255,255,255,0.08); border-left:3px solid var(--amber); border-radius:8px; padding:12px 16px; }
+  .route-step .r-role{ display:block; font-size:11.5px; font-weight:700; letter-spacing:0.08em; color:var(--amber); margin-bottom:2px; }
+  .route-step .r-name{ font-size:14.5px; font-weight:700; line-height:1.6; }
+  .route-step.option{ border-style:dashed; border-left-style:dashed; opacity:.9; }
+  .route-step.option .r-role{ color:var(--text-on-ink-muted); }
+  .route-arrow{ text-align:center; color:var(--text-on-ink-muted); font-size:14px; line-height:1; padding:6px 0; }
+  .route-row{ display:flex; gap:10px; flex-wrap:wrap; }
+  .route-row .route-step{ flex:1; min-width:150px; }
+  .wiki-links li{ margin-bottom:6px; }
+</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6837829466798350" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="../index.html" class="logo"><img src="../logo-mark.png" class="mark" alt="受験診断ドットコム">受験診断ドットコム</a>
+    <nav class="nav-links">
+      <a href="../index.html#diagnosis">診断一覧</a>
+      <a href="index.html">記事</a>
+      <a href="../contact.html">お問い合わせ</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap page-wrap">
+
+  <div class="article-header">
+    <span class="tag">科目別対策</span>
+    <h1>化学の勉強法：初学から難関大までの参考書ルート</h1>
+    <span class="meta">2026.10.17 公開</span>
+    <span class="pr-note"><span class="pr-tag">PR</span>この記事にはアフィリエイト広告が含まれています</span>
+  </div>
+
+  <div class="article-body">
+
+    <p>化学の参考書は種類が多く、どれを選べばいいか迷いやすい科目です。ただ実際には講義書の「Doシリーズ」と演習書の「問題精講シリーズ」だけで、初学から難関大までのルートが完結します。しかもこのルートは著者陣がほぼ鎌田真彰先生と橋爪健作先生で揃っていて、最初の1冊から最後の1冊まで説明の流儀が一貫しているのが大きな強みです。</p>
+
+    <h2>化学は理論化学から</h2>
+    <p>化学は理論化学・無機化学・有機化学の3分野に分かれますが、最初に固めるべきなのは理論化学です。物質量や化学平衡などの計算と反応が起こる原理を扱う分野で、残りの2分野の土台になります。</p>
+    <p>理論化学が固まると、無機化学の反応は中和や酸化還元といった理論で学んだ反応の組み合わせとして理解できるようになります。有機化学も電子の動きから反応を考えられるようになり、丸暗記に頼る部分が大きく減ります。無機と有機が暗記科目に見えている人は、理論化学の理解が足りていないことが多いのです。</p>
+
+    <h2>ルートの全体像</h2>
+    <div class="route">
+      <div class="route-step"><span class="r-role">講義</span><span class="r-name">Doシリーズ（理論・無機・有機）</span></div>
+      <div class="route-arrow">並行して</div>
+      <div class="route-step"><span class="r-role">演習 STEP1</span><span class="r-name">入門問題精講</span></div>
+      <div class="route-arrow">↓</div>
+      <div class="route-step"><span class="r-role">演習 STEP2</span><span class="r-name">基礎問題精講</span></div>
+      <div class="route-arrow">↓</div>
+      <div class="route-step"><span class="r-role">演習 STEP3</span><span class="r-name">標準問題精講</span></div>
+      <div class="route-arrow">↓</div>
+      <div class="route-step"><span class="r-role">演習 STEP4</span><span class="r-name">上級問題精講</span></div>
+    </div>
+    <p>Doシリーズで理解し、問題精講で演習するという2本立てです。問題精講は4冊ありますが全員が4冊すべてに取り組むわけではなく、志望校に応じてどこで止めるかが決まります。</p>
+
+    <h2>講義：大学受験Doシリーズ（旺文社）</h2>
+    <p>講義書は次の3冊です。いずれも2024年4月に新課程対応版として刊行されています。</p>
+    <ul>
+      <li>鎌田の理論化学の講義 三訂版（鎌田真彰 著）</li>
+      <li>福間の無機化学の講義 五訂版（福間智人 著／鎌田真彰 監修）</li>
+      <li>鎌田の有機化学の講義 五訂版（鎌田真彰 著）</li>
+    </ul>
+    <p>理論と有機を書いた鎌田真彰先生は東京工業大学を卒業して東京大学大学院に進み、駿台予備学校で教えたのち現在は東進で化学を教えている講師です。駿台の名物講師だった石川正明先生の門下として知られ、有機化学では電子の動きから反応を理解して予測させる指導が特徴です。理論化学の講義も受験生が問題を解けない原因を入試に直結させて、「どうしてそうなるのか」から説明しています。</p>
+    <p>無機を書いた福間智人先生は元駿台予備学校の講師で、東京大学教養学部基礎科学科を卒業しています。無機化学の講義は鎌田先生が監修しているため、3冊を通して考え方がぶれません。</p>
+    <p>3冊とも赤セルシートに対応した別冊が付いていて、入試頻出事項を整理して確認できます。使い方は問題精講と並行させるのが基本で、解けなかった問題の単元をDoシリーズで読み直す形で使います。</p>
+
+    <h2>演習：問題精講シリーズ（鎌田真彰・橋爪健作 著／旺文社）</h2>
+    <p>演習書は旺文社の問題精講シリーズを使います。4冊すべてが鎌田先生と橋爪健作先生の共著です。橋爪先生は東進と駿台で化学を教える講師で、複雑な計算を単位を一つずつ追いながら解説するスタイルから化学が苦手な生徒の支持を集めています。Doシリーズで鎌田先生の講義を読んで同じ著者の問題精講で演習するので、講義と演習の間で解き方の流儀がずれることがありません。</p>
+
+    <h3>化学［化学基礎・化学］入門問題精講 四訂版</h3>
+    <p>化学基礎から始まる142題の初学者向け問題集です。化学基礎と化学の2部構成で授業の進度に合わせて使えるので、学校の授業と並行して最初の1冊として取り組めます。化学基礎がすでに固まっている人はこの1冊を飛ばして基礎問題精講から始めても構いません。</p>
+
+    <h3>化学［化学基礎・化学］基礎問題精講 五訂版</h3>
+    <p>国公立二次と私立大の入試問題から111題を厳選した、入試の基本を固めるための1冊です。要点をまとめた「精講」と問題ごとの「解説」の2段階で、解法の手順と思考の流れを確認できます。共通テストに必要な思考力もここで養えます。</p>
+
+    <h3>化学［化学基礎・化学］標準問題精講 七訂版</h3>
+    <p>難関私立大と国公立二次を目指す受験生に向けて、合否を分けやすい問題を厳選した演習書です。解き方に加えて学習の進め方まで示されていて、入試で求められる思考力を養う問題も収録されています。</p>
+
+    <h3>化学［化学基礎・化学］上級問題精講</h3>
+    <p>2026年8月に刊行された、国公立大の二次試験と国公立医科大の入試問題から厳選したシリーズ最上位の1冊です。見慣れない反応や実験を扱う問題で、問題文を読み解いて論理的に答える力を鍛えます。各問題は「問題→解くための戦略→解説→答」の流れで解説されていて、初見の問題にどう切り込むかを学べます。</p>
+
+    <h2>どこまでやるか</h2>
+    <div class="table-scroll">
+    <table class="compare-table" style="min-width:0;">
+      <tr><th>志望</th><th>止めどころ</th></tr>
+      <tr><td>共通テストのみ</td><td>基礎問題精講</td></tr>
+      <tr><td>中堅国公立・MARCH</td><td>基礎問題精講</td></tr>
+      <tr><td>旧帝大・早慶</td><td>標準問題精講</td></tr>
+      <tr><td>東大・京大・医学部</td><td>上級問題精講</td></tr>
+    </table>
+    </div>
+    <p>止めどころまで進んだら、次の問題集に手を広げるより志望校の過去問に移りましょう。過去問で解けなかった問題は、同じ分野の問題精講とDoシリーズに戻って復習します。</p>
+
+    <h2>時期ごとの進め方</h2>
+    <ul>
+      <li><strong>高2〜高3春</strong>：Doシリーズを理論化学から読み進め、入門問題精講と基礎問題精講で演習する</li>
+      <li><strong>高3夏〜秋</strong>：標準問題精講に取り組む</li>
+      <li><strong>秋以降</strong>：最難関志望の人は上級問題精講と志望校の過去問を並行して進める</li>
+    </ul>
+    <p>化学は理論化学さえ固まれば一気に伸びる科目です。同じ著者陣で揃ったこのルートを順番どおりに進めれば、迷わずに初学から難関大まで到達できます。</p>
+
+
+    <div class="aff-box">
+      <p class="aff-title">この記事で紹介した参考書</p>
+      <ul>
+        <li><span class="aff-name">鎌田の理論化学の講義 三訂版</span><a class="aff-btn" href="https://www.amazon.co.jp/s?k=%E9%8E%8C%E7%94%B0%E3%81%AE%E7%90%86%E8%AB%96%E5%8C%96%E5%AD%A6%E3%81%AE%E8%AC%9B%E7%BE%A9%20%E4%B8%89%E8%A8%82%E7%89%88&i=stripbooks&tag=jukenshindan-22" target="_blank" rel="sponsored noopener">Amazonで見る</a></li>
+        <li><span class="aff-name">福間の無機化学の講義 五訂版</span><a class="aff-btn" href="https://www.amazon.co.jp/s?k=%E7%A6%8F%E9%96%93%E3%81%AE%E7%84%A1%E6%A9%9F%E5%8C%96%E5%AD%A6%E3%81%AE%E8%AC%9B%E7%BE%A9%20%E4%BA%94%E8%A8%82%E7%89%88&i=stripbooks&tag=jukenshindan-22" target="_blank" rel="sponsored noopener">Amazonで見る</a></li>
+        <li><span class="aff-name">鎌田の有機化学の講義 五訂版</span><a class="aff-btn" href="https://www.amazon.co.jp/s?k=%E9%8E%8C%E7%94%B0%E3%81%AE%E6%9C%89%E6%A9%9F%E5%8C%96%E5%AD%A6%E3%81%AE%E8%AC%9B%E7%BE%A9%20%E4%BA%94%E8%A8%82%E7%89%88&i=stripbooks&tag=jukenshindan-22" target="_blank" rel="sponsored noopener">Amazonで見る</a></li>
+        <li><span class="aff-name">化学［化学基礎・化学］入門問題精講 四訂版</span><a class="aff-btn" href="https://www.amazon.co.jp/dp/4010352531?tag=jukenshindan-22" target="_blank" rel="sponsored noopener">Amazonで見る</a></li>
+        <li><span class="aff-name">化学［化学基礎・化学］基礎問題精講 五訂版</span><a class="aff-btn" href="https://www.amazon.co.jp/dp/4010352566?tag=jukenshindan-22" target="_blank" rel="sponsored noopener">Amazonで見る</a></li>
+        <li><span class="aff-name">化学［化学基礎・化学］標準問題精講 七訂版</span><a class="aff-btn" href="https://www.amazon.co.jp/dp/4010352590?tag=jukenshindan-22" target="_blank" rel="sponsored noopener">Amazonで見る</a></li>
+        <li><span class="aff-name">化学［化学基礎・化学］上級問題精講</span><a class="aff-btn" href="https://www.amazon.co.jp/dp/4010355344?tag=jukenshindan-22" target="_blank" rel="sponsored noopener">Amazonで見る</a></li>
+      </ul>
+      <p class="aff-disclosure">Amazonのアソシエイトとして、当メンバーは適格販売により収入を得ています。</p>
+    </div>
+
+  </div>
+
+  <div class="diag-cta">
+    <p>受験診断ドットコムでは科目別の参考書診断を順次公開しています。現在公開中の診断は一覧から確認できます。</p>
+    <a href="../index.html#diagnosis" class="btn btn-primary">診断一覧を見る →</a>
+  </div>
+
+  <section class="related">
+    <h2 class="related-title">あわせて読みたい</h2>
+    <ul>
+      <li><a href="seibutsu-benkyouhou.html"><span class="r-tag">科目別対策</span>生物の勉強法：初学から難関大までの参考書ルート</a></li>
+      <li><a href="keisanryoku-9wari.html"><span class="r-tag">受験戦略</span>受験数学は計算力が9割</a></li>
+      <li><a href="sankousho-syuukaisuu.html"><span class="r-tag">受験戦略</span>「1冊を完璧に」は本当か？参考書の周回数について</a></li>
+    </ul>
+  </section>
+
+  <a href="index.html" class="back-to-list">← 記事一覧に戻る</a>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>&copy; 2026 受験診断ドットコム</span>
+    <div class="footer-links">
+      <a href="../about.html">運営者情報</a>
+      <a href="../privacy-policy.html">プライバシーポリシー</a>
+      <a href="../contact.html">お問い合わせ</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

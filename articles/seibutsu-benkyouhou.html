@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>生物の勉強法：初学から難関大までの参考書ルート | 受験診断ドットコム</title>
+<meta name="description" content="生物は教科書が軸。田部の合格77講とセミナーで東大レベルまで届くシンプルなルートと、思考問題対策の標準問題精講を紹介します。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+  .page-wrap{ padding-top:44px; padding-bottom:120px; }
+  .article-header{ max-width:680px; margin:0 auto 36px; }
+  .article-header .tag{ font-size:12px; font-weight:700; letter-spacing:0.1em; color:var(--lv3); margin-bottom:12px; display:block; }
+  .article-header h1{
+    font-family:'Shippori Mincho', serif; font-weight:800; font-size:clamp(24px,4.6vw,33px);
+    line-height:1.5; margin:0 0 14px;
+  }
+  .article-header .meta{ font-size:12.5px; color:var(--text-on-ink-muted); }
+
+  .article-body{ max-width:680px; margin:0 auto; font-size:15.5px; line-height:2; }
+  .article-body h2{
+    font-family:'Shippori Mincho', serif; font-size:20px; font-weight:800; margin:44px 0 16px;
+    border-top:1px solid rgba(255,255,255,0.08); padding-top:20px;
+  }
+  .article-body h2:first-child{ border-top:none; margin-top:0; padding-top:0; }
+  .article-body p{ margin:0 0 20px; color:var(--text-on-ink); }
+  .article-body strong{ color:var(--amber); font-weight:700; }
+  .article-body ul{ margin:0 0 20px; padding-left:22px; color:var(--text-on-ink); }
+  .article-body li{ margin-bottom:10px; }
+
+  .callout{
+    background:var(--ink-soft); border-left:3px solid var(--amber); border-radius:6px;
+    padding:16px 20px; margin:24px 0; font-size:14px; color:var(--text-on-ink-muted);
+  }
+
+  .book-cta-row{ display:flex; gap:14px; margin:28px 0; flex-wrap:wrap; }
+  .book-cta{
+    flex:1; min-width:200px; background:var(--ink-soft); border:1px solid rgba(255,255,255,0.08);
+    border-radius:10px; padding:16px 18px;
+  }
+  .book-cta .name{ font-weight:700; font-size:13.5px; margin:0 0 8px; }
+  .book-cta .buy-link{
+    display:inline-block; font-size:12px; font-weight:700; color:var(--ink);
+    background:var(--amber); padding:6px 14px; border-radius:999px; text-decoration:none; margin-top:4px;
+  }
+
+  .diag-cta{
+    margin:40px auto 0; max-width:680px; background:var(--ink-soft); border-radius:12px;
+    padding:24px 26px; border:1px solid rgba(255,255,255,0.08);
+  }
+  .diag-cta p{ font-size:13.5px; color:var(--text-on-ink-muted); margin:0 0 14px; }
+
+  .back-to-list{ display:block; max-width:680px; margin:36px auto 0; font-size:13px; color:var(--text-on-ink-muted); text-decoration:none; }
+  .back-to-list:hover{ color:var(--amber); }
+
+  .article-body h3{ font-size:16.5px; font-weight:700; margin:30px 0 10px; color:var(--text-on-ink); }
+  .article-body ol{ margin:0 0 20px; padding-left:24px; color:var(--text-on-ink); }
+  .article-body ol li{ margin-bottom:10px; }
+  .article-body a{ color:var(--amber); }
+  .point-label{ display:block; font-weight:700; font-size:14px; color:var(--amber); margin:0 0 6px; }
+  .point-box{ background:var(--ink-soft); border-radius:8px; padding:16px 20px; margin:0 0 24px; }
+  .point-box p, .point-box ul{ margin-bottom:0; }
+  .point-box ul{ margin-top:0; }
+  .point-box + .point-box{ margin-top:-10px; }
+  .table-scroll{ overflow-x:auto; margin:20px 0 28px; -webkit-overflow-scrolling:touch; }
+  .compare-table{ width:100%; min-width:520px; border-collapse:collapse; font-size:13.5px; line-height:1.7; }
+  .compare-table th, .compare-table td{ padding:12px 14px; border:1px solid rgba(255,255,255,0.1); text-align:left; vertical-align:top; }
+  .compare-table th{ background:var(--ink-soft); font-weight:700; color:var(--amber); white-space:nowrap; }
+  .compare-table td{ color:var(--text-on-ink-muted); }
+  .compare-table td:first-child{ color:var(--text-on-ink); font-weight:700; }
+  .route{ display:flex; flex-direction:column; align-items:stretch; margin:24px 0 28px; }
+  .route-step{ background:var(--ink-soft); border:1px solid rgba(255,255,255,0.08); border-left:3px solid var(--amber); border-radius:8px; padding:12px 16px; }
+  .route-step .r-role{ display:block; font-size:11.5px; font-weight:700; letter-spacing:0.08em; color:var(--amber); margin-bottom:2px; }
+  .route-step .r-name{ font-size:14.5px; font-weight:700; line-height:1.6; }
+  .route-step.option{ border-style:dashed; border-left-style:dashed; opacity:.9; }
+  .route-step.option .r-role{ color:var(--text-on-ink-muted); }
+  .route-arrow{ text-align:center; color:var(--text-on-ink-muted); font-size:14px; line-height:1; padding:6px 0; }
+  .route-row{ display:flex; gap:10px; flex-wrap:wrap; }
+  .route-row .route-step{ flex:1; min-width:150px; }
+  .wiki-links li{ margin-bottom:6px; }
+</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6837829466798350" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="../index.html" class="logo"><img src="../logo-mark.png" class="mark" alt="受験診断ドットコム">受験診断ドットコム</a>
+    <nav class="nav-links">
+      <a href="../index.html#diagnosis">診断一覧</a>
+      <a href="index.html">記事</a>
+      <a href="../contact.html">お問い合わせ</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap page-wrap">
+
+  <div class="article-header">
+    <span class="tag">科目別対策</span>
+    <h1>生物の勉強法：初学から難関大までの参考書ルート</h1>
+    <span class="meta">2026.10.17 公開</span>
+    <span class="pr-note"><span class="pr-tag">PR</span>この記事にはアフィリエイト広告が含まれています</span>
+  </div>
+
+  <div class="article-body">
+
+    <p>生物の勉強でいちばん大事なのは教科書です。参考書や問題集を何冊も買い足して教科書に載っていない知識を覚え込んでも、入試の点数にはほとんどつながりません。実は生物は、教科書を軸にして2冊の参考書を加えるだけで東大レベルまで届く科目です。この記事では初学から難関大まで使えるシンプルな参考書ルートを紹介します。</p>
+
+    <h2>生物の軸は教科書</h2>
+    <p>入試で問われる知識の出どころは教科書です。難関大の問題も教科書に載っていない知識を問うのではなく、教科書の知識を使って初めて見る実験やデータを考察させる形になっています。</p>
+    <p>教科書の外にある細かい知識を集めるほど、肝心の教科書の理解は薄くなります。覚えた知識の量が多いのに点が取れないという人は、知識の範囲ではなく教科書の理解の深さに原因があることがほとんどです。</p>
+    <p>参考書は教科書を置き換えるものではありません。教科書を読みやすくし、教科書の知識を使える形にするための補助として使います。一問一答や分野別の問題集を足していく必要もありません。</p>
+
+    <h2>ルートの全体像</h2>
+    <div class="route">
+      <div class="route-step"><span class="r-role">軸</span><span class="r-name">教科書</span></div>
+      <div class="route-arrow">＋</div>
+      <div class="route-row">
+        <div class="route-step"><span class="r-role">補助</span><span class="r-name">田部の生物合格77講</span></div>
+        <div class="route-step"><span class="r-role">演習</span><span class="r-name">セミナー生物基礎＋生物</span></div>
+      </div>
+      <div class="route-arrow">↓</div>
+      <div class="route-step option"><span class="r-role">オプション（思考問題を鍛えたい人だけ）</span><span class="r-name">生物 標準問題精講</span></div>
+    </div>
+    <p>基本は教科書・77講・セミナーの3つで完結します。標準問題精講は思考問題の訓練をしたい人だけが追加するオプションです。</p>
+
+    <h2>教科書の補助：生物合格77講【完全版】（田部眞哉 著／東進ブックス）</h2>
+    <p>著者の田部眞哉先生は東京農工大学農学部を卒業して同大学院修士課程を修了し、研数学館と河合塾を経て1997年度から東進で教えている生物科の講師です。生物の知識は教科書で必要十分だという立場をとっていて、教科書研究に熱心なことでも知られています。</p>
+    <p>本書の強みは豊富なイラストです。教科書の文章だけでは掴みにくい現象を図と仕組みの説明で示してくれるので、「なぜそうなるのか」をイメージで理解できます。全77講・約800ページの分量があり、巻末索引には約3,500語が収録されていて用語を引く辞書としても使えます。</p>
+    <p>使い方は通読ではありません。教科書を読んで分かりにくかった箇所を77講で確認し、教科書と並べて使うのが基本です。</p>
+    <p>なお現行の2nd editionは2020年の刊行で、2022年度から始まった新課程には対応していません。新課程の範囲にきっちり合わせたい人には大森徹先生の『大森徹の最強講義126講』がおすすめです。</p>
+
+    <h2>演習：セミナー生物基礎＋生物（第一学習社）</h2>
+    <p>演習はセミナー1冊で十分です。セミナーは教科書の内容に沿って作られた傍用問題集で、教科書の知識を問題で使える形にするのに最適です。学校で配られている人はそれをそのまま使いましょう。</p>
+    <p>まず基本問題で知識を固め、2周目以降で発展問題に取り組んで入試レベルの問い方に慣れていきます。教科書・77講と同じ分野を同じ時期に進めると、読んだ内容をすぐに問題で確認できて定着が早くなります。</p>
+    <p>学校で傍用問題集を配られていない既卒生や通信制の人は、セミナーを書店や通販で手に入れておけばこのルートをそのまま使えます。</p>
+
+    <h2>本当はここまでで東大レベルに届く</h2>
+    <p>教科書を深く理解し、セミナーで知識を使う練習を重ねていれば難関大の問題にも十分に対応できます。難関大の生物は教科書の知識の組み合わせで考えさせる問題が中心だからです。東大の生物であっても求められているのは教科書にない知識ではなく、教科書の知識を正確に使って考える力です。</p>
+    <p>参考書を増やしたくなったときは、新しい本を買う前に教科書とセミナーをもう一度見直してください。解けなかった問題の多くは、教科書のどこかに考えるための材料が書かれています。</p>
+
+    <h2>思考問題を鍛えたい人へ：生物［生物基礎・生物］標準問題精講 七訂版（石原將弘・山下翠 著／旺文社）</h2>
+    <p>教科書とセミナーで基礎が固まったうえで、実験考察や記述の思考問題をさらに鍛えたい人には標準問題精講がおすすめです。著者の石原將弘先生は元代々木ゼミナール講師で、山下翠先生は駿台予備学校の講師です。</p>
+    <p>本書は国公立大の二次試験と私立大の入試問題から、合否を分けやすい問題を厳選した演習書です。各項目は要点を確認する「精講」と問題の解き方を説明する「解説」の2段階で構成されていて、解答に至るまでの細部の考え方まで丁寧に書かれています。</p>
+    <p>使い方はまず自分で答案を書いてから解説と照らし合わせることです。どの条件を見落としたのか、どこで因果関係がずれたのかを確認していくと思考問題での答え方の精度が上がっていきます。取り組むのはセミナーが一通り終わってからにしましょう。</p>
+
+    <h2>時期ごとの進め方</h2>
+    <ul>
+      <li><strong>高2〜高3春</strong>：教科書・77講・セミナーを分野ごとに並行して進める</li>
+      <li><strong>高3夏以降</strong>：志望校の過去問に取り組む。思考問題を鍛えたい人はここで標準問題精講を挟む</li>
+      <li><strong>過去問で穴が見つかったら</strong>：新しい本ではなく教科書と77講に戻る</li>
+    </ul>
+    <p>生物は冊数を増やすほど伸びる科目ではありません。教科書を軸にした少ない冊数を何度も往復することが、初学から難関大までの一番の近道です。</p>
+
+
+    <div class="aff-box">
+      <p class="aff-title">この記事で紹介した参考書</p>
+      <ul>
+        <li><span class="aff-name">生物合格77講【完全版】（田部眞哉）</span><a class="aff-btn" href="https://www.amazon.co.jp/dp/4890858466?tag=jukenshindan-22" target="_blank" rel="sponsored noopener">Amazonで見る</a></li>
+        <li><span class="aff-name">セミナー生物基礎＋生物（第一学習社）</span><a class="aff-btn" href="https://www.amazon.co.jp/s?k=%E3%82%BB%E3%83%9F%E3%83%8A%E3%83%BC%E7%94%9F%E7%89%A9%E5%9F%BA%E7%A4%8E%2B%E7%94%9F%E7%89%A9%20%E7%AC%AC%E4%B8%80%E5%AD%A6%E7%BF%92%E7%A4%BE&i=stripbooks&tag=jukenshindan-22" target="_blank" rel="sponsored noopener">Amazonで見る</a></li>
+        <li><span class="aff-name">生物［生物基礎・生物］標準問題精講 七訂版</span><a class="aff-btn" href="https://www.amazon.co.jp/dp/4010352604?tag=jukenshindan-22" target="_blank" rel="sponsored noopener">Amazonで見る</a></li>
+        <li><span class="aff-name">大森徹の最強講義126講 生物（大森徹）</span><a class="aff-btn" href="https://www.amazon.co.jp/s?k=%E5%A4%A7%E6%A3%AE%E5%BE%B9%E3%81%AE%E6%9C%80%E5%BC%B7%E8%AC%9B%E7%BE%A9126%E8%AC%9B%20%E7%94%9F%E7%89%A9&i=stripbooks&tag=jukenshindan-22" target="_blank" rel="sponsored noopener">Amazonで見る</a></li>
+      </ul>
+      <p class="aff-disclosure">Amazonのアソシエイトとして、当メンバーは適格販売により収入を得ています。</p>
+    </div>
+
+  </div>
+
+  <div class="diag-cta">
+    <p>受験診断ドットコムでは科目別の参考書診断を順次公開しています。現在公開中の診断は一覧から確認できます。</p>
+    <a href="../index.html#diagnosis" class="btn btn-primary">診断一覧を見る →</a>
+  </div>
+
+  <section class="related">
+    <h2 class="related-title">あわせて読みたい</h2>
+    <ul>
+      <li><a href="kagaku-benkyouhou.html"><span class="r-tag">科目別対策</span>化学の勉強法：初学から難関大までの参考書ルート</a></li>
+      <li><a href="sankousho-syuukaisuu.html"><span class="r-tag">受験戦略</span>「1冊を完璧に」は本当か？参考書の周回数について</a></li>
+      <li><a href="tokui-nobasu-ka-nigate-umeru-ka.html"><span class="r-tag">受験戦略</span>「得意科目を伸ばす」か「苦手科目を埋める」か</a></li>
+    </ul>
+  </section>
+
+  <a href="index.html" class="back-to-list">← 記事一覧に戻る</a>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>&copy; 2026 受験診断ドットコム</span>
+    <div class="footer-links">
+      <a href="../about.html">運営者情報</a>
+      <a href="../privacy-policy.html">プライバシーポリシー</a>
+      <a href="../contact.html">お問い合わせ</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

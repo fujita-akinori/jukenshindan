@@ -31,6 +31,11 @@ const ARTICLES = [
   { slug:"ichitaichi-vs-shinsuta.html", title:"1対1対応の演習 vs 新数学スタンダード演習、どっちをやるべきか", description:"網羅系参考書の後に取り組む定番演習書2冊を、使う順番・向いているタイプの観点から比較します。", tag:"参考書比較", date:"2026-07-08", order:18 },
   { slug:"bunkei-purachika.html", title:"文系の数学 良問プラチカ、実際のレベル感と使い方", description:"文系数学の定番演習書「良問プラチカ」のレベル感、着手のタイミング、効果的な使い方を解説します。", tag:"参考書比較", date:"2026-07-08", order:19 },
   { slug:"tokui-nobasu-ka-nigate-umeru-ka.html", title:"「得意科目を伸ばす」か「苦手科目を埋める」か", description:"限られた勉強時間の配分について、得意を伸ばす戦略と苦手を埋める戦略のどちらが向いているかを解説します。", tag:"受験戦略", date:"2026-07-08", order:20 },
+  { slug:"yobiko-type-betsu-matome.html", title:"結局どこが良いの？東進・河合塾・駿台・武田塾をタイプ別に整理", description:"東進・河合塾・駿台・武田塾の4校を授業形式と管理のされ方で整理し、向いている人と注意点を比較します。", tag:"予備校", date:"2026-10-17", order:21 },
+  { slug:"toshin-suugaku-kouza.html", title:"東進で数学を取るなら？おすすめ3講座と講師の特徴", description:"東進の数学講座「数学の真髄」「入試数学の戦術」「数学ぐんぐん」を、担当講師の教え方の違いから比較します。", tag:"予備校", date:"2026-10-17", order:22 },
+  { slug:"suugaku-no-shinzui.html", title:"青木純二「数学の真髄」シリーズ 徹底解説", description:"東進ブックス『数学の真髄』の論理・写像編とベクトル編を、講座版との違いや使う時期とあわせて解説します。", tag:"参考書比較", date:"2026-10-17", order:23 },
+  { slug:"seibutsu-benkyouhou.html", title:"生物の勉強法：初学から難関大までの参考書ルート", description:"生物は教科書が軸。田部の合格77講とセミナーで東大レベルまで届くシンプルなルートと、思考問題対策の標準問題精講を紹介します。", tag:"科目別対策", date:"2026-10-17", order:24 },
+  { slug:"kagaku-benkyouhou.html", title:"化学の勉強法：初学から難関大までの参考書ルート", description:"Doシリーズと入門・基礎・標準・上級問題精講で完結する化学の参考書ルートを、著者紹介と志望校別の止めどころとあわせて解説します。", tag:"科目別対策", date:"2026-10-17", order:25 },
 ];
 
 // 新着順（日付→order）にソートして返す

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>結局どこが良いの？東進・河合塾・駿台・武田塾をタイプ別に整理 | 受験診断ドットコム</title>
+<meta name="description" content="東進・河合塾・駿台・武田塾の4校を授業形式と管理のされ方で整理し、向いている人と注意点を比較します。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+  .page-wrap{ padding-top:44px; padding-bottom:120px; }
+  .article-header{ max-width:680px; margin:0 auto 36px; }
+  .article-header .tag{ font-size:12px; font-weight:700; letter-spacing:0.1em; color:var(--lv3); margin-bottom:12px; display:block; }
+  .article-header h1{
+    font-family:'Shippori Mincho', serif; font-weight:800; font-size:clamp(24px,4.6vw,33px);
+    line-height:1.5; margin:0 0 14px;
+  }
+  .article-header .meta{ font-size:12.5px; color:var(--text-on-ink-muted); }
+
+  .article-body{ max-width:680px; margin:0 auto; font-size:15.5px; line-height:2; }
+  .article-body h2{
+    font-family:'Shippori Mincho', serif; font-size:20px; font-weight:800; margin:44px 0 16px;
+    border-top:1px solid rgba(255,255,255,0.08); padding-top:20px;
+  }
+  .article-body h2:first-child{ border-top:none; margin-top:0; padding-top:0; }
+  .article-body p{ margin:0 0 20px; color:var(--text-on-ink); }
+  .article-body strong{ color:var(--amber); font-weight:700; }
+  .article-body ul{ margin:0 0 20px; padding-left:22px; color:var(--text-on-ink); }
+  .article-body li{ margin-bottom:10px; }
+
+  .callout{
+    background:var(--ink-soft); border-left:3px solid var(--amber); border-radius:6px;
+    padding:16px 20px; margin:24px 0; font-size:14px; color:var(--text-on-ink-muted);
+  }
+
+  .book-cta-row{ display:flex; gap:14px; margin:28px 0; flex-wrap:wrap; }
+  .book-cta{
+    flex:1; min-width:200px; background:var(--ink-soft); border:1px solid rgba(255,255,255,0.08);
+    border-radius:10px; padding:16px 18px;
+  }
+  .book-cta .name{ font-weight:700; font-size:13.5px; margin:0 0 8px; }
+  .book-cta .buy-link{
+    display:inline-block; font-size:12px; font-weight:700; color:var(--ink);
+    background:var(--amber); padding:6px 14px; border-radius:999px; text-decoration:none; margin-top:4px;
+  }
+
+  .diag-cta{
+    margin:40px auto 0; max-width:680px; background:var(--ink-soft); border-radius:12px;
+    padding:24px 26px; border:1px solid rgba(255,255,255,0.08);
+  }
+  .diag-cta p{ font-size:13.5px; color:var(--text-on-ink-muted); margin:0 0 14px; }
+
+  .back-to-list{ display:block; max-width:680px; margin:36px auto 0; font-size:13px; color:var(--text-on-ink-muted); text-decoration:none; }
+  .back-to-list:hover{ color:var(--amber); }
+
+  .article-body h3{ font-size:16.5px; font-weight:700; margin:30px 0 10px; color:var(--text-on-ink); }
+  .article-body ol{ margin:0 0 20px; padding-left:24px; color:var(--text-on-ink); }
+  .article-body ol li{ margin-bottom:10px; }
+  .article-body a{ color:var(--amber); }
+  .point-label{ display:block; font-weight:700; font-size:14px; color:var(--amber); margin:0 0 6px; }
+  .point-box{ background:var(--ink-soft); border-radius:8px; padding:16px 20px; margin:0 0 24px; }
+  .point-box p, .point-box ul{ margin-bottom:0; }
+  .point-box ul{ margin-top:0; }
+  .point-box + .point-box{ margin-top:-10px; }
+  .table-scroll{ overflow-x:auto; margin:20px 0 28px; -webkit-overflow-scrolling:touch; }
+  .compare-table{ width:100%; min-width:520px; border-collapse:collapse; font-size:13.5px; line-height:1.7; }
+  .compare-table th, .compare-table td{ padding:12px 14px; border:1px solid rgba(255,255,255,0.1); text-align:left; vertical-align:top; }
+  .compare-table th{ background:var(--ink-soft); font-weight:700; color:var(--amber); white-space:nowrap; }
+  .compare-table td{ color:var(--text-on-ink-muted); }
+  .compare-table td:first-child{ color:var(--text-on-ink); font-weight:700; }
+  .route{ display:flex; flex-direction:column; align-items:stretch; margin:24px 0 28px; }
+  .route-step{ background:var(--ink-soft); border:1px solid rgba(255,255,255,0.08); border-left:3px solid var(--amber); border-radius:8px; padding:12px 16px; }
+  .route-step .r-role{ display:block; font-size:11.5px; font-weight:700; letter-spacing:0.08em; color:var(--amber); margin-bottom:2px; }
+  .route-step .r-name{ font-size:14.5px; font-weight:700; line-height:1.6; }
+  .route-step.option{ border-style:dashed; border-left-style:dashed; opacity:.9; }
+  .route-step.option .r-role{ color:var(--text-on-ink-muted); }
+  .route-arrow{ text-align:center; color:var(--text-on-ink-muted); font-size:14px; line-height:1; padding:6px 0; }
+  .route-row{ display:flex; gap:10px; flex-wrap:wrap; }
+  .route-row .route-step{ flex:1; min-width:150px; }
+  .wiki-links li{ margin-bottom:6px; }
+</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6837829466798350" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="../index.html" class="logo"><img src="../logo-mark.png" class="mark" alt="受験診断ドットコム">受験診断ドットコム</a>
+    <nav class="nav-links">
+      <a href="../index.html#diagnosis">診断一覧</a>
+      <a href="index.html">記事</a>
+      <a href="../contact.html">お問い合わせ</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap page-wrap">
+
+  <div class="article-header">
+    <span class="tag">予備校</span>
+    <h1>結局どこが良いの？東進・河合塾・駿台・武田塾をタイプ別に整理</h1>
+    <span class="meta">2026.10.17 公開</span>
+  </div>
+
+  <div class="article-body">
+
+    <p>「予備校はどこが一番良いのか」という質問には一つの正解がありません。合格実績や知名度で比べても、自分に合わない形式の予備校を選べば成果は出にくいからです。この記事では東進・河合塾・駿台・武田塾の4校を授業の形式と管理のされ方で整理し、どんな人にどこが向いているのかをまとめます。</p>
+
+    <h2>予備校は3つの型に分かれる</h2>
+    <p>4校の違いを最も分かりやすく表すのは、授業をどう受けるかという点です。</p>
+    <ul>
+      <li><strong>映像授業型</strong>：東進</li>
+      <li><strong>対面の集団授業型</strong>：河合塾・駿台</li>
+      <li><strong>授業をしない管理型</strong>：武田塾</li>
+    </ul>
+    <p>同じ「予備校」という名前でも型が違えば1日の過ごし方も勉強の進め方もまったく変わります。以下ではこの順に特徴と向き不向きを見ていきます。</p>
+
+    <h2>東進：映像授業で先取りしたい人向け</h2>
+    <p>東進の授業は映像授業が中心で、校舎のブースだけでなく自宅でも受講でき倍速再生にも対応しています。各回の授業のあとには確認テストがあり、基準の点数を取れて初めて次の回に進める仕組みです。</p>
+    <p>カリキュラムは前倒しが基本で、高3の6月末までに受験範囲を一通り終えることを目標にしています。英単語などの基礎は「高速マスター基礎力養成講座」というオンライン講座で短期間に固めます。</p>
+    <p>学習の管理は担任と担任助手が担います。担任助手は東進出身の大学生で、生徒は数人のグループに分かれて週1回のミーティングで進み具合を共有します。なお「東進ハイスクール」は直営校で「東進衛星予備校」はフランチャイズ校です。授業の中身は共通ですが、校舎ごとの運営には差があります。</p>
+    <div class="point-box"><span class="point-label">向いている人</span><ul><li>部活などで勉強できる時間が不規則な人</li><li>学校の進度より早く先取りしたい人</li></ul></div>
+    <div class="point-box"><span class="point-label">注意点</span><p>映像授業はいつでも受けられる反面、受講を後回しにすると一気に溜まります。決めたペースを自分で守れるかどうかが東進を活かせるかの分かれ目です。</p></div>
+
+    <h2>河合塾：対面授業で王道を進みたい人向け</h2>
+    <p>河合塾は教室で講師の授業を受ける集団授業が基本です。決まった時間割に沿って授業が進むため、通うだけで1週間の勉強の骨組みができあがります。</p>
+    <p>特徴的なのがチューターの存在です。チューターは授業とは別に生徒の学習面と生活面の両方を見守り、学習習慣づくりを支えます。成績管理は全統模試を軸に行われ、模試の結果をもとに学習の方向を修正していく流れです。</p>
+    <div class="point-box"><span class="point-label">向いている人</span><ul><li>決まった時間割で生活リズムを外から作りたい人</li><li>浪人して1年間の生活を立て直したい人</li></ul></div>
+    <div class="point-box"><span class="point-label">注意点</span><p>授業が多いぶん予習と復習だけで手一杯になりやすい点です。授業に出ること自体が目的にならないよう、自分の弱点を補強する時間を意識して残す必要があります。</p></div>
+
+    <h2>駿台：最難関・理系・医学部を狙う人向け</h2>
+    <p>駿台も対面の集団授業が基本ですが、1コマ50分と短めに区切られていて集中を保ちやすい作りです。高校生向けの講座は選抜・難関・標準・基礎の4段階に分かれていて、学力に合わせて選べます。</p>
+    <p>テキストは良問を重視したオリジナル教材です。駿台全国模試は難度が高めで、難関大志望者が自分の立ち位置を確かめる場として使われています。医学部入試のデータが豊富なことも強みで、医学部向けのコースや大学別の対策もそろっています。</p>
+    <div class="point-box"><span class="point-label">向いている人</span><ul><li>東大・京大・医学部を志望する人</li><li>理系で数学と理科を高いレベルで鍛えたい人</li></ul></div>
+    <div class="point-box"><span class="point-label">注意点</span><p>基礎が抜けたまま上のクラスに入ると授業の水準に追いつけず、恩恵を受けにくくなります。クラス選びは見栄ではなく現在の実力で判断しましょう。</p></div>
+
+    <h2>武田塾：授業を受けずに参考書で進めたい人向け</h2>
+    <p>武田塾は「授業をしない」ことを掲げる塾です。授業の代わりに市販の参考書を使った自学自習を軸にして、毎日取り組む範囲を宿題として指定します。</p>
+    <p>宿題が身についているかは個別指導の時間に行う確認テストでチェックされます。やったつもりで終わらせない仕組みがあるのが特徴です。講師は研修を受けた大学生が中心で、コースによって管理の細かさが変わります。</p>
+    <div class="point-box"><span class="point-label">向いている人</span><ul><li>講義を聞くより自分で読んで理解する方が早い人</li><li>参考書は持っているがサボらない仕組みが欲しい人</li></ul></div>
+    <div class="point-box"><span class="point-label">注意点</span><p>授業がないぶん料金に見合う価値を感じられるかは人によって分かれ、口コミでも授業がないわりに高いという声が見られます。決められた参考書ルートが自分の現在地に合っているかも確認が必要です。</p></div>
+
+    <h2>4校の比較表</h2>
+    <div class="table-scroll">
+    <table class="compare-table">
+      <tr><th></th><th>授業形式</th><th>学習を管理する人</th><th>強いレベル帯</th><th>向いている人</th></tr>
+      <tr><td>東進</td><td>映像授業</td><td>担任・担任助手（大学生）</td><td>基礎から最難関まで幅広い</td><td>先取りしたい人・時間が不規則な人</td></tr>
+      <tr><td>河合塾</td><td>対面の集団授業</td><td>チューター</td><td>標準〜難関</td><td>時間割で生活を作りたい人</td></tr>
+      <tr><td>駿台</td><td>対面の集団授業</td><td>クラス担任</td><td>難関〜最難関・医学部</td><td>最難関・理系志望の人</td></tr>
+      <tr><td>武田塾</td><td>授業なし（参考書で自学自習）</td><td>大学生講師による個別管理</td><td>参考書ルート次第</td><td>自分で読んで進めたい人</td></tr>
+    </table>
+    </div>
+
+    <h2>迷ったときの3つの質問</h2>
+    <p>どこにするか決めきれないときは次の3つの質問に答えてみてください。</p>
+    <ol>
+      <li>授業を聞いて理解する派か、自分で読んで理解する派か</li>
+      <li>決まった時間に校舎へ通えるか</li>
+      <li>自分で勉強のペースを管理できるか</li>
+    </ol>
+    <p>授業を聞いて理解する派で決まった時間に通えるなら、河合塾か駿台が候補になります。志望校が最難関や医学部なら駿台、標準から難関なら河合塾が目安です。授業は聞きたいけれど通える時間が不規則なら、映像授業の東進が合っています。自分で読んで理解する派でペース管理に不安があるなら武田塾が向いていて、ペース管理にも自信があるなら予備校に頼らない独学も十分に選択肢になります。</p>
+    <p>どの予備校も合う人が使えば大きな力になり、合わない人が使えば時間とお金を失います。知名度ではなく自分の勉強の型で選ぶことが、予備校選びで失敗しないための一番の近道です。</p>
+
+
+  </div>
+
+  <div class="diag-cta">
+    <p>参考書で進めるなら、まずは自分の現在地を確認するところから。数学の参考書診断で今の自分に合うルートを確かめてみましょう。</p>
+    <a href="../sugaku-shindan.html" class="btn btn-primary">数学の参考書診断を試す →</a>
+  </div>
+
+  <section class="related">
+    <h2 class="related-title">あわせて読みたい</h2>
+    <ul>
+      <li><a href="sankousho-root-no-yami.html"><span class="r-tag">受験戦略</span>参考書ルートの闇：参考書診断がなぜ必要なのか</a></li>
+      <li><a href="sankousho-syuukaisuu.html"><span class="r-tag">受験戦略</span>「1冊を完璧に」は本当か？参考書の周回数について</a></li>
+      <li><a href="yobiko-no-jugyou-3sen.html"><span class="r-tag">参考書比較</span>まるで予備校の授業な数学の参考書3選</a></li>
+    </ul>
+  </section>
+
+  <a href="index.html" class="back-to-list">← 記事一覧に戻る</a>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>&copy; 2026 受験診断ドットコム</span>
+    <div class="footer-links">
+      <a href="../about.html">運営者情報</a>
+      <a href="../privacy-policy.html">プライバシーポリシー</a>
+      <a href="../contact.html">お問い合わせ</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
