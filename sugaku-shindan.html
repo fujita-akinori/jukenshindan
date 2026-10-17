@@ -237,7 +237,11 @@
     display:inline-block; font-size:10px; font-weight:700; padding:2px 8px; border-radius:999px;
     margin-left:6px; background:rgba(255,255,255,0.1); color:var(--text-on-ink-muted); vertical-align:middle;
   }
-  .book-info .desc{ font-size:12.5px; color:var(--text-on-ink-muted); margin:0 0 9px; line-height:1.7; }
+  .book-info .desc{ font-size:13px; color:#cfccc3; margin:2px 0 12px; line-height:1.85; }
+  .book-info .desc .d-you{ display:block; margin-top:8px; padding-top:8px; border-top:1px dashed rgba(255,255,255,0.12); color:#f3e3c3; }
+  .book-info .desc .d-you b{ display:block; font-size:11px; letter-spacing:0.08em; color:var(--amber); margin-bottom:2px; }
+  .type-caret{ display:inline-block; width:0.55em; height:1.05em; margin-left:1px; vertical-align:-0.15em; background:var(--amber); animation:caret-blink .9s steps(1) infinite; }
+  @keyframes caret-blink{ 50%{ opacity:0; } }
   .buy-link{
     display:inline-block; font-size:12px; font-weight:700; color:var(--ink);
     background:var(--amber); padding:6px 14px; border-radius:999px; text-decoration:none;
@@ -319,126 +323,126 @@ function amazonUrl(b){
 
 const BOOKS = [
   // ---- Tier1 基礎 ----
-  {name:"基礎問題精講（数学I・A/II・B）",asin:"4010349182",scope:"common",tier:1,purposes:["teiki"],type:"quantity",bunya:[]},
-  {name:"基礎問題精講（数学III）",asin:"4010349204",scope:"rikei",tier:1,purposes:["teiki"],type:"quantity",bunya:[]},
-  {name:"はじめからはじめる数学（マセマ）",asin:"4866154233",scope:"common",tier:1,purposes:["teiki"],type:"quality",bunya:[]},
-  {name:"入門問題精講",asin:"4010349158",scope:"common",tier:1,purposes:["teiki"],type:"quality",bunya:[]},
-  {name:"黄チャート",asin:"4410107177",scope:"common",tier:1,purposes:["teiki","mouraikei","niji"],type:"quantity",bunya:[],mouraikei:true},
-  {name:"NEW ACTION FRONTIER",asin:"4487687144",scope:"common",tier:1,purposes:["teiki","mouraikei"],type:"quality",bunya:[]},
-  {name:"技216 数学I・A（大学合格のための基礎知識と解法）",asin:"4053043743",scope:"common",tier:1,purposes:["teiki","mouraikei"],type:"quality",bunya:[]},
-  {name:"Super Quick 数学I+A",asin:"4410153897",scope:"common",tier:1,purposes:["mouraikei","kyoutsuu"],type:"quantity",bunya:[],krange:"IA"},
-  {name:"Super Quick 数学II+B+C（ベクトル）",asin:"4410153900",scope:"common",tier:1,purposes:["mouraikei","kyoutsuu"],type:"quantity",bunya:[],krange:"IIBC"},
-  {name:"合格る計算 数学I・A・II・B［数列］・C［ベクトル］",asin:"4578243435",scope:"common",tier:1,purposes:["teiki","bunyabetsu"],type:"quantity",bunya:["計算"],profile:"speed_fast"},
-  {name:"合格る計算 数学III・C［複素数平面・2次曲線］",asin:"4578243443",scope:"rikei",tier:1,purposes:["teiki","bunyabetsu"],type:"quantity",bunya:["計算"],profile:"speed_fast"},
-  {name:"計算のエチュード 計算の基礎・知識編",asin:"B0B2V26Z7L",scope:"common",tier:2,purposes:["bunyabetsu"],type:"quality",bunya:["計算"],profile:"smart"},
-  {name:"計算のエチュード 戦略編",asin:"B0C9RWSQQW",scope:"common",tier:3,purposes:["bunyabetsu"],type:"quality",bunya:["計算"],profile:"smart"},
-  {name:"やさしい高校数学（数学I・A）",asin:"4053054699",scope:"common",tier:1,purposes:["teiki"],type:"quality",bunya:[]},
-  {name:"やさしい高校数学（数学II・B）",asin:"4053055954",scope:"common",tier:1,purposes:["teiki"],type:"quality",bunya:[]},
-  {name:"やさしい高校数学（数学III・C）",asin:"4053056829",scope:"rikei",tier:1,purposes:["teiki"],type:"quality",bunya:[]},
-  {name:"白チャート",asin:"4410102079",scope:"common",tier:1,purposes:["teiki","mouraikei","niji"],type:"quality",bunya:[],mouraikei:true},
-  {name:"きめる!共通テスト 数学I・A",asin:"4053057469",scope:"common",tier:1,purposes:["kyoutsuu"],type:"quality",bunya:[],krange:"IA"},
-  {name:"きめる!共通テスト 数学II・B・C",asin:"4053058066",scope:"common",tier:1,purposes:["kyoutsuu"],type:"quality",bunya:[],krange:"IIBC"},
-  {name:"数学のトリセツ！数学I・A",asin:"4909214127",scope:"common",tier:1,purposes:["teiki","mouraikei"],type:"quality",bunya:[]},
-  {name:"数学のトリセツ！数学II・B・C",asin:"4909214135",scope:"common",tier:1,purposes:["teiki","mouraikei"],type:"quality",bunya:[]},
-  {name:"数学のトリセツ！数学III",asin:"4909214143",scope:"rikei",tier:1,purposes:["teiki","mouraikei"],type:"quality",bunya:[]},
-  {name:"数学の計算革命〈三訂版〉",asin:"4796113495",scope:"common",tier:1,purposes:["bunyabetsu"],type:"quantity",bunya:["計算"],profile:"speed_steady"},
+  {name:"基礎問題精講（数学I・A/II・B）",note:"旺文社の問題精講シリーズのうち、教科書の内容から入試の基礎までをつなぐ1冊です。例題ごとに「精講」で考え方を確認してから演習に進む構成で、定期テスト対策と入試の土台づくりを同時に進められます。",asin:"4010349182",scope:"common",tier:1,purposes:["teiki"],type:"quantity",bunya:[]},
+  {name:"基礎問題精講（数学III）",note:"数学IIIの基本事項を例題と演習で固める基礎問題精講の数III版です。教科書の内容を入試で使える形に整理したい理系の人が、網羅系に入る前後に取り組むのに向いています。",asin:"4010349204",scope:"rikei",tier:1,purposes:["teiki"],type:"quantity",bunya:[]},
+  {name:"はじめからはじめる数学（マセマ）",note:"会話するような語り口で、数学を基礎の基礎から講義してくれるマセマのシリーズです。授業についていけなくなった人や、数学に苦手意識がある人が最初の1冊として読み進めるのに向いています。",asin:"4866154233",scope:"common",tier:1,purposes:["teiki"],type:"quality",bunya:[]},
+  {name:"入門問題精講",note:"問題精講シリーズの入門編で、教科書の例題レベルから無理なく始められる1冊です。基本的な問題の解き方を一つずつ確認できるので、定期テスト対策や数学の学び直しに向いています。",asin:"4010349158",scope:"common",tier:1,purposes:["teiki"],type:"quality",bunya:[]},
+  {name:"黄チャート",note:"教科書の基本から入試の標準レベルまでを網羅する、チャート式の中間に位置する参考書です。定期テストから中堅大の入試までを1冊でカバーしたい人に向いています。",asin:"4410107177",scope:"common",tier:1,purposes:["teiki","mouraikei","niji"],type:"quantity",bunya:[],mouraikei:true},
+  {name:"NEW ACTION FRONTIER",note:"東京書籍の網羅系参考書で、教科書レベルから入試の基礎までを例題で体系的に学べます。同じシリーズのLEGENDより易しめで、網羅系を無理なく1冊やり切りたい人に向いています。",asin:"4487687144",scope:"common",tier:1,purposes:["teiki","mouraikei"],type:"quality",bunya:[]},
+  {name:"技216 数学I・A（大学合格のための基礎知識と解法）",note:"入試の基礎になる解法を216の「技」に整理した1冊です。教科書の内容を一通り学んだあとに、典型的な解き方を手早く確認して定期テストや入試の基礎固めにつなげたい人に向いています。",asin:"4053043743",scope:"common",tier:1,purposes:["teiki","mouraikei"],type:"quality",bunya:[]},
+  {name:"Super Quick 数学I+A",note:"数学I・Aの要点と典型問題を短時間で総復習できるようにまとめた1冊です。網羅系を一から進める時間がない人や、共通テスト前に全範囲を素早く見直したい人に向いています。",asin:"4410153897",scope:"common",tier:1,purposes:["mouraikei","kyoutsuu"],type:"quantity",bunya:[],krange:"IA"},
+  {name:"Super Quick 数学II+B+C（ベクトル）",note:"同シリーズの数学II・B・C版で、ベクトルまでの範囲を要点と典型問題で素早く確認できます。短期間で網羅的に復習したい人や、共通テスト対策の総点検に向いています。",asin:"4410153900",scope:"common",tier:1,purposes:["mouraikei","kyoutsuu"],type:"quantity",bunya:[],krange:"IIBC"},
+  {name:"合格る計算 数学I・A・II・B［数列］・C［ベクトル］",note:"広瀬和之先生による、入試で差がつく計算の工夫と処理手順を身につける1冊です。解き方は分かるのに計算ミスや時間切れで点を落とす人に向いています。計算力の重要性は解説記事でも紹介しています。",asin:"4578243435",scope:"common",tier:1,purposes:["teiki","bunyabetsu"],type:"quantity",bunya:["計算"],profile:"speed_fast"},
+  {name:"合格る計算 数学III・C［複素数平面・2次曲線］",note:"同シリーズの数学III・C版で、微積分や複素数平面などの重い計算を速く正確にこなす工夫を学べます。数IIIの計算で時間を使いすぎる理系の人に向いています。",asin:"4578243443",scope:"rikei",tier:1,purposes:["teiki","bunyabetsu"],type:"quantity",bunya:["計算"],profile:"speed_fast"},
+  {name:"計算のエチュード 計算の基礎・知識編",note:"入試数学で必要な計算の基礎を、練習曲（エチュード）のように繰り返し鍛える1冊です。計算の土台となる処理を見直して、ケアレスミスを減らしたい人に向いています。",asin:"B0B2V26Z7L",scope:"common",tier:2,purposes:["bunyabetsu"],type:"quality",bunya:["計算"],profile:"smart"},
+  {name:"計算のエチュード 戦略編",note:"同シリーズの続編で、計算をどう組み立てれば速く正確に終わるかという戦略面を鍛えます。基礎編を終えて、入試本番の重い計算を時間内に処理する力をつけたい人に向いています。",asin:"B0C9RWSQQW",scope:"common",tier:3,purposes:["bunyabetsu"],type:"quality",bunya:["計算"],profile:"smart"},
+  {name:"やさしい高校数学（数学I・A）",note:"語りかけるような講義調の文章で、数学I・Aを中学数学の延長から丁寧に解説する1冊です。教科書を読んでも分からなかった部分を、つまずきの理由から理解し直したい人に向いています。",asin:"4053054699",scope:"common",tier:1,purposes:["teiki"],type:"quality",bunya:[]},
+  {name:"やさしい高校数学（数学II・B）",note:"同シリーズの数学II・B版で、三角関数や指数・対数、数列などを講義調で丁寧に解説します。数学II・Bで急に難しく感じ始めた人が、基礎から理解を立て直すのに向いています。",asin:"4053055954",scope:"common",tier:1,purposes:["teiki"],type:"quality",bunya:[]},
+  {name:"やさしい高校数学（数学III・C）",note:"同シリーズの数学III・C版で、極限や微積分などの数IIIとベクトルなどの数Cを講義調で解説します。理系に進んで数III・Cの授業で苦戦している人の最初の1冊に向いています。",asin:"4053056829",scope:"rikei",tier:1,purposes:["teiki"],type:"quality",bunya:[]},
+  {name:"白チャート",note:"数研出版のチャート式のうち、教科書の基本を確実に身につけるための網羅系参考書です。例題が教科書レベルから並んでいるので、数学が苦手な人でも一つずつ積み上げられます。",asin:"4410102079",scope:"common",tier:1,purposes:["teiki","mouraikei","niji"],type:"quality",bunya:[],mouraikei:true},
+  {name:"きめる!共通テスト 数学I・A",note:"学研の共通テスト対策シリーズで、出題の意図と解き方を講義形式で分かりやすく解説します。共通テスト対策を何から始めればいいか分からない人の最初の1冊に向いています。",asin:"4053057469",scope:"common",tier:1,purposes:["kyoutsuu"],type:"quality",bunya:[],krange:"IA"},
+  {name:"きめる!共通テスト 数学II・B・C",note:"同シリーズの数学II・B・C版で、共通テスト特有の問われ方と解き方を講義形式で学べます。基礎から共通テストの形式に慣れていきたい人に向いています。",asin:"4053058066",scope:"common",tier:1,purposes:["kyoutsuu"],type:"quality",bunya:[],krange:"IIBC"},
+  {name:"数学のトリセツ！数学I・A",note:"図やイラストを多く使って、数学I・Aの考え方を「取扱説明書」のように分かりやすく解説する1冊です。教科書の文章だけではイメージが掴めない人が、理解の入口として使うのに向いています。",asin:"4909214127",scope:"common",tier:1,purposes:["teiki","mouraikei"],type:"quality",bunya:[]},
+  {name:"数学のトリセツ！数学II・B・C",note:"同シリーズの数学II・B・C版で、図解を中心に三角関数や数列、ベクトルなどを解説します。数学II・B・Cの抽象的な内容を、まず直感的に理解したい人に向いています。",asin:"4909214135",scope:"common",tier:1,purposes:["teiki","mouraikei"],type:"quality",bunya:[]},
+  {name:"数学のトリセツ！数学III",note:"同シリーズの数学III版で、極限や微積分を図とイラストで解説します。数IIIで公式の意味が分からなくなった理系の人が、考え方から理解し直すのに向いています。",asin:"4909214143",scope:"rikei",tier:1,purposes:["teiki","mouraikei"],type:"quality",bunya:[]},
+  {name:"数学の計算革命〈三訂版〉",note:"入試で使える計算の工夫やテクニックを集め、計算の速さと正確さを一気に引き上げる1冊です。解法は合っているのに計算で失点する人に向いています。計算力の重要性は解説記事でも紹介しています。",asin:"4796113495",scope:"common",tier:1,purposes:["bunyabetsu"],type:"quantity",bunya:["計算"],profile:"speed_steady"},
 
   // ---- Tier2 標準・共テ ----
-  {name:"鉄緑会 基礎力完成 数学I・A+II・B",asin:"404621340X",scope:"common",tier:2,purposes:["mouraikei"],type:"quantity",bunya:[],mouraikei:true},
-  {name:"青チャート",asin:"4410105787",scope:"common",tier:2,purposes:["mouraikei","niji"],type:"quality",bunya:[],mouraikei:true,shibouExclude:["tokyoikko","kyutei"]},
-  {name:"Focus Gold",asin:"4402221277",scope:"common",tier:2,purposes:["mouraikei","niji"],type:"quality",bunya:[],mouraikei:true,shibouOnly:["tokyoikko"]},
-  {name:"共通テスト数学 予想問題集（数学I・A）",asin:"4046051825",scope:"common",tier:2,purposes:["kyoutsuu"],type:"quantity",bunya:[],krange:"IA"},
-  {name:"共通テスト数学 予想問題集（数学II・B・C）",scope:"common",tier:2,purposes:["kyoutsuu"],type:"quantity",bunya:[],krange:"IIBC"},
-  {name:"青チャート（数学III）",asin:"4410105957",scope:"rikei",tier:2,purposes:["mouraikei"],type:"quality",bunya:[]},
-  {name:"NEW ACTION LEGEND",asin:"448768711X",scope:"common",tier:2,purposes:["mouraikei","niji"],type:"quality",bunya:[],mouraikei:true,shibouOnly:["kyutei"]},
-  {name:"解法のエウレカ 数学I・A",asin:"4053051274",scope:"common",tier:2,purposes:["mouraikei","kyoutsuu"],type:"quality",bunya:[],krange:"IA"},
-  {name:"解法のエウレカ 数学II・B＋ベクトル",asin:"4053051282",scope:"common",tier:2,purposes:["mouraikei","kyoutsuu"],type:"quality",bunya:[],krange:"IIBC"},
-  {name:"解法のエウレカ 数学III・C",asin:"4053051290",scope:"rikei",tier:2,purposes:["mouraikei","kyoutsuu"],type:"quality",bunya:[],krange:"IIBC"},
-  {name:"合格る数学",asin:"4578240975",scope:"common",tier:3,purposes:["kyoutsuu","niji"],type:"quality",bunya:[],mouraikei:true},
-  {name:"大学入試 最短でマスターする数学I〜C（赤本プラス）",scope:"common",tier:2,purposes:["mouraikei","kyoutsuu"],type:"quality",bunya:[]},
-  {name:"志田晶の 数列が面白いほどわかる本",asin:"4046068841",scope:"common",tier:2,purposes:["bunyabetsu"],type:"quality",bunya:["数列"]},
-  {name:"坂田アキラの数列が面白いほどわかる本",asin:"4046007311",scope:"common",tier:1,purposes:["bunyabetsu"],type:"quality",bunya:["数列"]},
-  {name:"教科書Next 数列の集中講義（東京出版）",asin:"4887421575",scope:"common",tier:3,purposes:["bunyabetsu"],type:"quality",bunya:["数列"],profile:"deepen"},
-  {name:"教科書だけでは足りない 大学入試攻略 数列",asin:"4777213838",scope:"common",tier:3,purposes:["bunyabetsu"],type:"quality",bunya:["数列"],profile:"solve"},
-  {name:"志田晶の 集合・論理、整数が面白いほどわかる本",asin:"404606885X",scope:"common",tier:2,purposes:["bunyabetsu"],type:"quality",bunya:["整数"]},
-  {name:"志田晶の ベクトルが面白いほどわかる本",asin:"4046068833",scope:"common",tier:2,purposes:["bunyabetsu"],type:"quality",bunya:["ベクトル"],profile:"solve"},
-  {name:"坂田アキラのベクトルが面白いほどわかる本",asin:"4046016183",scope:"common",tier:1,purposes:["bunyabetsu"],type:"quality",bunya:["ベクトル"],profile:"solve"},
-  {name:"教科書Next ベクトルの集中講義（東京出版）",asin:"4887421540",scope:"common",tier:3,purposes:["bunyabetsu"],type:"quality",bunya:["ベクトル"],profile:"deepen"},
-  {name:"数学 ベクトル 分野別標準問題精講",asin:"4010346078",scope:"common",tier:3,purposes:["bunyabetsu"],type:"quality",bunya:["ベクトル"],profile:"solve"},
-  {name:"ベクトル 解法のパターン30（技術評論社）",asin:"4774177393",scope:"common",tier:3,purposes:["bunyabetsu"],type:"quantity",bunya:["ベクトル"],profile:"solve"},
-  {name:"共通テスト数学I・Aの点数が面白いほどとれる本",asin:"4046062347",scope:"common",tier:2,purposes:["kyoutsuu"],type:"quality",bunya:[],krange:"IA"},
-  {name:"共通テスト数学II・B・Cの点数が面白いほどとれる本",asin:"4046062355",scope:"common",tier:2,purposes:["kyoutsuu"],type:"quality",bunya:[],krange:"IIBC"},
-  {name:"2026 共通テスト総合問題集 数学I・A（河合塾）",asin:"477722953X",scope:"common",tier:2,purposes:["kyoutsuu"],type:"quantity",bunya:[],krange:"IA"},
-  {name:"短期攻略 共通テスト 数学I・A 実戦編（駿台）",asin:"479612392X",scope:"common",tier:2,purposes:["kyoutsuu"],type:"quantity",bunya:[],krange:"IA"},
-  {name:"短期攻略 共通テスト 数学II・B・C 実戦編（駿台）",scope:"common",tier:2,purposes:["kyoutsuu"],type:"quantity",bunya:[],krange:"IIBC"},
-  {name:"チャート式 共通テスト対策 数学IA+IIBC",asin:"4410106384",scope:"common",tier:2,purposes:["kyoutsuu"],type:"quality",bunya:[],krange:"both"},
-  {name:"教科書だけでは足りない 統計的な推測（河合塾）",asin:"4777223310",scope:"common",tier:2,purposes:["bunyabetsu"],type:"quality",bunya:["統計的な推測"]},
-  {name:"文系の数学 重要事項完全習得編",asin:"4777228665",scope:"bunkei",tier:2,purposes:["mouraikei","kyoutsuu"],type:"quality",bunya:[]},
+  {name:"鉄緑会 基礎力完成 数学I・A+II・B",note:"東大受験指導で知られる鉄緑会の教材をもとにした問題集で、基本事項を入試で使える精度まで鍛えます。網羅系は一通り終えたが基礎の精度に不安がある、難関大志望者に向いています。",asin:"404621340X",scope:"common",tier:2,purposes:["mouraikei"],type:"quantity",bunya:[],mouraikei:true},
+  {name:"青チャート",note:"教科書の基本から入試の標準レベルまでを網羅する、数研出版の定番参考書です。収録問題を絞り込んだ構成で、典型解法を短いサイクルで周回して身につけたい人に向いています。Focus Goldとの比較は解説記事で紹介しています。",asin:"4410105787",scope:"common",tier:2,purposes:["mouraikei","niji"],type:"quality",bunya:[],mouraikei:true,shibouExclude:["tokyoikko","kyutei"]},
+  {name:"Focus Gold",note:"啓林館の網羅系参考書で、教科書の基本から最難関レベルまでを1冊で扱います。解説が厚く発展問題も充実しているので、じっくり読み込みながら高いレベルまで見据えたい人に向いています。青チャートとの比較は解説記事で紹介しています。",asin:"4402221277",scope:"common",tier:2,purposes:["mouraikei","niji"],type:"quality",bunya:[],mouraikei:true,shibouOnly:["tokyoikko"]},
+  {name:"共通テスト数学 予想問題集（数学I・A）",note:"本番と同じ形式の予想問題で、時間配分や解く順番を練習するための問題集です。基礎が固まったあと、本番形式での得点力を仕上げる段階で使います。",asin:"4046051825",scope:"common",tier:2,purposes:["kyoutsuu"],type:"quantity",bunya:[],krange:"IA"},
+  {name:"共通テスト数学 予想問題集（数学II・B・C）",note:"数学II・B・Cの予想問題を本番と同じ形式で解いて、時間内に解き切る練習をするための1冊です。共通テスト直前期の実戦演習に向いています。",scope:"common",tier:2,purposes:["kyoutsuu"],type:"quantity",bunya:[],krange:"IIBC"},
+  {name:"青チャート（数学III）",note:"数研出版のチャート式のうち、数学IIIの基本から入試の標準レベルまでを網羅する定番参考書です。理系の網羅系として、数IIIの典型問題を一通り身につけるのに使います。青チャートとFocus Goldの比較は解説記事で紹介しています。",asin:"4410105957",scope:"rikei",tier:2,purposes:["mouraikei"],type:"quality",bunya:[]},
+  {name:"NEW ACTION LEGEND",note:"東京書籍の網羅系参考書で、教科書の基本から入試の応用までを体系的に学べます。例題ごとに考え方の流れが整理されているので、解法の理由まで理解しながら網羅系を進めたい人に向いています。",asin:"448768711X",scope:"common",tier:2,purposes:["mouraikei","niji"],type:"quality",bunya:[],mouraikei:true,shibouOnly:["kyutei"]},
+  {name:"解法のエウレカ 数学I・A",note:"問題を見て解法を思いつくための着眼点を整理しながら、典型問題を網羅的に学べる1冊です。解き方は覚えたのに初見の問題で手が止まる人が、発想の手がかりを身につけるのに向いています。",asin:"4053051274",scope:"common",tier:2,purposes:["mouraikei","kyoutsuu"],type:"quality",bunya:[],krange:"IA"},
+  {name:"解法のエウレカ 数学II・B＋ベクトル",note:"同シリーズの数学II・B・ベクトル版で、典型問題を解くための着眼点を分野ごとに整理します。網羅系の代わりに、解法の選び方まで意識して学びたい人に向いています。",asin:"4053051282",scope:"common",tier:2,purposes:["mouraikei","kyoutsuu"],type:"quality",bunya:[],krange:"IIBC"},
+  {name:"解法のエウレカ 数学III・C",note:"同シリーズの数学III・C版で、微積分や複素数平面などの典型問題を着眼点とあわせて学べます。理系の人が数III・Cの解法を網羅的に整理するのに向いています。",asin:"4053051290",scope:"rikei",tier:2,purposes:["mouraikei","kyoutsuu"],type:"quality",bunya:[],krange:"IIBC"},
+  {name:"合格る数学",note:"「合格る」シリーズの総合問題集で、共通テストから二次試験までに必要な典型問題を効率よく確認できます。網羅系で学んだ解法を入試レベルの問題で使えるか試したい人に向いています。",asin:"4578240975",scope:"common",tier:3,purposes:["kyoutsuu","niji"],type:"quality",bunya:[],mouraikei:true},
+  {name:"大学入試 最短でマスターする数学I〜C（赤本プラス）",note:"教学社の赤本プラスシリーズで、数学I〜Cの全範囲を1冊に圧縮して要点と典型問題を確認できます。受験直前の総復習や、網羅系を何冊も回す時間がない人に向いています。",scope:"common",tier:2,purposes:["mouraikei","kyoutsuu"],type:"quality",bunya:[]},
+  {name:"志田晶の 数列が面白いほどわかる本",note:"東進の志田晶先生による、数列を講義調で丁寧に解説する分野別の1冊です。漸化式や和の計算でつまずいている人が、考え方から理解し直すのに向いています。",asin:"4046068841",scope:"common",tier:2,purposes:["bunyabetsu"],type:"quality",bunya:["数列"]},
+  {name:"坂田アキラの数列が面白いほどわかる本",note:"坂田アキラ先生による、数列を超基礎から手取り足取り解説する1冊です。数列がまったく分からない人でも、例題を追いかけるだけで解き方が身につく構成になっています。",asin:"4046007311",scope:"common",tier:1,purposes:["bunyabetsu"],type:"quality",bunya:["数列"]},
+  {name:"教科書Next 数列の集中講義（東京出版）",note:"東京出版の「教科書Next」シリーズで、教科書の一歩先にある数列の考え方を集中的に講義します。教科書の内容は分かるが入試の数列で手が止まる人に向いています。",asin:"4887421575",scope:"common",tier:3,purposes:["bunyabetsu"],type:"quality",bunya:["数列"],profile:"deepen"},
+  {name:"教科書だけでは足りない 大学入試攻略 数列",note:"河合出版の分野別シリーズで、教科書と入試問題のギャップを埋める数列の考え方を学べます。漸化式や数学的帰納法を入試レベルで使えるようにしたい人に向いています。",asin:"4777213838",scope:"common",tier:3,purposes:["bunyabetsu"],type:"quality",bunya:["数列"],profile:"solve"},
+  {name:"志田晶の 集合・論理、整数が面白いほどわかる本",note:"東進の志田晶先生による、集合・論理と整数を講義調で解説する1冊です。整数問題の基本的な解き方と論理の使い方を、基礎から理解したい人に向いています。論理の重要性は解説記事でも紹介しています。",asin:"404606885X",scope:"common",tier:2,purposes:["bunyabetsu"],type:"quality",bunya:["整数"]},
+  {name:"志田晶の ベクトルが面白いほどわかる本",note:"東進の志田晶先生による、ベクトルを講義調で丁寧に解説する1冊です。ベクトルの計算はできても図形との結びつきが分からない人に向いています。",asin:"4046068833",scope:"common",tier:2,purposes:["bunyabetsu"],type:"quality",bunya:["ベクトル"],profile:"solve"},
+  {name:"坂田アキラのベクトルが面白いほどわかる本",note:"坂田アキラ先生による、ベクトルを超基礎から手取り足取り解説する1冊です。ベクトルの意味から分からない人が、例題を追いかけながら基本を身につけられます。",asin:"4046016183",scope:"common",tier:1,purposes:["bunyabetsu"],type:"quality",bunya:["ベクトル"],profile:"solve"},
+  {name:"教科書Next ベクトルの集中講義（東京出版）",note:"東京出版の「教科書Next」シリーズで、ベクトルの考え方を教科書の一歩先まで集中的に講義します。図形問題でベクトルをどう使うかを身につけたい人に向いています。",asin:"4887421540",scope:"common",tier:3,purposes:["bunyabetsu"],type:"quality",bunya:["ベクトル"],profile:"deepen"},
+  {name:"数学 ベクトル 分野別標準問題精講",note:"旺文社の分野別標準問題精講のベクトル版で、入試の標準レベルの問題を通してベクトルを集中的に固めます。ベクトルを苦手分野から得点源に変えたい人に向いています。",asin:"4010346078",scope:"common",tier:3,purposes:["bunyabetsu"],type:"quality",bunya:["ベクトル"],profile:"solve"},
+  {name:"ベクトル 解法のパターン30（技術評論社）",note:"ベクトルの頻出解法を30のパターンに整理して学べる1冊です。ベクトルの問題で何から手をつければいいか分からない人に向いています。",asin:"4774177393",scope:"common",tier:3,purposes:["bunyabetsu"],type:"quantity",bunya:["ベクトル"],profile:"solve"},
+  {name:"共通テスト数学I・Aの点数が面白いほどとれる本",note:"KADOKAWAの人気シリーズで、共通テストの出題パターンと解き方を講義調で丁寧に解説します。基礎から共通テストで点を取るための考え方を身につけたい人に向いています。",asin:"4046062347",scope:"common",tier:2,purposes:["kyoutsuu"],type:"quality",bunya:[],krange:"IA"},
+  {name:"共通テスト数学II・B・Cの点数が面白いほどとれる本",note:"同シリーズの数学II・B・C版で、共通テストで問われるポイントを講義調で解説します。数学II・B・Cの共通テスト対策を基礎から始めたい人に向いています。",asin:"4046062355",scope:"common",tier:2,purposes:["kyoutsuu"],type:"quality",bunya:[],krange:"IIBC"},
+  {name:"2026 共通テスト総合問題集 数学I・A（河合塾）",note:"河合塾の模試問題などをもとにした共通テスト形式の問題集です。本番に近い難度の問題を数多く解いて、形式への慣れと得点の安定を図る段階で使います。",asin:"477722953X",scope:"common",tier:2,purposes:["kyoutsuu"],type:"quantity",bunya:[],krange:"IA"},
+  {name:"短期攻略 共通テスト 数学I・A 実戦編（駿台）",note:"駿台文庫の共通テスト対策書で、実戦的な問題を通して素早く正確に解く手順を身につけます。基礎を終えて、本番形式での時間短縮と得点の上積みを狙う人に向いています。",asin:"479612392X",scope:"common",tier:2,purposes:["kyoutsuu"],type:"quantity",bunya:[],krange:"IA"},
+  {name:"短期攻略 共通テスト 数学II・B・C 実戦編（駿台）",note:"同シリーズの数学II・B・C版で、共通テストの実戦問題を時間を意識して解く練習ができます。数学II・B・Cで時間が足りなくなる人の仕上げに向いています。",scope:"common",tier:2,purposes:["kyoutsuu"],type:"quantity",bunya:[],krange:"IIBC"},
+  {name:"チャート式 共通テスト対策 数学IA+IIBC",note:"数研出版のチャート式による共通テスト対策書で、数学I・AとII・B・Cを1冊で確認できます。チャート式で学んできた人が、そのまま共通テストの形式に移行するのに向いています。",asin:"4410106384",scope:"common",tier:2,purposes:["kyoutsuu"],type:"quality",bunya:[],krange:"both"},
+  {name:"教科書だけでは足りない 統計的な推測（河合塾）",note:"河合出版の分野別シリーズで、統計的な推測を入試で使えるレベルまで解説します。教科書だけでは演習量が足りない統計分野を、共通テストに向けて固めたい人に向いています。",asin:"4777223310",scope:"common",tier:2,purposes:["bunyabetsu"],type:"quality",bunya:["統計的な推測"]},
+  {name:"文系の数学 重要事項完全習得編",note:"河合出版の文系数学シリーズのうち、入試に必要な重要事項を網羅的に身につけるための1冊です。文系の受験生が網羅系の代わりに、入試で問われる典型を効率よく固めるのに向いています。",asin:"4777228665",scope:"bunkei",tier:2,purposes:["mouraikei","kyoutsuu"],type:"quality",bunya:[]},
 
   // ---- Tier3 応用・難関 ----
-  {name:"1対1対応の演習（数学I・A/II・B）",asin:"4887422636",scope:"common",tier:3,purposes:["niji"],type:"quality",bunya:[]},
-  {name:"1対1対応の演習（数学III）",asin:"4887422792",scope:"rikei",tier:3,purposes:["niji"],type:"quality",bunya:[]},
-  {name:"新数学スタンダード演習",asin:"B0GK6S4JPF",scope:"common",tier:3,purposes:["niji"],type:"quantity",bunya:[]},
-  {name:"文系の数学 良問プラチカ",asin:"4777227200",scope:"bunkei",tier:3,purposes:["niji"],type:"quantity",bunya:[]},
-  {name:"理系数学の良問プラチカ",asin:"4777227219",scope:"rikei",tier:3,purposes:["niji"],type:"quantity",bunya:[]},
-  {name:"文系の数学 実践力向上編",asin:"4777231461",scope:"bunkei",tier:3,purposes:["niji"],type:"quantity",bunya:[]},
-  {name:"マスターキー 数学I・A・II・B＋ベクトル",asin:"4053046408",scope:"common",tier:3,purposes:["niji"],type:"quality",bunya:[]},
-  {name:"入試数学 解法のセオリー",asin:"4777230163",scope:"common",tier:3,purposes:["niji"],type:"quality",bunya:[]},
-  {name:"標準問題精講",asin:"4010349212",scope:"common",tier:3,purposes:["niji"],type:"quality",bunya:[]},
-  {name:"標準問題精講 分野別（整数）",asin:"4010352639",scope:"common",tier:3,purposes:["bunyabetsu"],type:"quality",bunya:["整数"]},
-  {name:"数学 二次曲線・複素数平面 分野別標準問題精講",asin:"4010352663",scope:"rikei",tier:3,purposes:["bunyabetsu"],type:"quantity",bunya:["複素数平面"],profile:"workbook"},
-  {name:"教科書だけでは足りない 大学入試攻略 複素数平面（河合塾）",asin:"4777214966",scope:"rikei",tier:4,purposes:["bunyabetsu"],type:"quantity",bunya:["複素数平面"],profile:"workbook"},
-  {name:"坂田アキラの複素数平面が面白いほどわかる本",asin:"4046020210",scope:"rikei",tier:1,purposes:["bunyabetsu"],type:"quality",bunya:["複素数平面"],unconditional:true},
-  {name:"改訂版 志田晶の 複素数平面・式と曲線が面白いほどわかる本",asin:"4046058439",scope:"rikei",tier:2,purposes:["bunyabetsu"],type:"quality",bunya:["複素数平面"],profile:"lecture"},
-  {name:"数学の受験教科書 7 複素数平面（カラー版）",asin:"B0DM6NKGWM",scope:"rikei",tier:3,purposes:["bunyabetsu"],type:"quality",bunya:["複素数平面"],profile:"lecture"},
-  {name:"合格る確率",asin:"4578243451",scope:"common",tier:3,purposes:["bunyabetsu"],type:"quantity",bunya:["場合の数・確率"]},
-  {name:"場合の数・確率 解法のパターン30（技術評論社）",asin:"4774175773",scope:"common",tier:3,purposes:["bunyabetsu"],type:"quantity",bunya:["場合の数・確率"]},
-  {name:"坂田アキラの場合の数・確率・データの分析が面白いほどわかる本",asin:"4046018763",scope:"common",tier:1,purposes:["bunyabetsu"],type:"quality",bunya:["場合の数・確率"]},
-  {name:"解法の探求・確率（東京出版）",asin:"4887420862",scope:"common",tier:4,purposes:["bunyabetsu","niji"],type:"quality",bunya:["場合の数・確率"]},
-  {name:"マスターオブ場合の数",asin:"4887420285",scope:"common",tier:3,purposes:["bunyabetsu"],type:"quality",bunya:["場合の数・確率"]},
-  {name:"Z会 理系数学の核心 標準編",asin:"4865315926",scope:"rikei",tier:3,purposes:["niji"],type:"quality",bunya:[]},
-  {name:"東進 最重要問題集",asin:"4890859454",scope:"common",tier:3,purposes:["niji","kyoutsuu"],type:"quality",bunya:[]},
-  {name:"世界一わかりやすい 九大の理系数学",asin:"4046079673",scope:"rikei",tier:3,purposes:["niji"],type:"quality",bunya:[],shibouDetailOnly:["kyudai"]},
-  {name:"世界一わかりやすい 九大の文系数学",asin:"4046079673",scope:"bunkei",tier:3,purposes:["niji"],type:"quality",bunya:[],shibouDetailOnly:["kyudai"]},
-  {name:"入試数学「実力強化」問題集（駿台）",asin:"4796113460",scope:"common",tier:3,purposes:["mouraikei","niji"],type:"quantity",bunya:[],mouraikei:true},
-  {name:"入試のツボを押さえる重点学習 数学IA2BC",asin:"4887422857",scope:"common",tier:3,purposes:["niji"],type:"quality",bunya:[]},
-  {name:"入試のツボを押さえる重点学習 数学3C",asin:"4887422881",scope:"rikei",tier:3,purposes:["niji"],type:"quality",bunya:[]},
-  {name:"総合的研究 記述式答案の書き方",asin:"4010377240",scope:"common",tier:3,purposes:["niji"],type:"quality",bunya:[]},
-  {name:"ハッとめざめる確率",asin:"4887420447",scope:"common",tier:3,purposes:["bunyabetsu"],type:"quality",bunya:["場合の数・確率"]},
-  {name:"理系数学の極み",asin:"4487633648",scope:"rikei",tier:3,purposes:["niji"],type:"quality",bunya:[]},
-  {name:"方程式・図形・関数からとらえる数学の基礎 分野別標準問題精講",asin:"4010353996",scope:"common",tier:3,purposes:["niji","bunyabetsu"],type:"quality",bunya:["論理・軌跡と領域"]},
-  {name:"大学入試 数学の発想力が1冊でしっかり身につく本",asin:"4761231610",scope:"common",tier:3,purposes:["niji"],type:"quality",bunya:[]},
+  {name:"1対1対応の演習（数学I・A/II・B）",note:"入試の典型問題を例題と演習題の1対1の形で学ぶ、東京出版の定番演習書です。網羅系参考書を終えたあと、解法を入試レベルで使いこなせるよう仕上げる段階で使います。新数学スタンダード演習との比較は解説記事で紹介しています。",asin:"4887422636",scope:"common",tier:3,purposes:["niji"],type:"quality",bunya:[]},
+  {name:"1対1対応の演習（数学III）",note:"数学IIIの微積分や極限を例題と演習題の1対1形式で固める1冊です。理系の網羅系参考書から入試レベルの数IIIへ橋渡しする段階に向いています。",asin:"4887422792",scope:"rikei",tier:3,purposes:["niji"],type:"quality",bunya:[]},
+  {name:"新数学スタンダード演習",note:"『大学への数学』編集部による、入試の標準からやや難レベルをまとめて演習できる問題集です。1対1対応の演習で解法を整えたあと、初見の問題で実戦力を試す段階で使います。",asin:"B0GK6S4JPF",scope:"common",tier:3,purposes:["niji"],type:"quantity",bunya:[]},
+  {name:"文系の数学 良問プラチカ",note:"文系数学の入試良問を厳選した河合出版の演習書です。難関大の文系数学に必要な典型から標準レベルを押さえられ、網羅系の次に取り組む実戦演習の1冊になります。レベル感と使い方は解説記事で紹介しています。",asin:"4777227200",scope:"bunkei",tier:3,purposes:["niji"],type:"quantity",bunya:[]},
+  {name:"理系数学の良問プラチカ",note:"理系数学の入試良問を集めた演習書で、標準からやや難の問題を収録しています。網羅系を終えた理系受験生が、難関国公立の二次試験に向けて演習量を確保するのに向いています。",asin:"4777227219",scope:"rikei",tier:3,purposes:["niji"],type:"quantity",bunya:[]},
+  {name:"文系の数学 実践力向上編",note:"河合出版の文系数学シリーズのうち、入試の実戦問題で得点力を伸ばすための演習編です。重要事項を一通り身につけたあとに、記述式の入試問題を時間内に解き切る力を鍛えます。",asin:"4777231461",scope:"bunkei",tier:3,purposes:["niji"],type:"quantity",bunya:[]},
+  {name:"マスターキー 数学I・A・II・B＋ベクトル",note:"東大理Ⅲ出身の河野玄斗さんによる問題集で、入試で繰り返し使う思考パターンを100個以上収録しています。数学を一通り学んだのに入試問題に歯が立たない人が、網羅系と併用して解法の引き出しを整理するのに向いています。",asin:"4053046408",scope:"common",tier:3,purposes:["niji"],type:"quality",bunya:[]},
+  {name:"入試数学 解法のセオリー",note:"河合塾講師の伊東敦先生による、典型問題207題で定石の使い方を学ぶ1冊です。1題から多くを学んで別の問題に応用することを重視していて、中堅大から難関大までの二次・私大対策に使えます。",asin:"4777230163",scope:"common",tier:3,purposes:["niji"],type:"quality",bunya:[]},
+  {name:"標準問題精講",note:"旺文社の問題精講シリーズのうち、入試の標準からやや難レベルを扱う1冊です。「精講」で考え方の要点を押さえてから問題に取り組む構成で、解説を読み込みながら実力を上げたい人に向いています。",asin:"4010349212",scope:"common",tier:3,purposes:["niji"],type:"quality",bunya:[]},
+  {name:"標準問題精講 分野別（整数）",note:"旺文社の分野別標準問題精講のうち、整数分野を集中的に扱う1冊です。整数問題の典型解法を入試の標準レベルで固めたい人に向いています。",asin:"4010352639",scope:"common",tier:3,purposes:["bunyabetsu"],type:"quality",bunya:["整数"]},
+  {name:"数学 二次曲線・複素数平面 分野別標準問題精講",note:"旺文社の分野別標準問題精講のうち、二次曲線と複素数平面を扱う1冊です。理系の人がこの2分野を入試の標準レベルで集中的に固めるのに向いています。",asin:"4010352663",scope:"rikei",tier:3,purposes:["bunyabetsu"],type:"quantity",bunya:["複素数平面"],profile:"workbook"},
+  {name:"教科書だけでは足りない 大学入試攻略 複素数平面（河合塾）",note:"河合出版の分野別シリーズで、複素数平面を入試の発展レベルまで掘り下げます。複素数平面を得点源にしたい難関大志望の理系受験生に向いています。",asin:"4777214966",scope:"rikei",tier:4,purposes:["bunyabetsu"],type:"quantity",bunya:["複素数平面"],profile:"workbook"},
+  {name:"坂田アキラの複素数平面が面白いほどわかる本",note:"坂田アキラ先生による、複素数平面を超基礎から手取り足取り解説する1冊です。複素数平面の意味から分からない人が、基本を一つずつ身につけるのに向いています。",asin:"4046020210",scope:"rikei",tier:1,purposes:["bunyabetsu"],type:"quality",bunya:["複素数平面"],unconditional:true},
+  {name:"改訂版 志田晶の 複素数平面・式と曲線が面白いほどわかる本",note:"東進の志田晶先生による、複素数平面と式と曲線を講義調で丁寧に解説する1冊です。数Cのこの2分野を基礎から入試の標準まで理解したい人に向いています。",asin:"4046058439",scope:"rikei",tier:2,purposes:["bunyabetsu"],type:"quality",bunya:["複素数平面"],profile:"lecture"},
+  {name:"数学の受験教科書 7 複素数平面（カラー版）",note:"複素数平面を受験の教科書として体系的にまとめた分野別の1冊です。カラーの図解で複素数平面の考え方を整理しながら、入試の典型問題まで学べます。",asin:"B0DM6NKGWM",scope:"rikei",tier:3,purposes:["bunyabetsu"],type:"quality",bunya:["複素数平面"],profile:"lecture"},
+  {name:"合格る確率",note:"広瀬和之先生による「合格る」シリーズの確率編で、場合の数・確率の考え方を根本から整理します。なんとなくで解いていて答えが合ったり合わなかったりする人に向いています。",asin:"4578243451",scope:"common",tier:3,purposes:["bunyabetsu"],type:"quantity",bunya:["場合の数・確率"]},
+  {name:"場合の数・確率 解法のパターン30（技術評論社）",note:"場合の数・確率の頻出解法を30のパターンに整理して学べる1冊です。確率の問題でどう数えればいいか迷う人が、解き方の型を身につけるのに向いています。",asin:"4774175773",scope:"common",tier:3,purposes:["bunyabetsu"],type:"quantity",bunya:["場合の数・確率"]},
+  {name:"坂田アキラの場合の数・確率・データの分析が面白いほどわかる本",note:"坂田アキラ先生による、場合の数・確率とデータの分析を超基礎から解説する1冊です。数え上げの基本から分からない人が、例題を追いかけて理解するのに向いています。",asin:"4046018763",scope:"common",tier:1,purposes:["bunyabetsu"],type:"quality",bunya:["場合の数・確率"]},
+  {name:"解法の探求・確率（東京出版）",note:"東京出版『大学への数学』シリーズの確率の問題集で、難関大の確率問題を多角的な解法で掘り下げます。確率を得点源にしたい最難関志望者向けの1冊です。",asin:"4887420862",scope:"common",tier:4,purposes:["bunyabetsu","niji"],type:"quality",bunya:["場合の数・確率"]},
+  {name:"マスターオブ場合の数",note:"東京出版『大学への数学』シリーズの場合の数の問題集で、数え上げの考え方を難関大レベルまで鍛えます。場合の数を確実に得点したい難関大志望者に向いています。",asin:"4887420285",scope:"common",tier:3,purposes:["bunyabetsu"],type:"quality",bunya:["場合の数・確率"]},
+  {name:"Z会 理系数学の核心 標準編",note:"Z会の理系向け演習書で、入試標準レベルの問題を通して解法の核心となる考え方を身につけます。網羅系を終えた理系受験生が、記述式の二次試験に向けて思考の筋道を固めるのに向いています。",asin:"4865315926",scope:"rikei",tier:3,purposes:["niji"],type:"quality",bunya:[]},
+  {name:"東進 最重要問題集",note:"東進ブックスの問題集で、入試に頻出する重要問題に絞って演習できる1冊です。網羅系を終えたあと、共通テストと二次試験の両方を見据えて典型問題の仕上げをしたい人に向いています。",asin:"4890859454",scope:"common",tier:3,purposes:["niji","kyoutsuu"],type:"quality",bunya:[]},
+  {name:"世界一わかりやすい 九大の理系数学",note:"KADOKAWA「世界一わかりやすい」シリーズの九州大学版で、最新版は理系と文系を1冊にまとめた『九大の数学』として前期日程17か年分を解説しています。頻出テーマを押さえられるので、九大志望者の過去問演習の前後に使うのが効果的です。",asin:"4046079673",scope:"rikei",tier:3,purposes:["niji"],type:"quality",bunya:[],shibouDetailOnly:["kyudai"]},
+  {name:"世界一わかりやすい 九大の文系数学",note:"最新版は理系と文系を1冊にまとめた『九大の数学』として、前期日程17か年分の過去問を解説しています。九大文系志望者が頻出テーマと答案の書き方を押さえ、本番の出題形式に慣れるための1冊です。",asin:"4046079673",scope:"bunkei",tier:3,purposes:["niji"],type:"quality",bunya:[],shibouDetailOnly:["kyudai"]},
+  {name:"入試数学「実力強化」問題集（駿台）",note:"駿台文庫の演習書で、網羅系の典型問題から一歩進んだ入試の標準からやや難の問題を扱います。解説が詳しいので、網羅系を終えた人が実戦力を上げる次の1冊として向いています。",asin:"4796113460",scope:"common",tier:3,purposes:["mouraikei","niji"],type:"quantity",bunya:[],mouraikei:true},
+  {name:"入試のツボを押さえる重点学習 数学IA2BC",note:"東京出版の青木亮二先生による、入試で差がつくポイントを分野ごとに絞り込んで学ぶ1冊です。つまずきやすい誤解や考え方の手順を丁寧に示していて、典型問題の理解を一段深めたい人に向いています。",asin:"4887422857",scope:"common",tier:3,purposes:["niji"],type:"quality",bunya:[]},
+  {name:"入試のツボを押さえる重点学習 数学3C",note:"同シリーズの数学III・C版で、平面上の曲線と複素数平面を中心に入試のツボを整理します。苦手になりやすいこれらの分野を重点的に固めたい理系受験生に向いています。",asin:"4887422881",scope:"rikei",tier:3,purposes:["niji"],type:"quality",bunya:[]},
+  {name:"総合的研究 記述式答案の書き方",note:"旺文社「総合的研究」シリーズの1冊で、二次試験の記述答案をどう書けば採点者に伝わるかを学べます。論理の飛躍や書き漏れで減点されがちな人が、答案の型を身につけるのに向いています。",asin:"4010377240",scope:"common",tier:3,purposes:["niji"],type:"quality",bunya:[]},
+  {name:"ハッとめざめる確率",note:"東京出版の安田亨先生による確率の問題集で、確率の考え方を根本から理解し直せる1冊です。確率の公式を当てはめるだけでは解けない入試問題に対応したい人に向いています。",asin:"4887420447",scope:"common",tier:3,purposes:["bunyabetsu"],type:"quality",bunya:["場合の数・確率"]},
+  {name:"理系数学の極み",note:"医学部志望者の指導経験が豊富な岩崎達浩先生が著し、灘・開成の数学科教諭が監修した最難関向けの問題集です。例題・演習・医学部対策問題の計613問を収録し、全例題にヒント動画と解説動画が付いています。",asin:"4487633648",scope:"rikei",tier:3,purposes:["niji"],type:"quality",bunya:[]},
+  {name:"方程式・図形・関数からとらえる数学の基礎 分野別標準問題精講",note:"旺文社の分野別標準問題精講のうち、方程式・図形・関数の基本的な考え方を横断的に扱う1冊です。軌跡や領域、同値変形の土台を入試レベルで固めたい人に向いています。",asin:"4010353996",scope:"common",tier:3,purposes:["niji","bunyabetsu"],type:"quality",bunya:["論理・軌跡と領域"]},
+  {name:"大学入試 数学の発想力が1冊でしっかり身につく本",note:"佐々木隆宏先生による、数学I・A・II・Bの総合・融合問題で発想力を鍛える1冊です。方針の立て方・行き詰まったときの打開・定石の柔軟な応用という3つの力を、問題を通して身につけます。",asin:"4761231610",scope:"common",tier:3,purposes:["niji"],type:"quality",bunya:[]},
 
   // ---- Tier4 最難関 ----
-  {name:"世界一わかりやすい 阪大の理系数学 合格講座",asin:"4046056282",scope:"rikei",tier:4,purposes:["niji"],type:"quality",bunya:[],shibouDetailOnly:["handai"]},
-  {name:"世界一わかりやすい 阪大の文系数学",scope:"bunkei",tier:4,purposes:["niji"],type:"quality",bunya:[],shibouDetailOnly:["handai"]},
-  {name:"上級問題精講",asin:"4010349247",scope:"common",tier:4,purposes:["niji"],type:"quality",bunya:[]},
-  {name:"真・解法への道",asin:"4887422806",scope:"common",tier:4,purposes:["niji"],type:"quality",bunya:[]},
-  {name:"医学部攻略の数学I・A・II・B",asin:"4777215210",scope:"common",tier:4,purposes:["niji"],type:"quality",bunya:[],shibouOnly:["igaku"]},
-  {name:"医学部攻略の数学III",asin:"4777215229",scope:"rikei",tier:4,purposes:["niji"],type:"quality",bunya:[],shibouOnly:["igaku"]},
-  {name:"坂田アキラの数IIIの微分積分が面白いほどわかる本",asin:"4046007346",scope:"rikei",tier:1,purposes:["bunyabetsu"],type:"quality",bunya:["微積分（数III）"]},
-  {name:"教科書だけでは足りない 大学入試攻略 数II・数III微分・積分",asin:"477721494X",scope:"rikei",tier:2,purposes:["bunyabetsu"],type:"quality",bunya:["微積分（数III）"]},
-  {name:"解法の探求・微積分（東京出版）",asin:"4887421516",scope:"rikei",tier:4,purposes:["bunyabetsu"],type:"quality",bunya:["微積分（数III）"],shibouOnly:["tokyoikko"]},
-  {name:"微積分 基礎の極意",asin:"4887420293",scope:"rikei",tier:4,purposes:["bunyabetsu"],type:"quality",bunya:["微積分（数III）"],shibouExclude:["tokyoikko"]},
-  {name:"志望大学の過去問（赤本／青本）",scope:"common",tier:4,purposes:["niji"],type:"quantity",bunya:[]},
-  {name:"ハイレベル理系数学",asin:"4777213641",scope:"rikei",tier:4,purposes:["niji"],type:"quantity",bunya:[]},
-  {name:"東大数学プレミアム",asin:"4325241345",scope:"rikei",tier:4,purposes:["niji"],type:"quality",bunya:[],shibouDetailOnly:["todai"]},
-  {name:"京大数学プレミアム",asin:"432524753X",scope:"rikei",tier:4,purposes:["niji"],type:"quality",bunya:[],shibouDetailOnly:["kyodai"]},
-  {name:"世界一わかりやすい 京大の理系数学",asin:"4046047348",scope:"rikei",tier:4,purposes:["niji"],type:"quality",bunya:[],shibouDetailOnly:["kyodai"]},
-  {name:"世界一わかりやすい 京大の文系数学",asin:"4046022663",scope:"bunkei",tier:4,purposes:["niji"],type:"quality",bunya:[],shibouDetailOnly:["kyodai"]},
-  {name:"Z会 理系数学の核心 難関大編",asin:"4860669932",scope:"rikei",tier:4,purposes:["niji"],type:"quality",bunya:[]},
-  {name:"数学の真髄（論理・写像）",asin:"4890859055",scope:"common",tier:4,purposes:["niji","bunyabetsu"],type:"quality",bunya:["論理・軌跡と領域"]},
-  {name:"坂田アキラの軌跡・領域が面白いほどわかる本",asin:"4046020237",scope:"common",tier:1,purposes:["bunyabetsu"],type:"quality",bunya:["論理・軌跡と領域"]},
-  {name:"数学の真髄（ベクトル）",asin:"4890859667",scope:"common",tier:4,purposes:["bunyabetsu"],type:"quality",bunya:["ベクトル"],profile:"deepen"},
-  {name:"やさしい理系数学",asin:"4777213633",scope:"rikei",tier:4,purposes:["niji"],type:"quantity",bunya:[]},
-  {name:"入試数学の掌握（3部作）",asin:"4753930742",scope:"common",tier:4,purposes:["niji"],type:"quality",bunya:[]},
-  {name:"マスターオブ整数",asin:"488742017X",scope:"common",tier:4,purposes:["bunyabetsu"],type:"quantity",bunya:["整数"]},
-  {name:"整数問題 解法のパターン30（技術評論社）",asin:"4774176575",scope:"common",tier:3,purposes:["bunyabetsu"],type:"quantity",bunya:["整数"]},
-  {name:"教科書だけでは足りない 大学入試攻略 整数",asin:"4777228827",scope:"common",tier:3,purposes:["bunyabetsu"],type:"quality",bunya:["整数"]},
-  {name:"総合的研究 論理学で学ぶ数学",asin:"4010377046",scope:"common",tier:5,purposes:["bunyabetsu","niji"],type:"quality",bunya:["論理・軌跡と領域"]},
+  {name:"世界一わかりやすい 阪大の理系数学 合格講座",note:"阪大理系数学の過去問を頻出テーマごとに講義形式で解説する1冊です。難度の高い阪大の問題に対し、発想の出発点から答案作成までを学べます。",asin:"4046056282",scope:"rikei",tier:4,purposes:["niji"],type:"quality",bunya:[],shibouDetailOnly:["handai"]},
+  {name:"世界一わかりやすい 阪大の文系数学",note:"阪大文系数学の過去問を講義形式で解説する1冊です。阪大文系志望者が出題傾向を押さえ、記述答案の完成度を上げるのに向いています。",scope:"bunkei",tier:4,purposes:["niji"],type:"quality",bunya:[],shibouDetailOnly:["handai"]},
+  {name:"上級問題精講",note:"問題精講シリーズの最上位で、難関大の入試問題を「精講」と詳しい解説で掘り下げます。標準問題精講や1対1対応の演習を終えた人が、最難関レベルに挑む段階で使います。",asin:"4010349247",scope:"common",tier:4,purposes:["niji"],type:"quality",bunya:[]},
+  {name:"真・解法への道",note:"駿台・代ゼミで教える箕輪浩嗣先生による、本番で再現できる解法を難関大の過去問で積み上げる問題集です。網羅系を終えたのに難関大の過去問で手が止まる人に向いています。特徴と使い方は解説記事で紹介しています。",asin:"4887422806",scope:"common",tier:4,purposes:["niji"],type:"quality",bunya:[]},
+  {name:"医学部攻略の数学I・A・II・B",note:"河合出版による医学部入試に特化した問題集で、医学部で頻出のテーマを集めています。医学部志望者が過去問に入る前に、医学部特有の出題に慣れておくのに向いています。",asin:"4777215210",scope:"common",tier:4,purposes:["niji"],type:"quality",bunya:[],shibouOnly:["igaku"]},
+  {name:"医学部攻略の数学III",note:"同シリーズの数学III版で、医学部で差がつく微積分などの頻出テーマを扱います。医学部志望の理系受験生が数IIIを仕上げる段階で使います。",asin:"4777215229",scope:"rikei",tier:4,purposes:["niji"],type:"quality",bunya:[],shibouOnly:["igaku"]},
+  {name:"坂田アキラの数IIIの微分積分が面白いほどわかる本",note:"坂田アキラ先生による、数学IIIの微分積分を超基礎から手取り足取り解説する1冊です。数IIIの微積分の計算方法から身につけたい人に向いています。",asin:"4046007346",scope:"rikei",tier:1,purposes:["bunyabetsu"],type:"quality",bunya:["微積分（数III）"]},
+  {name:"教科書だけでは足りない 大学入試攻略 数II・数III微分・積分",note:"河合出版の分野別シリーズで、数II・数IIIの微分積分を教科書の先の入試レベルまで解説します。微積分を入試で使いこなせるようにしたい理系受験生に向いています。",asin:"477721494X",scope:"rikei",tier:2,purposes:["bunyabetsu"],type:"quality",bunya:["微積分（数III）"]},
+  {name:"解法の探求・微積分（東京出版）",note:"東京出版『大学への数学』シリーズの微積分の問題集で、難関大の微積分問題を多角的な解法で掘り下げます。微積分を得点源にしたい最難関志望の理系受験生向けの1冊です。",asin:"4887421516",scope:"rikei",tier:4,purposes:["bunyabetsu"],type:"quality",bunya:["微積分（数III）"],shibouOnly:["tokyoikko"]},
+  {name:"微積分 基礎の極意",note:"東京出版『大学への数学』シリーズの微積分の1冊で、数IIIの微積分の基本を入試で使える精度まで固めます。網羅系で数IIIを学んだ理系の人が、微積分の土台を仕上げるのに向いています。",asin:"4887420293",scope:"rikei",tier:4,purposes:["bunyabetsu"],type:"quality",bunya:["微積分（数III）"],shibouExclude:["tokyoikko"]},
+  {name:"志望大学の過去問（赤本／青本）",note:"志望校の実際の入試問題に取り組む最終段階の1冊です。出題形式や時間配分を体感できるので、どの参考書を使っていても最後は必ず取り組みます。解けなかった問題は前に使った参考書の同じ分野に戻って復習しましょう。",scope:"common",tier:4,purposes:["niji"],type:"quantity",bunya:[]},
+  {name:"ハイレベル理系数学",note:"河合出版による、難関大理系の入試問題で実戦力を鍛える演習書です。標準問題を終えた理系受験生が、最難関レベルの問題量をこなしたい段階で使います。",asin:"4777213641",scope:"rikei",tier:4,purposes:["niji"],type:"quantity",bunya:[]},
+  {name:"東大数学プレミアム",note:"教学社による東大数学の過去問解説書で、問題ごとに複数の解法や背景まで掘り下げた解説が特徴です。東大志望者が過去問1題から学べることを最大限に引き出すのに向いています。",asin:"4325241345",scope:"rikei",tier:4,purposes:["niji"],type:"quality",bunya:[],shibouDetailOnly:["todai"]},
+  {name:"京大数学プレミアム",note:"同じく教学社による京大数学の過去問解説書で、思考力を問う京大の問題を詳しい解説で読み解きます。京大志望者が過去問演習を深めるための1冊です。",asin:"432524753X",scope:"rikei",tier:4,purposes:["niji"],type:"quality",bunya:[],shibouDetailOnly:["kyodai"]},
+  {name:"世界一わかりやすい 京大の理系数学",note:"駿台・河合塾で教える池谷哲先生による、京大理系数学の過去問を「理解・計画・実行・検討」の4ステップで講義する1冊です。発想の出発点から解説されるので、京大の問題にどう切り込むかが分かります。著者の授業スタイルは解説記事で紹介しています。",asin:"4046047348",scope:"rikei",tier:4,purposes:["niji"],type:"quality",bunya:[],shibouDetailOnly:["kyodai"]},
+  {name:"世界一わかりやすい 京大の文系数学",note:"同じく池谷哲先生による京大文系数学版で、過去問を4ステップの思考プロセスで講義します。京大文系志望者が過去問演習の前に考え方の型を身につけるのに向いています。",asin:"4046022663",scope:"bunkei",tier:4,purposes:["niji"],type:"quality",bunya:[],shibouDetailOnly:["kyodai"]},
+  {name:"Z会 理系数学の核心 難関大編",note:"標準編に続く難関大向けの1冊で、最難関レベルの入試問題を通して解法の核心を掘り下げます。標準編や1対1対応の演習を終えた理系受験生に向いています。",asin:"4860669932",scope:"rikei",tier:4,purposes:["niji"],type:"quality",bunya:[]},
+  {name:"数学の真髄（論理・写像）",note:"東進の青木純二先生による、命題と条件や写像の考え方を論理から丁寧に講義する1冊です。同値変形や軌跡を形式的に処理してきた最難関志望者が、論理の土台を作り直すのに向いています。",asin:"4890859055",scope:"common",tier:4,purposes:["niji","bunyabetsu"],type:"quality",bunya:["論理・軌跡と領域"]},
+  {name:"坂田アキラの軌跡・領域が面白いほどわかる本",note:"坂田アキラ先生による、軌跡と領域を超基礎から手取り足取り解説する1冊です。軌跡や領域の問題で何をすればいいか分からない人に向いています。",asin:"4046020237",scope:"common",tier:1,purposes:["bunyabetsu"],type:"quality",bunya:["論理・軌跡と領域"]},
+  {name:"数学の真髄（ベクトル）",note:"東進の青木純二先生による、一次独立や斜交座標など教科書外の概念も使ってベクトルを本質から理解する1冊です。計算より図形的な考察を重視していて、最難関志望者がベクトルを深く仕上げるのに向いています。",asin:"4890859667",scope:"common",tier:4,purposes:["bunyabetsu"],type:"quality",bunya:["ベクトル"],profile:"deepen"},
+  {name:"やさしい理系数学",note:"河合出版の定番演習書で、タイトルに反して難関大レベルの問題を収録しています。1題に複数の解法が示されているので、別解を比べて発想の幅を広げたい理系受験生に向いています。",asin:"4777213633",scope:"rikei",tier:4,purposes:["niji"],type:"quantity",bunya:[]},
+  {name:"入試数学の掌握（3部作）",note:"近藤至徳先生による3部作で、難関大の入試問題を解くための思考の手順を総論から各論まで体系的に学びます。内容は高度で、網羅系と標準演習を終えた最難関志望者向けです。難しすぎる参考書3選の記事でも取り上げています。",asin:"4753930742",scope:"common",tier:4,purposes:["niji"],type:"quality",bunya:[]},
+  {name:"マスターオブ整数",note:"東京出版『大学への数学』シリーズの整数問題集で、難関大レベルの整数問題を深く掘り下げます。整数を得点源にしたい最難関志望者向けで、典型解法が固まってから取り組む1冊です。",asin:"488742017X",scope:"common",tier:4,purposes:["bunyabetsu"],type:"quantity",bunya:["整数"]},
+  {name:"整数問題 解法のパターン30（技術評論社）",note:"整数問題の頻出解法を30のパターンに整理して学べる1冊です。整数問題に手をつけられない人が、まず解き方の型を身につけるのに向いています。",asin:"4774176575",scope:"common",tier:3,purposes:["bunyabetsu"],type:"quantity",bunya:["整数"]},
+  {name:"教科書だけでは足りない 大学入試攻略 整数",note:"河合出版の分野別シリーズで、教科書だけでは身につきにくい整数問題の考え方を学べます。整数分野を入試で戦えるレベルまで引き上げたい人に向いています。",asin:"4777228827",scope:"common",tier:3,purposes:["bunyabetsu"],type:"quality",bunya:["整数"]},
+  {name:"総合的研究 論理学で学ぶ数学",note:"長岡亮介先生による、記号論理に基づいて数学の論理を厳密に学べる1冊です。同値変形や量化の扱いを根本から理解したい最難関志望者向けで、内容は高度です。論理の重要性は解説記事でも紹介しています。",asin:"4010377046",scope:"common",tier:5,purposes:["bunyabetsu","niji"],type:"quality",bunya:["論理・軌跡と領域"]},
 
   // ---- Tier5 超級 ----
-  {name:"難問ラプソディ",asin:"4908003564",scope:"common",tier:5,purposes:["niji"],type:"quantity",bunya:[]},
+  {name:"難問ラプソディ",note:"安田亨先生と塩崎ひかる先生による、近年の大学入試から難問を集めた問題集です。最難関大志望者が腕試しとして取り組む1冊で、標準演習が固まる前に手を出すのは禁物です。難しすぎる参考書3選の記事でも取り上げています。",asin:"4908003564",scope:"common",tier:5,purposes:["niji"],type:"quantity",bunya:[]},
 ];
 
 /* 当サイトの解説記事がある本 */
@@ -943,6 +947,63 @@ function explainBook(b, s, targetTier, purpose, maxScore){
   const pct = s >= 1000 ? 100 : Math.max(0, Math.min(100, Math.round(s / maxScore * 100)));
   return {pct, tags};
 }
+/* 回答内容と一致理由から「あなたへのひとこと」を組み立てる */
+function hitokoto(ex){
+  const who = [];
+  if(answers.hensachi) who.push(`偏差値${answers.hensachi}`);
+  const sh = answers.shibouDetailLabel || answers.shibouLabel;
+  if(sh && sh !== "その他") who.push(`${sh}志望`);
+  const lead = who.length ? `${who.join("で")}なら、` : "今の条件なら、";
+  const t = ex.tags.map(x=>x.t);
+  let body;
+  if(t.includes("やや難しめ")) body = "少し背伸びになるので、前段階の本と並行すると効果的です。";
+  else if(t.includes("やや易しめ")) body = "穴を埋める総復習として短期間で回すのに向いています。";
+  else body = "今のレベルにちょうど合う1冊です。";
+  const bonus = t.some(x=>/志望向け$/.test(x)) ? "志望校の出題傾向に直結する1冊でもあります。" : "";
+  return lead + body + bonus;
+}
+
+/* 上位3冊の説明文を生成AIのように1文字ずつ表示する */
+function typeDescriptions(){
+  const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const list = document.querySelector(".book-list");
+  if(!list || reduce) return;
+  const items = Array.from(list.querySelectorAll(":scope > .book-item")).slice(0,3);
+  const jobs = items.map(item => {
+    const desc = item.querySelector(".desc");
+    if(!desc) return null;
+    desc.style.minHeight = desc.offsetHeight + "px";
+    const walker = document.createTreeWalker(desc, NodeFilter.SHOW_TEXT);
+    const nodes = [];
+    while(walker.nextNode()) nodes.push({node:walker.currentNode, text:walker.currentNode.nodeValue});
+    nodes.forEach(n => n.node.nodeValue = "");
+    const job = {item, desc, nodes, ni:0, ci:0, done:false, caret:null};
+    item.addEventListener("click", e => { if(e.target.closest("a")) return; finish(job); }, {once:true});
+    return job;
+  }).filter(Boolean);
+  function finish(job){
+    if(job.done) return;
+    job.nodes.forEach(n => n.node.nodeValue = n.text);
+    if(job.caret) job.caret.remove();
+    job.done = true; job.desc.style.minHeight = "";
+  }
+  let k = 0;
+  function step(){
+    while(k < jobs.length && jobs[k].done) k++;
+    if(k >= jobs.length) return;
+    const job = jobs[k];
+    if(!job.caret){ job.caret = document.createElement("span"); job.caret.className = "type-caret"; }
+    const cur = job.nodes[job.ni];
+    if(!cur){ finish(job); k++; setTimeout(step, 260); return; }
+    if(job.caret.previousSibling !== cur.node) cur.node.parentNode.insertBefore(job.caret, cur.node.nextSibling);
+    job.ci++;
+    cur.node.nodeValue = cur.text.slice(0, job.ci);
+    if(job.ci >= cur.text.length){ job.ni++; job.ci = 0; }
+    setTimeout(step, 25);
+  }
+  setTimeout(step, 350);
+}
+
 function bookItemHtml(b, i, chipLabel, chipBg, ex, isSub){
   const scopeLabel = b.scope==="rikei"?"理系範囲":(b.scope==="bunkei"?"文系範囲":"");
   return `<div class="book-item rank-${i+1}">
@@ -951,7 +1012,7 @@ function bookItemHtml(b, i, chipLabel, chipBg, ex, isSub){
       <p class="name">${b.name}${scopeLabel?`<span class="scope-tag">${scopeLabel}</span>`:''}</p>
       <div class="match"><span class="m-num">一致度 ${ex.pct}%</span><span class="m-bar"><i style="width:${ex.pct}%"></i></span></div>
       <div class="reasons">${ex.tags.map(x=>`<span${x.warn?' class="warn"':''}>${x.t}</span>`).join('')}</div>
-      ${b.note?`<p class="desc">${b.note}</p>`:''}
+      <p class="desc">${b.note?`<span class="d-note">${b.note}</span>`:''}<span class="d-you"><b>あなたへのひとこと</b>${hitokoto(ex)}</span></p>
       <div class="book-actions">
         <a class="buy-link" href="${amazonUrl(b)}" target="_blank" rel="sponsored noopener">Amazonで見る</a>
         ${b.article?`<a class="article-link" href="articles/${b.article}.html">解説記事を読む →</a>`:''}
@@ -1049,6 +1110,7 @@ function renderResult(){
     </p>
   `;
   renderCrumbs();
+  typeDescriptions();
   document.getElementById("retry-btn").addEventListener("click", ()=>{
     answers = {}; stack = [{step:"start", snap:{}}];
     document.getElementById("page-title").innerHTML = "目的別・数学参考書診断";
