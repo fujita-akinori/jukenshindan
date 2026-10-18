@@ -36,6 +36,11 @@ const ARTICLES = [
   { slug:"suugaku-no-shinzui.html", title:"青木純二「数学の真髄」シリーズ 徹底解説", description:"東進ブックス『数学の真髄』の論理・写像編とベクトル編を、講座版との違いや使う時期とあわせて解説します。", tag:"参考書比較", date:"2026-10-17", order:23 },
   { slug:"seibutsu-benkyouhou.html", title:"生物の勉強法：初学から難関大までの参考書ルート", description:"生物は教科書が軸。田部の合格77講とセミナーで東大レベルまで届くシンプルなルートと、思考問題対策の標準問題精講を紹介します。", tag:"科目別対策", date:"2026-10-17", order:24 },
   { slug:"kagaku-benkyouhou.html", title:"化学の勉強法：初学から難関大までの参考書ルート", description:"Doシリーズと入門・基礎・標準・上級問題精講で完結する化学の参考書ルートを、著者紹介と志望校別の止めどころとあわせて解説します。", tag:"科目別対策", date:"2026-10-17", order:25 },
+  { slug:"kyoutsuu-seikei-shougatsu.html", title:"正月から始めて9割：共通テスト政経の最短勉強法", description:"正月から始めて現役97点。miniいけ先生の動画と過去問・予想問題だけで、共通テスト公共、政治・経済で9割を狙う勉強法を紹介します。", tag:"科目別対策", date:"2026-10-18", order:26 },
+  { slug:"kyoutsuu-mochimono.html", title:"共通テスト当日に忘れたら困る持ち物チェックリスト", description:"共通テスト当日に必要な持ち物、あると助かるもの、持ち込むと不正行為になるものをチェックリストにまとめました。", tag:"受験戦略", date:"2026-10-18", order:27 },
+  { slug:"kakureta-ryousho-3sen.html", title:"隠れた良書：もっと使われていい数学参考書3選", description:"最重要問題100・入試のツボを押さえる重点学習・実戦 数学重要問題集。知名度は低いが実力は定番に劣らない3冊をレベル別に紹介します。", tag:"参考書比較", date:"2026-10-18", order:28 },
+  { slug:"sougouteki-kenkyuu-series.html", title:"本格派数学参考書レーベル「総合的研究」シリーズ全解説", description:"旺文社「総合的研究」の数学の本を全冊解説。各冊の特徴と、どの順番で読むかを紹介します。", tag:"参考書比較", date:"2026-10-18", order:29 },
+  { slug:"leap-saikyou.html", title:"ターゲットでもシス単でもなく、結局LEAPが最強な理由", description:"ターゲット1900・システム英単語と比べて、LEAPが最強の英単語帳である理由を解説します。第一義だけ隠せる構成と質の高い例文が強みです。", tag:"参考書比較", date:"2026-10-18", order:30 },
 ];
 
 // 新着順（日付→order）にソートして返す
