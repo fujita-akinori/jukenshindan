@@ -288,3 +288,10 @@ div.aff-box li:first-child{ border-top:none; }
   .paper-sheet .aff-box{ padding:16px 16px; }
   .paper-sheet .diag-cta{ padding:20px 18px; }
 }
+
+/* 記事ページ：パンくずと執筆者 */
+.paper-sheet .crumbs{ display:flex; flex-wrap:wrap; align-items:center; gap:6px; font-size:12px; color:var(--sheet-muted); margin:0 0 14px; }
+.paper-sheet .crumbs a{ color:var(--sheet-muted); text-decoration:none; }
+.paper-sheet .crumbs a:hover{ color:var(--sheet-accent); text-decoration:underline; }
+.paper-sheet .byline{ display:block; margin-top:6px; font-size:12.5px; color:var(--sheet-muted); }
+.paper-sheet .byline a{ color:var(--sheet-accent); text-decoration:underline; text-underline-offset:3px; }
