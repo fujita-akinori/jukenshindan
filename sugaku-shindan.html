@@ -369,7 +369,7 @@ const BOOKS = [
   // ---- Tier2 標準・共テ ----
   {name:"鉄緑会 基礎力完成 数学I・A+II・B",note:"東大受験指導で知られる鉄緑会の教材をもとにした問題集で、基本事項を入試で使える精度まで鍛えます。網羅系は一通り終えたが基礎の精度に不安がある、難関大志望者に向いています。",asin:"404621340X",scope:"common",tier:2,purposes:["mouraikei"],type:"quantity",bunya:[],mouraikei:true},
   {name:"青チャート（チャート式 基礎からの数学）",note:"教科書の基本から入試の標準レベルまでを網羅する、数研出版の定番参考書です。収録問題を絞り込んだ構成で、典型解法を短いサイクルで周回して身につけたい人に向いています。Focus Goldとの比較は解説記事で紹介しています。",asin:"4410105795",scope:"common",tier:2,purposes:["mouraikei","niji"],type:"quality",bunya:[],mouraikei:true,shibouExclude:["tokyoikko","kyutei"]},
-  {name:"Focus Gold",note:"啓林館の網羅系参考書で、教科書の基本から最難関レベルまでを1冊で扱います。解説が厚く発展問題も充実しているので、じっくり読み込みながら高いレベルまで見据えたい人に向いています。青チャートとの比較は解説記事で紹介しています。",asin:"4402221277",scope:"common",tier:2,purposes:["mouraikei","niji"],type:"quality",bunya:[],mouraikei:true,shibouOnly:["tokyoikko"]},
+  {name:"Focus Gold",note:"啓林館の網羅系参考書で、教科書の基本から最難関レベルまでを1冊で扱います。解説が厚く発展問題も充実しているので、じっくり読み込みながら高いレベルまで見据えたい人に向いています。青チャートとの比較は解説記事で紹介しています。",asin:"4402252539",scope:"common",tier:2,purposes:["mouraikei","niji"],type:"quality",bunya:[],mouraikei:true,shibouOnly:["tokyoikko"]},
   {name:"共通テスト数学 予想問題集（数学I・A）",note:"本番と同じ形式の予想問題で、時間配分や解く順番を練習するための問題集です。基礎が固まったあと、本番形式での得点力を仕上げる段階で使います。",asin:"4046051825",scope:"common",tier:2,purposes:["kyoutsuu"],type:"quantity",bunya:[],krange:"IA"},
   {name:"共通テスト数学 予想問題集（数学II・B・C）",note:"数学II・B・Cの予想問題を本番と同じ形式で解いて、時間内に解き切る練習をするための1冊です。共通テスト直前期の実戦演習に向いています。",scope:"common",tier:2,purposes:["kyoutsuu"],type:"quantity",bunya:[],krange:"IIBC"},
   {name:"青チャート（チャート式 基礎からの数学III+C）",note:"数研出版のチャート式のうち、数学IIIの基本から入試の標準レベルまでを網羅する定番参考書です。理系の網羅系として、数IIIの典型問題を一通り身につけるのに使います。青チャートとFocus Goldの比較は解説記事で紹介しています。",asin:"4410105957",scope:"rikei",tier:2,purposes:["mouraikei"],type:"quality",bunya:[]},
@@ -466,15 +466,16 @@ const BOOKS = [
 
 /* 当サイトの解説記事がある本 */
 const ARTICLE_OF = {
-  "青チャート（チャート式 基礎からの数学）":"aoi-chart-vs-focus-gold", "青チャート（チャート式 基礎からの数学III+C）":"aoi-chart-vs-focus-gold", "Focus Gold":"aoi-chart-vs-focus-gold",
+  "青チャート（チャート式 基礎からの数学）":"aoi-chart-vs-focus-gold", "青チャート（チャート式 基礎からの数学III+C）":"aoi-chart-vs-focus-gold", "Focus Gold":"focus-gold-tsukaikata",
   "文系の数学 良問プラチカ":"bunkei-purachika", "理系数学の良問プラチカ":"bunkei-purachika",
-  "1対1対応の演習（数学I・A/II・B）":"ichitaichi-vs-shinsuta", "1対1対応の演習（数学III）":"ichitaichi-vs-shinsuta", "新数学スタンダード演習":"ichitaichi-vs-shinsuta",
-  "合格る計算 数学I・A・II・B［数列］・C［ベクトル］":"keisanryoku-9wari", "合格る計算 数学III・C［複素数平面・2次曲線］":"keisanryoku-9wari", "数学の計算革命〈三訂版〉":"keisanryoku-9wari",
+  "1対1対応の演習（数学I・A/II・B）":"ichitaichi-tsukaikata", "1対1対応の演習（数学III）":"ichitaichi-tsukaikata", "新数学スタンダード演習":"ichitaichi-vs-shinsuta",
+  "合格る計算 数学I・A・II・B［数列］・C［ベクトル］":"ukaru-keisan-tsukaikata", "合格る計算 数学III・C［複素数平面・2次曲線］":"ukaru-keisan-tsukaikata", "数学の計算革命〈三訂版〉":"keisanryoku-9wari",
   "難問ラプソディ":"sawaruna-sankousho-3sen", "入試数学の掌握（3部作）":"sawaruna-sankousho-3sen",
   "総合的研究 論理学で学ぶ数学":"suujaku-suukyou-ronri", "志田晶の 集合・論理、整数が面白いほどわかる本":"suujaku-suukyou-ronri",
   "真・解法への道":"shin-kaihou-eno-michi",
   "世界一わかりやすい 京大の理系数学":"yobiko-no-jugyou-3sen", "世界一わかりやすい 京大の文系数学":"yobiko-no-jugyou-3sen"
 };
+Object.assign(ARTICLE_OF, {"やさしい理系数学":"yasashii-rikei-sugaku", "標準問題精講":"hyoujun-mondai-seikou-sugaku"});
 BOOKS.forEach(b => { if(ARTICLE_OF[b.name]) b.article = ARTICLE_OF[b.name]; });
 
 const BUNYA_LIST = ["場合の数・確率","整数","計算","微積分（数III）","数列","複素数平面","ベクトル","論理・軌跡と領域"];

@@ -42,6 +42,11 @@ const ARTICLES = [
   { slug:"kakureta-ryousho-3sen.html", title:"隠れた良書：もっと使われていい数学参考書3選", description:"最重要問題100・入試のツボを押さえる重点学習・実戦 数学重要問題集。知名度は低いが実力は定番に劣らない3冊をレベル別に紹介します。", tag:"参考書比較", date:"2026-10-18", order:28 },
   { slug:"sougouteki-kenkyuu-series.html", title:"本格派数学参考書レーベル「総合的研究」シリーズ全解説", description:"旺文社「総合的研究」の数学の本を全冊解説。各冊の特徴と、どの順番で読むかを紹介します。", tag:"参考書比較", date:"2026-10-18", order:29 },
   { slug:"leap-saikyou.html", title:"ターゲットでもシス単でもなく、結局LEAPが最強な理由", description:"ターゲット1900・システム英単語と比べて、LEAPが最強の英単語帳である理由を解説します。第一義だけ隠せる構成と質の高い例文が強みです。", tag:"参考書比較", date:"2026-10-18", order:30 },
+  { slug:"ichitaichi-tsukaikata.html", title:"1対1対応の演習の使い方とレベル｜いつから何周やるか・次にやる問題集まで解説", description:"1対1対応の演習（東京出版）のレベル・使い方・何周やるべきか・いつから始めるかを解説。網羅系参考書の次に使う定番問題集の進め方を紹介します。", tag:"参考書比較", date:"2026-10-19", order:31 },
+  { slug:"focus-gold-tsukaikata.html", title:"Focus Goldの使い方とレベル｜青チャートとの違いと何周やるべきかを解説", description:"Focus Gold 6th Editionのレベル・使い方・何周やるべきかを解説。分厚い網羅系を挫折せずにやり切る例題中心の進め方を紹介します。", tag:"参考書比較", date:"2026-10-19", order:32 },
+  { slug:"yasashii-rikei-sugaku.html", title:"やさしい理系数学のレベルと使い方｜本当にやさしい？いつから始めるかを解説", description:"やさしい理系数学（河合出版）のレベル・使い方・何周やるべきかを解説。本当にやさしいのか、別解を活かした使い方を紹介します。", tag:"参考書比較", date:"2026-10-19", order:33 },
+  { slug:"hyoujun-mondai-seikou-sugaku.html", title:"標準問題精講（数学）のレベルと使い方｜1対1対応の演習との違いも解説", description:"標準問題精講（旺文社）のレベル・使い方・何周やるべきかを解説。1対1対応の演習との違いと、精講を活かした進め方を紹介します。", tag:"参考書比較", date:"2026-10-19", order:34 },
+  { slug:"ukaru-keisan-tsukaikata.html", title:"合格る計算の使い方とレベル｜計算ミスが減る勉強法と何周やるべきか", description:"合格る計算（文英堂・広瀬和之）のレベル・使い方・何周やるべきかを解説。計算ミスや時間切れで点を落とす人のための進め方を紹介します。", tag:"参考書比較", date:"2026-10-19", order:35 },
 ];
 
 // 新着順（日付→order）にソートして返す
