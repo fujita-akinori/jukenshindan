@@ -160,7 +160,7 @@ def card_list_html(arts):
 
 
 SEARCH_BOX = """  <div class="search-box" id="search">
-    <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="16.5" y1="16.5" x2="21" y2="21"></line></svg>
+    <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="16.5" y1="16.5" x2="21" y2="21"></line></svg>
     <input type="search" id="article-search" placeholder="記事をキーワードで検索（例：青チャート 使い方）" aria-label="記事をキーワードで検索" autocomplete="off">
   </div>
   <p class="search-empty" id="search-empty" hidden>該当する記事はありません。別のキーワードで試してみてください。</p>"""
@@ -238,7 +238,7 @@ def build_search_index(arts):
 
 
 SEARCH_ICON = ('<a class="nav-search" href="{href}" aria-label="記事を検索" title="記事を検索">'
-               '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle>'
+               '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle>'
                '<line x1="16.5" y1="16.5" x2="21" y2="21"></line></svg></a>')
 
 
@@ -373,6 +373,18 @@ def build_articles(arts):
         write(rel, seo_head(rel, s, "article", [article, crumbs]))
 
 
+def bust_css_cache():
+    """style.css の内容から版番号を作り、全ページの読み込みURLに付ける（ブラウザに古いデザインを使わせない）"""
+    import hashlib
+    ver = hashlib.md5(read("style.css").encode("utf-8")).hexdigest()[:8]
+    pages = [p for p, _, _ in STATIC_PAGES] + ["articles/" + f for f in sorted(os.listdir(path("articles"))) if f.endswith(".html")]
+    for rel in pages:
+        s = read(rel)
+        s2 = re.sub(r'href="((?:\.\./)?style\.css)(?:\?v=[0-9a-f]+)?"', lambda m: f'href="{m.group(1)}?v={ver}"', s)
+        if s2 != s:
+            write(rel, s2)
+
+
 def build_sitemap(arts):
     rows = []
     for rel, _, on in STATIC_PAGES:
@@ -399,6 +411,7 @@ def main():
     build_static_pages()
     build_search_index(arts)
     add_nav_search()
+    bust_css_cache()
     build_sitemap(arts)
     print(f"OK: 記事 {len(arts)} 本 / タグページ {len(TAGS)} 枚を生成しました")
 
