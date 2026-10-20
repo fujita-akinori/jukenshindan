@@ -34,7 +34,7 @@ TAGS = [  # (タグ名, ファイル名, 説明)
     ("予備校", "tag-yobiko.html", "東進・河合塾・駿台・武田塾など、予備校選びと講座選びに関する記事の一覧です。"),
 ]
 TAG_FILE = {t: f for t, f, _ in TAGS}
-TAG_COLOR = {"参考書比較": "var(--lv3)", "受験戦略": "var(--lv2)", "科目別対策": "var(--lv4)", "予備校": "var(--lv1)"}
+TAG_COLOR = {"参考書比較": "var(--tag-sankousho)", "受験戦略": "var(--tag-senryaku)", "科目別対策": "var(--tag-kamoku)", "予備校": "var(--tag-yobiko)"}
 
 STATIC_PAGES = [  # (ファイル, パンくず名, sitemap に載せるか)
     ("index.html", None, True),
