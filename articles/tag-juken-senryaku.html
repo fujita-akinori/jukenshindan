@@ -80,6 +80,7 @@
       <a href="../index.html#diagnosis">診断一覧</a>
       <a href="index.html">記事</a>
       <a href="../contact.html">お問い合わせ</a>
+      <!-- NAVSEARCH:BEGIN --><a class="nav-search" href="index.html#search" aria-label="記事を検索" title="記事を検索"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="16.5" y1="16.5" x2="21" y2="21"></line></svg></a><!-- NAVSEARCH:END -->
     </nav>
   </div>
 </header>
@@ -90,6 +91,13 @@
   <hr class="page-title-rule">
   <p class="page-lead">勉強計画の立て方や試験当日の準備など、受験全体の戦略に関する記事の一覧です。</p>
 
+<!-- SEARCH:BEGIN -->
+  <div class="search-box" id="search">
+    <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="16.5" y1="16.5" x2="21" y2="21"></line></svg>
+    <input type="search" id="article-search" placeholder="記事をキーワードで検索（例：青チャート 使い方）" aria-label="記事をキーワードで検索" autocomplete="off">
+  </div>
+  <p class="search-empty" id="search-empty" hidden>該当する記事はありません。別のキーワードで試してみてください。</p>
+<!-- SEARCH:END -->
   <div class="filter-row" id="filter-row">
 <!-- CHIPS:BEGIN -->
     <a class="filter-chip" href="index.html">すべて</a>
@@ -102,61 +110,61 @@
 
   <div class="article-grid" id="article-grid">
 <!-- CARDS:BEGIN -->
-    <a href="kyoutsuu-mochimono.html" class="article-card" data-tag="受験戦略">
+    <a href="kyoutsuu-mochimono.html" class="article-card" data-tag="受験戦略" data-slug="kyoutsuu-mochimono.html">
       <span class="tag">受験戦略</span>
       <h2>共通テスト当日に忘れたら困る持ち物チェックリスト</h2>
       <p>共通テスト当日に必要な持ち物、あると助かるもの、持ち込むと不正行為になるものをチェックリストにまとめました。</p>
       <span class="meta">2026.10.18</span>
     </a>
-    <a href="tokui-nobasu-ka-nigate-umeru-ka.html" class="article-card" data-tag="受験戦略">
+    <a href="tokui-nobasu-ka-nigate-umeru-ka.html" class="article-card" data-tag="受験戦略" data-slug="tokui-nobasu-ka-nigate-umeru-ka.html">
       <span class="tag">受験戦略</span>
       <h2>「得意科目を伸ばす」か「苦手科目を埋める」か</h2>
       <p>限られた勉強時間の配分について、得意を伸ばす戦略と苦手を埋める戦略のどちらが向いているかを解説します。</p>
       <span class="meta">2026.07.08</span>
     </a>
-    <a href="natsuyasumi-suugaku-jikan.html" class="article-card" data-tag="受験戦略">
+    <a href="natsuyasumi-suugaku-jikan.html" class="article-card" data-tag="受験戦略" data-slug="natsuyasumi-suugaku-jikan.html">
       <span class="tag">受験戦略</span>
       <h2>夏休みの数学、何時間やればいいのか問題</h2>
       <p>夏休みに数学へ割く時間について、「時間数」ではなく「到達点」から逆算する考え方を解説します。</p>
       <span class="meta">2026.07.08</span>
     </a>
-    <a href="moshi-tokinaoshi-note.html" class="article-card" data-tag="受験戦略">
+    <a href="moshi-tokinaoshi-note.html" class="article-card" data-tag="受験戦略" data-slug="moshi-tokinaoshi-note.html">
       <span class="tag">受験戦略</span>
       <h2>模試の解き直しノート、意味があるのか問題</h2>
       <p>模試の解き直しノートが機能しない理由と、本当に実力につながる解き直しの条件を解説します。</p>
       <span class="meta">2026.07.08</span>
     </a>
-    <a href="sankousho-syuukaisuu.html" class="article-card" data-tag="受験戦略">
+    <a href="sankousho-syuukaisuu.html" class="article-card" data-tag="受験戦略" data-slug="sankousho-syuukaisuu.html">
       <span class="tag">受験戦略</span>
       <h2>「1冊を完璧に」は本当か？参考書の周回数について</h2>
       <p>「1冊を完璧にすべき」という定番アドバイスを、周回数の目安と「完璧」の正しい定義から解説します。</p>
       <span class="meta">2026.07.08</span>
     </a>
-    <a href="sankousho-root-no-yami.html" class="article-card" data-tag="受験戦略">
+    <a href="sankousho-root-no-yami.html" class="article-card" data-tag="受験戦略" data-slug="sankousho-root-no-yami.html">
       <span class="tag">受験戦略</span>
       <h2>参考書ルートの闇：参考書診断がなぜ必要なのか</h2>
       <p>ネット上に溢れる「参考書ルート」コンテンツに共通する3つの問題点と、個別診断という形が必要な理由を解説します。</p>
       <span class="meta">2026.07.08</span>
     </a>
-    <a href="pomodoro-syuuchuuryoku.html" class="article-card" data-tag="受験戦略">
+    <a href="pomodoro-syuuchuuryoku.html" class="article-card" data-tag="受験戦略" data-slug="pomodoro-syuuchuuryoku.html">
       <span class="tag">受験戦略</span>
       <h2>集中力を持続させる方法：ポモドーロ・テクニック</h2>
       <p>受験勉強の集中力が続かない人向けに、時間管理法「ポモドーロ・テクニック」の仕組みと取り入れ方を解説します。</p>
       <span class="meta">2026.07.08</span>
     </a>
-    <a href="keisanryoku-9wari.html" class="article-card" data-tag="受験戦略">
+    <a href="keisanryoku-9wari.html" class="article-card" data-tag="受験戦略" data-slug="keisanryoku-9wari.html">
       <span class="tag">受験戦略</span>
       <h2>受験数学は計算力が9割</h2>
       <p>発想力よりも計算力。受験数学の得点を左右する地味だが決定的な要素と、その鍛え方を解説します。</p>
       <span class="meta">2026.07.08</span>
     </a>
-    <a href="suujaku-suukyou-ronri.html" class="article-card" data-tag="受験戦略">
+    <a href="suujaku-suukyou-ronri.html" class="article-card" data-tag="受験戦略" data-slug="suujaku-suukyou-ronri.html">
       <span class="tag">受験戦略</span>
       <h2>数弱が数強になるための武器：論理</h2>
       <p>数学が苦手な受験生の多くがつまずいているのは計算力ではなく論理力。伸び悩みを打開する視点を整理します。</p>
       <span class="meta">2026.07.08</span>
     </a>
-    <a href="kaihou-anki-vs-rikai.html" class="article-card" data-tag="受験戦略">
+    <a href="kaihou-anki-vs-rikai.html" class="article-card" data-tag="受験戦略" data-slug="kaihou-anki-vs-rikai.html">
       <span class="tag">受験戦略</span>
       <h2>解法暗記VS理解、受験数学はどっちが正解か</h2>
       <p>「解法は暗記すべきか理解すべきか」という永遠の論争を、学習段階という観点から整理します。</p>
@@ -178,5 +186,52 @@
   </div>
 </footer>
 
+<!-- SEARCH-SCRIPT:BEGIN -->
+<script>
+(function(){
+  var input = document.getElementById('article-search');
+  if(!input) return;
+  var empty = document.getElementById('search-empty');
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.article-card'));
+  var index = null, loading = null;
+  function norm(t){
+    t = (t || '').normalize('NFKC').toLowerCase();
+    return t.replace(/[\u30a1-\u30f6]/g, function(c){ return String.fromCharCode(c.charCodeAt(0) - 0x60); });
+  }
+  function load(){
+    if(index) return Promise.resolve(index);
+    if(!loading){
+      loading = fetch('search-index.json').then(function(r){ return r.json(); }).then(function(d){
+        index = {};
+        d.forEach(function(a){ index[a.slug] = norm([a.title, a.description, a.tag, a.text].join(' ')); });
+        return index;
+      }).catch(function(){
+        index = {};
+        cards.forEach(function(c){ index[c.dataset.slug] = norm(c.textContent); });
+        return index;
+      });
+    }
+    return loading;
+  }
+  function run(){
+    var words = norm(input.value).split(/\s+/).filter(Boolean);
+    if(!words.length){ cards.forEach(function(c){ c.hidden = false; }); empty.hidden = true; return; }
+    load().then(function(idx){
+      var shown = 0;
+      cards.forEach(function(c){
+        var hay = idx[c.dataset.slug] || norm(c.textContent);
+        var ok = words.every(function(w){ return hay.indexOf(w) !== -1; });
+        c.hidden = !ok; if(ok) shown++;
+      });
+      empty.hidden = shown !== 0;
+    });
+  }
+  input.addEventListener('input', run);
+  var q = new URLSearchParams(location.search).get('q');
+  if(q){ input.value = q; run(); }
+  if(location.hash === '#search' || q){ input.focus(); }
+})();
+</script>
+<!-- SEARCH-SCRIPT:END -->
 </body>
 </html>

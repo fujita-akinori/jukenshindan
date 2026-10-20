@@ -80,6 +80,7 @@
       <a href="../index.html#diagnosis">診断一覧</a>
       <a href="index.html">記事</a>
       <a href="../contact.html">お問い合わせ</a>
+      <!-- NAVSEARCH:BEGIN --><a class="nav-search" href="index.html#search" aria-label="記事を検索" title="記事を検索"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="16.5" y1="16.5" x2="21" y2="21"></line></svg></a><!-- NAVSEARCH:END -->
     </nav>
   </div>
 </header>
@@ -90,6 +91,13 @@
   <hr class="page-title-rule">
   <p class="page-lead">数学・英語などの参考書を比較し、レベル感や使い方を解説した記事の一覧です。</p>
 
+<!-- SEARCH:BEGIN -->
+  <div class="search-box" id="search">
+    <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="16.5" y1="16.5" x2="21" y2="21"></line></svg>
+    <input type="search" id="article-search" placeholder="記事をキーワードで検索（例：青チャート 使い方）" aria-label="記事をキーワードで検索" autocomplete="off">
+  </div>
+  <p class="search-empty" id="search-empty" hidden>該当する記事はありません。別のキーワードで試してみてください。</p>
+<!-- SEARCH:END -->
   <div class="filter-row" id="filter-row">
 <!-- CHIPS:BEGIN -->
     <a class="filter-chip" href="index.html">すべて</a>
@@ -102,127 +110,127 @@
 
   <div class="article-grid" id="article-grid">
 <!-- CARDS:BEGIN -->
-    <a href="master-of-seisuu.html" class="article-card" data-tag="参考書比較">
+    <a href="master-of-seisuu.html" class="article-card" data-tag="参考書比較" data-slug="master-of-seisuu.html">
       <span class="tag">参考書比較</span>
       <h2>マスター・オブ・整数のレベルと使い方｜整数問題を得点源にする進め方</h2>
       <p>マスター・オブ・整数（東京出版）のレベル・使い方を解説。新課程で整数の出題が絞られるなか、この本に時間をかけるべきかの判断基準も紹介します。</p>
       <span class="meta">2026.10.20</span>
     </a>
-    <a href="nyuushi-sugaku-no-shouaku.html" class="article-card" data-tag="参考書比較">
+    <a href="nyuushi-sugaku-no-shouaku.html" class="article-card" data-tag="参考書比較" data-slug="nyuushi-sugaku-no-shouaku.html">
       <span class="tag">参考書比較</span>
       <h2>入試数学の掌握のレベルと使い方｜3部作の順番と挫折しない進め方</h2>
       <p>入試数学の掌握（近藤至徳）のレベル・使い方を解説。赤（論理）・青（通過領域）・緑（図形）の違いと、志望校別にどれをやるべきかを紹介します。</p>
       <span class="meta">2026.10.20</span>
     </a>
-    <a href="bisekibun-kiso-no-gokui.html" class="article-card" data-tag="参考書比較">
+    <a href="bisekibun-kiso-no-gokui.html" class="article-card" data-tag="参考書比較" data-slug="bisekibun-kiso-no-gokui.html">
       <span class="tag">参考書比較</span>
       <h2>微積分 基礎の極意の使い方とレベル｜数Ⅲの微積分を得点源にする進め方</h2>
       <p>微積分 基礎の極意（東京出版）のレベル・使い方・何周やるべきかを解説。約200の手筋をまとめた第2部を中心にした進め方を紹介します。</p>
       <span class="meta">2026.10.20</span>
     </a>
-    <a href="sekaiichi-kyodai-rikei.html" class="article-card" data-tag="参考書比較">
+    <a href="sekaiichi-kyodai-rikei.html" class="article-card" data-tag="参考書比較" data-slug="sekaiichi-kyodai-rikei.html">
       <span class="tag">参考書比較</span>
       <h2>世界一わかりやすい京大の理系数学の使い方とレベル｜京大志望はいつから始めるべきか</h2>
       <p>世界一わかりやすい京大の理系数学 合格講座（池谷哲）のレベル・使い方・始める時期を解説。4つの思考過程を活かした進め方を紹介します。</p>
       <span class="meta">2026.10.20</span>
     </a>
-    <a href="high-level-rikei-sugaku.html" class="article-card" data-tag="参考書比較">
+    <a href="high-level-rikei-sugaku.html" class="article-card" data-tag="参考書比較" data-slug="high-level-rikei-sugaku.html">
       <span class="tag">参考書比較</span>
       <h2>ハイレベル理系数学のレベルと使い方｜やさしい理系数学との違い・いつから始めるか</h2>
       <p>ハイレベル理系数学（河合出版）のレベル・使い方・何周やるべきかを解説。やさしい理系数学との違いと、最難関大志望が取り組む時期を紹介します。</p>
       <span class="meta">2026.10.20</span>
     </a>
-    <a href="ukaru-keisan-tsukaikata.html" class="article-card" data-tag="参考書比較">
+    <a href="ukaru-keisan-tsukaikata.html" class="article-card" data-tag="参考書比較" data-slug="ukaru-keisan-tsukaikata.html">
       <span class="tag">参考書比較</span>
       <h2>合格る計算の使い方とレベル｜計算ミスが減る勉強法と何周やるべきか</h2>
       <p>合格る計算（文英堂・広瀬和之）のレベル・使い方・何周やるべきかを解説。計算ミスや時間切れで点を落とす人のための進め方を紹介します。</p>
       <span class="meta">2026.10.19</span>
     </a>
-    <a href="hyoujun-mondai-seikou-sugaku.html" class="article-card" data-tag="参考書比較">
+    <a href="hyoujun-mondai-seikou-sugaku.html" class="article-card" data-tag="参考書比較" data-slug="hyoujun-mondai-seikou-sugaku.html">
       <span class="tag">参考書比較</span>
       <h2>標準問題精講（数学）のレベルと使い方｜1対1対応の演習との違いも解説</h2>
       <p>標準問題精講（旺文社）のレベル・使い方・何周やるべきかを解説。1対1対応の演習との違いと、精講を活かした進め方を紹介します。</p>
       <span class="meta">2026.10.19</span>
     </a>
-    <a href="yasashii-rikei-sugaku.html" class="article-card" data-tag="参考書比較">
+    <a href="yasashii-rikei-sugaku.html" class="article-card" data-tag="参考書比較" data-slug="yasashii-rikei-sugaku.html">
       <span class="tag">参考書比較</span>
       <h2>やさしい理系数学のレベルと使い方｜本当にやさしい？いつから始めるかを解説</h2>
       <p>やさしい理系数学（河合出版）のレベル・使い方・何周やるべきかを解説。本当にやさしいのか、別解を活かした使い方を紹介します。</p>
       <span class="meta">2026.10.19</span>
     </a>
-    <a href="focus-gold-tsukaikata.html" class="article-card" data-tag="参考書比較">
+    <a href="focus-gold-tsukaikata.html" class="article-card" data-tag="参考書比較" data-slug="focus-gold-tsukaikata.html">
       <span class="tag">参考書比較</span>
       <h2>Focus Goldの使い方とレベル｜青チャートとの違いと何周やるべきかを解説</h2>
       <p>Focus Gold 6th Editionのレベル・使い方・何周やるべきかを解説。分厚い網羅系を挫折せずにやり切る例題中心の進め方を紹介します。</p>
       <span class="meta">2026.10.19</span>
     </a>
-    <a href="ichitaichi-tsukaikata.html" class="article-card" data-tag="参考書比較">
+    <a href="ichitaichi-tsukaikata.html" class="article-card" data-tag="参考書比較" data-slug="ichitaichi-tsukaikata.html">
       <span class="tag">参考書比較</span>
       <h2>1対1対応の演習の使い方とレベル｜いつから何周やるか・次にやる問題集まで解説</h2>
       <p>1対1対応の演習（東京出版）のレベル・使い方・何周やるべきか・いつから始めるかを解説。網羅系参考書の次に使う定番問題集の進め方を紹介します。</p>
       <span class="meta">2026.10.19</span>
     </a>
-    <a href="leap-saikyou.html" class="article-card" data-tag="参考書比較">
+    <a href="leap-saikyou.html" class="article-card" data-tag="参考書比較" data-slug="leap-saikyou.html">
       <span class="tag">参考書比較</span>
       <h2>ターゲットでもシス単でもなく、結局LEAPが最強な理由</h2>
       <p>ターゲット1900・システム英単語と比べて、LEAPが最強の英単語帳である理由を解説します。第一義だけ隠せる構成と質の高い例文が強みです。</p>
       <span class="meta">2026.10.18</span>
     </a>
-    <a href="sougouteki-kenkyuu-series.html" class="article-card" data-tag="参考書比較">
+    <a href="sougouteki-kenkyuu-series.html" class="article-card" data-tag="参考書比較" data-slug="sougouteki-kenkyuu-series.html">
       <span class="tag">参考書比較</span>
       <h2>本格派数学参考書レーベル「総合的研究」シリーズ全解説</h2>
       <p>旺文社「総合的研究」の数学の本を全冊解説。各冊の特徴と、どの順番で読むかを紹介します。</p>
       <span class="meta">2026.10.18</span>
     </a>
-    <a href="kakureta-ryousho-3sen.html" class="article-card" data-tag="参考書比較">
+    <a href="kakureta-ryousho-3sen.html" class="article-card" data-tag="参考書比較" data-slug="kakureta-ryousho-3sen.html">
       <span class="tag">参考書比較</span>
       <h2>隠れた良書：もっと使われていい数学参考書3選</h2>
       <p>最重要問題100・入試のツボを押さえる重点学習・実戦 数学重要問題集。知名度は低いが実力は定番に劣らない3冊をレベル別に紹介します。</p>
       <span class="meta">2026.10.18</span>
     </a>
-    <a href="suugaku-no-shinzui.html" class="article-card" data-tag="参考書比較">
+    <a href="suugaku-no-shinzui.html" class="article-card" data-tag="参考書比較" data-slug="suugaku-no-shinzui.html">
       <span class="tag">参考書比較</span>
       <h2>青木純二「数学の真髄」シリーズ 徹底解説</h2>
       <p>東進ブックス『数学の真髄』の論理・写像編とベクトル編を、講座版との違いや使う時期とあわせて解説します。</p>
       <span class="meta">2026.10.17</span>
     </a>
-    <a href="bunkei-purachika.html" class="article-card" data-tag="参考書比較">
+    <a href="bunkei-purachika.html" class="article-card" data-tag="参考書比較" data-slug="bunkei-purachika.html">
       <span class="tag">参考書比較</span>
       <h2>文系の数学 良問プラチカ、実際のレベル感と使い方</h2>
       <p>文系数学の定番演習書「良問プラチカ」のレベル感、着手のタイミング、効果的な使い方を解説します。</p>
       <span class="meta">2026.07.08</span>
     </a>
-    <a href="ichitaichi-vs-shinsuta.html" class="article-card" data-tag="参考書比較">
+    <a href="ichitaichi-vs-shinsuta.html" class="article-card" data-tag="参考書比較" data-slug="ichitaichi-vs-shinsuta.html">
       <span class="tag">参考書比較</span>
       <h2>1対1対応の演習 vs 新数学スタンダード演習、どっちをやるべきか</h2>
       <p>網羅系参考書の後に取り組む定番演習書2冊を、使う順番・向いているタイプの観点から比較します。</p>
       <span class="meta">2026.07.08</span>
     </a>
-    <a href="zeppan-kami-sankousho-3sen.html" class="article-card" data-tag="参考書比較">
+    <a href="zeppan-kami-sankousho-3sen.html" class="article-card" data-tag="参考書比較" data-slug="zeppan-kami-sankousho-3sen.html">
       <span class="tag">参考書比較</span>
       <h2>絶版になってしまった神参考書3選</h2>
       <p>長岡亮介『総合的研究』、松田聡平『最高の演習』、秋山仁『発見的教授法による数学シリーズ』。今は入手困難な伝説の参考書と著者の経歴を紹介します。</p>
       <span class="meta">2026.07.08</span>
     </a>
-    <a href="yobiko-no-jugyou-3sen.html" class="article-card" data-tag="参考書比較">
+    <a href="yobiko-no-jugyou-3sen.html" class="article-card" data-tag="参考書比較" data-slug="yobiko-no-jugyou-3sen.html">
       <span class="tag">参考書比較</span>
       <h2>まるで予備校の授業な数学の参考書3選</h2>
       <p>ハイレベル完全攻略・世界一わかりやすい京大の理系数学/文系数学・真解法への道の3冊を、著者の講師経歴と合わせて紹介します。</p>
       <span class="meta">2026.07.08</span>
     </a>
-    <a href="shin-kaihou-eno-michi.html" class="article-card" data-tag="参考書比較">
+    <a href="shin-kaihou-eno-michi.html" class="article-card" data-tag="参考書比較" data-slug="shin-kaihou-eno-michi.html">
       <span class="tag">参考書比較</span>
       <h2>これさえやれば大丈夫？難関大受験の新定番「真・解法への道」を紹介</h2>
       <p>網羅系参考書を終えたのに難関大の過去問で手が止まる受験生に向けて、特徴と使い方を解説します。</p>
       <span class="meta">2026.07.08</span>
     </a>
-    <a href="sawaruna-sankousho-3sen.html" class="article-card" data-tag="参考書比較">
+    <a href="sawaruna-sankousho-3sen.html" class="article-card" data-tag="参考書比較" data-slug="sawaruna-sankousho-3sen.html">
       <span class="tag">参考書比較</span>
       <h2>触れるな注意 難しすぎる受験参考書3選</h2>
       <p>内容は良書でも、対象読者を間違えると挫折を招く難関参考書3冊を紹介。自分に合うレベルの見極め方を解説します。</p>
       <span class="meta">2026.07.08</span>
     </a>
-    <a href="aoi-chart-vs-focus-gold.html" class="article-card" data-tag="参考書比較">
+    <a href="aoi-chart-vs-focus-gold.html" class="article-card" data-tag="参考書比較" data-slug="aoi-chart-vs-focus-gold.html">
       <span class="tag">参考書比較</span>
       <h2>青チャートとFocus Gold、結局どっちを選ぶべきか</h2>
       <p>数学の網羅系参考書の2大巨頭を、収録問題数・解説の丁寧さ・レイアウトの3つの観点で比較します。</p>
@@ -244,5 +252,52 @@
   </div>
 </footer>
 
+<!-- SEARCH-SCRIPT:BEGIN -->
+<script>
+(function(){
+  var input = document.getElementById('article-search');
+  if(!input) return;
+  var empty = document.getElementById('search-empty');
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.article-card'));
+  var index = null, loading = null;
+  function norm(t){
+    t = (t || '').normalize('NFKC').toLowerCase();
+    return t.replace(/[\u30a1-\u30f6]/g, function(c){ return String.fromCharCode(c.charCodeAt(0) - 0x60); });
+  }
+  function load(){
+    if(index) return Promise.resolve(index);
+    if(!loading){
+      loading = fetch('search-index.json').then(function(r){ return r.json(); }).then(function(d){
+        index = {};
+        d.forEach(function(a){ index[a.slug] = norm([a.title, a.description, a.tag, a.text].join(' ')); });
+        return index;
+      }).catch(function(){
+        index = {};
+        cards.forEach(function(c){ index[c.dataset.slug] = norm(c.textContent); });
+        return index;
+      });
+    }
+    return loading;
+  }
+  function run(){
+    var words = norm(input.value).split(/\s+/).filter(Boolean);
+    if(!words.length){ cards.forEach(function(c){ c.hidden = false; }); empty.hidden = true; return; }
+    load().then(function(idx){
+      var shown = 0;
+      cards.forEach(function(c){
+        var hay = idx[c.dataset.slug] || norm(c.textContent);
+        var ok = words.every(function(w){ return hay.indexOf(w) !== -1; });
+        c.hidden = !ok; if(ok) shown++;
+      });
+      empty.hidden = shown !== 0;
+    });
+  }
+  input.addEventListener('input', run);
+  var q = new URLSearchParams(location.search).get('q');
+  if(q){ input.value = q; run(); }
+  if(location.hash === '#search' || q){ input.focus(); }
+})();
+</script>
+<!-- SEARCH-SCRIPT:END -->
 </body>
 </html>

@@ -150,7 +150,7 @@ def seo_head(rel, s, og_type="website", extra_ld=()):
 def card_list_html(arts):
     out = []
     for a in arts:
-        out.append(f'''    <a href="{a["slug"]}" class="article-card" data-tag="{a["tag"]}">
+        out.append(f'''    <a href="{a["slug"]}" class="article-card" data-tag="{a["tag"]}" data-slug="{a["slug"]}">
       <span class="tag">{a["tag"]}</span>
       <h2>{a["title"]}</h2>
       <p>{a["description"]}</p>
@@ -159,9 +159,106 @@ def card_list_html(arts):
     return "\n".join(out)
 
 
+SEARCH_BOX = """  <div class="search-box" id="search">
+    <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="16.5" y1="16.5" x2="21" y2="21"></line></svg>
+    <input type="search" id="article-search" placeholder="記事をキーワードで検索（例：青チャート 使い方）" aria-label="記事をキーワードで検索" autocomplete="off">
+  </div>
+  <p class="search-empty" id="search-empty" hidden>該当する記事はありません。別のキーワードで試してみてください。</p>"""
+
+SEARCH_SCRIPT = """<script>
+(function(){
+  var input = document.getElementById('article-search');
+  if(!input) return;
+  var empty = document.getElementById('search-empty');
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.article-card'));
+  var index = null, loading = null;
+  function norm(t){
+    t = (t || '').normalize('NFKC').toLowerCase();
+    return t.replace(/[\\u30a1-\\u30f6]/g, function(c){ return String.fromCharCode(c.charCodeAt(0) - 0x60); });
+  }
+  function load(){
+    if(index) return Promise.resolve(index);
+    if(!loading){
+      loading = fetch('search-index.json').then(function(r){ return r.json(); }).then(function(d){
+        index = {};
+        d.forEach(function(a){ index[a.slug] = norm([a.title, a.description, a.tag, a.text].join(' ')); });
+        return index;
+      }).catch(function(){
+        index = {};
+        cards.forEach(function(c){ index[c.dataset.slug] = norm(c.textContent); });
+        return index;
+      });
+    }
+    return loading;
+  }
+  function run(){
+    var words = norm(input.value).split(/\\s+/).filter(Boolean);
+    if(!words.length){ cards.forEach(function(c){ c.hidden = false; }); empty.hidden = true; return; }
+    load().then(function(idx){
+      var shown = 0;
+      cards.forEach(function(c){
+        var hay = idx[c.dataset.slug] || norm(c.textContent);
+        var ok = words.every(function(w){ return hay.indexOf(w) !== -1; });
+        c.hidden = !ok; if(ok) shown++;
+      });
+      empty.hidden = shown !== 0;
+    });
+  }
+  input.addEventListener('input', run);
+  var q = new URLSearchParams(location.search).get('q');
+  if(q){ input.value = q; run(); }
+  if(location.hash === '#search' || q){ input.focus(); }
+})();
+</script>"""
+
+
 def chips_html(active):
     items = [("すべて", "index.html", active is None)] + [(t, f, active == t) for t, f, _ in TAGS]
     return "\n".join(f'    <a class="filter-chip{" active" if on else ""}" href="{h}">{n}</a>' for n, h, on in items)
+
+
+def add_search(s):
+    s = replace_block(s, "SEARCH", SEARCH_BOX, anchor_before='  <div class="filter-row" id="filter-row">')
+    s = replace_block(s, "SEARCH-SCRIPT", SEARCH_SCRIPT, anchor_before="</body>")
+    return s
+
+
+def build_search_index(arts):
+    out = []
+    for a in arts:
+        s = read(f"articles/{a['slug']}")
+        body = s[s.index('<div class="article-body">'):s.index('<div class="diag-cta">')]
+        body = re.sub(r"<!--.*?-->", " ", body, flags=re.S)
+        body = re.sub(r'<div class="aff-box">.*?</div>\s*$', " ", body, flags=re.S)
+        text = html.unescape(re.sub(r"<[^>]+>", " ", body))
+        text = re.sub(r"\s+", " ", text).strip()
+        out.append({"slug": a["slug"], "title": a["title"], "description": a["description"],
+                    "tag": a["tag"], "text": text})
+    write("articles/search-index.json", json.dumps(out, ensure_ascii=False, separators=(",", ":")))
+
+
+SEARCH_ICON = ('<a class="nav-search" href="{href}" aria-label="記事を検索" title="記事を検索">'
+               '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle>'
+               '<line x1="16.5" y1="16.5" x2="21" y2="21"></line></svg></a>')
+
+
+def add_nav_search():
+    pages = [p for p, _, _ in STATIC_PAGES] + ["articles/" + f for f in sorted(os.listdir(path("articles"))) if f.endswith(".html")]
+    for rel in pages:
+        s = read(rel)
+        if '<nav class="nav-links">' not in s:
+            continue
+        href = "index.html#search" if rel.startswith("articles/") else "articles/index.html#search"
+        nav = s[s.index('<nav class="nav-links">'):]
+        nav_end = s.index('<nav class="nav-links">') + nav.index("</nav>")
+        head, tail = s[:nav_end], s[nav_end:]
+        begin, end = "<!-- NAVSEARCH:BEGIN -->", "<!-- NAVSEARCH:END -->"
+        block = f"{begin}{SEARCH_ICON.format(href=href)}{end}"
+        if begin in head:
+            head = re.sub(re.escape(begin) + ".*?" + re.escape(end), lambda _: block, head, count=1, flags=re.S)
+        else:
+            head = head.rstrip() + "\n      " + block + "\n    "
+        write(rel, head + tail)
 
 
 def build_list_pages(arts):
@@ -187,6 +284,7 @@ def build_list_pages(arts):
         s = re.sub(r'<p class="page-lead">.*?</p>', f'<p class="page-lead">{lead}</p>', s, count=1)
         s = replace_block(s, "CHIPS", chips_html(active))
         s = replace_block(s, "CARDS", card_list_html(arts_))
+        s = add_search(s)
         crumbs = [("ホーム", BASE + "/"), ("記事一覧", BASE + "/articles/")]
         if active:
             crumbs.append((f"{active}の記事", url_of(rel)))
@@ -203,6 +301,7 @@ def build_list_pages(arts):
     s = base
     s = replace_block(s, "CHIPS", chips_html(None))
     s = replace_block(s, "CARDS", card_list_html(arts))
+    s = add_search(s)
     item_list = {"@context": "https://schema.org", "@type": "ItemList",
                  "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": f"{BASE}/articles/{a['slug']}"}
                                      for i, a in enumerate(arts)]}
@@ -298,6 +397,8 @@ def main():
     build_list_pages(arts)
     build_home(arts)
     build_static_pages()
+    build_search_index(arts)
+    add_nav_search()
     build_sitemap(arts)
     print(f"OK: 記事 {len(arts)} 本 / タグページ {len(TAGS)} 枚を生成しました")
 

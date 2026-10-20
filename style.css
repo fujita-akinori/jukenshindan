@@ -295,3 +295,21 @@ div.aff-box li:first-child{ border-top:none; }
 .paper-sheet .crumbs a:hover{ color:var(--sheet-accent); text-decoration:underline; }
 .paper-sheet .byline{ display:block; margin-top:6px; font-size:12.5px; color:var(--sheet-muted); }
 .paper-sheet .byline a{ color:var(--sheet-accent); text-decoration:underline; text-underline-offset:3px; }
+
+/* ヘッダーの検索アイコン */
+.nav-links{ align-items:center; }
+.nav-links .nav-search{ display:inline-flex; align-items:center; }
+.nav-search svg{ width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:2.2; stroke-linecap:round; }
+@media (max-width:520px){
+  .nav-links{ gap:14px; font-size:12.5px; }
+  .nav-links a{ white-space:nowrap; }
+}
+
+/* 記事一覧の検索欄 */
+.search-box{ position:relative; max-width:560px; margin:0 0 18px; }
+.search-box .search-icon{ position:absolute; left:16px; top:50%; width:18px; height:18px; transform:translateY(-50%); fill:none; stroke:var(--text-on-ink-muted); stroke-width:2.2; stroke-linecap:round; pointer-events:none; }
+.search-box input{ width:100%; box-sizing:border-box; font-family:'Zen Kaku Gothic New', sans-serif; font-size:15px; color:var(--text-on-ink); background:var(--ink-soft); border:1px solid rgba(255,255,255,0.12); border-radius:999px; padding:13px 18px 13px 44px; outline:none; transition:border-color .15s ease; -webkit-appearance:none; appearance:none; }
+.search-box input::placeholder{ color:var(--text-on-ink-muted); opacity:.8; }
+.search-box input:focus{ border-color:var(--amber); }
+.search-empty{ color:var(--text-on-ink-muted); font-size:14px; margin:8px 0 24px; }
+.article-card[hidden]{ display:none !important; }
