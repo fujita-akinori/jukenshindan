@@ -476,6 +476,7 @@ const ARTICLE_OF = {
   "世界一わかりやすい 京大の理系数学":"yobiko-no-jugyou-3sen", "世界一わかりやすい 京大の文系数学":"yobiko-no-jugyou-3sen"
 };
 Object.assign(ARTICLE_OF, {"やさしい理系数学":"yasashii-rikei-sugaku", "標準問題精講":"hyoujun-mondai-seikou-sugaku"});
+Object.assign(ARTICLE_OF, {"ハイレベル理系数学":"high-level-rikei-sugaku", "世界一わかりやすい 京大の理系数学":"sekaiichi-kyodai-rikei", "微積分 基礎の極意":"bisekibun-kiso-no-gokui", "入試数学の掌握（3部作）":"nyuushi-sugaku-no-shouaku", "マスターオブ整数":"master-of-seisuu"});
 BOOKS.forEach(b => { if(ARTICLE_OF[b.name]) b.article = ARTICLE_OF[b.name]; });
 
 const BUNYA_LIST = ["場合の数・確率","整数","計算","微積分（数III）","数列","複素数平面","ベクトル","論理・軌跡と領域"];
