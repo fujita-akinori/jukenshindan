@@ -16,12 +16,16 @@
     padding:60px 0 30px;
     position:relative;
   }
+  html, body{ overflow-x:clip; }
   #bg-shapes{
     position:absolute;
-    top:-40px; left:-5vw;
-    width:110vw; height:calc(100% + 80px);
+    top:-40px; left:50%;
+    width:100vw; height:calc(100% + 80px);
+    transform:translateX(-50%);
     pointer-events:none;
     z-index:0;
+    -webkit-mask-image:linear-gradient(to bottom, transparent 0, #000 60px, #000 calc(100% - 90px), transparent 100%);
+    mask-image:linear-gradient(to bottom, transparent 0, #000 60px, #000 calc(100% - 90px), transparent 100%);
   }
   .hero > *:not(#bg-shapes){
     position:relative;
@@ -298,7 +302,7 @@
   </div>
 </footer>
 
-<script src="bg-shapes-v2.js"></script>
+<script src="bg-shapes-v3.js"></script>
 
 </body>
 </html>
