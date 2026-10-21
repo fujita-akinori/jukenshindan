@@ -473,7 +473,7 @@ const FIELD_LEC = {
   riron:{zero:"zero-riron", doo:"do-riron", gen:["gen-riron","shinrikei-jo"]},
   kiso: {zero:"zero-riron", doo:"do-riron", gen:[]}, // 化学基礎だけの人には原点・新理系は出さない
   muki: {zero:"zero-muyu", doo:"do-muki", gen:["gen-muki","shinrikei-ge"]},
-  yuki: {zero:"zero-muyu", doo:"do-yuki", gen:["gen-yuki","shinrikei-ge"]},
+  yuki: {zero:"zero-muyu", doo:"do-yuki", gen:["gen-yuki","shinrikei-ge"], q:"yuki-ensyu"}, // q: 二次・私大で問題集を選んだ人の1位
 };
 
 let answers = {};
@@ -777,8 +777,12 @@ function orderBooks(scored){
   const a = answers;
   const want = a.style; // quality / quantity
   if(specialRoute()){
+    // 分野を選んだ人は、選んだタイプ（講義／問題集）に合う本を先に並べる（同じタイプの中は得点順）
+    const rank = x => (x.b.type===want ? 0 : 1);
+    scored.sort((x,y) => rank(x)-rank(y) || y.s-x.s);
     const L = FIELD_LEC[a.bunya];
     if(want==="quantity" && a.purpose==="teiki") place(scored, ["sei-nyumon"]); // 定期テストで問題集なら分野によらず入門問題精講
+    else if(want==="quantity" && a.purpose==="niji" && L.q) place(scored, [L.q]);
     else if(want==="quality" && advLecture() && L.gen.length) place(scored, [...L.gen, "shinkenkyu"]);
     else if(want==="quality" && a.statusKey==="hajime") place(scored, [L.zero]);
     else if(want==="quality") place(scored, [L.doo]);

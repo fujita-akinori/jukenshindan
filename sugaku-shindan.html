@@ -397,7 +397,7 @@ const BOOKS = [
   {name:"解法のエウレカ 数学II・B＋ベクトル",note:"同シリーズの数学II・B・ベクトル版で、典型問題を解くための着眼点を分野ごとに整理します。網羅系の代わりに、解法の選び方まで意識して学びたい人に向いています。",asin:"4053051282",scope:"common",tier:2,purposes:["mouraikei","kyoutsuu"],type:"quality",bunya:[],krange:"IIBC"},
   {name:"解法のエウレカ 数学III・C",note:"同シリーズの数学III・C版で、微積分や複素数平面などの典型問題を着眼点とあわせて学べます。理系の人が数III・Cの解法を網羅的に整理するのに向いています。",asin:"4053051290",scope:"rikei",tier:2,purposes:["mouraikei","kyoutsuu"],type:"quality",bunya:[],krange:"IIBC"},
   {name:"合格る数学",note:"「合格る」シリーズの総合問題集で、共通テストから二次試験までに必要な典型問題を効率よく確認できます。網羅系で学んだ解法を入試レベルの問題で使えるか試したい人に向いています。",asin:"4578240975",scope:"common",tier:3,purposes:["kyoutsuu","niji"],type:"quality",bunya:[],mouraikei:true},
-  {name:"大学入試 最短でマスターする数学I〜C（赤本プラス）",note:"教学社の赤本プラスシリーズで、数学I〜Cの全範囲を1冊に圧縮して要点と典型問題を確認できます。受験直前の総復習や、網羅系を何冊も回す時間がない人に向いています。",asin:"4325248129",scope:"common",tier:2,purposes:["mouraikei","kyoutsuu"],type:"quality",bunya:[]},
+  {name:"大学入試 最短でマスターする数学I〜C（赤本プラス）",note:"教学社の赤本プラスシリーズで、数学I〜Cの全範囲を1冊に圧縮して要点と典型問題を確認できます。受験直前の総復習や、網羅系を何冊も回す時間がない人に向いています。",asin:"4325248129",scope:"common",tier:2,purposes:["mouraikei","kyoutsuu"],type:"quality",bunya:[],incl3:true},
   {name:"志田晶の 数列が面白いほどわかる本",note:"東進の志田晶先生による、数列を講義調で丁寧に解説する分野別の1冊です。漸化式や和の計算でつまずいている人が、考え方から理解し直すのに向いています。",asin:"4046068841",scope:"common",tier:2,purposes:["bunyabetsu"],type:"quality",bunya:["数列"]},
   {name:"坂田アキラの数列が面白いほどわかる本",note:"坂田アキラ先生による、数列を超基礎から手取り足取り解説する1冊です。数列がまったく分からない人でも、例題を追いかけるだけで解き方が身につく構成になっています。",asin:"4046007311",scope:"common",tier:1,purposes:["bunyabetsu"],type:"quality",bunya:["数列"]},
   {name:"教科書Next 数列の集中講義（東京出版）",note:"東京出版の「教科書Next」シリーズで、教科書の一歩先にある数列の考え方を集中的に講義します。教科書の内容は分かるが入試の数列で手が止まる人に向いています。",asin:"4887421575",scope:"common",tier:3,purposes:["bunyabetsu"],type:"quality",bunya:["数列"],profile:"deepen"},
@@ -420,7 +420,7 @@ const BOOKS = [
   // ---- Tier3 応用・難関 ----
   {name:"1対1対応の演習（数学I・A/II・B）",note:"入試の典型問題を例題と演習題の1対1の形で学ぶ、東京出版の定番演習書です。網羅系参考書を終えたあと、解法を入試レベルで使いこなせるよう仕上げる段階で使います。新数学スタンダード演習との比較は解説記事で紹介しています。",asin:"4887422636",scope:"common",tier:3,purposes:["niji"],type:"quality",bunya:[]},
   {name:"1対1対応の演習（数学III）",note:"数学IIIの微積分や極限を例題と演習題の1対1形式で固める1冊です。理系の網羅系参考書から入試レベルの数IIIへ橋渡しする段階に向いています。",asin:"4887422792",scope:"rikei",tier:3,purposes:["niji"],type:"quality",bunya:[]},
-  {name:"新数学スタンダード演習",note:"『大学への数学』編集部による、入試の標準からやや難レベルをまとめて演習できる問題集です。1対1対応の演習で解法を整えたあと、初見の問題で実戦力を試す段階で使います。",asin:"B0GK6S4JPF",scope:"common",tier:3,purposes:["niji"],type:"quantity",bunya:[]},
+  {name:"新数学スタンダード演習",note:"『大学への数学』編集部による、入試の標準からやや難レベルをまとめて演習できる問題集です。1対1対応の演習で解法を整えたあと、初見の問題で実戦力を試す段階で使います。",asin:"B0GK6S4JPF",scope:"common",tier:3,purposes:["niji"],type:"quantity",bunya:[],incl3:true},
   {name:"文系の数学 良問プラチカ",note:"文系数学の入試良問を厳選した河合出版の演習書です。難関大の文系数学に必要な典型から標準レベルを押さえられ、網羅系の次に取り組む実戦演習の1冊になります。レベル感と使い方は解説記事で紹介しています。",asin:"4777227200",scope:"bunkei",tier:3,purposes:["niji"],type:"quantity",bunya:[]},
   {name:"理系数学の良問プラチカ",note:"理系数学の入試良問を集めた演習書で、標準からやや難の問題を収録しています。網羅系を終えた理系受験生が、難関国公立の二次試験に向けて演習量を確保するのに向いています。",asin:"4777227219",scope:"rikei",tier:3,purposes:["niji"],type:"quantity",bunya:[]},
   {name:"文系の数学 実践力向上編",note:"河合出版の文系数学シリーズのうち、入試の実戦問題で得点力を伸ばすための演習編です。重要事項を一通り身につけたあとに、記述式の入試問題を時間内に解き切る力を鍛えます。",asin:"4777231461",scope:"bunkei",tier:3,purposes:["niji"],type:"quantity",bunya:[]},
@@ -442,7 +442,7 @@ const BOOKS = [
   {name:"東進 最重要問題集",note:"東進ブックスの問題集で、入試に頻出する重要問題に絞って演習できる1冊です。網羅系を終えたあと、共通テストと二次試験の両方を見据えて典型問題の仕上げをしたい人に向いています。",asin:"4890859454",scope:"common",tier:3,purposes:["niji","kyoutsuu"],type:"quality",bunya:[]},
   {name:"世界一わかりやすい 九大の理系数学",note:"KADOKAWA「世界一わかりやすい」シリーズの九州大学版で、最新版は理系と文系を1冊にまとめた『九大の数学』として前期日程17か年分を解説しています。頻出テーマを押さえられるので、九大志望者の過去問演習の前後に使うのが効果的です。",asin:"4046079673",scope:"rikei",tier:3,purposes:["niji"],type:"quality",bunya:[],shibouDetailOnly:["kyudai"]},
   {name:"世界一わかりやすい 九大の文系数学",note:"最新版は理系と文系を1冊にまとめた『九大の数学』として、前期日程17か年分の過去問を解説しています。九大文系志望者が頻出テーマと答案の書き方を押さえ、本番の出題形式に慣れるための1冊です。",asin:"4046079673",scope:"bunkei",tier:3,purposes:["niji"],type:"quality",bunya:[],shibouDetailOnly:["kyudai"]},
-  {name:"入試数学「実力強化」問題集（駿台）",note:"駿台文庫の演習書で、網羅系の典型問題から一歩進んだ入試の標準からやや難の問題を扱います。解説が詳しいので、網羅系を終えた人が実戦力を上げる次の1冊として向いています。",asin:"4796113460",scope:"common",tier:3,purposes:["mouraikei","niji"],type:"quantity",bunya:[],mouraikei:true},
+  {name:"入試数学「実力強化」問題集（駿台）",note:"駿台文庫の演習書で、網羅系の典型問題から一歩進んだ入試の標準からやや難の問題を扱います。解説が詳しいので、網羅系を終えた人が実戦力を上げる次の1冊として向いています。",asin:"4796113460",scope:"common",tier:3,purposes:["mouraikei","niji"],type:"quantity",bunya:[],mouraikei:true,incl3:true},
   {name:"入試のツボを押さえる重点学習 数学IA2BC",note:"東京出版の青木亮二先生による、入試で差がつくポイントを分野ごとに絞り込んで学ぶ1冊です。つまずきやすい誤解や考え方の手順を丁寧に示していて、典型問題の理解を一段深めたい人に向いています。",asin:"4887422857",scope:"common",tier:3,purposes:["niji"],type:"quality",bunya:[]},
   {name:"入試のツボを押さえる重点学習 数学3C",note:"同シリーズの数学III・C版で、平面上の曲線と複素数平面を中心に入試のツボを整理します。苦手になりやすいこれらの分野を重点的に固めたい理系受験生に向いています。",asin:"4887422881",scope:"rikei",tier:3,purposes:["niji"],type:"quality",bunya:[]},
   {name:"総合的研究 記述式答案の書き方",note:"旺文社「総合的研究」シリーズの1冊で、二次試験の記述答案をどう書けば採点者に伝わるかを学べます。論理の飛躍や書き漏れで減点されがちな人が、答案の型を身につけるのに向いています。",asin:"4010377240",scope:"common",tier:3,purposes:["niji"],type:"quality",bunya:[]},
@@ -461,7 +461,7 @@ const BOOKS = [
   {name:"教科書だけでは足りない 大学入試攻略 数II・数III微分・積分",note:"河合出版の分野別シリーズで、数II・数IIIの微分積分を教科書の先の入試レベルまで解説します。微積分を入試で使いこなせるようにしたい理系受験生に向いています。",asin:"477721494X",scope:"rikei",tier:2,purposes:["bunyabetsu"],type:"quality",bunya:["微積分（数III）"]},
   {name:"解法の探求・微積分（東京出版）",note:"東京出版『大学への数学』シリーズの微積分の問題集で、難関大の微積分問題を多角的な解法で掘り下げます。微積分を得点源にしたい最難関志望の理系受験生向けの1冊です。",asin:"4887421516",scope:"rikei",tier:4,purposes:["bunyabetsu"],type:"quality",bunya:["微積分（数III）"],shibouOnly:["tokyoikko"]},
   {name:"微積分 基礎の極意",note:"東京出版『大学への数学』シリーズの微積分の1冊で、数IIIの微積分の基本を入試で使える精度まで固めます。網羅系で数IIIを学んだ理系の人が、微積分の土台を仕上げるのに向いています。",asin:"4887420293",scope:"rikei",tier:4,purposes:["bunyabetsu"],type:"quality",bunya:["微積分（数III）"],shibouExclude:["tokyoikko"]},
-  {name:"志望大学の過去問（赤本／青本）",note:"志望校の実際の入試問題に取り組む最終段階の1冊です。出題形式や時間配分を体感できるので、どの参考書を使っていても最後は必ず取り組みます。解けなかった問題は前に使った参考書の同じ分野に戻って復習しましょう。",scope:"common",tier:4,purposes:["niji"],type:"quantity",bunya:[]},
+  {name:"志望大学の過去問（赤本／青本）",note:"志望校の実際の入試問題に取り組む最終段階の1冊です。出題形式や時間配分を体感できるので、どの参考書を使っていても最後は必ず取り組みます。解けなかった問題は前に使った参考書の同じ分野に戻って復習しましょう。",scope:"common",tier:4,purposes:["niji"],type:"quantity",bunya:[],incl3:true},
   {name:"ハイレベル理系数学",note:"河合出版による、難関大理系の入試問題で実戦力を鍛える演習書です。標準問題を終えた理系受験生が、最難関レベルの問題量をこなしたい段階で使います。",asin:"4777213641",scope:"rikei",tier:4,purposes:["niji"],type:"quantity",bunya:[]},
   {name:"東大数学プレミアム",note:"教学社による東大数学の過去問解説書で、問題ごとに複数の解法や背景まで掘り下げた解説が特徴です。東大志望者が過去問1題から学べることを最大限に引き出すのに向いています。",asin:"4325241345",scope:"rikei",tier:4,purposes:["niji"],type:"quality",bunya:[],shibouDetailOnly:["todai"]},
   {name:"京大数学プレミアム",note:"同じく教学社による京大数学の過去問解説書で、思考力を問う京大の問題を詳しい解説で読み解きます。京大志望者が過去問演習を深めるための1冊です。",asin:"432524753X",scope:"rikei",tier:4,purposes:["niji"],type:"quality",bunya:[],shibouDetailOnly:["kyodai"]},
@@ -472,14 +472,14 @@ const BOOKS = [
   {name:"坂田アキラの軌跡・領域が面白いほどわかる本",note:"坂田アキラ先生による、軌跡と領域を超基礎から手取り足取り解説する1冊です。軌跡や領域の問題で何をすればいいか分からない人に向いています。",asin:"4046020237",scope:"common",tier:1,purposes:["bunyabetsu"],type:"quality",bunya:["論理・軌跡と領域"]},
   {name:"数学の真髄（ベクトル）",note:"東進の青木純二先生による、一次独立や斜交座標など教科書外の概念も使ってベクトルを本質から理解する1冊です。計算より図形的な考察を重視していて、最難関志望者がベクトルを深く仕上げるのに向いています。",asin:"4890859667",scope:"common",tier:4,purposes:["bunyabetsu"],type:"quality",bunya:["ベクトル"],profile:"deepen"},
   {name:"やさしい理系数学",note:"河合出版の定番演習書で、タイトルに反して難関大レベルの問題を収録しています。1題に複数の解法が示されているので、別解を比べて発想の幅を広げたい理系受験生に向いています。",asin:"4777213633",scope:"rikei",tier:4,purposes:["niji"],type:"quantity",bunya:[]},
-  {name:"入試数学の掌握（3部作）",note:"近藤至徳先生による3部作で、難関大の入試問題を解くための思考の手順を総論から各論まで体系的に学びます。内容は高度で、網羅系と標準演習を終えた最難関志望者向けです。難しすぎる参考書3選の記事でも取り上げています。",asin:"4753930742",scope:"common",tier:4,purposes:["niji"],type:"quality",bunya:[]},
+  {name:"入試数学の掌握（3部作）",note:"近藤至徳先生による3部作で、難関大の入試問題を解くための思考の手順を総論から各論まで体系的に学びます。内容は高度で、網羅系と標準演習を終えた最難関志望者向けです。難しすぎる参考書3選の記事でも取り上げています。",asin:"4753930742",scope:"common",tier:4,purposes:["niji"],type:"quality",bunya:[],incl3:true},
   {name:"マスターオブ整数",note:"東京出版『大学への数学』シリーズの整数問題集で、難関大レベルの整数問題を深く掘り下げます。整数を得点源にしたい最難関志望者向けで、典型解法が固まってから取り組む1冊です。",asin:"488742017X",scope:"common",tier:4,purposes:["bunyabetsu"],type:"quantity",bunya:["整数"]},
   {name:"整数問題 解法のパターン30（技術評論社）",note:"整数問題の頻出解法を30のパターンに整理して学べる1冊です。整数問題に手をつけられない人が、まず解き方の型を身につけるのに向いています。",asin:"4774176575",scope:"common",tier:3,purposes:["bunyabetsu"],type:"quantity",bunya:["整数"]},
   {name:"教科書だけでは足りない 大学入試攻略 整数",note:"河合出版の分野別シリーズで、教科書だけでは身につきにくい整数問題の考え方を学べます。整数分野を入試で戦えるレベルまで引き上げたい人に向いています。",asin:"4777228827",scope:"common",tier:3,purposes:["bunyabetsu"],type:"quality",bunya:["整数"]},
   {name:"総合的研究 論理学で学ぶ数学",note:"長岡亮介先生による、記号論理に基づいて数学の論理を厳密に学べる1冊です。同値変形や量化の扱いを根本から理解したい最難関志望者向けで、内容は高度です。論理の重要性は解説記事でも紹介しています。",asin:"4010377046",scope:"common",tier:5,purposes:["bunyabetsu","niji"],type:"quality",bunya:["論理・軌跡と領域"]},
 
   // ---- Tier5 超級 ----
-  {name:"難問ラプソディ",note:"安田亨先生と塩崎ひかる先生による、近年の大学入試から難問を集めた問題集です。最難関大志望者が腕試しとして取り組む1冊で、標準演習が固まる前に手を出すのは禁物です。難しすぎる参考書3選の記事でも取り上げています。",asin:"4908003564",scope:"common",tier:5,purposes:["niji"],type:"quantity",bunya:[]},
+  {name:"難問ラプソディ",note:"安田亨先生と塩崎ひかる先生による、近年の大学入試から難問を集めた問題集です。最難関大志望者が腕試しとして取り組む1冊で、標準演習が固まる前に手を出すのは禁物です。難しすぎる参考書3選の記事でも取り上げています。",asin:"4908003564",scope:"common",tier:5,purposes:["niji"],type:"quantity",bunya:[],incl3:true},
 ];
 
 /* 当サイトの解説記事がある本 */
@@ -898,7 +898,7 @@ function rangeToScopes(){
   // 範囲文字列 → scope 許可リスト
   if(answers.purpose==="teiki"){
     const r = answers.teikiRange;
-    if(["数III","複素数平面・式と曲線"].includes(r)) return ["common","rikei"];
+    if(["数III","複素数平面・式と曲線"].includes(r)) return ["common3","rikei"];
     return ["common"];
   }
   if(answers.purpose==="kyoutsuu"){
@@ -906,7 +906,7 @@ function rangeToScopes(){
   }
   if(answers.purpose==="niji"){
     if(answers.nijiType==="sougou"){
-      return answers.sougouRangeKey==="III" ? ["common","rikei"] : ["common","bunkei"];
+      return answers.sougouRangeKey==="III" ? ["common3","rikei"] : ["common","bunkei"];
     }
     return ["common","rikei","bunkei"]; // 分野別は範囲不問
   }
@@ -931,7 +931,9 @@ function pickTier(){
 }
 
 function scoreBook(b, targetTier, scopes, purpose, style, bunya, bunyaHasMatch, krangeWanted, bunyaProfile, excludeBunyaSpecific, shibou, shibouDetail, mouraikeiChoice){
-  if(!scopes.includes(b.scope)) return -Infinity;
+  // 数IIIを選んだときは scopes に "common3" が入る：文理共通の本は数IIIまで載っている本（incl3）だけ出す
+  const bookScopes = (b.scope==="common" && b.incl3) ? ["common","common3"] : [b.scope];
+  if(!bookScopes.some(x => scopes.includes(x))) return -Infinity;
   // 共通テストルート：範囲タグがある本は、選んだ範囲(IA/IIBC)と一致しないなら除外
   if(krangeWanted && b.krange && b.krange!=="both" && b.krange!==krangeWanted) return -Infinity;
   // 分野固有の追加質問（計算・ベクトルなど）：profileタグを持つ本は、選んだ方針と厳密一致しないと除外
