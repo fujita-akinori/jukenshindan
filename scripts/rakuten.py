@@ -148,13 +148,13 @@ def lookup(name, amazon_url):
             pass  # シリーズ全体へのリンクは、特定の巻の表紙を出すと誤解を招くので画像なし
         else:
             if isbn:
-                d = _call("BooksBook/Search/20170404", isbn=isbn)
+                d = _call("BooksBook/Search/20170404", isbn=isbn, outOfStockFlag=1)  # 一時的な品切れでも商品ページと表紙は出す
                 items = d.get("Items") or []
                 if items:
                     res = _pick(items[0].get("Item", items[0]))
             if not res["url"] and not isbn:  # ISBNで見つからない本は、別の巻を拾わないよう名前では探さない
                 for kw in _keywords(name, key[2:]):
-                    d = _call("BooksTotal/Search/20170404", keyword=kw, booksGenreId="001", hits=5)
+                    d = _call("BooksTotal/Search/20170404", keyword=kw, booksGenreId="001", hits=5, outOfStockFlag=1)
                     hit = next((it.get("Item", it) for it in d.get("Items") or [] if _plausible(name, it.get("Item", it).get("title", ""), it.get("Item", it).get("author", ""))), None)
                     if hit:
                         res = _pick(hit)
