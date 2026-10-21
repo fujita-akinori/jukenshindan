@@ -283,6 +283,8 @@
   .textbook-base .tb-name{ font-weight:700; font-size:15.5px; margin:8px 0 6px; }
   .textbook-base .tb-desc{ font-size:13.5px; line-height:1.85; color:var(--text-on-ink-muted); margin:0 0 10px; }
   .textbook-base .tb-desc b{ color:var(--text-on-ink); }
+  .must-head{ font-family:'Shippori Mincho', serif; font-weight:800; font-size:16px; margin:26px 0 12px; color:var(--text-on-ink); }
+  .must-list{ margin-bottom:8px; }
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6837829466798350" crossorigin="anonymous"></script>
 <!-- SEO:BEGIN -->
@@ -410,7 +412,7 @@ const BOOKS = [
   {name:"志望大学の過去問（赤本／青本）",note:"志望校の実際の入試問題に取り組む最終段階の1冊です。解けなかった問題は教科書とこれまで使った本の同じ分野に戻って復習しましょう。",scope:"both",tier:4,purposes:["niji"],type:"quantity",bunya:[],also:[]},
   // ---- tier5 最難関 ----
   {name:"生物［生物基礎・生物］上級問題精講",note:"石原將弘先生による問題精講シリーズの最上位の1冊で、2026年7月に刊行されました。最難関大の入試問題で、初めて見る実験やデータを読み解いて論理的に答える力を鍛えられます。標準問題精講を終えてから取り組みましょう。",asin:"4010355352",scope:"both",tier:5,purposes:["niji"],type:"quantity",bunya:[],also:["kousatsu","jikken","ronjutsu"]},
-  {name:"生物 知識の焦点（Z会）",note:"Z会の、入試で問われる生物の知識を整理した1冊です。難関大の論述や考察で使う知識を正確に確認したい人に向いています。2013年刊行なので、新課程で扱いが変わった内容は教科書で確認しましょう。",asin:"4860669150",scope:"both",tier:4,purposes:["niji"],type:"quality",bunya:[],also:["ronjutsu"]},
+  {name:"生物 知識の焦点（Z会）",note:"Z会の、入試で問われる生物の知識を整理した1冊です。難関大の論述や考察で使う知識を正確に確認したい人に向いています。2013年刊行なので、新課程で扱いが変わった内容は教科書で確認しましょう。",asin:"4860669150",scope:"both",tier:4,purposes:["niji"],type:"quality",bunya:[],also:["ronjutsu"],support:true},
   {name:"キャンベル生物学 原書11版",note:"世界中の大学で使われている生物学の教科書の日本語版です。受験の範囲を大きく超えますが、最難関大の考察問題の背景にある生物学を深く知りたい人が辞書のように引くのに向いています。",asin:"4621302760",scope:"both",tier:5,purposes:["niji"],type:"quality",bunya:[],also:[],support:true,saikenOnly:true},
   {name:"生物 理系上級問題集（駿台）",note:"駿台の大森徹先生による最難関大向けの問題集です。東大・京大・医学部レベルの考察問題と論述問題で、初見の実験を読み解く力を鍛えられます。",asin:"4796117768",scope:"both",tier:5,purposes:["niji"],type:"quantity",bunya:[],also:["kousatsu"]},
   {name:"医学部の生物［生物基礎・生物］",note:"伊藤和修先生による医学部入試に絞った旺文社の問題集です。医学部で頻出のテーマと出題形式に集中して演習できます。",asin:"4010345209",scope:"both",tier:5,purposes:["niji"],type:"quantity",bunya:[],also:[],igaku:true},
@@ -619,8 +621,6 @@ function scoreBook(b, targetTier){
     return -Infinity;
   }
   s += 5 - tierGap(b, targetTier)*2;
-  // 難関大志望（難関国公立・早慶／東大・京大・医学部）の二次対策では必ず上位に出す本
-  if(b.mustNankan && a.purpose==="niji" && (a.shibou==="nankan" || a.shibou==="saiken")) s += 6;
   if(FAVORITE.has(b.name) && !b.support) s += 3;
   if(a.purpose==="kyoutsuu" && b.purposes.length===1) s += 1; // 共通テスト専用の本は、共通テスト対策で汎用書より少し優先する
   if(b.support) s -= 3; // 一問一答・用語集・書き込みノートは補助教材なので、メインの本より下に出す
@@ -657,7 +657,7 @@ function hitokoto(ex){
 
 function typeDescriptions(){
   const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const list = document.querySelector(".book-list");
+  const list = document.querySelector(".book-list:not(.must-list)");
   if(!list || reduce) return;
   const items = Array.from(list.querySelectorAll(":scope > .book-item")).slice(0,3);
   const jobs = items.map(item => {
@@ -724,14 +724,16 @@ const TEXTBOOK_HTML = `<div class="textbook-base">
 
 function renderResult(){
   const targetTier = pickTier();
-  const scored = BOOKS.map(b => ({b, s:scoreBook(b, targetTier)}))
+  // 難関大志望の二次・私大対策では、合格77講を「必携書」として順位とは別枠で出す
+  const mustBook = (answers.purpose==="niji" && (answers.shibou==="nankan" || answers.shibou==="saiken")) ? BOOKS.find(b => b.mustNankan) : null;
+  const scored = BOOKS.filter(b => b !== mustBook).map(b => ({b, s:scoreBook(b, targetTier)}))
                       .filter(x => x.s > -Infinity)
                       .sort((a,b)=> b.s - a.s);
   // 1位が大森徹先生の本になったら、ほかの本のうち最上位のものを1位に上げる
   const firstOk = scored.findIndex(x => !x.b.noTop);
   if(firstOk > 0) scored.unshift(scored.splice(firstOk, 1)[0]);
   const top = scored.slice(0,3), others = scored.slice(3,6);
-  const maxScore = (answers.bunya ? 6 : 0) + 10 + (answers.purpose==="niji" && (answers.shibou==="nankan"||answers.shibou==="saiken") ? 6 : 0);
+  const maxScore = (answers.bunya ? 6 : 0) + 10;
   const exOf = x => explainBook(x.b, x.s, targetTier, maxScore);
 
   document.getElementById("page-title").innerHTML = "診断結果";
@@ -765,7 +767,12 @@ function renderResult(){
       others.forEach((x,k)=>{ listHtml += bookItemHtml(x.b, 3+k, `No.${4+k}`, "", exOf(x), true); });
       listHtml += '</div></details>';
     }
-    bodyHtml = '<p class="pr-note"><span class="pr-tag">PR</span>このページにはアフィリエイト広告が含まれています</p>' + TEXTBOOK_HTML + podiumHtml + listHtml;
+    let mustHtml = '';
+    if(mustBook){
+      const ex = {pct:100, tags:[{t:"難関大志望の必携書"},{t:"基礎〜最難関まで網羅"}]};
+      mustHtml = `<p class="must-head">難関大を目指すなら、まずこの1冊</p><div class="book-list must-list">${bookItemHtml(mustBook, 0, "必携", "var(--amber)", ex, false)}</div><p class="must-head">あなたに合う参考書</p>`;
+    }
+    bodyHtml = '<p class="pr-note"><span class="pr-tag">PR</span>このページにはアフィリエイト広告が含まれています</p>' + TEXTBOOK_HTML + mustHtml + podiumHtml + listHtml;
   }
 
   quizArea.innerHTML = `
