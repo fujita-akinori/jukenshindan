@@ -37,6 +37,10 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"受験数学は計算力が9割","description":"発想力よりも計算力。受験数学の得点を左右する地味だが決定的な要素と、その鍛え方を解説します。","datePublished":"2026-07-08","dateModified":"2026-10-22","image":["https://jukenshindan.com/og-image.png"],"inLanguage":"ja","articleSection":"勉強法","mainEntityOfPage":{"@type":"WebPage","@id":"https://jukenshindan.com/articles/keisanryoku-9wari.html"},"author":{"@type":"Organization","name":"受験診断ドットコム運営メンバー（現役京大生）","url":"https://jukenshindan.com/about.html"},"publisher":{"@type":"Organization","name":"受験診断ドットコム","url":"https://jukenshindan.com/","logo":{"@type":"ImageObject","url":"https://jukenshindan.com/logo-mark.png"}}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ホーム","item":"https://jukenshindan.com/"},{"@type":"ListItem","position":2,"name":"記事一覧","item":"https://jukenshindan.com/articles/"},{"@type":"ListItem","position":3,"name":"勉強法","item":"https://jukenshindan.com/articles/tag-benkyouhou.html"},{"@type":"ListItem","position":4,"name":"受験数学は計算力が9割","item":"https://jukenshindan.com/articles/keisanryoku-9wari.html"}]}</script>
 <!-- SEO:END -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js" onload="renderMathInElement(document.querySelector('.article-body'),{delimiters:[{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]})"></script>
+<style>.article-body .katex-display{ margin:14px 0; overflow-x:auto; overflow-y:hidden; } .article-body h2, .article-body h3{ clear:both; } .article-body .inline-cover + p{ min-height:250px; } .article-body figure.math-fig{ margin:18px auto 24px; max-width:300px; text-align:center; } .article-body figure.math-fig svg{ width:100%; height:auto; } .article-body figure.math-fig figcaption{ font-size:13px; color:#6b6355; margin-top:4px; } .article-body .callout ol{ margin:0; padding-left:1.4em; }</style>
 </head>
 <body>
 
@@ -69,45 +73,136 @@
   </div>
 
   <div class="article-body">
+    <p>模試や過去問で「解き方は分かっていたのに計算を間違えて落とした」という経験はありませんか。受験数学では発想力やひらめきが注目されがちですが、実際の得点を大きく左右しているのは地味な計算力です。</p>
+    <p>題名の「9割」は誇張です。それでも計算力を軽く見ると、合否がそれだけで決まってしまうことがあります。筆者自身がそうでした。</p>
 
-    <p>受験数学というと「発想力」や「ひらめき」が注目されがちですが、実際の得点を最も左右しているのは、地味な<strong>計算力</strong>です。どれだけ良い解法を思いついても、計算過程でミスをすれば得点にはなりません。また、計算に時間がかかりすぎると、他の問題に手が回らなくなります。</p>
-    <!-- COVER:合格る計算 --><a class="inline-cover" href="https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F17969778%2F" target="_blank" rel="sponsored noopener" aria-label="合格る計算を楽天で見る"><img src="https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3434/9784578243434_1_3.jpg?_ex=400x400" alt="合格る計算の表紙" width="200" height="284" loading="lazy" decoding="async"><span>楽天で見る</span></a><!-- /COVER -->
+    <div class="point-box"><span class="point-label">この記事でわかること</span><ul>
+      <li>論理が合っていても計算で点を失う理由と、入試の採点の実情</li>
+      <li>計算力を作る3つの要素と、計算ミスの4つの原因</li>
+      <li>計算の手数を減らす省略力の具体例と、本番で使える検算</li>
+      <li>計算力を鍛える参考書と取り組む順番</li>
+    </ul></div>
+
+    <h2>計算ミスで15点を失い、15点差で落ちた</h2>
+    <p>筆者は現役のとき、京大の入試で積分計算の小問を解ききれず15点を落としました。結果はちょうど15点差での不合格です。方針は立っていました。それでも計算を最後まで運べなかった時点で、その15点は入ってきませんでした。</p>
+    <p><strong class="hl">どれだけ論理が合っていても、計算を間違えて完答できなければ点は入ってきません。</strong>この経験から、計算力は合否を直接左右する力だと考えるようになりました。</p>
+
+    <h2>計算力は数学の本質ではない。それでも受験では決定的になる</h2>
+    <p>はっきり言えば、計算力は数学力の本質ではありません。数学の本質は論理で考えを組み立てることで、計算はその考えを答えまで運ぶための道具です。それでも受験では計算力が決定的になります。理由は2つあります。</p>
+    <ul>
+      <li><strong>時間制限がシビア</strong>：入試は限られた時間で答えを出す試験です。計算に時間がかかれば、解けるはずの問題に手が回らなくなります。</li>
+      <li><strong>採点の実情</strong>：記述式の入試でも、大量の答案を短い期間で採点しなければなりません。そのため最終的な答えが合っていない答案は、途中の考え方が正しくても大きく減点されることがあり得ます。実際にそうした事例は多いと言われています。</li>
+    </ul>
+    <p>だから受験数学では「考え方が正しいこと」と「答えまで正確に運べること」の両方がそろって初めて点になります。論理で方針を立て、計算で答えまで運ぶ。この2つは両輪です。論理については<a href="suujaku-suukyou-ronri.html">数学が伸びない原因は「論理」だった</a>で詳しく書いています。</p>
 
     <h2>計算力は3つの要素でできている</h2>
-    <p>「計算力」とひとくくりに言われますが、実際には3つの要素に分解できます。</p>
-    <ul>
-      <li><strong>正確性</strong>: 符号のミス、写し間違い、約分忘れなどをしない力</li>
-      <li><strong>スピード</strong>: 同じ計算をより短時間で処理できる力</li>
-      <li><strong>省略力</strong>: 工夫によって計算の手数そのものを減らす力</li>
-    </ul>
-    <p><strong class="hl">多くの受験生は「正確性」ばかりを気にしますが、実は「省略力」の差が最終的な得点差につながることが多くあります。</strong>例えば、同じ二次方程式の問題でも、解と係数の関係を使えば数行で済む計算を、律儀に展開して解く人がいます。この差は、模試の得点にも試験時間の余裕にも直結します。</p>
+    <p>「計算力」とひとくくりに言われますが、実際には3つの要素に分けられます。自分がどこで弱いのかを知ることが鍛え方を決める第一歩です。</p>
+    <div class="table-scroll">
+    <table class="compare-table">
+      <tr><th>要素</th><th>中身</th><th>弱い人の特徴</th></tr>
+      <tr><td>正確性</td><td>符号・写し間違い・約分忘れなどをしない力</td><td>解き直すと解けるのに本番で答えが合わない</td></tr>
+      <tr><td>スピード</td><td>同じ計算をより短い時間で処理する力</td><td>最後の大問に手をつける前に時間が切れる</td></tr>
+      <tr><td>省略力</td><td>工夫によって計算の手数そのものを減らす力</td><td>答えは合うが答案が長く、途中で集中が切れてミスが出る</td></tr>
+    </table>
+    </div>
+    <p>多くの受験生は正確性ばかりを気にしますが、<strong class="hl">最終的な得点差につながりやすいのは省略力です。</strong>手数が減れば時間が浮き、ミスが入り込む場所も減るので、正確性とスピードも同時に上がります。</p>
 
-    <h2>なぜ計算力が軽視されがちなのか</h2>
-    <p>「発想力を鍛えれば得点が伸びる」という話は魅力的に聞こえますが、発想力の土台には計算力があります。良い解法を思いついても、その先の計算でつまずけば意味がありません。<strong class="hl">逆に言えば、計算力さえ盤石であれば、多少発想が弱くても力技で解ききれる場面は少なくないのです。</strong></p>
+    <h2>計算ミスの4つの原因と対策</h2>
+    <p>計算ミスは「注意不足」でひとまとめにされがちですが、原因ごとに対策は違います。</p>
+    <div class="table-scroll">
+    <table class="compare-table">
+      <tr><th>原因</th><th>よくある場面</th><th>対策</th></tr>
+      <tr><td>写し間違い</td><td>前の行の式を写すときに指数や符号が変わる</td><td>行をまたぐときは1文字ずつではなく式のかたまりで見て写す。字を大きく書く</td></tr>
+      <tr><td>符号ミス</td><td>かっこを外す・移項する・負の数を2乗する</td><td>マイナスのかっこは外す前に一度かっこごと書く。移項は両辺に同じ操作をしたと意識する</td></tr>
+      <tr><td>暗算の過信</td><td>分数の通分や展開を頭の中で済ませる</td><td>2段階以上の操作は必ず紙に書く。暗算は1段階までと決める</td></tr>
+      <tr><td>途中式の省きすぎ</td><td>速く解こうとして式を飛ばし、どこで間違えたか分からなくなる</td><td>見直しで追える程度の途中式は残す。省略は工夫で手数を減らすことで行う</td></tr>
+    </table>
+    </div>
+    <p>模試や過去問で計算ミスをしたら、どの原因だったかを記録しておくと自分のくせが見えてきます。</p>
+
+    <h2>省略力の具体例</h2>
+    <p>省略力とは、計算を雑にすることではなく、工夫によって計算そのものを減らすことです。同じ問題を愚直に解いた場合と工夫した場合で比べてみます。</p>
+
+    <h3>例1：対称式で解を求めずに値を出す</h3>
+    <div class="point-box"><span class="point-label">問題</span><p>\(x^2-3x+1=0\) の2つの解を \(\alpha,\ \beta\) とするとき \(\alpha^2+\beta^2\) を求めよ。</p></div>
+    <p>愚直に解くと \(\alpha,\ \beta=\dfrac{3\pm\sqrt{5}}{2}\) を求めて2乗して足すことになり、根号の計算が続きます。解と係数の関係から \(\alpha+\beta=3,\ \alpha\beta=1\) を使えば1行で終わります。</p>
+    \[ \begin{aligned} \alpha^2+\beta^2&=(\alpha+\beta)^2-2\alpha\beta \\ &=9-2=7 \end{aligned} \]
+
+    <h3>例2：放物線と直線で囲まれた面積</h3>
+    <div class="point-box"><span class="point-label">問題</span><p>放物線 \(y=x^2\) と直線 \(y=x+2\) で囲まれた部分の面積を求めよ。</p></div>
+    <p>交点は \(x^2=x+2\) より \(x=-1,\ 2\) です。そのまま積分すると原始関数に \(2\) と \(-1\) を代入して分数を通分する計算が続きます。次の公式を使えば一瞬です。</p>
+    \[ \int_{\alpha}^{\beta}(x-\alpha)(x-\beta)\,dx=-\frac{(\beta-\alpha)^3}{6} \]
+    \[ \begin{aligned} S&=\int_{-1}^{2}\{(x+2)-x^2\}\,dx \\ &=\frac{\{2-(-1)\}^3}{6}=\frac{9}{2} \end{aligned} \]
+    <p>公式を丸暗記するのではなく、なぜこの形になるのかを一度自分で導いておくと、係数が1でない場合にも迷わず使えます。</p>
+
+    <h3>例3：展開せずに因数分解の形のまま扱う</h3>
+    <p>不等式 \((x-1)(x-2)(x-3)>0\) を解くとき、展開して \(x^3-6x^2+11x-6>0\) にしてしまうと符号が読めなくなります。因数分解された形のまま、それぞれの因数の符号を数直線上で調べれば \(1&lt;x&lt;2\) または \(3&lt;x\) がすぐに分かります。<strong>展開は情報を消す操作</strong>だと意識しておくと、不要な展開をしなくなります。</p>
+
+    <h2>本番で使える検算</h2>
+    <p>計算ミスをゼロにすることはできません。大事なのはミスに気付いて直せることです。本番でも短時間でできる検算を持っておきましょう。</p>
+    <div class="point-box"><span class="point-label">本番で使える検算</span><ul>
+      <li><strong>特殊な値を代入する</strong>：展開や因数分解の結果に \(x=0,\ 1\) などを代入して、元の式と値が一致するか確かめる</li>
+      <li><strong>符号と大きさを見積もる</strong>：面積や長さが負になっていないか、確率が0と1の間にあるかを確かめる</li>
+      <li><strong>対称性を確かめる</strong>：\(a\) と \(b\) を入れ替えても同じになるはずの式が、入れ替えで変わっていないかを見る</li>
+      <li><strong>別の方法で解く</strong>：時間に余裕がある小問は、別の解き方で同じ答えになるか確かめる</li>
+    </ul></div>
 
     <h2>計算力の鍛え方</h2>
-    <p>特別な才能は必要なく、日々の反復で着実に伸ばせるのが計算力の良いところです。<strong class="hl">おすすめは、毎日決まった時間、決まった量の計算演習を「作業」として組み込むことです。</strong>考える負荷が高い問題演習とは別に、計算だけに特化した時間を確保しましょう。</p>
+    <p>計算力は特別な才能がなくても日々の反復で伸ばせます。おすすめは、毎日決まった時間に決まった量の計算演習を「作業」として組み込むことです。考える負荷が高い問題演習とは別に、計算だけに特化した時間を15〜20分ほど確保します。</p>
+    <p>演習では答え合わせのあとに、間違えた原因を上の4つのどれだったか記録します。同じ原因のミスが続いたら、その原因の対策だけを意識して次の演習に取り組みます。</p>
 
-    <div class="callout">
-      分野特化の教材としては「合格る計算」が定番です。計算の仕組みそのものを理解しながら、ミスを減らす工夫を学べます。より本格的に鍛えたい場合は「数学の計算革命」のような、計算力そのものに焦点を当てた演習書も選択肢になります。
+    <h3>参考書の順番</h3>
+    <div class="route">
+      <div class="route-step"><span class="r-role">まず</span><span class="r-name">合格る計算（数学I・A・II・B・C／数学III・C）</span></div>
+      <div class="route-arrow">↓ 計算そのものを本格的に鍛えるなら</div>
+      <div class="route-step"><span class="r-role">次に</span><span class="r-name">数学の計算革命</span></div>
+      <div class="route-arrow">↓ 理系で数IIIの微積分を得点源にするなら</div>
+      <div class="route-step option"><span class="r-role">仕上げ</span><span class="r-name">微積分 基礎の極意</span></div>
     </div>
 
-    <h2>結論</h2>
-    <p>発想力を鍛える演習に進む前に、まず計算力という土台が固まっているかを見直してみてください。<strong class="hl">模試で「解き方はわかっていたのに計算ミスで失点した」という経験が多い人ほど、伸びしろは計算力にあります。</strong></p>
+    <h3>合格る計算</h3>
+    <div class="cover-row"><!-- COVER:合格る計算数学iaiib数列cベクトル --><a class="inline-cover" href="https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F17969778%2F" target="_blank" rel="sponsored noopener" aria-label="合格る計算 数学I・A・II・B［数列］・C［ベクトル］を楽天で見る"><img src="https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3434/9784578243434_1_3.jpg?_ex=400x400" alt="合格る計算 数学I・A・II・B［数列］・C［ベクトル］の表紙" width="200" height="284" loading="lazy" decoding="async"><span>楽天で見る</span></a><!-- /COVER --><!-- COVER:合格る計算数学iiic複素数平面2次曲線 --><a class="inline-cover" href="https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F17969777%2F" target="_blank" rel="sponsored noopener" aria-label="合格る計算 数学III・C［複素数平面・2次曲線］を楽天で見る"><img src="https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3441/9784578243441_1_3.jpg?_ex=400x400" alt="合格る計算 数学III・C［複素数平面・2次曲線］の表紙" width="200" height="284" loading="lazy" decoding="async"><span>楽天で見る</span></a><!-- /COVER --></div>
+    <p>計算の仕組みを理解しながら、ミスを減らす工夫と省略力を身につけられる定番の1冊です。数学I・A・II・B・C編と数学III・C編があり、文系は前者、理系は両方を使います。使い方は<a href="ukaru-keisan-tsukaikata.html">合格る計算の使い方とレベル</a>で詳しく紹介しています。</p>
+
+    <h3>数学の計算革命</h3>
+    <!-- COVER:数学の計算革命〈〉 --><a class="inline-cover" href="https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F17945127%2F" target="_blank" rel="sponsored noopener" aria-label="数学の計算革命〈三訂版〉を楽天で見る"><img src="https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3496/9784796113496_1_5.jpg?_ex=400x400" alt="数学の計算革命〈三訂版〉の表紙" width="200" height="284" loading="lazy" decoding="async"><span>楽天で見る</span></a><!-- /COVER -->
+    <p>計算力そのものに焦点を当てた駿台の演習書です。合格る計算で工夫を覚えたあと、量をこなして正確性とスピードを本格的に鍛えたい人に向いています。</p>
+
+    <h3>微積分 基礎の極意</h3>
+    <!-- COVER:微積分基礎の極意 --><a class="inline-cover" href="https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F1141368%2F" target="_blank" rel="sponsored noopener" aria-label="微積分 基礎の極意を楽天で見る"><img src="https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/0298/9784887420298.jpg?_ex=400x400" alt="微積分 基礎の極意の表紙" width="200" height="284" loading="lazy" decoding="async"><span>楽天で見る</span></a><!-- /COVER -->
+    <p>数IIIの微積分の計算を徹底的に鍛える東京出版の1冊です。筆者が現役で落とした積分計算のような問題を得点源に変えたい理系の人に向いています。詳しくは<a href="bisekibun-kiso-no-gokui.html">微積分 基礎の極意の使い方とレベル</a>で紹介しています。</p>
+
+    <h2>よくある質問</h2>
+    <h3>計算練習はいつから始めればいいですか</h3>
+    <p>網羅系で典型問題の解き方を覚え始めたら並行して始めて構いません。計算力は一度に伸ばすものではなく毎日の積み重ねで伸びるので、早く始めるほど本番までの差が大きくなります。</p>
+    <h3>文系でも計算練習は必要ですか</h3>
+    <p>必要です。共通テストは時間との勝負で、計算の速さがそのまま得点に表れます。文系の二次試験でも計算量の多い問題は出ます。</p>
+    <h3>計算ミスが多いのは注意力の問題ですか</h3>
+    <p>注意力だけの問題ではありません。多くの場合は原因が4つのどれかに偏っていて、原因に合った対策で減らせます。気を付けようと思うだけでは減らないので、ミスの記録から始めてください。</p>
+
+    <h2>まとめ</h2>
+    <p>計算力は数学力の本質ではありません。それでも受験という時間制限のシビアな場では、答えまで正確に運べなければ点は入ってきません。筆者は積分計算の小問で15点を落とし、ちょうど15点差で不合格になりました。論理で方針を立て、計算で答えまで運ぶ。この両輪がそろって初めて点になります。</p>
+    <div class="point-box"><span class="point-label">計算ミスが多い人</span><p>まずミスの原因を記録し、4つの原因のどれに偏っているかを確かめてください。毎日15〜20分の計算演習を合格る計算で始めます。</p></div>
+    <div class="point-box"><span class="point-label">計算が遅く時間が足りない人</span><p>省略力を鍛えるのが一番の近道です。合格る計算で工夫を覚え、数学の計算革命で量をこなしてください。</p></div>
+    <div class="point-box"><span class="point-label">理系で数IIIの微積分に不安がある人</span><p>微積分 基礎の極意で積分計算を得点源に変えてください。数IIIの計算は二次試験で大きな配点を占めます。</p></div>
+    <p><strong class="hl">論理で方針を立て、計算で答えまで運ぶ。どちらが欠けても受験数学の点にはなりません。</strong></p>
 
       <div class="aff-box">
       <p class="aff-title">この記事で紹介した参考書</p>
       <ul>
-        <li class="aff-item"><img class="aff-cover" src="https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3434/9784578243434_1_3.jpg?_ex=200x200" alt="合格る計算の表紙" width="64" height="90" loading="lazy" decoding="async"><div class="aff-main"><span class="aff-name">合格る計算</span><div class="aff-btns"><a class="aff-btn" href="https://www.amazon.co.jp/dp/4578243435?tag=jukenshindan-22" target="_blank" rel="sponsored noopener">Amazonで見る</a><a class="aff-btn aff-btn-rakuten" href="https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F17969778%2F" target="_blank" rel="sponsored noopener">楽天で見る</a></div></div></li>
-        <li class="aff-item"><img class="aff-cover" src="https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3496/9784796113496_1_5.jpg?_ex=200x200" alt="数学の計算革命の表紙" width="64" height="90" loading="lazy" decoding="async"><div class="aff-main"><span class="aff-name">数学の計算革命</span><div class="aff-btns"><a class="aff-btn" href="https://www.amazon.co.jp/dp/4796113495?tag=jukenshindan-22" target="_blank" rel="sponsored noopener">Amazonで見る</a><a class="aff-btn aff-btn-rakuten" href="https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F17945127%2F" target="_blank" rel="sponsored noopener">楽天で見る</a></div></div></li>
+        <li class="aff-item"><img class="aff-cover" src="https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3434/9784578243434_1_3.jpg?_ex=200x200" alt="合格る計算 数学I・A・II・B［数列］・C［ベクトル］の表紙" width="64" height="90" loading="lazy" decoding="async"><div class="aff-main"><span class="aff-name">合格る計算 数学I・A・II・B［数列］・C［ベクトル］</span><div class="aff-btns"><a class="aff-btn" href="https://www.amazon.co.jp/dp/4578243435?tag=jukenshindan-22" target="_blank" rel="sponsored noopener">Amazonで見る</a><a class="aff-btn aff-btn-rakuten" href="https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F17969778%2F" target="_blank" rel="sponsored noopener">楽天で見る</a></div></div></li>
+        <li class="aff-item"><img class="aff-cover" src="https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3441/9784578243441_1_3.jpg?_ex=200x200" alt="合格る計算 数学III・C［複素数平面・2次曲線］の表紙" width="64" height="90" loading="lazy" decoding="async"><div class="aff-main"><span class="aff-name">合格る計算 数学III・C［複素数平面・2次曲線］</span><div class="aff-btns"><a class="aff-btn" href="https://www.amazon.co.jp/dp/4578243443?tag=jukenshindan-22" target="_blank" rel="sponsored noopener">Amazonで見る</a><a class="aff-btn aff-btn-rakuten" href="https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F17969777%2F" target="_blank" rel="sponsored noopener">楽天で見る</a></div></div></li>
+        <li class="aff-item"><img class="aff-cover" src="https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3496/9784796113496_1_5.jpg?_ex=200x200" alt="数学の計算革命〈三訂版〉の表紙" width="64" height="90" loading="lazy" decoding="async"><div class="aff-main"><span class="aff-name">数学の計算革命〈三訂版〉</span><div class="aff-btns"><a class="aff-btn" href="https://www.amazon.co.jp/dp/4796113495?tag=jukenshindan-22" target="_blank" rel="sponsored noopener">Amazonで見る</a><a class="aff-btn aff-btn-rakuten" href="https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F17945127%2F" target="_blank" rel="sponsored noopener">楽天で見る</a></div></div></li>
+        <li class="aff-item"><img class="aff-cover" src="https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/0298/9784887420298.jpg?_ex=200x200" alt="微積分 基礎の極意の表紙" width="64" height="90" loading="lazy" decoding="async"><div class="aff-main"><span class="aff-name">微積分 基礎の極意</span><div class="aff-btns"><a class="aff-btn" href="https://www.amazon.co.jp/dp/4887420293?tag=jukenshindan-22" target="_blank" rel="sponsored noopener">Amazonで見る</a><a class="aff-btn aff-btn-rakuten" href="https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F1141368%2F" target="_blank" rel="sponsored noopener">楽天で見る</a></div></div></li>
       </ul>
       <p class="aff-disclosure">Amazonのアソシエイトとして、当メンバーは適格販売により収入を得ています。当サイトは楽天アフィリエイトに参加しています。</p>
     </div>
 
+
   </div>
 
   <div class="diag-cta">
-    <p>計算力を重視した参考書ルートは、数学参考書診断の「量重視」タイプから確認できます。</p>
+    <p>今のレベルに合う計算の参考書と問題集は、数学の参考書診断で確認できます。分野別で「計算」を選ぶと計算力の本が出てきます。</p>
     <a href="../sugaku-shindan.html" class="btn btn-primary">数学の参考書診断を試す →</a>
   </div>
 
@@ -115,7 +210,7 @@
     <h2 class="related-title">あわせて読みたい</h2>
     <ul>
       <li><a href="suujaku-suukyou-ronri.html"><span class="r-tag">勉強法</span>数学が伸びない原因は「論理」だった｜偏差値60から京大本番で合格者平均を超えた勉強法</a></li>
-      <li><a href="pomodoro-syuuchuuryoku.html"><span class="r-tag">受験戦略</span>集中力を持続させる方法：ポモドーロ・テクニック</a></li>
+      <li><a href="ukaru-keisan-tsukaikata.html"><span class="r-tag">参考書比較</span>合格る計算の使い方とレベル｜計算ミスが減る勉強法と何周やるべきか</a></li>
       <li><a href="kaihou-anki-vs-rikai.html"><span class="r-tag">勉強法</span>解法暗記か理解か、受験数学の正解は「暗記→理解→暗記」｜3段階の勉強法と参考書</a></li>
     </ul>
   </section>
