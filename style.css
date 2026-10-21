@@ -351,3 +351,7 @@ div.aff-box li:first-child{ border-top:none; }
 
 /* 各章の大事な1文：太字＋薄い黄色のマーカー */
 .paper-sheet .article-body strong.hl{ font-weight:700; color:inherit; background:linear-gradient(transparent 58%, #fbe68f 58%); padding:0 1px; }
+
+/* 本文中で複数の本の表紙を横に並べる */
+.paper-sheet .cover-row{ display:flex; flex-wrap:wrap; gap:18px; margin:6px 0 22px; clear:both; }
+.paper-sheet .cover-row .inline-cover{ float:none; margin:0; width:140px; }
