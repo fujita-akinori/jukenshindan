@@ -365,7 +365,7 @@ const BOOKS = [
   {name:"高校これでわかる基礎問題集 生物基礎",note:"「高校これでわかる」と対になる基礎問題集です。教科書レベルの問題を段階的に解いて、定期テストで点を取る力を固められます。",asin:"4578244008",scope:"kiso",tier:1,purposes:["teiki","kyoutsuu"],type:"quantity",bunya:[],also:[]},
   {name:"高校これでわかる基礎問題集 生物",note:"「生物」の基礎問題を段階的に解ける文英堂の問題集です。授業で習った内容をすぐ問題で確認したい人に向いています。",asin:"4578244016",scope:"full",tier:1,purposes:["teiki","kyoutsuu"],type:"quantity",bunya:[],also:[]},
   {name:"よくわかる高校生物基礎 問題集（マイベスト問題集）",note:"Gakkenの定期テスト向け問題集です。基本問題からテスト対策問題まで段階的に並んでいて、毎日の復習とテスト前の総点検に使えます。",asin:"4053054915",scope:"kiso",tier:1,purposes:["teiki"],type:"quantity",bunya:[],also:[]},
-  {name:"生物合格77講【完全版】2nd edition",note:"東進の田部眞哉先生による約800ページの講義本で、豊富なイラストで教科書の分かりにくい現象を「なぜそうなるか」から理解できます。2020年刊行で2022年度からの新課程には対応していないので、新課程の範囲にきっちり合わせたい人は大森徹の最強講義126講を選びましょう。",asin:"4890858466",scope:"both",tier:1,purposes:["teiki","kyoutsuu","niji"],type:"quality",bunya:[],also:[]},
+  {name:"生物合格77講【完全版】2nd edition",note:"東進の田部眞哉先生による約800ページの講義本で、豊富なイラストで教科書の分かりにくい現象を「なぜそうなるか」から理解できます。教科書レベルの基礎から最難関大で問われる内容まで1冊で扱っていて、難関大志望者には必須の1冊です。2020年刊行で2022年度からの新課程には対応していないので、新課程で加わった内容は教科書で補いましょう。",asin:"4890858466",scope:"both",tier:1,tierMax:5,purposes:["teiki","kyoutsuu","niji"],type:"quality",bunya:[],also:["iden","ronjutsu","kousatsu","jikken","keisan"],mustNankan:true},
   {name:"大森徹の最強講義126講 生物［生物基礎・生物］",note:"駿台の大森徹先生による新課程対応の講義本です。生物基礎から生物までの全範囲を126講に分けて解説していて、教科書の内容を入試で使える形に整理できます。",asin:"4578240894",scope:"both",tier:1,purposes:["teiki","kyoutsuu","niji"],type:"quality",bunya:[],also:[]},
   {name:"大森徹の最強講義126講ノート 生物［生物基礎・生物］",note:"最強講義126講に対応した書き込み式のノートです。講義本で読んだ内容を自分の手で整理して、知識を定着させたい人に向いています。",asin:"4578240959",scope:"both",tier:1,purposes:["teiki","kyoutsuu","niji"],type:"quantity",bunya:[],also:[],support:true},
   {name:"大学入試 全レベル問題集 生物 1 基礎レベル",note:"旺文社の全レベル問題集の基礎レベル編です。入試の基本問題を通して教科書の知識を問題で使う練習ができます。",asin:"4010353872",scope:"both",tier:1,purposes:["kyoutsuu","niji"],type:"quantity",bunya:[],also:[]},
@@ -600,6 +600,9 @@ function pickTier(){
   if(a.statusKey==="nankan") return SHIBOU_TIER[a.shibou] || 4;
   return 2;
 }
+/* 本のレベルと目標レベルの差（基礎から最難関まで扱う本は、その幅の中なら差0） */
+function tierGap(b, t){ const lo=b.tier, hi=b.tierMax||b.tier; return t<lo ? lo-t : (t>hi ? t-hi : 0); }
+function signedGap(b, t){ const lo=b.tier, hi=b.tierMax||b.tier; return t<lo ? lo-t : (t>hi ? hi-t : 0); }
 function scoreBook(b, targetTier){
   const a = answers;
   if(!b.purposes.includes(a.purpose)) return -Infinity;
@@ -614,7 +617,9 @@ function scoreBook(b, targetTier){
   } else if(b.bunya.length){
     return -Infinity;
   }
-  s += 5 - Math.abs(b.tier - targetTier)*2;
+  s += 5 - tierGap(b, targetTier)*2;
+  // 難関大志望（難関国公立・早慶／東大・京大・医学部）の二次対策では必ず上位に出す本
+  if(b.mustNankan && a.purpose==="niji" && (a.shibou==="nankan" || a.shibou==="saiken")) s += 6;
   if(FAVORITE.has(b.name) && !b.support) s += 3;
   if(a.purpose==="kyoutsuu" && b.purposes.length===1) s += 1; // 共通テスト専用の本は、共通テスト対策で汎用書より少し優先する
   if(b.support) s -= 3; // 一問一答・用語集・書き込みノートは補助教材なので、メインの本より下に出す
@@ -626,7 +631,7 @@ function explainBook(b, s, targetTier, maxScore){
   const tags = [];
   const primary = answers.bunya && b.bunya.includes(answers.bunya);
   if(primary) tags.push({t:`${BUNYA_NAME[answers.bunya]}の専用書`});
-  const d = primary ? 0 : b.tier - targetTier; // 専用書は分野の基礎から扱うので、レベルの差は表示しない
+  const d = primary ? 0 : signedGap(b, targetTier); // 専用書は分野の基礎から扱うので、レベルの差は表示しない
   if(primary) {}
   else if(d===0) tags.push({t:"レベルがぴったり"});
   else if(d>0) tags.push({t:"やや難しめ", warn:true});
@@ -725,7 +730,7 @@ function renderResult(){
   const firstOk = scored.findIndex(x => !x.b.noTop);
   if(firstOk > 0) scored.unshift(scored.splice(firstOk, 1)[0]);
   const top = scored.slice(0,3), others = scored.slice(3,6);
-  const maxScore = (answers.bunya ? 6 : 0) + 10;
+  const maxScore = (answers.bunya ? 6 : 0) + 10 + (answers.purpose==="niji" && (answers.shibou==="nankan"||answers.shibou==="saiken") ? 6 : 0);
   const exOf = x => explainBook(x.b, x.s, targetTier, maxScore);
 
   document.getElementById("page-title").innerHTML = "診断結果";
