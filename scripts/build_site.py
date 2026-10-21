@@ -42,6 +42,7 @@ STATIC_PAGES = [  # (ファイル, パンくず名, sitemap に載せるか)
     ("index.html", None, True),
     ("sugaku-shindan.html", "数学の参考書診断", True),
     ("seibutsu-shindan.html", "生物の参考書診断", True),
+    ("shindan-ichiran.html", "診断一覧", True),
     ("about.html", "運営者情報", True),
     ("contact.html", "お問い合わせ", True),
     ("privacy-policy.html", "プライバシーポリシー", True),

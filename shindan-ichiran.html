@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>診断一覧｜科目別の参考書診断 | 受験診断ドットコム</title>
+<meta name="description" content="受験診断ドットコムの科目別参考書診断の一覧です。数学・生物の診断を公開中で、英語・化学・物理・古文・漢文の診断を準備しています。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=49be6f4c">
+<style>
+  .page-wrap{ padding-top:44px; padding-bottom:120px; }
+  h1.page-title{
+    font-family:'Shippori Mincho', serif; font-weight:800;
+    font-size:clamp(24px,4.5vw,32px); margin:0 0 8px;
+  }
+  .page-title-rule{ width:56px; height:3px; background:var(--amber); border:none; margin:14px 0 30px; border-radius:2px; }
+
+  .section{
+    margin-top:64px;
+  }
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    margin-bottom:22px;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .section-head h2{
+    font-size:22px;
+    font-weight:800;
+    margin:0;
+  }
+  .section-head .note{
+    font-size:12.5px;
+    color:var(--text-on-ink-muted);
+  }
+
+  .diag-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:16px;
+  }
+  .diag-card{
+    background:var(--ink-soft);
+    border:1px solid rgba(255,255,255,0.07);
+    border-radius:12px;
+    padding:22px 20px;
+    position:relative;
+    text-decoration:none;
+    color:var(--text-on-ink);
+    display:flex;
+    flex-direction:column;
+    min-height:190px;
+    transition:transform .15s ease, border-color .15s ease;
+  }
+  .diag-card::before{
+    content:'';
+    position:absolute;
+    top:0; left:0;
+    width:100%;
+    height:5px;
+    border-radius:12px 12px 0 0;
+  }
+  .diag-card.available{cursor:pointer;}
+  .diag-card.available:hover{
+    transform:translateY(-4px);
+    border-color:var(--amber);
+  }
+  .diag-card.soon{
+    opacity:0.55;
+    cursor:default;
+  }
+  .diag-card .subject-tag{
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:0.08em;
+    color:var(--text-on-ink-muted);
+    margin-bottom:10px;
+  }
+  .diag-card h3{
+    font-size:18px;
+    font-weight:700;
+    margin:0 0 10px;
+    line-height:1.5;
+  }
+  .diag-card p{
+    font-size:12.5px;
+    color:var(--text-on-ink-muted);
+    margin:0;
+    flex:1;
+  }
+  .diag-card .status{
+    margin-top:14px;
+    font-size:11.5px;
+    font-weight:700;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+  }
+  .status-dot{
+    width:7px;height:7px;border-radius:50%;
+    display:inline-block;
+  }
+
+  @media (max-width:760px){
+    .diag-grid{grid-template-columns:1fr;}
+  }
+</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6837829466798350" crossorigin="anonymous"></script>
+<!-- SEO:BEGIN -->
+<link rel="canonical" href="https://jukenshindan.com/shindan-ichiran.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="受験診断ドットコム">
+<meta property="og:title" content="診断一覧｜科目別の参考書診断 | 受験診断ドットコム">
+<meta property="og:description" content="受験診断ドットコムの科目別参考書診断の一覧です。数学・生物の診断を公開中で、英語・化学・物理・古文・漢文の診断を準備しています。">
+<meta property="og:url" content="https://jukenshindan.com/shindan-ichiran.html">
+<meta property="og:image" content="https://jukenshindan.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="診断一覧｜科目別の参考書診断 | 受験診断ドットコム">
+<meta name="twitter:description" content="受験診断ドットコムの科目別参考書診断の一覧です。数学・生物の診断を公開中で、英語・化学・物理・古文・漢文の診断を準備しています。">
+<meta name="twitter:image" content="https://jukenshindan.com/og-image.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ホーム","item":"https://jukenshindan.com/"},{"@type":"ListItem","position":2,"name":"診断一覧","item":"https://jukenshindan.com/shindan-ichiran.html"}]}</script>
+<!-- SEO:END -->
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="logo"><img src="logo-mark.png" class="mark" alt="受験診断ドットコム">受験診断ドットコム</a>
+    <nav class="nav-links">
+      <a href="shindan-ichiran.html">診断一覧</a>
+      <a href="articles/index.html">記事</a>
+      <a href="contact.html">お問い合わせ</a>
+      <!-- NAVSEARCH:BEGIN --><a class="nav-search" href="articles/index.html#search" aria-label="記事を検索" title="記事を検索"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="16.5" y1="16.5" x2="21" y2="21"></line></svg></a><!-- NAVSEARCH:END -->
+    </nav>
+  </div>
+</header>
+
+<main class="wrap page-wrap">
+  <h1 class="page-title">診断一覧</h1>
+  <hr class="page-title-rule">
+  <p style="color:var(--text-on-ink-muted); font-size:14.5px; margin:0 0 30px;">科目ごとの参考書診断の一覧です。準備中の科目は順次公開していきます。</p>
+  <section>
+    <div class="diag-grid">
+      <a href="sugaku-shindan.html" class="diag-card available" style="--tag-color:var(--lv2);">
+        <div class="subject-tag" style="color:var(--lv2);">MATHEMATICS</div>
+        <h3>数学 参考書診断</h3>
+        <p>「何の対策がしたいか」から始まる分岐診断。定期テスト・共通テスト・二次試験、それぞれに合わせたおすすめルートが分かります。</p>
+        <span class="status" style="color:var(--lv2);"><span class="status-dot" style="background:var(--lv2);"></span>公開中</span>
+      </a>
+      <a href="seibutsu-shindan.html" class="diag-card available" style="--tag-color:var(--lv1);">
+        <div class="subject-tag" style="color:var(--lv1);">BIOLOGY</div>
+        <h3>生物 参考書診断</h3>
+        <p>教科書を土台に、定期テスト・共通テスト・二次試験それぞれに合う生物の参考書が分かります。遺伝・考察・論述など苦手な分野からも選べます。</p>
+        <span class="status" style="color:var(--lv1);"><span class="status-dot" style="background:var(--lv1);"></span>公開中</span>
+      </a>
+      <div class="diag-card soon" style="--tag-color:var(--lv3);">
+        <div class="subject-tag" style="color:var(--lv3);">ENGLISH</div>
+        <h3>英語 参考書診断</h3>
+        <p>単語・文法・長文それぞれの到達度から、最適な参考書を診断します。</p>
+        <span class="status" style="color:var(--text-on-ink-muted);"><span class="status-dot" style="background:var(--text-on-ink-muted);"></span>準備中</span>
+      </div>
+      <div class="diag-card soon" style="--tag-color:var(--lv4);">
+        <div class="subject-tag" style="color:var(--lv4);">CHEMISTRY</div>
+        <h3>化学 参考書診断</h3>
+        <p>理論・無機・有機の分野ごとの到達度と志望校から、化学の参考書ルートを診断します。</p>
+        <span class="status" style="color:var(--text-on-ink-muted);"><span class="status-dot" style="background:var(--text-on-ink-muted);"></span>準備中</span>
+      </div>
+      <div class="diag-card soon" style="--tag-color:var(--lv2);">
+        <div class="subject-tag" style="color:var(--lv2);">PHYSICS</div>
+        <h3>物理 参考書診断</h3>
+        <p>力学・電磁気など分野ごとの理解度と志望校から、物理の参考書を診断します。</p>
+        <span class="status" style="color:var(--text-on-ink-muted);"><span class="status-dot" style="background:var(--text-on-ink-muted);"></span>準備中</span>
+      </div>
+      <div class="diag-card soon" style="--tag-color:var(--lv3);">
+        <div class="subject-tag" style="color:var(--lv3);">CLASSICAL JAPANESE</div>
+        <h3>古文 参考書診断</h3>
+        <p>単語・文法・読解の到達度から、古文の参考書を診断します。</p>
+        <span class="status" style="color:var(--text-on-ink-muted);"><span class="status-dot" style="background:var(--text-on-ink-muted);"></span>準備中</span>
+      </div>
+      <div class="diag-card soon" style="--tag-color:var(--lv1);">
+        <div class="subject-tag" style="color:var(--lv1);">CLASSICAL CHINESE</div>
+        <h3>漢文 参考書診断</h3>
+        <p>句法・読解の到達度から、漢文の参考書を診断します。</p>
+        <span class="status" style="color:var(--text-on-ink-muted);"><span class="status-dot" style="background:var(--text-on-ink-muted);"></span>準備中</span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>&copy; 2026 受験診断ドットコム</span>
+    <div class="footer-links">
+      <a href="about.html">運営者情報</a>
+      <a href="privacy-policy.html">プライバシーポリシー</a>
+      <a href="contact.html">お問い合わせ</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
