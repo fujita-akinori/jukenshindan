@@ -325,3 +325,12 @@ div.aff-box li:first-child{ border-top:none; }
 .article-card[data-tag="科目別対策"] .tag{ color:var(--tag-kamoku); }
 .article-card[data-tag="受験戦略"] .tag{ color:var(--tag-senryaku); }
 .article-card[data-tag="予備校"] .tag{ color:var(--tag-yobiko); }
+
+/* 紹介した参考書：表紙画像と購入ボタン */
+.paper-sheet div.aff-box li.aff-item{ display:flex; align-items:center; gap:14px; justify-content:flex-start; padding:12px 0; }
+.paper-sheet .aff-cover{ flex:0 0 64px; width:64px; height:auto; max-height:92px; object-fit:contain; border-radius:3px; box-shadow:0 2px 8px rgba(27,33,48,0.18); background:#fff; }
+.paper-sheet .aff-cover-empty{ display:block; height:84px; background:#ece4cf; box-shadow:none; }
+.paper-sheet .aff-main{ flex:1; min-width:0; display:flex; flex-direction:column; gap:8px; }
+.paper-sheet .aff-btns{ display:flex; gap:8px; flex-wrap:wrap; }
+.paper-sheet .aff-btn-rakuten{ background:#bf0000; }
+.paper-sheet .aff-btn-rakuten:hover{ background:#d81f1f; }

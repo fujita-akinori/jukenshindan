@@ -1,0 +1,3 @@
+*.pyc
+.rakuten.env
+__pycache__/

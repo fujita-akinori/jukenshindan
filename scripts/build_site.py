@@ -18,9 +18,11 @@ import json
 import os
 import re
 import subprocess
+import sys
 from datetime import date
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 BASE = "https://jukenshindan.com"
 SITE = "受験診断ドットコム"
 OG_IMAGE = f"{BASE}/og-image.png"
@@ -405,6 +407,8 @@ def main():
     for a in arts:
         assert os.path.exists(path("articles", a["slug"])), a["slug"]
         assert a["tag"] in TAG_FILE, (a["slug"], a["tag"])
+    import affbox
+    affbox.build(ROOT, read, write)
     build_articles(arts)
     build_list_pages(arts)
     build_home(arts)
