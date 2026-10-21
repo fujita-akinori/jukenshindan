@@ -348,3 +348,6 @@ div.aff-box li:first-child{ border-top:none; }
 /* 見出しの直前に置かれた表紙は回り込む本文がないので、中央に大きく出す */
 .paper-sheet .inline-cover:has(+ h2), .paper-sheet .inline-cover:has(+ h3){ float:none; width:200px; margin:8px auto 28px; }
 @media (max-width:700px){ .paper-sheet .inline-cover:has(+ h2), .paper-sheet .inline-cover:has(+ h3){ width:160px; } }
+
+/* 各章の大事な1文：太字＋薄い黄色のマーカー */
+.paper-sheet .article-body strong.hl{ font-weight:700; color:inherit; background:linear-gradient(transparent 58%, #fbe68f 58%); padding:0 1px; }
