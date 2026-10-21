@@ -355,3 +355,16 @@ div.aff-box li:first-child{ border-top:none; }
 /* 本文中で複数の本の表紙を横に並べる */
 .paper-sheet .cover-row{ display:flex; flex-wrap:wrap; gap:18px; margin:6px 0 22px; clear:both; }
 .paper-sheet .cover-row .inline-cover{ float:none; margin:0; width:140px; }
+
+/* 本文中の本の紹介：左に表紙、右に説明（複数冊はスマホで表紙を上に並べる） */
+.paper-sheet .book-feature{ display:flex; gap:22px; align-items:flex-start; margin:10px 0 28px; clear:both; }
+.paper-sheet .book-feature .bf-covers{ display:flex; gap:12px; flex-shrink:0; }
+.paper-sheet .book-feature .inline-cover{ float:none; margin:0; width:120px; }
+.paper-sheet .book-feature .bf-text{ flex:1; min-width:0; }
+.paper-sheet .book-feature .bf-text p:first-child{ margin-top:0; }
+.paper-sheet .book-feature .bf-text p:last-child{ margin-bottom:0; }
+.paper-sheet .book-feature.multi{ flex-direction:column; gap:14px; }
+@media (max-width: 560px){
+  .paper-sheet .book-feature{ gap:16px; }
+  .paper-sheet .book-feature .inline-cover{ width:96px; }
+}
