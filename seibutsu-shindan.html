@@ -732,6 +732,11 @@ function renderResult(){
   // 1位が大森徹先生の本になったら、ほかの本のうち最上位のものを1位に上げる
   const firstOk = scored.findIndex(x => !x.b.noTop);
   if(firstOk > 0) scored.unshift(scored.splice(firstOk, 1)[0]);
+  // 遺伝・論述が苦手な人には、Doシリーズの専用書（遺伝問題の解法／記述・論述問題の解法）を1位にする
+  if(answers.bunya==="iden" || answers.bunya==="ronjutsu"){
+    const di = scored.findIndex(x => x.b.name.includes("大学受験Do") && x.b.bunya.includes(answers.bunya));
+    if(di > 0) scored.unshift(scored.splice(di, 1)[0]);
+  }
   const top = scored.slice(0,3), others = scored.slice(3,6);
   const maxScore = (answers.bunya ? 6 : 0) + 10;
   const exOf = x => explainBook(x.b, x.s, targetTier, maxScore);
