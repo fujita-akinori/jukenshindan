@@ -247,6 +247,28 @@ SEARCH_ICON = ('<a class="nav-search" href="{href}" aria-label="記事を検索"
                '<line x1="16.5" y1="16.5" x2="21" y2="21"></line></svg></a>')
 
 
+GA4_ID = "G-2WNQN0ZF8D"
+GA4_TAG = f"""<script async src="https://www.googletagmanager.com/gtag/js?id={GA4_ID}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){{dataLayer.push(arguments);}}
+  gtag('js', new Date());
+  gtag('config', '{GA4_ID}');
+</script>"""
+
+
+def add_ga4():
+    """全ページの <head> の直後に Google アナリティクス（GA4）のタグを入れる"""
+    pages = sorted(f for f in os.listdir(ROOT) if f.endswith(".html")) + ["articles/" + f for f in sorted(os.listdir(path("articles"))) if f.endswith(".html")]
+    for rel in pages:
+        s = read(rel)
+        if "<head>" not in s:
+            continue
+        s2 = replace_block(s, "GA4", GA4_TAG, anchor_after="<head>")
+        if s2 != s:
+            write(rel, s2)
+
+
 def add_nav_search():
     pages = [p for p, _, _ in STATIC_PAGES] + ["articles/" + f for f in sorted(os.listdir(path("articles"))) if f.endswith(".html")]
     for rel in pages:
@@ -429,6 +451,7 @@ def main():
     build_static_pages()
     build_search_index(arts)
     add_nav_search()
+    add_ga4()
     bust_css_cache()
     build_sitemap(arts)
     print(f"OK: 記事 {len(arts)} 本 / タグページ {len(TAGS)} 枚を生成しました")
