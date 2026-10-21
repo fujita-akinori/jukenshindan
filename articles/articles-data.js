@@ -14,9 +14,9 @@
 // ===========================================================
 const ARTICLES = [
   { slug:"aoi-chart-vs-focus-gold.html", title:"青チャートとFocus Gold、結局どっちを選ぶべきか", description:"数学の網羅系参考書の2大巨頭を、収録問題数・解説の丁寧さ・レイアウトの3つの観点で比較します。", tag:"参考書比較", subject:"数学", date:"2026-07-07", order:1 },
-  { slug:"kaihou-anki-vs-rikai.html", title:"解法暗記か理解か、受験数学の正解は「暗記→理解→暗記」｜3段階の勉強法と参考書", description:"解法暗記か理解かの答えは「暗記→理解→暗記」の3段階。段階ごとに使う参考書と、段階を飛ばすと数学ができないまま本番を迎える理由を筆者の経験から解説します。", tag:"受験戦略", subject:"数学", date:"2026-07-08", order:2 },
-  { slug:"suujaku-suukyou-ronri.html", title:"数学が伸びない原因は「論理」だった｜偏差値60から京大本番で合格者平均を超えた勉強法", description:"河合で偏差値60前後だった筆者が京大本番で合格者平均を大きく超えた理由は論理。数強と数弱の違い、入試で落とす4つの典型、論理の学び方と毎日の習慣を解説します。", tag:"受験戦略", subject:"数学", date:"2026-07-08", order:3 },
-  { slug:"keisanryoku-9wari.html", title:"受験数学は計算力が9割", description:"発想力よりも計算力。受験数学の得点を左右する地味だが決定的な要素と、その鍛え方を解説します。", tag:"受験戦略", subject:"数学", date:"2026-07-08", order:4 },
+  { slug:"kaihou-anki-vs-rikai.html", title:"解法暗記か理解か、受験数学の正解は「暗記→理解→暗記」｜3段階の勉強法と参考書", description:"解法暗記か理解かの答えは「暗記→理解→暗記」の3段階。段階ごとに使う参考書と、段階を飛ばすと数学ができないまま本番を迎える理由を筆者の経験から解説します。", tag:"勉強法", subject:"数学", date:"2026-07-08", order:2 },
+  { slug:"suujaku-suukyou-ronri.html", title:"数学が伸びない原因は「論理」だった｜偏差値60から京大本番で合格者平均を超えた勉強法", description:"河合で偏差値60前後だった筆者が京大本番で合格者平均を大きく超えた理由は論理。数強と数弱の違い、入試で落とす4つの典型、論理の学び方と毎日の習慣を解説します。", tag:"勉強法", subject:"数学", date:"2026-07-08", order:3 },
+  { slug:"keisanryoku-9wari.html", title:"受験数学は計算力が9割", description:"発想力よりも計算力。受験数学の得点を左右する地味だが決定的な要素と、その鍛え方を解説します。", tag:"勉強法", subject:"数学", date:"2026-07-08", order:4 },
   { slug:"pomodoro-syuuchuuryoku.html", title:"集中力を持続させる方法：ポモドーロ・テクニック", description:"受験勉強の集中力が続かない人向けに、時間管理法「ポモドーロ・テクニック」の仕組みと取り入れ方を解説します。", tag:"受験戦略", date:"2026-07-08", order:5 },
   { slug:"sawaruna-sankousho-3sen.html", title:"触れるな注意 難しすぎる受験参考書3選", description:"内容は良書でも、対象読者を間違えると挫折を招く難関参考書3冊を紹介。自分に合うレベルの見極め方を解説します。", tag:"参考書比較", subject:"数学", date:"2026-07-08", order:6 },
   { slug:"sankousho-root-no-yami.html", title:"参考書ルートの闇：参考書診断がなぜ必要なのか", description:"ネット上に溢れる「参考書ルート」コンテンツに共通する3つの問題点と、個別診断という形が必要な理由を解説します。", tag:"受験戦略", date:"2026-07-08", order:7 },
