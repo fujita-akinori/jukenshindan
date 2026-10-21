@@ -234,8 +234,13 @@ def chips_html(active, arts=None):
 
 KAMOKU_STYLE = """<style>
   .filter-row{ align-items:center; }
-  .subj-row{ display:inline-flex; gap:10px; flex-wrap:nowrap; max-width:0; max-height:0; overflow:hidden; opacity:0; transition:max-width .45s ease, opacity .3s ease; }
-  .subj-row.open{ max-width:760px; max-height:240px; opacity:1; flex-wrap:wrap; }
+  .subj-row{ display:inline-flex; gap:10px; flex-wrap:nowrap; flex-shrink:0; max-width:0; overflow:hidden; opacity:0; transition:max-width .45s ease, opacity .3s ease; }
+  .subj-row.open{ max-width:760px; opacity:1; }
+  .subj-chip{ flex-shrink:0; }
+  @media (max-width: 760px){
+    .subj-row.open{ flex-basis:100%; max-width:100%; overflow-x:auto; scrollbar-width:none; }
+    .subj-row.open::-webkit-scrollbar{ display:none; }
+  }
   .subj-chip{ transform:translateX(-14px); opacity:0; transition:transform .35s ease, opacity .35s ease; transition-delay:calc(var(--i) * 45ms); }
   .subj-row.open .subj-chip{ transform:none; opacity:1; }
   button.filter-chip{ line-height:inherit; }
