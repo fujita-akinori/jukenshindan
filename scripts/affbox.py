@@ -129,6 +129,9 @@ def build_diag(root, read, write, rel="sugaku-shindan.html"):
             continue  # 特定の本ではないので表紙も楽天リンクも付けない
         amz = (f"https://www.amazon.co.jp/dp/{asin}" if asin
                else "https://www.amazon.co.jp/s?k=" + rakuten.urllib.parse.quote(name))
+        if "予想問題集" in name:  # 予備校ごとに何冊も出ている本なので、1冊の表紙は出さず楽天の検索結果へ
+            covers[name] = {"i": "", "u": rakuten.search_link(re.sub(r"[（）]", " ", name).replace("・", " "))}
+            continue
         r = rakuten.lookup(name, amz)
         covers[name] = {"i": r["image"], "u": r["url"]}
     blob = "const COVERS = " + _json.dumps(covers, ensure_ascii=False, separators=(",", ":")) + ";"
