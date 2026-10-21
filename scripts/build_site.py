@@ -410,6 +410,8 @@ def main():
     import affbox
     affbox.build(ROOT, read, write)
     affbox.build_inline(ROOT, read, write)
+    got, total = affbox.build_diag(ROOT, read, write)
+    print(f"数学診断の表紙: {got}/{total} 冊")
     build_articles(arts)
     build_list_pages(arts)
     build_home(arts)

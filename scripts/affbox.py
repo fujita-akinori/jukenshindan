@@ -117,3 +117,23 @@ def build_inline(root, read, write):
         s2 = COVER_RE.sub(lambda mm: f"<!-- COVER:{mm.group(1)} -->" + (_cover_html(*info[mm.group(1)]) if mm.group(1) in info else "") + "<!-- /COVER -->", s)
         if s2 != read(rel):
             write(rel, s2)
+
+
+# ---------------------------------------------------------------- 数学診断の結果カード
+def build_diag(root, read, write, rel="sugaku-shindan.html"):
+    import json as _json
+    s = read(rel)
+    covers = {}
+    for name, asin in re.findall(r'\{name:"([^"]+)",note:"[^"]*",(?:asin:"([^"]*)")?', s):
+        if name.startswith("志望大学の過去問"):
+            continue  # 特定の本ではないので表紙も楽天リンクも付けない
+        amz = (f"https://www.amazon.co.jp/dp/{asin}" if asin
+               else "https://www.amazon.co.jp/s?k=" + rakuten.urllib.parse.quote(name))
+        r = rakuten.lookup(name, amz)
+        covers[name] = {"i": r["image"], "u": r["url"]}
+    blob = "const COVERS = " + _json.dumps(covers, ensure_ascii=False, separators=(",", ":")) + ";"
+    s2 = re.sub(r"/\* COVERS:BEGIN \*/.*?/\* COVERS:END \*/", lambda _: "/* COVERS:BEGIN */" + blob + "/* COVERS:END */", s, flags=re.S)
+    if s2 != s:
+        write(rel, s2)
+    rakuten.save_cache()
+    return sum(1 for v in covers.values() if v["i"]), len(covers)
