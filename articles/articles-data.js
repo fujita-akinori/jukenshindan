@@ -15,7 +15,7 @@
 const ARTICLES = [
   { slug:"aoi-chart-vs-focus-gold.html", title:"青チャートとFocus Gold、結局どっちを選ぶべきか", description:"数学の網羅系参考書の2大巨頭を、収録問題数・解説の丁寧さ・レイアウトの3つの観点で比較します。", tag:"参考書比較", subject:"数学", date:"2026-07-07", order:1 },
   { slug:"kaihou-anki-vs-rikai.html", title:"解法暗記VS理解、受験数学はどっちが正解か", description:"「解法は暗記すべきか理解すべきか」という永遠の論争を、学習段階という観点から整理します。", tag:"受験戦略", subject:"数学", date:"2026-07-08", order:2 },
-  { slug:"suujaku-suukyou-ronri.html", title:"数弱が数強になるための武器：論理", description:"数学が苦手な受験生の多くがつまずいているのは計算力ではなく論理力。伸び悩みを打開する視点を整理します。", tag:"受験戦略", subject:"数学", date:"2026-07-08", order:3 },
+  { slug:"suujaku-suukyou-ronri.html", title:"数弱が数強になるための武器：論理", description:"河合の偏差値60前後から京大本番で合格者平均を大きく超えた筆者の経験をもとに、同値変形・必要十分・軌跡の除外点・対偶の具体例で数学の論理の大切さを解説します。", tag:"受験戦略", subject:"数学", date:"2026-07-08", order:3 },
   { slug:"keisanryoku-9wari.html", title:"受験数学は計算力が9割", description:"発想力よりも計算力。受験数学の得点を左右する地味だが決定的な要素と、その鍛え方を解説します。", tag:"受験戦略", subject:"数学", date:"2026-07-08", order:4 },
   { slug:"pomodoro-syuuchuuryoku.html", title:"集中力を持続させる方法：ポモドーロ・テクニック", description:"受験勉強の集中力が続かない人向けに、時間管理法「ポモドーロ・テクニック」の仕組みと取り入れ方を解説します。", tag:"受験戦略", date:"2026-07-08", order:5 },
   { slug:"sawaruna-sankousho-3sen.html", title:"触れるな注意 難しすぎる受験参考書3選", description:"内容は良書でも、対象読者を間違えると挫折を招く難関参考書3冊を紹介。自分に合うレベルの見極め方を解説します。", tag:"参考書比較", subject:"数学", date:"2026-07-08", order:6 },

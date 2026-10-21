@@ -70,39 +70,54 @@
 
   <div class="article-body">
 
-    <p>数学が苦手な受験生の多くは、実は「計算ができない」わけではありません。つまずいているのは、<strong>問題を解き進める際の論理の運び方</strong>です。ここでいう論理とは、「AならばB」「必要条件・十分条件」「対偶」といった、思考の骨組みのことです。</p>
+    <p>数学が苦手な受験生の多くは計算ができないわけではありません。つまずいているのは<strong>問題を解き進めるときの論理の運び方</strong>です。ここでいう論理とは「AならばB」「必要条件と十分条件」「同値」「対偶」といった考え方の骨組みのことで、日本語でいえば文法にあたります。</p>
     <!-- COVER:志田晶の集合論理、整数が面白いほどわかる本 --><a class="inline-cover" href="https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F18252622%2F" target="_blank" rel="sponsored noopener" aria-label="志田晶の 集合・論理、整数が面白いほどわかる本を楽天で見る"><img src="https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/8859/9784046068859_1_11.jpg?_ex=400x400" alt="志田晶の 集合・論理、整数が面白いほどわかる本の表紙" width="200" height="284" loading="lazy" decoding="async"><span>楽天で見る</span></a><!-- /COVER -->
 
-    <h2>なぜ論理が「武器」になるのか</h2>
-    <p>典型的な問題であれば、解法パターンを覚えていれば対応できます。しかし少しひねられた問題や、初見の設定の問題になると、パターンの丸暗記だけでは太刀打ちできません。ここで差がつくのが論理力です。<strong class="hl">「今、何を示せばゴールなのか」「この条件から何が言えて、何が言えないのか」を整理する力があると、初見の問題でも手が止まりにくくなります。</strong></p>
+    <h2>筆者も伸び悩んでいた</h2>
+    <p>筆者は4STEPと青チャートに取り組んでいましたが、数学は河合塾の模試で偏差値60前後をさまよっていました。京大理系志望の中では最下位付近です。それでも本番では合格者平均を大きく超える点数を取ることができました。</p>
+    <p>理由ははっきりしていて、高2のときに論理の大切さに気付けたからです。問題集の解法をどれだけ覚えても、自分が何をしていてなぜその問題が解けるのかを説明できなければ、初見の問題では手が止まります。<strong class="hl">論理はその「なぜ」を目に見える形にしてくれる道具です。</strong></p>
 
-    <p>数学が得意な人ほど、この論理の運びを無意識にできていることが多く、逆に「なんとなく解いている」人ほど、条件を読み違えたり、示すべきことを見失ったりして失点します。</p>
+    <h2>論理を無視するとどこで失点するか</h2>
+    <p>論理が抜けている人の失点にはよく似た形があります。次の4つに心当たりがあれば、伸び悩みの原因は演習量ではなく論理です。</p>
 
-    <h2>具体的にどこでつまずくか</h2>
+    <h3>1. 同値でない変形をして答えが増える</h3>
+    <p>方程式 √(x+2) = x を解くとき、両辺を2乗すると x+2 = x² となり x = 2 と x = −1 が出てきます。ところが x = −1 を元の式に入れると左辺は1で右辺は−1です。</p>
+    <p>2乗するという操作は「元の式ならば2乗した式」という一方通行の変形で、逆は成り立ちません。右辺が0以上という条件を一緒に持っておけば x = 2 だけが残ります。式変形のたびに<strong>今の変形は同値か一方通行か</strong>を意識しているかどうかで、こうした失点はなくなります。</p>
+
+    <h3>2. 必要条件だけで答えを出してしまう</h3>
+    <p>「f(x) = x³ + ax² + 3x + 1 が x = −1 で極値をとるような a を求めよ」という問題を考えます。f′(−1) = 0 から 6 − 2a = 0 となり a = 3 です。</p>
+    <p>しかし a = 3 のとき f′(x) = 3x² + 6x + 3 = 3(x+1)² となり、f′(x) は x = −1 の前後で符号を変えません。つまり x = −1 で極値をとることはなく、答えは「そのような a は存在しない」です。<strong class="hl">f′(−1) = 0 は極値をとるための必要条件にすぎず、十分性を確かめて初めて答えになります。</strong></p>
+
+    <h3>3. 軌跡で除外点を落とす</h3>
+    <p>2直線 y = mx と x + my − 2m = 0 の交点が、m がすべての実数を動くときにどんな図形を描くかを考えます。1本目の式から m = y/x として2本目に代入すると x² + y² − 2y = 0 となり、円 x² + (y−1)² = 1 が出てきます。</p>
+    <p>ここで答えを円としてしまうと大きく減点されます。m = y/x と置いた時点で x ≠ 0 を勝手に仮定しているからです。x = 0 のときを調べると1本目の式から y = 0 となり、原点は m = 0 のときに実際に通ります。一方で円上の点 (0, 2) はどんな m でも通らないので、答えは「円 x² + (y−1)² = 1 ただし点 (0, 2) を除く」です。</p>
+    <p>軌跡の問題は「この点を通るような m が存在するか」を調べる問題です。そう読めていれば、文字で割った瞬間に割れない場合を確認しに行けます。除外点を忘れる人の多くは、除外点の覚え方ではなく問題の論理構造を読み飛ばしています。</p>
+
+    <h3>4. 正面から解こうとして時間が足りなくなる</h3>
+    <p>「n² が偶数ならば n は偶数であることを示せ」は、そのまま示そうとすると手が止まります。対偶の「n が奇数ならば n² は奇数」に言い換えれば、n = 2k + 1 とおいて2乗するだけで終わります。命題とその対偶は真偽が一致するという一点を知っているだけで、難関大の証明問題でも打開できる場面が増えます。</p>
+
+    <h2>論理を身につける順番</h2>
+    <p>論理は特別な才能ではなく、順番に積み上げれば誰でも身につきます。</p>
     <ul>
-      <li>「必要条件」と「十分条件」を混同し、答案の論理が逆になっている</li>
-      <li>「かつ」と「または」の範囲を勘違いして、場合分けが漏れる</li>
-      <li>対偶を使えば一瞬で解ける問題を、正面から力技で解こうとして時間切れになる</li>
-      <li>「示すべきこと」を見失い、関係ない計算を延々と続けてしまう</li>
+      <li><strong>教科書の「集合と論理」を学び直す</strong>：必要条件と十分条件、命題の否定、対偶を自分の言葉で説明できる状態にします。多くの受験生が流し読みで済ませる単元ですが、ほかの全分野を支える土台です。</li>
+      <li><strong>講義本で使い方を見る</strong>：「志田晶の 集合・論理、整数が面白いほどわかる本」のような講義形式の1冊で、論理が実際の問題でどう使われるかを確認します。</li>
+      <li><strong>答案に「なぜ」を書く</strong>：普段の演習で式変形のたびに同値か一方通行かを書き添えます。<strong class="hl">解答を写すのではなく一行ごとに理由を言えるかどうかが、論理力の伸びを左右します。</strong>記述の書き方そのものを学ぶなら「総合的研究 記述式答案の書き方」が役に立ちます。</li>
+      <li><strong>論理そのものを掘り下げる</strong>：東大や京大を目指すなら「総合的研究 論理学で学ぶ数学」で論理を体系的に学ぶ段階に進みます。基礎が固まってから取り組む1冊です。</li>
     </ul>
 
-    <h2>論理力の鍛え方</h2>
-    <p>まずは教科書の「集合と論理」の単元を、軽視せずにきちんと学び直すことです。多くの受験生がここを流し読みで済ませてしまいますが、実はこの単元こそが、他の全分野を支える土台になっています。</p>
-
-    <p>次に、日々の演習で「なぜこの式が成り立つのか」を答案の中で言語化する習慣をつけることです。<strong class="hl">解答を写すだけでなく、一行一行に「なぜ」を添えられるかどうかが、論理力の伸びを左右します。</strong></p>
-
     <div class="callout">
-      分野特化の教材としては「志田晶の 集合・論理、整数が面白いほどわかる本」のような講義形式の一冊で土台を作り、余力があれば「総合的研究 論理学で学ぶ数学」のような、より本格的に論理そのものを扱う一冊に進むという段階を踏むのがおすすめです。後者は東大・京大レベルの仕上げ向けなので、基礎が固まってから手を出すのが安全です。
+      論理は解法の暗記と対立するものではありません。覚えた解法がなぜ使えるのかを論理で説明できるようになると、同じ解法を初見の問題に持ち込めるようになります。解法暗記と理解の関係は「解法暗記VS理解、受験数学はどっちが正解か」でも整理しています。
     </div>
 
     <h2>結論</h2>
-    <p>論理は地味で、直接的な得点源に見えにくい分野です。しかし、伸び悩んでいる受験生にとって、この地味な土台こそが突破口になることは少なくありません。<strong class="hl">パターン暗記だけで頭打ちを感じているなら、一度「論理」に立ち返ってみる価値があります。</strong></p>
+    <p>偏差値60前後で止まっていた筆者が本番で点を取れたのは、問題集の量を増やしたからではなく、自分が何をしているのかを論理で確かめながら解くようになったからです。<strong class="hl">パターン暗記で頭打ちを感じているなら、一度「論理」に立ち返ってみる価値があります。</strong></p>
 
       <div class="aff-box">
       <p class="aff-title">この記事で紹介した参考書</p>
       <ul>
         <li class="aff-item"><img class="aff-cover" src="https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/8859/9784046068859_1_11.jpg?_ex=200x200" alt="志田晶の 集合・論理、整数が面白いほどわかる本の表紙" width="64" height="90" loading="lazy" decoding="async"><div class="aff-main"><span class="aff-name">志田晶の 集合・論理、整数が面白いほどわかる本</span><div class="aff-btns"><a class="aff-btn" href="https://www.amazon.co.jp/dp/404606885X?tag=jukenshindan-22" target="_blank" rel="sponsored noopener">Amazonで見る</a><a class="aff-btn aff-btn-rakuten" href="https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F18252622%2F" target="_blank" rel="sponsored noopener">楽天で見る</a></div></div></li>
         <li class="aff-item"><img class="aff-cover" src="https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/7048/9784010377048.jpg?_ex=200x200" alt="総合的研究 論理学で学ぶ数学の表紙" width="64" height="90" loading="lazy" decoding="async"><div class="aff-main"><span class="aff-name">総合的研究 論理学で学ぶ数学</span><div class="aff-btns"><a class="aff-btn" href="https://www.amazon.co.jp/dp/4010377046?tag=jukenshindan-22" target="_blank" rel="sponsored noopener">Amazonで見る</a><a class="aff-btn aff-btn-rakuten" href="https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F14799877%2F" target="_blank" rel="sponsored noopener">楽天で見る</a></div></div></li>
+        <li class="aff-item"><img class="aff-cover" src="https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/7246/9784010377246.jpg?_ex=200x200" alt="総合的研究 記述式答案の書き方の表紙" width="64" height="90" loading="lazy" decoding="async"><div class="aff-main"><span class="aff-name">総合的研究 記述式答案の書き方</span><div class="aff-btns"><a class="aff-btn" href="https://www.amazon.co.jp/dp/4010377240?tag=jukenshindan-22" target="_blank" rel="sponsored noopener">Amazonで見る</a><a class="aff-btn aff-btn-rakuten" href="https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F15599273%2F" target="_blank" rel="sponsored noopener">楽天で見る</a></div></div></li>
       </ul>
       <p class="aff-disclosure">Amazonのアソシエイトとして、当メンバーは適格販売により収入を得ています。当サイトは楽天アフィリエイトに参加しています。</p>
     </div>
@@ -110,7 +125,7 @@
   </div>
 
   <div class="diag-cta">
-    <p>論理力を鍛える分野別の参考書ルートは、数学参考書診断の「分野別集中特訓」から確認できます。</p>
+    <p>論理を鍛える参考書と今のレベルに合う問題集は、数学の参考書診断で確認できます。分野別を選ぶと集合・論理の本も出てきます。</p>
     <a href="../sugaku-shindan.html" class="btn btn-primary">数学の参考書診断を試す →</a>
   </div>
 
@@ -119,7 +134,7 @@
     <ul>
       <li><a href="kaihou-anki-vs-rikai.html"><span class="r-tag">受験戦略</span>解法暗記VS理解、受験数学はどっちが正解か</a></li>
       <li><a href="keisanryoku-9wari.html"><span class="r-tag">受験戦略</span>受験数学は計算力が9割</a></li>
-      <li><a href="pomodoro-syuuchuuryoku.html"><span class="r-tag">受験戦略</span>集中力を持続させる方法：ポモドーロ・テクニック</a></li>
+      <li><a href="sougouteki-kenkyuu-series.html"><span class="r-tag">参考書比較</span>本格派数学参考書レーベル「総合的研究」シリーズ全解説</a></li>
     </ul>
   </section>
 
