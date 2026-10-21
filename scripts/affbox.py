@@ -61,8 +61,8 @@ def _core(text):
 def _cover_html(name, r):
     e = lambda x: html.escape(x, quote=True)
     return (f'<a class="inline-cover" href="{e(r["url"])}" target="_blank" rel="sponsored noopener" '
-            f'aria-label="{e(name)}を楽天で見る"><img src="{e(r["image"])}" alt="{e(name)}の表紙" '
-            f'width="110" height="156" loading="lazy" decoding="async"><span>楽天で見る</span></a>')
+            f'aria-label="{e(name)}を楽天で見る"><img src="{e(r["image"].replace("_ex=200x200", "_ex=400x400"))}" alt="{e(name)}の表紙" '
+            f'width="200" height="284" loading="lazy" decoding="async"><span>楽天で見る</span></a>')
 
 
 def _place_markers(s, entries):

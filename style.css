@@ -336,11 +336,15 @@ div.aff-box li:first-child{ border-top:none; }
 .paper-sheet .aff-btn-rakuten:hover{ background:#d81f1f; }
 
 /* 本文中の表紙（押すと楽天の商品ページへ） */
-.paper-sheet .inline-cover{ float:right; position:relative; display:block; width:110px; margin:4px 0 14px 20px; text-decoration:none; }
+.paper-sheet .inline-cover{ float:right; position:relative; display:block; width:170px; margin:4px 0 16px 24px; text-decoration:none; }
 .paper-sheet .inline-cover img{ display:block; width:100%; height:auto; border-radius:3px; box-shadow:0 4px 14px rgba(27,33,48,0.22); background:#fff; transition:transform .15s ease, box-shadow .15s ease; }
-.paper-sheet .inline-cover span{ display:block; margin-top:6px; text-align:center; font-size:11px; font-weight:700; color:#bf0000; }
+.paper-sheet .inline-cover span{ display:block; margin-top:6px; text-align:center; font-size:12.5px; font-weight:700; color:#bf0000; }
 .paper-sheet .inline-cover:hover img{ transform:translateY(-2px); box-shadow:0 8px 20px rgba(27,33,48,0.28); }
 .paper-sheet .article-body h2{ clear:both; }
 @media (max-width:700px){
-  .paper-sheet .inline-cover{ width:88px; margin:2px 0 10px 14px; }
+  .paper-sheet .inline-cover{ width:130px; margin:2px 0 12px 16px; }
 }
+
+/* 見出しの直前に置かれた表紙は回り込む本文がないので、中央に大きく出す */
+.paper-sheet .inline-cover:has(+ h2), .paper-sheet .inline-cover:has(+ h3){ float:none; width:200px; margin:8px auto 28px; }
+@media (max-width:700px){ .paper-sheet .inline-cover:has(+ h2), .paper-sheet .inline-cover:has(+ h3){ width:160px; } }
