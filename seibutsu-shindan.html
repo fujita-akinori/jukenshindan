@@ -405,7 +405,7 @@ const BOOKS = [
   {name:"生物問題集 合格177問",note:"東進の田部眞哉先生による入試問題集で、生物合格77講と同じ著者の考え方で入試問題を演習できます。77講で理解した内容を問題で使う練習に向いています。",asin:"4890858342",scope:"both",tier:3,purposes:["niji"],type:"quantity",bunya:[],also:[]},
   {name:"大学入試 いちばんスマートに攻略する生物精選問題集（赤本プラス）",note:"伊藤和修先生による教学社の問題集で、頻出テーマを厳選して効率よく入試の得点力を上げることを目指した1冊です。時間が限られている人の入試演習に向いています。",asin:"4325272801",scope:"both",tier:3,purposes:["niji"],type:"quantity",bunya:[],also:[]},
   // ---- tier4 難関 ----
-  {name:"生物［生物基礎・生物］標準問題精講",note:"国公立大の二次試験と私立大の入試から合否を分けやすい問題を厳選した演習書です。要点の「精講」と問題ごとの「解説」で、実験考察や記述の思考問題の答え方まで鍛えられます。まず自分で答案を書いてから解説と照らし合わせましょう。",asin:"4010352604",scope:"both",tier:4,purposes:["niji"],type:"quantity",bunya:[],also:["kousatsu","jikken","ronjutsu"]},
+  {name:"生物［生物基礎・生物］標準問題精講",note:"国公立大の二次試験と私立大の入試から合否を分けやすい問題を厳選した演習書です。要点の「精講」と問題ごとの「解説」で、実験考察や記述の思考問題の答え方まで鍛えられます。まず自分で答案を書いてから解説と照らし合わせましょう。",asin:"4010352604",scope:"both",tier:4,tierMax:5,purposes:["niji"],type:"quantity",bunya:[],also:["kousatsu","jikken","ronjutsu"]},
   {name:"理系標準問題集 生物〈五訂版〉",note:"駿台の大森徹先生による難関大向けの問題集です。入試標準からやや難しい問題で、考察と記述の力を実戦的に鍛えられます。",asin:"4796117857",scope:"both",tier:4,purposes:["niji"],type:"quantity",bunya:[],also:["kousatsu"]},
   {name:"大学入試 全レベル問題集 生物 4 私大上位・国公立大上位レベル",note:"全レベル問題集の私大上位・国公立大上位レベル編です。難関大で出題される思考力を問う問題に取り組めます。",asin:"4010353902",scope:"both",tier:4,purposes:["niji"],type:"quantity",bunya:[],also:[]},
   {name:"佐野芳史・河崎健吾の生物［生物基礎・生物］解法研究",note:"駿台の佐野芳史先生と河崎健吾先生による難関大向けの問題集です。解説が基本事項を問う設問と思考・考察の設問に分けられていて、知識問題と記述・論述問題のどこで得点するのかがはっきり分かります。",asin:"4046044713",scope:"both",tier:4,purposes:["niji"],type:"quantity",bunya:[],also:["kousatsu","jikken","ronjutsu"]},
@@ -732,6 +732,12 @@ function renderResult(){
   // 1位が大森徹先生の本になったら、ほかの本のうち最上位のものを1位に上げる
   const firstOk = scored.findIndex(x => !x.b.noTop);
   if(firstOk > 0) scored.unshift(scored.splice(firstOk, 1)[0]);
+  // 標準問題精講は東大・京大レベルでも適正なので、上級問題精講や理系上級問題集より下に来たら上に入れ替える
+  {
+    const si = scored.findIndex(x => x.b.name==="生物［生物基礎・生物］標準問題精講");
+    const hi = scored.findIndex(x => ["生物［生物基礎・生物］上級問題精講","生物 理系上級問題集（駿台）"].includes(x.b.name));
+    if(si > 0 && hi >= 0 && hi < si) scored.splice(hi, 0, scored.splice(si, 1)[0]);
+  }
   // 遺伝・論述が苦手な人には、Doシリーズの専用書（遺伝問題の解法／記述・論述問題の解法）を1位にする
   if(answers.bunya==="iden" || answers.bunya==="ronjutsu"){
     const di = scored.findIndex(x => x.b.name.includes("大学受験Do") && x.b.bunya.includes(answers.bunya));
