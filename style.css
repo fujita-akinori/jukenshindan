@@ -317,12 +317,12 @@ div.aff-box li:first-child{ border-top:none; }
 /* タグごとの色（記事一覧・タグ別一覧・ホームの新着で共通） */
 :root{
   --tag-sankousho:#e8964a;  /* 参考書比較：オレンジ */
-  --tag-kamoku:#e06a6a;     /* 科目別対策：赤 */
+  --tag-kamoku:#e06a6a;     /* 勉強法：赤 */
   --tag-senryaku:#5b93dc;   /* 受験戦略：青 */
   --tag-yobiko:#57b386;     /* 予備校：緑 */
 }
 .article-card[data-tag="参考書比較"] .tag{ color:var(--tag-sankousho); }
-.article-card[data-tag="科目別対策"] .tag{ color:var(--tag-kamoku); }
+.article-card[data-tag="勉強法"] .tag{ color:var(--tag-kamoku); }
 .article-card[data-tag="受験戦略"] .tag{ color:var(--tag-senryaku); }
 .article-card[data-tag="予備校"] .tag{ color:var(--tag-yobiko); }
 

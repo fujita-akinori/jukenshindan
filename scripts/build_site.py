@@ -31,12 +31,13 @@ AUTHOR_NAME = "受験診断ドットコム運営メンバー（現役京大生�
 
 TAGS = [  # (タグ名, ファイル名, 説明)
     ("参考書比較", "tag-sankousho-hikaku.html", "数学・英語などの参考書を比較し、レベル感や使い方を解説した記事の一覧です。"),
-    ("科目別対策", "tag-kamokubetsu-taisaku.html", "数学・理科・社会など、科目ごとの勉強法と対策をまとめた記事の一覧です。"),
+    ("勉強法", "tag-benkyouhou.html", "数学・理科・社会など、科目ごとの勉強法と対策をまとめた記事の一覧です。"),
     ("受験戦略", "tag-juken-senryaku.html", "勉強計画の立て方や試験当日の準備など、受験全体の戦略に関する記事の一覧です。"),
     ("予備校", "tag-yobiko.html", "東進・河合塾・駿台・武田塾など、予備校選びと講座選びに関する記事の一覧です。"),
 ]
 TAG_FILE = {t: f for t, f, _ in TAGS}
-TAG_COLOR = {"参考書比較": "var(--tag-sankousho)", "受験戦略": "var(--tag-senryaku)", "科目別対策": "var(--tag-kamoku)", "予備校": "var(--tag-yobiko)"}
+SUBJECTS = ["数学", "英語", "国語", "化学", "生物", "物理", "社会"]  # 記事一覧の「科目別」に出す順（記事がある科目だけ出す）
+TAG_COLOR = {"参考書比較": "var(--tag-sankousho)", "受験戦略": "var(--tag-senryaku)", "勉強法": "var(--tag-kamoku)", "予備校": "var(--tag-yobiko)"}
 
 STATIC_PAGES = [  # (ファイル, パンくず名, sitemap に載せるか)
     ("index.html", None, True),
@@ -92,7 +93,8 @@ def load_articles():
         obj = m.group(0)
         g = lambda k: re.search(k + r':"((?:[^"\\]|\\.)*)"', obj).group(1)
         arts.append({"slug": g("slug"), "title": g("title"), "description": g("description"), "tag": g("tag"),
-                     "date": g("date"), "order": int(re.search(r"order:(\d+)", obj).group(1))})
+                     "date": g("date"), "order": int(re.search(r"order:(\d+)", obj).group(1)),
+                     "subject": (re.search(r'subject:"([^"]*)"', obj) or [None, ""])[1]})
     arts.sort(key=lambda a: (a["date"], a["order"]), reverse=True)
     return arts
 
@@ -155,7 +157,7 @@ def seo_head(rel, s, og_type="website", extra_ld=()):
 def card_list_html(arts):
     out = []
     for a in arts:
-        out.append(f'''    <a href="{a["slug"]}" class="article-card" data-tag="{a["tag"]}" data-slug="{a["slug"]}">
+        out.append(f'''    <a href="{a["slug"]}" class="article-card" data-tag="{a["tag"]}" data-subj="{a.get("subject", "")}" data-slug="{a["slug"]}">
       <span class="tag">{a["tag"]}</span>
       <h2>{a["title"]}</h2>
       <p>{a["description"]}</p>
@@ -217,9 +219,52 @@ SEARCH_SCRIPT = """<script>
 </script>"""
 
 
-def chips_html(active):
+def chips_html(active, arts=None):
     items = [("すべて", "index.html", active is None)] + [(t, f, active == t) for t, f, _ in TAGS]
-    return "\n".join(f'    <a class="filter-chip{" active" if on else ""}" href="{h}">{n}</a>' for n, h, on in items)
+    out = [f'    <a class="filter-chip{" active" if on else ""}" href="{h}">{n}</a>' for n, h, on in items]
+    if arts is None:  # タグ別一覧からは記事一覧の「科目別」に飛ぶ
+        out.append('    <a class="filter-chip kamoku-chip" href="index.html#kamoku">科目別</a>')
+    else:  # 記事一覧では押すと科目のチップが横にスライドして出てくる
+        subs = [x for x in SUBJECTS if any(a.get("subject") == x for a in arts)]
+        out.append('    <button type="button" class="filter-chip kamoku-chip" id="kamoku-chip" aria-expanded="false">科目別</button>')
+        out.append('    <span class="subj-row" id="subj-row">' + "".join(
+            f'<button type="button" class="filter-chip subj-chip" data-subj="{x}" style="--i:{i}">{x}</button>' for i, x in enumerate(subs)) + '</span>')
+    return "\n".join(out)
+
+
+KAMOKU_STYLE = """<style>
+  .subj-row{ display:inline-flex; gap:10px; flex-wrap:wrap; max-width:0; overflow:hidden; opacity:0; transition:max-width .45s ease, opacity .3s ease; }
+  .subj-row.open{ max-width:760px; opacity:1; }
+  .subj-chip{ transform:translateX(-14px); opacity:0; transition:transform .35s ease, opacity .35s ease; transition-delay:calc(var(--i) * 45ms); }
+  .subj-row.open .subj-chip{ transform:none; opacity:1; }
+  button.filter-chip{ line-height:inherit; }
+  .article-card.subj-off{ display:none; }
+  @media (prefers-reduced-motion: reduce){ .subj-row, .subj-chip{ transition:none; } }
+</style>"""
+
+KAMOKU_SCRIPT = """<script>
+(function(){
+  var chip = document.getElementById('kamoku-chip'), row = document.getElementById('subj-row');
+  if(!chip || !row) return;
+  var all = document.querySelector('.filter-row a.filter-chip.active');
+  var subs = Array.prototype.slice.call(row.querySelectorAll('.subj-chip'));
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.article-card'));
+  function filter(sub){
+    subs.forEach(function(b){ b.classList.toggle('active', b.dataset.subj === sub); });
+    cards.forEach(function(c){ c.classList.toggle('subj-off', !!sub && c.dataset.subj !== sub); });
+    history.replaceState(null, '', sub ? '#kamoku-' + encodeURIComponent(sub) : (row.classList.contains('open') ? '#kamoku' : location.pathname));
+  }
+  function open(on){
+    row.classList.toggle('open', on); chip.classList.toggle('active', on); chip.setAttribute('aria-expanded', on);
+    if(all) all.classList.toggle('active', !on);
+    if(!on) filter(null); else history.replaceState(null, '', '#kamoku');
+  }
+  chip.addEventListener('click', function(){ open(!row.classList.contains('open')); });
+  subs.forEach(function(b){ b.addEventListener('click', function(){ filter(b.classList.contains('active') ? null : b.dataset.subj); }); });
+  var h = decodeURIComponent(location.hash);
+  if(h.indexOf('#kamoku') === 0){ open(true); if(h.indexOf('#kamoku-') === 0) filter(h.slice(8)); }
+})();
+</script>"""
 
 
 def add_search(s):
@@ -304,7 +349,7 @@ def build_list_pages(arts):
         base = base.replace(".filter-chip.active{", "a.filter-chip{ text-decoration:none; display:inline-block; }\n  .filter-chip.active{", 1)
 
     def page(active, arts_, title, h1, lead, rel):
-        s = base
+        s = re.sub(r"<!-- KAMOKU-(STYLE|SCRIPT):BEGIN -->.*?<!-- KAMOKU-\1:END -->\n?", "", base, flags=re.S)  # 科目別の絞り込みは記事一覧だけ
         s = re.sub(r"<title>.*?</title>", f"<title>{title}</title>", s, count=1)
         s = re.sub(r'<meta name="description" content="[^"]*">', f'<meta name="description" content="{lead}">', s, count=1)
         s = re.sub(r'<h1 class="page-title">.*?</h1>', f'<h1 class="page-title">{h1}</h1>', s, count=1)
@@ -326,7 +371,9 @@ def build_list_pages(arts):
     s_title = "記事一覧 | " + SITE
     # 記事一覧（説明文は既存のものを維持）
     s = base
-    s = replace_block(s, "CHIPS", chips_html(None))
+    s = replace_block(s, "CHIPS", chips_html(None, arts))
+    s = replace_block(s, "KAMOKU-STYLE", KAMOKU_STYLE, anchor_before="</head>")
+    s = replace_block(s, "KAMOKU-SCRIPT", KAMOKU_SCRIPT, anchor_before="</body>")
     s = replace_block(s, "CARDS", card_list_html(arts))
     s = add_search(s)
     item_list = {"@context": "https://schema.org", "@type": "ItemList",
