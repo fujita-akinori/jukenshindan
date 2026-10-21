@@ -45,3 +45,75 @@ def build(root, read, write):
         if s2 != s:
             write(rel, s2)
     rakuten.save_cache()
+
+
+# ---------------------------------------------------------------- 本文中の表紙
+COVER_RE = re.compile(r'<!-- COVER:(.*?) -->(.*?)<!-- /COVER -->', re.S)
+
+
+def _core(text):
+    t = re.sub(r"[（(].*?[)）]", "", text)
+    t = re.sub(rakuten.EDITION, "", t)
+    t = re.sub(r"[\s・／/［\[\]］〔〕「」『』:：,，.。\-－｜|]", "", t).lower()
+    return t
+
+
+def _cover_html(name, r):
+    e = lambda x: html.escape(x, quote=True)
+    return (f'<a class="inline-cover" href="{e(r["url"])}" target="_blank" rel="sponsored noopener" '
+            f'aria-label="{e(name)}を楽天で見る"><img src="{e(r["image"])}" alt="{e(name)}の表紙" '
+            f'width="110" height="156" loading="lazy" decoding="async"><span>楽天で見る</span></a>')
+
+
+def _place_markers(s, entries):
+    """初回だけ、各本を紹介している見出しの直後に表紙の目印を置く"""
+    body_start = s.index('<div class="article-body">')
+    body_end = s.index('<div class="aff-box">') if '<div class="aff-box">' in s else s.index('<div class="diag-cta">')
+    body = s[body_start:body_end]
+    heads = [(m.start(), m.end(), _core(re.sub(r"<[^>]+>", "", m.group(2)))) for m in re.finditer(r"<(h2|h3)>(.*?)</\1>", body, re.S)]
+    inserts, used = [], set()
+    for name, key in entries:
+        c = _core(name)
+        if len(c) < 3:
+            continue
+        probe = c[:6]
+        for hs, he, ht in heads:
+            if he in used:
+                continue
+            if probe in ht or (len(ht) >= 6 and ht[:6] in c):
+                inserts.append((he, key)); used.add(he)
+                break
+    if not inserts and entries:  # 1冊の解説記事：基本情報の表（なければ最初の段落）の直後に置く
+        m = re.search(r'</table>\s*</div>', body) or re.search(r"</p>", body)
+        if m:
+            inserts.append((m.end(), entries[0][1]))
+    for pos, key in sorted(inserts, reverse=True):
+        body = body[:pos] + f"\n    <!-- COVER:{key} --><!-- /COVER -->" + body[pos:]
+    return s[:body_start] + body + s[body_end:]
+
+
+def build_inline(root, read, write):
+    files = ["articles/" + f for f in sorted(os.listdir(os.path.join(root, "articles"))) if f.endswith(".html")]
+    for rel in files:
+        s = read(rel)
+        m = re.search(r'<div class="aff-box">.*?<ul>(.*?)</ul>', s, re.S)
+        if not m:
+            continue
+        entries, info = [], {}
+        for li in re.findall(r"<li\b.*?</li>", m.group(1), re.S):
+            nm = re.search(r'<span class="aff-name">(.*?)</span>', li, re.S)
+            am = re.search(r'href="(https://www\.amazon\.co\.jp/[^"]+)"', li)
+            if not (nm and am):
+                continue
+            name = html.unescape(re.sub(r"<[^>]+>", "", nm.group(1))).strip()
+            r = rakuten.lookup(name, html.unescape(am.group(1)))
+            if r["image"]:
+                key = _core(name)[:24]
+                entries.append((name, key)); info[key] = (name, r)
+        if not entries:
+            continue
+        if "<!-- COVER:" not in s and "<!-- NOCOVER -->" not in s:
+            s = _place_markers(s, entries)
+        s2 = COVER_RE.sub(lambda mm: f"<!-- COVER:{mm.group(1)} -->" + (_cover_html(*info[mm.group(1)]) if mm.group(1) in info else "") + "<!-- /COVER -->", s)
+        if s2 != read(rel):
+            write(rel, s2)

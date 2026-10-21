@@ -409,6 +409,7 @@ def main():
         assert a["tag"] in TAG_FILE, (a["slug"], a["tag"])
     import affbox
     affbox.build(ROOT, read, write)
+    affbox.build_inline(ROOT, read, write)
     build_articles(arts)
     build_list_pages(arts)
     build_home(arts)
