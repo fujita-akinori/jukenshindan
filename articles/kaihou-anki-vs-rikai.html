@@ -34,9 +34,13 @@
 <meta name="twitter:title" content="解法暗記VS理解、受験数学はどっちが正解か | 受験診断ドットコム">
 <meta name="twitter:description" content="「解法は暗記すべきか理解すべきか」という受験数学の永遠の論争を、学習段階という観点から整理します。">
 <meta name="twitter:image" content="https://jukenshindan.com/og-image.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"解法暗記VS理解、受験数学はどっちが正解か","description":"「解法は暗記すべきか理解すべきか」という受験数学の永遠の論争を、学習段階という観点から整理します。","datePublished":"2026-07-08","dateModified":"2026-10-21","image":["https://jukenshindan.com/og-image.png"],"inLanguage":"ja","articleSection":"受験戦略","mainEntityOfPage":{"@type":"WebPage","@id":"https://jukenshindan.com/articles/kaihou-anki-vs-rikai.html"},"author":{"@type":"Organization","name":"受験診断ドットコム運営メンバー（現役京大生）","url":"https://jukenshindan.com/about.html"},"publisher":{"@type":"Organization","name":"受験診断ドットコム","url":"https://jukenshindan.com/","logo":{"@type":"ImageObject","url":"https://jukenshindan.com/logo-mark.png"}}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"解法暗記VS理解、受験数学はどっちが正解か","description":"「解法は暗記すべきか理解すべきか」という受験数学の永遠の論争を、学習段階という観点から整理します。","datePublished":"2026-07-08","dateModified":"2026-10-22","image":["https://jukenshindan.com/og-image.png"],"inLanguage":"ja","articleSection":"受験戦略","mainEntityOfPage":{"@type":"WebPage","@id":"https://jukenshindan.com/articles/kaihou-anki-vs-rikai.html"},"author":{"@type":"Organization","name":"受験診断ドットコム運営メンバー（現役京大生）","url":"https://jukenshindan.com/about.html"},"publisher":{"@type":"Organization","name":"受験診断ドットコム","url":"https://jukenshindan.com/","logo":{"@type":"ImageObject","url":"https://jukenshindan.com/logo-mark.png"}}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ホーム","item":"https://jukenshindan.com/"},{"@type":"ListItem","position":2,"name":"記事一覧","item":"https://jukenshindan.com/articles/"},{"@type":"ListItem","position":3,"name":"受験戦略","item":"https://jukenshindan.com/articles/tag-juken-senryaku.html"},{"@type":"ListItem","position":4,"name":"解法暗記VS理解、受験数学はどっちが正解か","item":"https://jukenshindan.com/articles/kaihou-anki-vs-rikai.html"}]}</script>
 <!-- SEO:END -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js" onload="renderMathInElement(document.querySelector('.article-body'),{delimiters:[{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]})"></script>
+<style>.article-body .katex-display{ margin:14px 0; overflow-x:auto; overflow-y:hidden; } .article-body h2, .article-body h3{ clear:both; } .article-body .inline-cover + p{ min-height:250px; } .article-body figure.math-fig{ margin:18px auto 24px; max-width:300px; text-align:center; } .article-body figure.math-fig svg{ width:100%; height:auto; } .article-body figure.math-fig figcaption{ font-size:13px; color:#6b6355; margin-top:4px; } .article-body .callout ol{ margin:0; padding-left:1.4em; }</style>
 </head>
 <body>
 
@@ -68,27 +72,114 @@
   </div>
 
   <div class="article-body">
+    <p>「解法は暗記するべきか、理解するべきか」。受験数学ではこの論争がずっと繰り返されてきました。「暗記数学」という言葉を聞いたことがある人も多いはずです。</p>
+    <p>先に結論を言うと、どちらか一方が正解ということはありません。<strong>受験数学は「暗記→理解→暗記」の3段階で進めるもの</strong>で、暗記と理解はそれぞれ別の段階で使う道具です。問題は順番を飛ばすことにあります。</p>
 
-    <p>「解法は暗記するべきか、理解するべきか」。この論争は、受験数学の世界でずっと繰り返されてきました。「暗記数学」という言葉を聞いたことがある人も多いはずです。結論から言うと、この2つは対立するものではなく、<strong>学習段階によって使い分けるべき道具</strong>です。</p>
+    <div class="point-box"><span class="point-label">この記事でわかること</span><ul>
+      <li>暗記派と理解派の言い分と、それぞれの弱点</li>
+      <li>受験数学の3段階と、段階ごとに使う参考書</li>
+      <li>段階を飛ばすと数学ができないまま本番を迎える理由</li>
+      <li>今の自分がどの段階にいるかの見分け方</li>
+    </ul></div>
 
-    <h2>暗記派の言い分</h2>
-    <p>暗記派の主張はシンプルです。入試は時間との勝負であり、典型的な問題に対して毎回ゼロから解法を考えていては間に合いません。青チャートやFocus Goldのような網羅系参考書で「この形の問題にはこの解法」というパターンを大量にストックしておき、本番では反射的に手を動かす。これが暗記数学の考え方です。<strong class="hl">基礎〜標準レベルの得点力は、この方法で効率よく積み上がります。</strong></p>
+    <h2>暗記派と理解派の言い分</h2>
+    <p>暗記派の主張はシンプルです。入試は時間との勝負で、典型的な問題に毎回ゼロから解法を考えていては間に合いません。網羅系参考書で「この形の問題にはこの解法」というパターンを大量にストックしておき、本番では反射的に手を動かす。これが暗記数学の考え方です。</p>
+    <p>一方で理解派は、パターンの丸暗記には限界があると考えます。難関大の入試では見たことのない設定の問題や、複数の分野を組み合わせる問題が出ます。こうした初見の問題に対応できるのは「なぜその解法が使えるのか」を理解している人だけだ、という主張です。</p>
+    <div class="table-scroll">
+    <table class="compare-table">
+      <tr><th></th><th>暗記派</th><th>理解派</th></tr>
+      <tr><td>強い場面</td><td>典型問題を速く正確に解く。共通テストや中堅大の入試</td><td>初見の設定や融合問題。難関大の入試</td></tr>
+      <tr><td>弱点</td><td>形が少し変わると手が止まる。条件の確認が抜ける</td><td>時間がかかり全範囲を終えられない。解く速さが足りない</td></tr>
+      <tr><td>陥りがちな失敗</td><td>何周しても偏差値が上がらない</td><td>基礎の型がないまま考え込んで空回りする</td></tr>
+    </table>
+    </div>
+    <p>どちらの言い分も正しく、どちらも単独では足りません。足りない部分を順番で補うのが次に紹介する3段階です。</p>
 
-    <h2>理解派の言い分</h2>
-    <p>一方で理解派は、パターンの丸暗記には限界があると考えます。難関大学の入試では、見たことのない設定の問題や、複数分野の知識を組み合わせる問題が出題されます。<strong class="hl">こうした初見の問題に対応できるのは、「なぜその解法が使えるのか」を理解している人だけです。</strong>1対1対応の演習や上級問題精講のような演習書は、パターンの運用力・組み合わせ方を鍛える教材だと言えます。</p>
+    <h2>受験数学は3段階で進める</h2>
+    <div class="route">
+      <div class="route-step"><span class="r-role">第1段階　暗記</span><span class="r-name">基本的な定義と典型問題の解き方を覚える</span></div>
+      <div class="route-arrow">↓</div>
+      <div class="route-step"><span class="r-role">第2段階　理解</span><span class="r-name">覚えた定義と解き方の理解を深める（論理を学ぶ）</span></div>
+      <div class="route-arrow">↓</div>
+      <div class="route-step"><span class="r-role">第3段階　暗記</span><span class="r-name">入試レベルの典型問題を身につける</span></div>
+    </div>
+    <p>ポイントは、暗記が最初と最後の2回出てくることです。第1段階で覚えるのは教科書から入試の基礎までの型で、第3段階で覚えるのは入試レベルの型です。その間に理解の段階を挟むことで、第3段階で覚えた型が初見の問題でも使える武器になります。</p>
 
-    <h2>実際は「対立」ではなく「順番」</h2>
-    <p>この2つの立場は、実は矛盾していません。基礎固めの段階で「なぜそうなるか」を毎回深く考えていると、時間がかかりすぎて全範囲を終えられなくなります。まずは典型解法を暗記してストックし、そのあとで「なぜその解法が有効なのか」「他の問題にどう応用できるか」を理解していく、という順番が現実的です。</p>
+    <h3>第1段階：基本的な定義と典型問題の解き方を覚える</h3>
+    <!-- COVER:入門問題精講 --><a class="inline-cover" href="https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F17190065%2F" target="_blank" rel="sponsored noopener" aria-label="入門問題精講を楽天で見る"><img src="https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/9151/9784010349151_1_3.jpg?_ex=400x400" alt="入門問題精講の表紙" width="200" height="284" loading="lazy" decoding="async"><span>楽天で見る</span></a><!-- /COVER -->
+    <p>入門問題精講や青チャートなどの網羅系で、定義と典型問題の解き方を覚える段階です。ここは暗記中心で構いません。</p>
+    <p>ただし<strong>思考放棄の丸暗記ではありません</strong>。解答を眺めて手順だけを覚えるのではなく、各行で何をしているのかを追いながら覚えます。「この問題ではここで判別式を使う」と覚えるのと「2次方程式が実数解をもつかを調べたいから判別式を使う」と覚えるのとでは、第2段階に進んだときの伸び方がまったく違います。</p>
 
-    <p><strong class="hl">言い換えると、<strong>暗記は理解のための材料集め</strong>です。</strong>材料がないまま理解しようとしても空回りしますし、材料だけ集めて理解を放置すると、初見の問題に対応できなくなります。</p>
+    <h3>第2段階：理解を深める</h3>
+    <!-- COVER:数学の真髄論理写像 --><a class="inline-cover" href="https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F17185598%2F" target="_blank" rel="sponsored noopener" aria-label="数学の真髄 －論理・写像－を楽天で見る"><img src="https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/9054/9784890859054_1_4.jpg?_ex=400x400" alt="数学の真髄 －論理・写像－の表紙" width="200" height="284" loading="lazy" decoding="async"><span>楽天で見る</span></a><!-- /COVER -->
+    <p>第1段階で覚えた定義と解き方について「なぜそうなるのか」「どんな条件なら使えるのか」を説明できるようにする段階です。ここで<strong>論理</strong>をしっかり学びます。</p>
+    <p>使うのは「方程式・図形・関数からとらえる数学の基礎 分野別標準問題精講」や「数学の真髄 －論理・写像－」です。論理とは何か、なぜ数学が苦手な人ほど必要なのかは<a href="suujaku-suukyou-ronri.html">数学が伸びない原因は「論理」だった</a>で詳しく書いています。</p>
 
-    <h2>今の自分はどちらのフェーズか</h2>
-    <p>基礎問題精講や青チャートをまだ1周もできていないなら、今は「暗記」のフェーズです。細かい理由付けにこだわりすぎず、まず解法の型を体に入れることを優先しましょう。<strong class="hl">逆に、網羅系を一通り終えていて成績が伸び悩んでいるなら、それは「理解」のフェーズに移るサインです。</strong>1対1対応の演習のような、解法の運用力を鍛える教材に進むタイミングだと言えます。</p>
+    <h3>第3段階：入試レベルの典型問題を身につける</h3>
+    <!-- COVER:真解法への道！ --><a class="inline-cover" href="https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F17916827%2F" target="_blank" rel="sponsored noopener" aria-label="真・解法への道！を楽天で見る"><img src="https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2803/9784887422803_1_3.jpg?_ex=400x400" alt="真・解法への道！の表紙" width="200" height="284" loading="lazy" decoding="async"><span>楽天で見る</span></a><!-- /COVER -->
+    <p>真・解法への道やハイレベル数学の完全攻略などで、入試レベルの典型問題を身につける段階です。ここでは再び暗記が中心になります。難関大の入試問題も、分解すると入試レベルの典型の組み合わせでできているからです。</p>
+    <p>第2段階を終えていれば、ここで覚える型は「この形ならこの解法」という丸暗記ではなく「この条件だからこの解法が使える」という理由つきの型になります。<strong class="hl">理由つきで覚えた型は、形が変わった初見の問題にも持ち込めます。</strong>それぞれの本は<a href="shin-kaihou-eno-michi.html">真・解法への道の紹介記事</a>や<a href="yobiko-no-jugyou-3sen.html">まるで予備校の授業な数学の参考書3選</a>で紹介しています。</p>
+
+    <h2>段階を飛ばすと何が起きるか</h2>
+    <p><strong class="hl">第1段階か第2段階がまったくできていないのに第3段階を始めようとすると、数学がまるでできないまま本番を迎えることになります。</strong>よくあるのは次の2つのパターンです。</p>
+    <div class="point-box"><span class="point-label">第1段階を飛ばした場合</span><p>定義や基本の型が入っていないので、入試レベルの解説を読んでも何をしているのかが分かりません。難しい問題集を眺めるだけで時間が過ぎ、基礎問題でも点が取れない状態が続きます。</p></div>
+    <div class="point-box"><span class="point-label">第2段階を飛ばした場合</span><p>入試レベルの型を丸暗記で大量に覚えることになり、覚えた問題は解けるのに少し形が変わると手が止まります。網羅系を何周しても偏差値が上がらない人の多くはこの状態です。</p></div>
+    <p>筆者自身が後者でした。4STEPと青チャートで解法を覚えても河合塾の模試で偏差値60前後から抜け出せず、京大理系志望の中では最下位付近でした。変わったのは高2で論理の大切さに気付き、覚えた解法の理由を確かめながら解くようになってからです。本番では京大の合格者平均を大きく超える点数を取れました。</p>
+
+    <h2>暗記した頭と理解した頭の違い</h2>
+    <p>同じ典型問題でも、第1段階だけの頭と第2段階を終えた頭では見えているものが違います。2次方程式の解の配置で比べてみます。</p>
+    <div class="point-box"><span class="point-label">問題</span><p>\(x^2-2ax+a+2=0\) が異なる2つの正の解をもつような \(a\) の範囲を求めよ。</p></div>
+    <p>\(f(x)=x^2-2ax+a+2\) とおきます。暗記で覚えた人は「判別式・軸・端点の3条件」を思い出して次のように解きます。</p>
+    \[ \begin{aligned} &\frac{D}{4}=a^2-a-2>0 \\ &\text{軸}\ x=a>0 \\ &f(0)=a+2>0 \end{aligned} \qquad \therefore\ a>2 \]
+    <p>答えは合っています。ところが問題が「正の解と負の解を1つずつもつ」に変わると、同じ3条件を当てはめようとして迷い始めます。</p>
+    <p>理解している人は3条件を覚えているのではなく、下に凸の放物線が \(x\) 軸の正の部分と2回交わるための条件として3つを導いています。だから問題が変われば必要な条件も変わることが分かっています。正の解と負の解を1つずつもつのは、放物線が \(x=0\) で \(x\) 軸より下にあるときなので、条件は1つで済みます。</p>
+    \[ f(0)=a+2&lt;0 \iff a&lt;-2 \]
+    <p><strong class="hl">暗記した頭は「この形にはこの手順」を持っていて、理解した頭は「なぜその手順で答えになるのか」を持っています。</strong>第3段階で入試レベルの型を覚えるときに必要なのは後者です。</p>
+
+    <h2>今の自分はどの段階か</h2>
+    <p>次のうち当てはまるものが多い段階が、今取り組むべき段階です。</p>
+    <div class="table-scroll">
+    <table class="compare-table">
+      <tr><th>段階</th><th>こんな状態なら</th><th>使う本</th></tr>
+      <tr><td>第1段階</td><td>教科書の例題レベルでも手が止まる。網羅系をまだ1周できていない</td><td>入門問題精講・青チャートなどの網羅系</td></tr>
+      <tr><td>第2段階</td><td>網羅系は回したのに偏差値が上がらない。覚えた問題しか解けない。除外点や十分性の確認で減点される</td><td>方程式・図形・関数からとらえる数学の基礎、数学の真髄</td></tr>
+      <tr><td>第3段階</td><td>典型問題の理由を説明できる。でも入試問題で方針が立つまでに時間がかかる</td><td>真・解法への道、ハイレベル数学の完全攻略</td></tr>
+    </table>
+    </div>
+
+    <h2>よくある質問</h2>
+    <h3>網羅系を何周してから第2段階に進めばいいですか</h3>
+    <p>周回数より状態で判断します。網羅系の例題を見て解き方がすぐに思い出せるようになったら第2段階に進んで構いません。周回数の考え方は<a href="sankousho-syuukaisuu.html">「1冊を完璧に」は本当か？参考書の周回数について</a>でも書いています。</p>
+    <h3>第2段階はどの大学を目指す人でも必要ですか</h3>
+    <p>東大・京大・難関国公立・早慶を目指すなら必須です。それ以外の大学では第1段階の型の暗記で対応できる問題も多いので、第2段階は除外点や十分性の確認など頻出の抜けを押さえる程度でも戦えます。</p>
+    <h3>第2段階と第3段階は並行してもいいですか</h3>
+    <p>第2段階の本を1冊終えて論理の基本が入っていれば、第3段階の問題集と並行して構いません。第3段階で理由が分からない解法に出会ったら、第2段階の本に戻って確かめます。</p>
+
+    <h2>まとめ</h2>
+    <p>解法暗記と理解はどちらが正解という話ではなく、段階によって使い分けるものです。基本的な定義と典型問題の解き方を覚え、その理解を深め、最後に入試レベルの典型問題を身につける。この順番を守れば、暗記した解法が初見の問題でも使える武器になります。</p>
+    <div class="point-box"><span class="point-label">網羅系をまだ回せていない人</span><p>入門問題精講や青チャートで第1段階から始めてください。思考放棄の丸暗記ではなく、各行で何をしているのかを追いながら覚えます。</p></div>
+    <div class="point-box"><span class="point-label">網羅系を回したのに伸びない人</span><p>第2段階を飛ばしているサインです。方程式・図形・関数からとらえる数学の基礎か数学の真髄で論理を学んでください。</p></div>
+    <div class="point-box"><span class="point-label">理由は説明できるが入試問題で時間がかかる人</span><p>第3段階に進む時期です。真・解法への道やハイレベル数学の完全攻略で入試レベルの型を身につけてください。</p></div>
+    <p><strong class="hl">暗記と理解は対立するものではなく、暗記→理解→暗記の順番で積み上げるものです。</strong></p>
+
+      <div class="aff-box">
+      <p class="aff-title">この記事で紹介した参考書</p>
+      <ul>
+        <li class="aff-item"><img class="aff-cover" src="https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/9151/9784010349151_1_3.jpg?_ex=200x200" alt="入門問題精講の表紙" width="64" height="90" loading="lazy" decoding="async"><div class="aff-main"><span class="aff-name">入門問題精講</span><div class="aff-btns"><a class="aff-btn" href="https://www.amazon.co.jp/dp/4010349158?tag=jukenshindan-22" target="_blank" rel="sponsored noopener">Amazonで見る</a><a class="aff-btn aff-btn-rakuten" href="https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F17190065%2F" target="_blank" rel="sponsored noopener">楽天で見る</a></div></div></li>
+        <li class="aff-item"><img class="aff-cover" src="https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/5791/9784410105791_1_4.jpg?_ex=200x200" alt="青チャート（チャート式 基礎からの数学）の表紙" width="64" height="90" loading="lazy" decoding="async"><div class="aff-main"><span class="aff-name">青チャート（チャート式 基礎からの数学）</span><div class="aff-btns"><a class="aff-btn" href="https://www.amazon.co.jp/dp/4410105795?tag=jukenshindan-22" target="_blank" rel="sponsored noopener">Amazonで見る</a><a class="aff-btn aff-btn-rakuten" href="https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F18451452%2F" target="_blank" rel="sponsored noopener">楽天で見る</a></div></div></li>
+        <li class="aff-item"><img class="aff-cover" src="https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3998/9784010353998_1_2.jpg?_ex=200x200" alt="方程式・図形・関数からとらえる数学の基礎 分野別標準問題精講の表紙" width="64" height="90" loading="lazy" decoding="async"><div class="aff-main"><span class="aff-name">方程式・図形・関数からとらえる数学の基礎 分野別標準問題精講</span><div class="aff-btns"><a class="aff-btn" href="https://www.amazon.co.jp/dp/4010353996?tag=jukenshindan-22" target="_blank" rel="sponsored noopener">Amazonで見る</a><a class="aff-btn aff-btn-rakuten" href="https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F18319361%2F" target="_blank" rel="sponsored noopener">楽天で見る</a></div></div></li>
+        <li class="aff-item"><img class="aff-cover" src="https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/9054/9784890859054_1_4.jpg?_ex=200x200" alt="数学の真髄 －論理・写像－の表紙" width="64" height="90" loading="lazy" decoding="async"><div class="aff-main"><span class="aff-name">数学の真髄 －論理・写像－</span><div class="aff-btns"><a class="aff-btn" href="https://www.amazon.co.jp/dp/4890859055?tag=jukenshindan-22" target="_blank" rel="sponsored noopener">Amazonで見る</a><a class="aff-btn aff-btn-rakuten" href="https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F17185598%2F" target="_blank" rel="sponsored noopener">楽天で見る</a></div></div></li>
+        <li class="aff-item"><img class="aff-cover" src="https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2803/9784887422803_1_3.jpg?_ex=200x200" alt="真・解法への道！の表紙" width="64" height="90" loading="lazy" decoding="async"><div class="aff-main"><span class="aff-name">真・解法への道！</span><div class="aff-btns"><a class="aff-btn" href="https://www.amazon.co.jp/dp/4887422806?tag=jukenshindan-22" target="_blank" rel="sponsored noopener">Amazonで見る</a><a class="aff-btn aff-btn-rakuten" href="https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F17916827%2F" target="_blank" rel="sponsored noopener">楽天で見る</a></div></div></li>
+        <li class="aff-item"><div class="aff-main"><span class="aff-name">ハイレベル数学の完全攻略（駿台）</span><div class="aff-btns"><a class="aff-btn" href="https://www.amazon.co.jp/dp/4796113584?tag=jukenshindan-22" target="_blank" rel="sponsored noopener">Amazonで見る</a><a class="aff-btn aff-btn-rakuten" href="https://hb.afl.rakuten.co.jp/hgc/58abd59b.2a7aebd9.58abd59c.6bc494c1/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Fsearch%3Fsitem%3D%25E3%2583%258F%25E3%2582%25A4%25E3%2583%25AC%25E3%2583%2599%25E3%2583%25AB%25E6%2595%25B0%25E5%25AD%25A6%25E3%2581%25AE%25E5%25AE%258C%25E5%2585%25A8%25E6%2594%25BB%25E7%2595%25A5%25E3%2582%25B7%25E3%2583%25AA%25E3%2583%25BC%25E3%2582%25BA" target="_blank" rel="sponsored noopener">楽天で見る</a></div></div></li>
+      </ul>
+      <p class="aff-disclosure">Amazonのアソシエイトとして、当メンバーは適格販売により収入を得ています。当サイトは楽天アフィリエイトに参加しています。</p>
+    </div>
+
 
   </div>
 
   <div class="diag-cta">
-    <p>今の自分が「暗記」のフェーズか「理解」のフェーズか迷ったら、参考書診断でレベルを確認してみましょう。</p>
+    <p>今の自分がどの段階にいて次に何をやればいいかは、数学の参考書診断で確認できます。</p>
     <a href="../sugaku-shindan.html" class="btn btn-primary">数学の参考書診断を試す →</a>
   </div>
 
@@ -97,7 +188,7 @@
     <ul>
       <li><a href="suujaku-suukyou-ronri.html"><span class="r-tag">受験戦略</span>数学が伸びない原因は「論理」だった｜偏差値60から京大本番で合格者平均を超えた勉強法</a></li>
       <li><a href="keisanryoku-9wari.html"><span class="r-tag">受験戦略</span>受験数学は計算力が9割</a></li>
-      <li><a href="pomodoro-syuuchuuryoku.html"><span class="r-tag">受験戦略</span>集中力を持続させる方法：ポモドーロ・テクニック</a></li>
+      <li><a href="shin-kaihou-eno-michi.html"><span class="r-tag">参考書比較</span>これさえやれば大丈夫？難関大受験の新定番「真・解法への道」を紹介</a></li>
     </ul>
   </section>
 
