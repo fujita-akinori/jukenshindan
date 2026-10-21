@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>生物の参考書診断｜おすすめ参考書と参考書ルートが分かる | 受験診断ドットコム</title>
+<meta name="description" content="目的・苦手分野・志望校などの質問に答えるだけで、47冊の中から今のあなたに合う生物の参考書を診断します。遺伝・考察・論述などの苦手分野別にも対応。定期テスト・共通テスト・二次試験の生物の参考書ルート選びに。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=49be6f4c">
+<style>
+  /* ==========================================================
+     受験診断ドットコム — 数学診断 デザイントークン拡張
+     ルートカラー = レベルカラーを再利用（意味の一貫性）
+       定期テスト = lv1（緑） / 共通テスト = lv2（青） / 二次試験 = lv3（オレンジ）
+     ========================================================== */
+  :root{
+    --lv5:#7d5ba6; /* 超級 */
+    --paper-shadow: 0 28px 70px -24px rgba(0,0,0,0.6), 0 2px 0 rgba(255,255,255,0.4) inset;
+  }
+
+  @media (prefers-reduced-motion: no-preference){
+    .card, .result-head, .shelf-wrap, .book-list{ animation: riseIn .38s cubic-bezier(.2,.8,.2,1) both; }
+    .book-item{ animation: riseIn .3s cubic-bezier(.2,.8,.2,1) both; }
+    .book-item:nth-child(1){ animation-delay:.02s; } .book-item:nth-child(2){ animation-delay:.06s; }
+    .book-item:nth-child(3){ animation-delay:.10s; } .book-item:nth-child(4){ animation-delay:.14s; }
+    .book-item:nth-child(5){ animation-delay:.18s; } .book-item:nth-child(6){ animation-delay:.22s; }
+  }
+  @keyframes riseIn{ from{ opacity:0; transform:translateY(10px); } to{ opacity:1; transform:none; } }
+
+  .page-wrap{ padding-top:44px; padding-bottom:130px; }
+  h1.page-title{
+    font-family:'Shippori Mincho', serif; font-weight:800;
+    font-size:clamp(26px, 4.8vw, 38px); margin:0 0 6px; line-height:1.4; letter-spacing:0.01em;
+  }
+  .page-title-rule{
+    width:56px; height:3px; background:var(--amber); border:none; margin:14px 0 18px; border-radius:2px;
+  }
+  .page-lead{ color:var(--text-on-ink-muted); font-size:14.5px; margin:0 0 30px; max-width:56ch; }
+
+  /* -------------------- 経路表示（分岐ツリーを辿る足あと） -------------------- */
+  .crumbs{ display:flex; flex-wrap:wrap; align-items:center; gap:0; margin-bottom:26px; row-gap:10px; }
+  .crumb{
+    font-size:11.5px; font-weight:700; padding:6px 13px 6px 12px; border-radius:8px;
+    background:var(--ink-soft); color:var(--text-on-ink-muted);
+    border:1px solid rgba(255,255,255,0.08);
+    display:inline-flex; align-items:center; gap:6px;
+    position:relative;
+  }
+  .crumb .k{ font-weight:500; opacity:.7; font-size:10.5px; }
+  .crumb b{ color:var(--amber); font-weight:700; }
+  .crumb + .crumb{ margin-left:6px; }
+  .crumb-arrow{ color:var(--text-on-ink-muted); opacity:.4; font-size:12px; margin:0 2px; }
+
+  /* -------------------- 質問カード -------------------- */
+  .q-index{
+    font-family:'Shippori Mincho', serif; font-size:12.5px; font-weight:700;
+    color:var(--amber-deep); letter-spacing:0.14em; margin-bottom:12px;
+    text-transform:uppercase;
+  }
+  .q-text{
+    font-family:'Shippori Mincho', serif; font-size:clamp(19px, 3.4vw, 25px);
+    font-weight:800; margin:0 0 26px; line-height:1.55; color:var(--text-on-paper);
+  }
+  .choices{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .choices.cols-1{ grid-template-columns:1fr; }
+  .choices.cols-3{ grid-template-columns:1fr 1fr 1fr; }
+  .choices.tags-grid{ grid-template-columns:repeat(3, 1fr); gap:10px; }
+
+  .choice-btn{
+    font-family:'Zen Kaku Gothic New', sans-serif; font-weight:700; font-size:15px;
+    padding:16px 17px; border-radius:10px; border:2px solid rgba(27,33,48,0.10);
+    background:#fff; color:var(--text-on-paper); cursor:pointer; text-align:left;
+    transition:transform .14s cubic-bezier(.2,.8,.2,1), border-color .14s ease, background .14s ease, box-shadow .14s ease;
+    position:relative;
+  }
+  .choice-btn:hover{
+    border-color:var(--amber); background:#fffaf0; transform:translateY(-3px);
+    box-shadow:0 10px 22px -12px rgba(196,127,31,0.5);
+  }
+  .choice-btn:active{ transform:translateY(-1px); }
+  .choice-btn:focus-visible{ outline:2px solid var(--amber-deep); outline-offset:2px; }
+  .choice-btn .sub{ display:block; font-weight:400; font-size:11.5px; color:#6b6250; margin-top:4px; }
+
+  /* タグ風の分野選択（12分野）はコンパクトに */
+  .tags-grid .choice-btn{
+    text-align:center; padding:13px 10px; font-size:13.5px; border-radius:999px;
+  }
+
+  /* -------------------- スタート画面：3ルートを「見出しタブ」として -------------------- */
+  .choice-btn[data-value="teiki"],
+  .choice-btn[data-value="kyoutsuu"],
+  .choice-btn[data-value="niji"]{
+    padding:22px 22px 20px 24px; border-left-width:5px; border-radius:12px;
+  }
+  .choice-btn[data-value="teiki"]{ border-left-color:var(--lv1); }
+  .choice-btn[data-value="kyoutsuu"]{ border-left-color:var(--lv2); }
+  .choice-btn[data-value="niji"]{ border-left-color:var(--lv3); }
+  .choice-btn[data-value="teiki"]:hover{ box-shadow:0 12px 26px -14px var(--lv1); border-color:var(--lv1); }
+  .choice-btn[data-value="kyoutsuu"]:hover{ box-shadow:0 12px 26px -14px var(--lv2); border-color:var(--lv2); }
+  .choice-btn[data-value="niji"]:hover{ box-shadow:0 12px 26px -14px var(--lv3); border-color:var(--lv3); }
+  .choice-btn[data-value="teiki"] .sub,
+  .choice-btn[data-value="kyoutsuu"] .sub,
+  .choice-btn[data-value="niji"] .sub{ font-size:12.5px; margin-top:6px; }
+
+  .nav-row{ display:flex; gap:16px; margin-top:20px; align-items:center; }
+  .back-link{
+    font-size:13px; color:var(--text-on-ink-muted); text-decoration:none; cursor:pointer;
+    display:inline-flex; align-items:center; gap:5px;
+  }
+  .back-link:hover{ color:var(--amber); }
+
+  /* -------------------- 結果画面 -------------------- */
+  .result-head{ text-align:center; margin-bottom:32px; }
+  .route-badge{
+    display:inline-block; font-family:'Shippori Mincho', serif; font-weight:800;
+    font-size:13px; letter-spacing:0.12em; padding:7px 18px; border-radius:999px;
+    color:#fff; margin-bottom:16px; box-shadow:0 8px 18px -8px rgba(0,0,0,0.5);
+  }
+  .result-head h2{ font-family:'Shippori Mincho', serif; font-size:clamp(21px,4vw,27px); margin:0 0 10px; font-weight:800; }
+  .result-head p{ color:var(--text-on-ink-muted); font-size:13.5px; max-width:52ch; margin:0 auto; }
+
+  /* -------------------- 本棚（サイン要素）-------------------- */
+  .shelf-wrap{ margin:26px 0 22px; }
+  .shelf-label{
+    font-size:11.5px; letter-spacing:0.1em; color:var(--text-on-ink-muted); margin-bottom:12px;
+    font-weight:700; text-transform:uppercase;
+  }
+  .shelf{
+    display:flex; align-items:flex-end; gap:7px;
+    background:
+      linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.3) 92%);
+    padding:26px 18px 0;
+    border-bottom:12px solid #3a2a1a;
+    box-shadow: 0 8px 0 -2px #2a1d11, inset 0 -2px 4px rgba(0,0,0,0.3);
+    border-radius:4px 4px 0 0; overflow-x:auto;
+  }
+  .spine{
+    flex:0 0 auto; width:56px; height:182px; border-radius:3px 3px 1px 1px;
+    display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
+    padding-top:16px;
+    box-shadow:
+      inset 3px 0 0 rgba(255,255,255,0.15),
+      inset -7px 0 12px rgba(0,0,0,0.22),
+      0 6px 14px rgba(0,0,0,0.35);
+    position:relative; transition:transform .18s cubic-bezier(.2,.8,.2,1);
+  }
+  .spine:hover{ transform:translateY(-10px) rotate(-0.5deg); }
+  .spine span{
+    writing-mode:vertical-rl; text-orientation:mixed; font-family:'Shippori Mincho', serif;
+    font-weight:700; font-size:12px; color:#fff; letter-spacing:0.05em; max-height:118px;
+  }
+  .spine.tall{ height:200px; } .spine.short{ height:162px; }
+  /* 帯（おび）— 日本の参考書によくある色帯を背表紙下部に */
+  .spine::after{
+    content:''; position:absolute; left:0; right:0; bottom:14px; height:22px;
+    background:rgba(0,0,0,0.22);
+    border-top:1px solid rgba(255,255,255,0.25);
+    border-bottom:1px solid rgba(0,0,0,0.3);
+  }
+  .spine .rank{
+    position:relative; z-index:1; margin-top:auto; margin-bottom:18px;
+    font-family:'Zen Kaku Gothic New', sans-serif; font-weight:900; font-size:11px; color:#fff;
+    writing-mode:horizontal-tb; opacity:.85;
+  }
+
+  .book-list{ margin-top:26px; display:flex; flex-direction:column; gap:12px; }
+
+  /* -------------------- 表彰台（ベスト3ランキング） -------------------- */
+  .podium{
+    display:flex; align-items:flex-end; justify-content:center; gap:14px;
+    margin:30px 0 8px; padding:0 10px;
+  }
+  .podium-col{ display:flex; flex-direction:column; align-items:center; width:96px; }
+  .podium-book{
+    width:100%; border-radius:10px 10px 0 0;
+    display:flex; align-items:flex-start; justify-content:center; padding-top:12px;
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.35), 0 6px 14px rgba(0,0,0,0.3);
+  }
+  .podium-rank{ font-family:'Shippori Mincho', serif; font-weight:900; font-size:22px; color:var(--ink); }
+  .podium-base{ width:100%; border-radius:0 0 6px 6px; box-shadow: inset 0 -3px 0 rgba(0,0,0,0.15); }
+  .podium-1 .podium-book{ height:76px; } .podium-1 .podium-base{ height:56px; }
+  .podium-2 .podium-book{ height:58px; } .podium-2 .podium-base{ height:40px; }
+  .podium-3 .podium-book{ height:46px; } .podium-3 .podium-base{ height:30px; }
+  .podium-1{ z-index:2; }
+  .podium-2, .podium-3{ margin-bottom:2px; }
+
+  /* 進捗 */
+  .progress{ margin:0 0 14px; }
+  .progress .p-label{ display:flex; justify-content:space-between; font-size:12.5px; font-weight:700; color:var(--text-on-ink-muted); margin-bottom:7px; }
+  .progress .p-label b{ color:var(--amber); font-size:14px; }
+  .progress .p-bar{ height:6px; border-radius:999px; background:rgba(255,255,255,0.10); overflow:hidden; }
+  .progress .p-bar i{ display:block; height:100%; border-radius:999px; background:var(--amber); transition:width .3s cubic-bezier(.2,.8,.2,1); }
+  .back-btn{
+    font-family:'Zen Kaku Gothic New', sans-serif; font-size:13.5px; font-weight:700; cursor:pointer;
+    background:none; border:1px solid rgba(255,255,255,0.25); color:var(--text-on-ink);
+    padding:9px 18px; border-radius:999px; transition:border-color .14s ease, color .14s ease;
+  }
+  .back-btn:hover{ border-color:var(--amber); color:var(--amber); }
+
+  /* 一致度・理由 */
+  .match{ display:flex; align-items:center; gap:9px; margin:2px 0 8px; }
+  .match .m-num{ font-weight:800; font-size:13px; color:var(--amber); white-space:nowrap; }
+  .match .m-bar{ flex:1; max-width:160px; height:5px; border-radius:999px; background:rgba(255,255,255,0.10); overflow:hidden; }
+  .match .m-bar i{ display:block; height:100%; background:var(--amber); border-radius:999px; }
+  .reasons{ display:flex; flex-wrap:wrap; gap:6px; margin:0 0 10px; }
+  .reasons span{ font-size:11px; font-weight:700; padding:3px 9px; border-radius:999px; background:rgba(232,163,61,0.12); color:#f0c27a; }
+  .reasons span.warn{ background:rgba(255,255,255,0.08); color:var(--text-on-ink-muted); }
+  .book-actions{ display:flex; flex-wrap:wrap; align-items:center; gap:14px; }
+  .article-link{ font-size:12px; font-weight:700; color:var(--text-on-ink-muted); text-decoration:none; }
+  .article-link:hover{ color:var(--amber); }
+  .more-books{ margin-top:14px; border:1px solid rgba(255,255,255,0.08); border-radius:10px; background:rgba(255,255,255,0.02); }
+  .more-books summary{ cursor:pointer; padding:13px 17px; font-size:13.5px; font-weight:700; color:var(--text-on-ink); list-style:none; }
+  .more-books summary::-webkit-details-marker{ display:none; }
+  .more-books summary::after{ content:"＋"; float:right; color:var(--text-on-ink-muted); }
+  .more-books[open] summary::after{ content:"－"; }
+  .more-books .book-list{ padding:0 12px 12px; }
+  .book-chip.sub-rank{ background:rgba(255,255,255,0.12) !important; color:var(--text-on-ink) !important; }
+
+  .book-item.rank-1{
+    border-color:rgba(232,163,61,0.4); background:linear-gradient(135deg, rgba(232,163,61,0.10), var(--ink-soft) 60%);
+  }
+  .book-item{
+    background:var(--ink-soft); border-radius:10px; padding:15px 17px;
+    display:flex; gap:13px; align-items:flex-start; border:1px solid rgba(255,255,255,0.06);
+    transition:border-color .15s ease;
+  }
+  .book-item:hover{ border-color:rgba(232,163,61,0.3); }
+  .book-chip{
+    flex:0 0 auto; min-width:30px; height:30px; padding:0 8px; border-radius:8px; display:flex;
+    align-items:center; justify-content:center; font-family:'Shippori Mincho', serif;
+    font-weight:800; font-size:12px; color:#fff; white-space:nowrap;
+  }
+  .book-info{ flex:1; }
+  .book-info .name{ font-weight:700; font-size:14.5px; margin:0 0 4px; line-height:1.5; }
+  .book-info .name .scope-tag{
+    display:inline-block; font-size:10px; font-weight:700; padding:2px 8px; border-radius:999px;
+    margin-left:6px; background:rgba(255,255,255,0.1); color:var(--text-on-ink-muted); vertical-align:middle;
+  }
+  .book-info .desc{ font-size:13px; color:#cfccc3; margin:2px 0 12px; line-height:1.85; }
+  .book-info .desc .d-you{ display:block; margin-top:8px; padding-top:8px; border-top:1px dashed rgba(255,255,255,0.12); color:#f3e3c3; }
+  .book-info .desc .d-you b{ display:block; font-size:11px; letter-spacing:0.08em; color:var(--amber); margin-bottom:2px; }
+  .type-caret{ display:inline-block; width:0.55em; height:1.05em; margin-left:1px; vertical-align:-0.15em; background:var(--amber); animation:caret-blink .9s steps(1) infinite; }
+  @keyframes caret-blink{ 50%{ opacity:0; } }
+  .buy-link{
+    display:inline-block; font-size:12px; font-weight:700; color:var(--ink);
+    background:var(--amber); padding:6px 14px; border-radius:999px; text-decoration:none;
+    transition:background .12s ease, transform .12s ease;
+  }
+  .pr-note{ text-align:center; font-size:12px; color:var(--text-on-ink-muted); margin:-20px 0 22px; }
+  .pr-note .pr-tag{ display:inline-block; font-weight:700; font-size:11px; padding:1px 7px; margin-right:6px; border:1px solid currentColor; border-radius:4px; }
+  .buy-link:hover{ background:#f0b357; transform:translateY(-1px); }
+  .buy-link.buy-rakuten{ background:#bf0000; color:#fff; }
+  .buy-link.buy-rakuten:hover{ background:#d81f1f; }
+  .book-cover{ float:right; width:84px; margin:0 0 10px 16px; display:block; text-decoration:none; text-align:center; }
+  .book-cover img{ display:block; width:84px; height:auto; border-radius:3px; background:#fff; box-shadow:0 6px 16px rgba(0,0,0,0.45); transition:transform .15s ease; }
+  .book-cover:hover img{ transform:translateY(-2px); }
+  .book-cover span{ display:block; margin-top:6px; font-size:10.5px; font-weight:700; color:#ff6b6b; }
+  .book-info{ min-width:0; } .book-actions{ clear:both; }
+  @media (max-width:560px){ .book-cover{ width:60px; margin-left:10px; } .book-cover img{ width:60px; } .book-cover span{ font-size:9.5px; } }
+
+  .empty-note{
+    background:var(--ink-soft); border:1px dashed rgba(255,255,255,0.15); border-radius:10px;
+    padding:24px; text-align:center; color:var(--text-on-ink-muted); font-size:13px;
+  }
+
+  .retry-btn{
+    margin-top:34px; display:inline-block; background:none; border:1px solid rgba(255,255,255,0.25);
+    color:var(--text-on-ink); padding:13px 24px; border-radius:999px; font-size:14px; font-weight:700;
+    cursor:pointer; font-family:'Zen Kaku Gothic New', sans-serif;
+    transition:border-color .14s ease, color .14s ease, transform .14s ease;
+  }
+  .retry-btn:hover{ border-color:var(--amber); color:var(--amber); transform:translateY(-2px); }
+
+  @media (max-width:520px){
+    .choices, .choices.cols-3{ grid-template-columns:1fr; }
+    .choices.tags-grid{ grid-template-columns:repeat(2, 1fr); }
+    .card{ padding:26px 20px; }
+  }
+  .textbook-base{ background:var(--ink-soft); border:1px solid rgba(232,163,61,0.45); border-left:4px solid var(--amber); border-radius:10px; padding:16px 18px; margin:0 0 22px; }
+  .textbook-base .tb-label{ display:inline-block; font-size:11px; font-weight:700; letter-spacing:.06em; color:var(--ink); background:var(--amber); padding:2px 9px; border-radius:999px; }
+  .textbook-base .tb-name{ font-weight:700; font-size:15.5px; margin:8px 0 6px; }
+  .textbook-base .tb-desc{ font-size:13.5px; line-height:1.85; color:var(--text-on-ink-muted); margin:0 0 10px; }
+  .textbook-base .tb-desc b{ color:var(--text-on-ink); }
+</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6837829466798350" crossorigin="anonymous"></script>
+<!-- SEO:BEGIN -->
+<link rel="canonical" href="https://jukenshindan.com/seibutsu-shindan.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="受験診断ドットコム">
+<meta property="og:title" content="生物の参考書診断｜おすすめ参考書と参考書ルートが分かる | 受験診断ドットコム">
+<meta property="og:description" content="目的・苦手分野・志望校などの質問に答えるだけで、47冊の中から今のあなたに合う生物の参考書を診断します。遺伝・考察・論述などの苦手分野別にも対応。定期テスト・共通テスト・二次試験の生物の参考書ルート選びに。">
+<meta property="og:url" content="https://jukenshindan.com/seibutsu-shindan.html">
+<meta property="og:image" content="https://jukenshindan.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="生物の参考書診断｜おすすめ参考書と参考書ルートが分かる | 受験診断ドットコム">
+<meta name="twitter:description" content="目的・苦手分野・志望校などの質問に答えるだけで、47冊の中から今のあなたに合う生物の参考書を診断します。遺伝・考察・論述などの苦手分野別にも対応。定期テスト・共通テスト・二次試験の生物の参考書ルート選びに。">
+<meta name="twitter:image" content="https://jukenshindan.com/og-image.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ホーム","item":"https://jukenshindan.com/"},{"@type":"ListItem","position":2,"name":"生物の参考書診断","item":"https://jukenshindan.com/seibutsu-shindan.html"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"生物の参考書診断","url":"https://jukenshindan.com/seibutsu-shindan.html","description":"目的・苦手分野・志望校などの質問に答えるだけで、47冊の中から今のあなたに合う生物の参考書を診断します。遺伝・考察・論述などの苦手分野別にも対応。定期テスト・共通テスト・二次試験の生物の参考書ルート選びに。","applicationCategory":"EducationalApplication","operatingSystem":"All","inLanguage":"ja","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"},"publisher":{"@type":"Organization","name":"受験診断ドットコム","url":"https://jukenshindan.com/","logo":{"@type":"ImageObject","url":"https://jukenshindan.com/logo-mark.png"}}}</script>
+<!-- SEO:END -->
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="logo"><img src="logo-mark.png" class="mark" alt="受験診断ドットコム">受験診断ドットコム</a>
+    <nav class="nav-links">
+      <a href="index.html#diagnosis">診断一覧</a>
+      <a href="index.html#articles">記事</a>
+      <a href="contact.html">お問い合わせ</a>
+      <!-- NAVSEARCH:BEGIN --><a class="nav-search" href="articles/index.html#search" aria-label="記事を検索" title="記事を検索"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="16.5" y1="16.5" x2="21" y2="21"></line></svg></a><!-- NAVSEARCH:END -->
+    </nav>
+  </div>
+</header>
+
+<div class="wrap page-wrap">
+  <div class="eyebrow">生物 &middot; 参考書診断</div>
+  <h1 class="page-title" id="page-title">目的別・生物参考書診断</h1>
+  <hr class="page-title-rule">
+  <p class="page-lead" id="page-lead">「何の対策がしたいか」から始めて、あなたにぴったりの生物の参考書を診断します。苦手な分野からも選べます。</p>
+
+  <div id="crumbs" class="crumbs"></div>
+  <div id="quiz-area"></div>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>&copy; 2026 受験診断ドットコム</span>
+    <div class="footer-links">
+      <a href="about.html">運営者情報</a>
+      <a href="privacy-policy.html">プライバシーポリシー</a>
+      <a href="contact.html">お問い合わせ</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   生物の参考書データベース
+   fields: name, note, asin, scope, tier, purposes[], type, bunya[], also[]
+   scope: kiso（生物基礎だけ）/ full（生物まで）/ both（どちらにも使える）
+   tier: 1 初学・講義 / 2 教科書レベルの演習 / 3 入試標準 / 4 難関 / 5 最難関
+   purposes: teiki / kyoutsuu / niji（この目的を選んだ人にだけ出す）
+   bunya: その分野の専用書（苦手分野を選んだ人にだけ出す）
+   also: その分野が苦手な人にも勧められる一般書
+   ============================================================ */
+const AMAZON_TAG = "jukenshindan-22";
+/* COVERS:BEGIN */const COVERS = {"田部の生物基礎をはじめからていねいに【改訂版】":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/9566/9784890859566_1_2.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F17850623%2F"},"レベル0からはじめる生物〈Part 1〉":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/0133/9784868270133_1_4.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F18719219%2F"},"高校これでわかる 生物基礎":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/1973/9784578241973_1_3.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F17384060%2F"},"高校これでわかる 生物":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/1980/9784578241980_1_2.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F17727043%2F"},"高校これでわかる基礎問題集 生物基礎":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/4004/9784578244004_1_6.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F17058227%2F"},"高校これでわかる基礎問題集 生物":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/4011/9784578244011_1_5.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F17395105%2F"},"よくわかる高校生物基礎 問題集（マイベスト問題集）":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/4913/9784053054913_1_3.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F16993754%2F"},"生物合格77講【完全版】2nd edition":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/8460/9784890858460.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F16315533%2F"},"大森徹の最強講義126講 生物［生物基礎・生物］":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/0891/9784578240891_1_4.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F17748785%2F"},"大森徹の最強講義126講ノート 生物［生物基礎・生物］":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/0952/9784578240952_1_4.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F18631268%2F"},"大学入試 全レベル問題集 生物 1 基礎レベル":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3875/9784010353875.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F17743765%2F"},"大学受験ムビスタ 大渕のたった6時間で生物基礎":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/1843/9784053061843_1_4.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F18231201%2F"},"宇宙一わかりやすい高校生物 生物基礎 改訂版":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/6634/9784053056634_1_8.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F17379110%2F"},"生物基礎一問一答【完全版】2nd edition":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/0089/9784868270089_1_6.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F18569808%2F"},"生物一問一答【完全版】":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/9016/9784890859016_1_2.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F17106174%2F"},"生物用語集 改訂版（駿台）":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/7647/9784796117647.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F12708973%2F"},"改訂版 大学入学共通テスト 生物基礎の点数が面白いほどとれる本":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3656/9784046063656_1_20.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F17846608%2F"},"セミナー生物基礎＋生物（第一学習社）":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/7775/9784804047775.gif?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F18495385%2F"},"生物［生物基礎・生物］基礎問題精講":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2571/9784010352571_1_2.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F17545661%2F"},"大森徹の入試生物の講義［生物基礎・生物］":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/9977/9784010349977.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F17259323%2F"},"大学入試 全レベル問題集 生物 2 共通テストレベル":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3882/9784010353882.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F17743766%2F"},"大学入学共通テスト 生物基礎が1冊でしっかりわかる本":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/0258/9784761230258.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F16494633%2F"},"きめる！共通テスト 生物基礎（改訂版）":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/8423/9784053058423_1_5.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F17854228%2F"},"きめる！共通テスト 生物":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2963/9784053062963_1_4.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F18591502%2F"},"2027 共通テスト総合問題集 生物基礎（河合塾）":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/0945/9784777230945_1_3.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F18628103%2F"},"2027 共通テスト総合問題集 生物（河合塾）":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/0952/9784777230952_1_3.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F18628104%2F"},"2027 共通テスト実戦問題集 生物基礎（駿台）":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/5099/9784796165099_1_2.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F18673658%2F"},"2027 共通テスト実戦問題集 生物（駿台）":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/5136/9784796165136_1_3.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F18609331%2F"},"東進 共通テスト実戦問題集 生物":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/9207/9784890859207_1_3.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F17400037%2F"},"生物の良問問題集［生物基礎・生物］":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/4780/9784010354780_1_2.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F18225611%2F"},"実戦 生物重要問題集 生物基礎・生物（数研出版）":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2178/9784410142178_1_4.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F18779584%2F"},"大学入試 全レベル問題集 生物 3 私大標準・国公立大レベル":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3899/9784010353899.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F17743767%2F"},"大森徹の最強問題集172問 生物［生物基礎・生物］":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/0907/9784578240907_1_2.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F18237132%2F"},"生物問題集 合格177問":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/8347/9784890858347.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F15957219%2F"},"大学入試 いちばんスマートに攻略する生物精選問題集（赤本プラス）":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2809/9784325272809_1_2.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F18352554%2F"},"生物［生物基礎・生物］標準問題精講":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2601/9784010352601_1_2.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F17724165%2F"},"理系標準問題集 生物〈五訂版〉":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/7852/9784796117852_1_5.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F18033185%2F"},"大学入試 全レベル問題集 生物 4 私大上位・国公立大上位レベル":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3905/9784010353905.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F17743768%2F"},"佐野芳史・河崎健吾の生物［生物基礎・生物］解法研究":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/4716/9784046044716_1_5.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F17336974%2F"},"生物 理系上級問題集（駿台）":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/7760/9784796117760_1_3.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F15731153%2F"},"医学部の生物［生物基礎・生物］":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/5207/9784010345207.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F15598389%2F"},"大森徹の生物 遺伝問題の解法（大学受験Do）":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/4643/9784010354643_1_2.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F18137789%2F"},"大森徹の生物 計算・グラフ問題の解法（大学受験Do）":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/4650/9784010354650_1_2.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F18137788%2F"},"大森徹の生物 実験・考察問題の解法（大学受験Do）":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/5091/9784010355091_1_2.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F18483156%2F"},"大森徹の生物 記述・論述問題の解法（大学受験Do）":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/5084/9784010355084_1_2.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F18393169%2F"}};/* COVERS:END */
+function amazonUrl(b){
+  if(b.asin) return `https://www.amazon.co.jp/dp/${b.asin}?tag=${AMAZON_TAG}`;
+  return `https://www.amazon.co.jp/s?k=${encodeURIComponent(b.q || b.name)}&i=stripbooks&tag=${AMAZON_TAG}`;
+}
+
+const BOOKS = [
+  // ---- tier1 初学・講義 ----
+  {name:"田部の生物基礎をはじめからていねいに【改訂版】",note:"東進の田部眞哉先生が生物基礎を授業のような語り口で一から解説する講義本です。生物基礎を初めて学ぶ人や授業についていけなくなった人の最初の1冊に向いています。",asin:"489085956X",scope:"kiso",tier:1,purposes:["teiki","kyoutsuu","niji"],type:"quality",bunya:[],also:[]},
+  {name:"レベル0からはじめる生物〈Part 1〉",note:"東進の飯田高明先生による、生物をゼロから学ぶ人向けの講義本です。用語を覚える前に仕組みのイメージをつかみたい初学者に向いています。",asin:"4868270133",scope:"both",tier:1,purposes:["teiki","kyoutsuu","niji"],type:"quality",bunya:[],also:[]},
+  {name:"高校これでわかる 生物基礎",note:"教科書の内容を図と解説で丁寧に整理した文英堂の定番参考書です。学校の授業の予習・復習と定期テスト対策に使いやすい作りです。",asin:"4578241971",scope:"kiso",tier:1,purposes:["teiki","kyoutsuu"],type:"quality",bunya:[],also:[]},
+  {name:"高校これでわかる 生物",note:"「生物」の教科書内容を図と解説で丁寧に整理した文英堂の参考書です。授業の進度に合わせて読み進めながら定期テストに備えられます。",asin:"457824198X",scope:"full",tier:1,purposes:["teiki","kyoutsuu"],type:"quality",bunya:[],also:[]},
+  {name:"高校これでわかる基礎問題集 生物基礎",note:"「高校これでわかる」と対になる基礎問題集です。教科書レベルの問題を段階的に解いて、定期テストで点を取る力を固められます。",asin:"4578244008",scope:"kiso",tier:1,purposes:["teiki","kyoutsuu"],type:"quantity",bunya:[],also:[]},
+  {name:"高校これでわかる基礎問題集 生物",note:"「生物」の基礎問題を段階的に解ける文英堂の問題集です。授業で習った内容をすぐ問題で確認したい人に向いています。",asin:"4578244016",scope:"full",tier:1,purposes:["teiki","kyoutsuu"],type:"quantity",bunya:[],also:[]},
+  {name:"よくわかる高校生物基礎 問題集（マイベスト問題集）",note:"Gakkenの定期テスト向け問題集です。基本問題からテスト対策問題まで段階的に並んでいて、毎日の復習とテスト前の総点検に使えます。",asin:"4053054915",scope:"kiso",tier:1,purposes:["teiki"],type:"quantity",bunya:[],also:[]},
+  {name:"生物合格77講【完全版】2nd edition",note:"東進の田部眞哉先生による約800ページの講義本で、豊富なイラストで教科書の分かりにくい現象を「なぜそうなるか」から理解できます。2020年刊行で2022年度からの新課程には対応していないので、新課程の範囲にきっちり合わせたい人は大森徹の最強講義126講を選びましょう。",asin:"4890858466",scope:"both",tier:1,purposes:["teiki","kyoutsuu","niji"],type:"quality",bunya:[],also:[]},
+  {name:"大森徹の最強講義126講 生物［生物基礎・生物］",note:"駿台の大森徹先生による新課程対応の講義本です。生物基礎から生物までの全範囲を126講に分けて解説していて、教科書の内容を入試で使える形に整理できます。",asin:"4578240894",scope:"both",tier:1,purposes:["teiki","kyoutsuu","niji"],type:"quality",bunya:[],also:[]},
+  {name:"大森徹の最強講義126講ノート 生物［生物基礎・生物］",note:"最強講義126講に対応した書き込み式のノートです。講義本で読んだ内容を自分の手で整理して、知識を定着させたい人に向いています。",asin:"4578240959",scope:"both",tier:1,purposes:["teiki","kyoutsuu","niji"],type:"quantity",bunya:[],also:[],support:true},
+  {name:"大学入試 全レベル問題集 生物 1 基礎レベル",note:"旺文社の全レベル問題集の基礎レベル編です。入試の基本問題を通して教科書の知識を問題で使う練習ができます。",asin:"4010353872",scope:"both",tier:1,purposes:["kyoutsuu","niji"],type:"quantity",bunya:[],also:[]},
+  {name:"大学受験ムビスタ 大渕のたった6時間で生物基礎",note:"動画授業と本を組み合わせて生物基礎を短時間で一通り学べるGakkenのムビスタシリーズの1冊です。生物基礎を急いで押さえたい人や、読むより聞いて理解したい人に向いています。",asin:"4053061849",scope:"kiso",tier:1,purposes:["teiki","kyoutsuu"],type:"quality",bunya:[],also:[]},
+  {name:"宇宙一わかりやすい高校生物 生物基礎 改訂版",note:"イラストと会話形式で生物基礎を基礎から解説するGakkenの参考書です。生物に苦手意識がある人が教科書の前に読むと、全体のイメージをつかみやすくなります。",asin:"4053056632",scope:"kiso",tier:1,purposes:["teiki","kyoutsuu"],type:"quality",bunya:[],also:[]},
+  {name:"生物基礎一問一答【完全版】2nd edition",note:"東進の田部眞哉先生による生物基礎の一問一答です。教科書で理解した用語を、すき間時間に確認して定着させるのに向いています。",asin:"4868270087",scope:"kiso",tier:2,purposes:["teiki","kyoutsuu","niji"],type:"quantity",bunya:[],also:[],support:true},
+  {name:"生物一問一答【完全版】",note:"東進の田部眞哉先生による生物の一問一答です。入試で問われる用語を網羅していて、教科書で理解した知識を素早く確認できます。",asin:"4890859012",scope:"full",tier:2,purposes:["teiki","kyoutsuu","niji"],type:"quantity",bunya:[],also:[],support:true},
+  {name:"生物用語集 改訂版（駿台）",note:"駿台文庫の生物用語集で、用語の意味を辞書のように引いて確かめられます。2014年刊行なので、新課程で扱いが変わった用語は教科書で確認しましょう。",asin:"4796117644",scope:"both",tier:2,purposes:["kyoutsuu","niji"],type:"quality",bunya:[],also:[],support:true},
+  {name:"改訂版 大学入学共通テスト 生物基礎の点数が面白いほどとれる本",note:"駿台の伊藤和修先生が共通テストの生物基礎を0から解説するKADOKAWAの参考書です。生物基礎を共通テストだけで使う人が、基礎から高得点まで1冊で目指せます。",asin:"4046063653",scope:"kiso",tier:1,purposes:["kyoutsuu"],type:"quality",bunya:[],also:[]},
+  // ---- tier2 教科書レベルの演習 ----
+  {name:"セミナー生物基礎＋生物（第一学習社）",note:"教科書の内容に沿って作られた傍用問題集で、教科書の知識を問題で使える形にするのに最適です。まず基本問題で知識を固め、2周目以降で発展問題に取り組みます。学校で配られている人はそれをそのまま使いましょう。",asin:"4804047778",scope:"both",tier:2,purposes:["teiki","kyoutsuu","niji"],type:"quantity",bunya:[],also:["iden","keisan","kousatsu","jikken"]},
+  {name:"生物［生物基礎・生物］基礎問題精講",note:"大森徹先生による、入試の基本問題を厳選した問題精講シリーズの1冊です。要点の「精講」で考え方を確認しながら、教科書レベルから入試の基礎まで橋渡しできます。",asin:"4010352574",scope:"both",tier:2,purposes:["kyoutsuu","niji"],type:"quantity",bunya:[],also:["iden","keisan"]},
+  {name:"大森徹の入試生物の講義［生物基礎・生物］",note:"旺文社Doシリーズの講義本で、大森徹先生が入試で問われる生物の考え方を講義形式で解説します。教科書を一通り読んだあと、入試に向けて理解を深めたい人に向いています。",asin:"4010349972",scope:"both",tier:2,purposes:["kyoutsuu","niji"],type:"quality",bunya:[],also:[]},
+  {name:"大学入試 全レベル問題集 生物 2 共通テストレベル",note:"全レベル問題集の共通テストレベル編です。共通テストで求められる知識と読解の力を、入試問題を使って確認できます。",asin:"4010353880",scope:"both",tier:2,purposes:["kyoutsuu"],type:"quantity",bunya:[],also:["kousatsu","jikken"]},
+  {name:"大学入学共通テスト 生物基礎が1冊でしっかりわかる本",note:"大森徹先生が共通テストの生物基礎を1冊で一通り解説したかんき出版の本です。生物基礎を共通テストだけで使う人が、ゼロから効率よく全範囲を押さえるのに向いています。",asin:"4761230258",scope:"kiso",tier:1,purposes:["kyoutsuu"],type:"quality",bunya:[],also:[]},
+  {name:"きめる！共通テスト 生物基礎（改訂版）",note:"共通テストの生物基礎に絞って要点と解き方をまとめたGakkenの対策書です。共通テストだけで生物基礎を使う人が効率よく仕上げるのに向いています。",asin:"4053058422",scope:"kiso",tier:2,purposes:["kyoutsuu"],type:"quality",bunya:[],also:[]},
+  {name:"きめる！共通テスト 生物",note:"共通テストの生物に絞って要点と解き方をまとめたGakkenの対策書です。共通テスト特有の資料やデータの読み取りに慣れたい人に向いています。",asin:"4053062969",scope:"full",tier:2,purposes:["kyoutsuu"],type:"quality",bunya:[],also:[]},
+  // ---- 共通テストの仕上げ ----
+  {name:"2027 共通テスト総合問題集 生物基礎（河合塾）",note:"河合塾の全統模試などをもとにした共通テスト形式の予想問題集です。本番と同じ形式で時間配分を練習しながら、仕上げの演習ができます。",asin:"4777230945",scope:"kiso",tier:3,purposes:["kyoutsuu"],type:"quantity",bunya:[],also:["kousatsu","jikken"]},
+  {name:"2027 共通テスト総合問題集 生物（河合塾）",note:"河合塾の全統模試などをもとにした共通テスト形式の予想問題集です。本番形式の問題で、資料の読み取りと時間配分を仕上げられます。",asin:"4777230953",scope:"full",tier:3,purposes:["kyoutsuu"],type:"quantity",bunya:[],also:["kousatsu","jikken"]},
+  {name:"2027 共通テスト実戦問題集 生物基礎（駿台）",note:"駿台のオリジナル予想問題と共通テストの過去問を収録した実戦問題集です。河合塾の総合問題集とあわせて、本番形式の演習量を確保できます。",asin:"4796165096",scope:"kiso",tier:3,purposes:["kyoutsuu"],type:"quantity",bunya:[],also:["kousatsu","jikken"]},
+  {name:"2027 共通テスト実戦問題集 生物（駿台）",note:"駿台のオリジナル予想問題と共通テストの過去問を収録した実戦問題集です。初見の資料問題に本番形式で取り組む練習ができます。",asin:"4796165134",scope:"full",tier:3,purposes:["kyoutsuu"],type:"quantity",bunya:[],also:["kousatsu","jikken"]},
+  {name:"東進 共通テスト実戦問題集 生物",note:"東進の飯田高明先生による共通テスト形式の実戦問題集です。解説を読みながら、共通テストで問われる考え方と解き方を身につけられます。",asin:"4890859209",scope:"full",tier:3,purposes:["kyoutsuu"],type:"quantity",bunya:[],also:[]},
+  {name:"共通テスト過去問題集 生物（赤本・黒本など）",q:"共通テスト 過去問 生物",note:"共通テストの過去問を本番と同じ時間で解く仕上げの1冊です。予想問題集とあわせて、時間配分と解く順番を本番前に固めましょう。",scope:"both",tier:3,purposes:["kyoutsuu"],type:"quantity",bunya:[],also:[]},
+  // ---- tier3 入試標準 ----
+  {name:"生物の良問問題集［生物基礎・生物］",note:"駿台の伊藤和修先生による、入試の良問を厳選した旺文社の問題集です。教科書レベルの演習を終えた人が、入試標準レベルの問題に慣れるのに向いています。",asin:"401035478X",scope:"both",tier:3,purposes:["niji"],type:"quantity",bunya:[],also:["iden","keisan"]},
+  {name:"実戦 生物重要問題集 生物基礎・生物（数研出版）",note:"数研出版の定番入試問題集で、毎年改訂されて新しい入試問題が反映されます。問題がレベル別に並んでいるので、志望校に合わせてどこまで解くかを決められます。",asin:"4410142178",scope:"both",tier:3,purposes:["niji"],type:"quantity",bunya:[],also:[]},
+  {name:"大学入試 全レベル問題集 生物 3 私大標準・国公立大レベル",note:"全レベル問題集の私大標準・国公立大レベル編です。入試標準レベルの問題で、知識を使って考える力を鍛えられます。",asin:"4010353899",scope:"both",tier:3,purposes:["niji"],type:"quantity",bunya:[],also:[]},
+  {name:"大森徹の最強問題集172問 生物［生物基礎・生物］",note:"最強講義126講と対になる大森徹先生の入試問題集です。講義本で理解した内容を入試問題で確かめたい人に向いています。2016年の159問版を新しくした版です。",asin:"4578240908",scope:"both",tier:3,purposes:["niji"],type:"quantity",bunya:[],also:[]},
+  {name:"生物問題集 合格177問",note:"東進の田部眞哉先生による入試問題集で、生物合格77講と同じ著者の考え方で入試問題を演習できます。77講で理解した内容を問題で使う練習に向いています。",asin:"4890858342",scope:"both",tier:3,purposes:["niji"],type:"quantity",bunya:[],also:[]},
+  {name:"大学入試 いちばんスマートに攻略する生物精選問題集（赤本プラス）",note:"伊藤和修先生による教学社の問題集で、頻出テーマを厳選して効率よく入試の得点力を上げることを目指した1冊です。時間が限られている人の入試演習に向いています。",asin:"4325272801",scope:"both",tier:3,purposes:["niji"],type:"quantity",bunya:[],also:[]},
+  // ---- tier4 難関 ----
+  {name:"生物［生物基礎・生物］標準問題精講",note:"国公立大の二次試験と私立大の入試から合否を分けやすい問題を厳選した演習書です。要点の「精講」と問題ごとの「解説」で、実験考察や記述の思考問題の答え方まで鍛えられます。まず自分で答案を書いてから解説と照らし合わせましょう。",asin:"4010352604",scope:"both",tier:4,purposes:["niji"],type:"quantity",bunya:[],also:["kousatsu","jikken","ronjutsu"]},
+  {name:"理系標準問題集 生物〈五訂版〉",note:"駿台の大森徹先生による難関大向けの問題集です。入試標準からやや難しい問題で、考察と記述の力を実戦的に鍛えられます。",asin:"4796117857",scope:"both",tier:4,purposes:["niji"],type:"quantity",bunya:[],also:["kousatsu"]},
+  {name:"大学入試 全レベル問題集 生物 4 私大上位・国公立大上位レベル",note:"全レベル問題集の私大上位・国公立大上位レベル編です。難関大で出題される思考力を問う問題に取り組めます。",asin:"4010353902",scope:"both",tier:4,purposes:["niji"],type:"quantity",bunya:[],also:[]},
+  {name:"佐野芳史・河崎健吾の生物［生物基礎・生物］解法研究",note:"駿台の佐野芳史先生と河崎健吾先生による難関大向けの問題集です。解説が基本事項を問う設問と思考・考察の設問に分けられていて、知識問題と記述・論述問題のどこで得点するのかがはっきり分かります。",asin:"4046044713",scope:"both",tier:4,purposes:["niji"],type:"quantity",bunya:[],also:["kousatsu","jikken","ronjutsu"]},
+  {name:"志望大学の過去問（赤本／青本）",note:"志望校の実際の入試問題に取り組む最終段階の1冊です。解けなかった問題は教科書とこれまで使った本の同じ分野に戻って復習しましょう。",scope:"both",tier:4,purposes:["niji"],type:"quantity",bunya:[],also:[]},
+  // ---- tier5 最難関 ----
+  {name:"生物 理系上級問題集（駿台）",note:"駿台の大森徹先生による最難関大向けの問題集です。東大・京大・医学部レベルの考察問題と論述問題で、初見の実験を読み解く力を鍛えられます。",asin:"4796117768",scope:"both",tier:5,purposes:["niji"],type:"quantity",bunya:[],also:["kousatsu"]},
+  {name:"医学部の生物［生物基礎・生物］",note:"伊藤和修先生による医学部入試に絞った旺文社の問題集です。医学部で頻出のテーマと出題形式に集中して演習できます。",asin:"4010345209",scope:"both",tier:5,purposes:["niji"],type:"quantity",bunya:[],also:[],igaku:true},
+  // ---- 苦手分野の専用書（大学受験Doシリーズ） ----
+  {name:"大森徹の生物 遺伝問題の解法（大学受験Do）",note:"遺伝の計算問題に絞って解き方の手順を身につける旺文社Doシリーズの1冊です。遺伝の問題を見ると手が止まる人が、典型の解法を一つずつ固めるのに向いています。",asin:"401035464X",scope:"both",tier:3,purposes:["teiki","kyoutsuu","niji"],type:"quantity",bunya:["iden"],also:[]},
+  {name:"大森徹の生物 計算・グラフ問題の解法（大学受験Do）",note:"生物の計算問題とグラフの読み取りに絞ったDoシリーズの1冊です。計算の手順とグラフの見方を整理して、数字が出てくる問題での失点を減らせます。",asin:"4010354658",scope:"both",tier:3,purposes:["teiki","kyoutsuu","niji"],type:"quantity",bunya:["keisan"],also:[]},
+  {name:"大森徹の生物 実験・考察問題の解法（大学受験Do）",note:"初めて見る実験やデータを読み解く考察問題に絞ったDoシリーズの1冊です。問題文のどこに注目してどう考えるかの手順を学べます。",asin:"4010355093",scope:"both",tier:3,purposes:["teiki","kyoutsuu","niji"],type:"quantity",bunya:["kousatsu","jikken"],also:[]},
+  {name:"大森徹の生物 記述・論述問題の解法（大学受験Do）",note:"記述・論述問題に絞って答案の書き方を身につけるDoシリーズの1冊です。何を書けば点になるのかが分からない人が、採点される答案の型を学ぶのに向いています。",asin:"4010355085",scope:"both",tier:3,purposes:["teiki","niji"],type:"quantity",bunya:["ronjutsu"],also:[]},
+];
+const ARTICLE_OF = {
+  "生物合格77講【完全版】2nd edition":"seibutsu-benkyouhou",
+  "大森徹の最強講義126講 生物［生物基礎・生物］":"seibutsu-benkyouhou",
+  "セミナー生物基礎＋生物（第一学習社）":"seibutsu-benkyouhou",
+  "生物［生物基礎・生物］標準問題精講":"seibutsu-benkyouhou",
+};
+BOOKS.forEach(b => { if(ARTICLE_OF[b.name]) b.article = ARTICLE_OF[b.name]; });
+
+/* ============================================================
+   質問の流れ
+   ============================================================ */
+const routeColor = { teiki:"var(--lv1)", kyoutsuu:"var(--lv2)", niji:"var(--lv3)" };
+const routeName = { teiki:"定期テスト対策", kyoutsuu:"共通テスト対策", niji:"二次・私大対策" };
+const BUNYA_NAME = { iden:"遺伝の計算", ronjutsu:"論述", kousatsu:"考察問題", jikken:"実験問題", keisan:"計算問題" };
+
+let answers = {};
+let stack = [{step:"start", snap:{}}];
+const clone = o => JSON.parse(JSON.stringify(o));
+const quizArea = document.getElementById("quiz-area");
+const crumbsEl = document.getElementById("crumbs");
+
+function renderCrumbs(){
+  const a = answers, labels = [];
+  if(a.purpose) labels.push(["目的", routeName[a.purpose]]);
+  if(a.range) labels.push(["範囲", a.range==="kiso" ? "生物基礎" : "生物基礎＋生物"]);
+  if(a.statusLabel) labels.push(["状況", a.statusLabel]);
+  if(a.bunya) labels.push(["苦手", BUNYA_NAME[a.bunya]]);
+  if(a.shibouLabel) labels.push(["志望", a.shibouLabel]);
+  if(a.style) labels.push(["参考書", a.style==="quality" ? "講義" : "問題集"]);
+  crumbsEl.innerHTML = labels.map(([k,v], i) =>
+    (i>0?'<span class="crumb-arrow">→</span>':'') + `<span class="crumb"><span class="k">${k}</span><b>${v}</b></span>`
+  ).join("");
+}
+
+function go(step){ stack.push({step, snap:clone(answers)}); renderStep(step); }
+function back(){
+  if(stack.length<=1) return;
+  stack.pop();
+  const top = stack[stack.length-1];
+  answers = clone(top.snap);
+  renderStep(top.step);
+}
+
+function plannedSteps(){
+  const a = answers, list = ["start"];
+  if(!a.purpose) return null;
+  list.push("range","status");
+  if(a.statusKey==="bunya") list.push("bunya");
+  if(a.purpose==="niji") list.push("shibou");
+  list.push("style");
+  return list;
+}
+function progressHtml(){
+  const cur = stack.length;
+  const plan = plannedSteps();
+  const total = plan ? Math.max(plan.length, cur) : null;
+  const pct = total ? Math.round((cur-1)/total*100) : 6;
+  return `<div class="progress"><div class="p-label"><span><b>Q${cur}</b>${total?` / ${total}`:''}</span><span>${total?`あと${total-cur+1}問`:''}</span></div>
+    <div class="p-bar"><i style="width:${pct}%"></i></div></div>`;
+}
+function renderQ(index, qText, choices, colClass){
+  let html = progressHtml() + `<div class="card">
+    <div class="q-index">${index}</div>
+    <p class="q-text">${qText}</p>
+    <div class="choices ${colClass||''}">`;
+  choices.forEach(c=>{
+    html += `<button class="choice-btn" data-value="${c.value}">${c.label}${c.sub?`<span class="sub">${c.sub}</span>`:''}</button>`;
+  });
+  html += `</div></div>`;
+  if(stack.length > 1) html += `<div class="nav-row"><button class="back-btn" id="back-btn">← 前の質問に戻る</button></div>`;
+  quizArea.innerHTML = html;
+  renderCrumbs();
+  const bb = document.getElementById("back-btn");
+  if(bb) bb.addEventListener("click", back);
+  return quizArea.querySelectorAll(".choice-btn");
+}
+function bindChoice(btns, handler){
+  btns.forEach(b => b.addEventListener("click", ()=> handler(b.dataset.value, b)));
+}
+
+function renderStep(step){
+  switch(step){
+    case "start": return stepStart();
+    case "range": return stepRange();
+    case "status": return stepStatus();
+    case "bunya": return stepBunya();
+    case "shibou": return stepShibou();
+    case "style": return stepStyle();
+    case "result": return renderResult();
+  }
+}
+function stepStart(){
+  const btns = renderQ("STEP 1", "何の対策がしたい？", [
+    {label:"定期テスト対策", sub:"学校の授業・初学", value:"teiki"},
+    {label:"共通テスト対策", sub:"マーク式の得点力をつけたい", value:"kyoutsuu"},
+    {label:"二次・私大対策", sub:"記述・考察の実戦力をつけたい", value:"niji"},
+  ], "cols-1");
+  bindChoice(btns, v => { answers.purpose = v; go("range"); });
+}
+function stepRange(){
+  const btns = renderQ(routeName[answers.purpose], "範囲は？", [
+    {label:"生物基礎だけ", value:"kiso"},
+    {label:"生物基礎＋生物", value:"full"},
+  ]);
+  bindChoice(btns, v => { answers.range = v; go("status"); });
+}
+function stepStatus(){
+  const opts = [
+    {label:"初学・授業についていけない", value:"hajime", s:"初学"},
+    {label:"教科書は読んだが問題が解けない", value:"yonda", s:"問題が解けない"},
+    {label:"特定の分野が苦手", sub:"→ 苦手な分野を選べます", value:"bunya", s:"特定の分野が苦手"},
+    {label:"知識はあるが考察問題が苦手", value:"kousatsu", s:"考察問題が苦手"},
+  ];
+  if(answers.purpose==="niji") opts.push({label:"難関大の過去問に挑戦したい", value:"nankan", s:"難関大に挑戦"});
+  const btns = renderQ(routeName[answers.purpose], "今の状況は？", opts, "cols-1");
+  bindChoice(btns, v => {
+    const o = opts.find(x => x.value===v);
+    answers.statusKey = v; answers.statusLabel = o.s;
+    delete answers.bunya;
+    if(v==="bunya") return go("bunya");
+    if(v==="kousatsu") answers.bunya = "kousatsu";
+    next();
+  });
+}
+function stepBunya(){
+  const btns = renderQ("苦手な分野", "どこが苦手？", [
+    {label:"遺伝の計算", value:"iden"},
+    ...(answers.purpose==="kyoutsuu" ? [] : [{label:"論述", value:"ronjutsu"}]),
+    {label:"考察問題", value:"kousatsu"},
+    {label:"実験問題", value:"jikken"},
+    {label:"計算問題", value:"keisan"},
+    {label:"その他の範囲", value:"other"},
+  ], "tags-grid");
+  bindChoice(btns, v => {
+    if(v==="other"){
+      // その他の範囲は「教科書は読んだが問題が解けない」と同じ流れに合流する
+      answers.statusKey = "yonda"; answers.statusLabel = "その他の範囲が苦手";
+    } else {
+      answers.bunya = v;
+    }
+    next();
+  });
+}
+function next(){ go(answers.purpose==="niji" ? "shibou" : "style"); }
+function stepShibou(){
+  const btns = renderQ("二次・私大対策", "志望校のレベルは？", [
+    {label:"中堅国公立・MARCH・関関同立", value:"chuken"},
+    {label:"難関国公立・早慶", value:"nankan"},
+    {label:"東大・京大・医学部", value:"saiken"},
+  ], "cols-1");
+  bindChoice(btns, (v, el) => { answers.shibou = v; answers.shibouLabel = el.childNodes[0].nodeValue.trim(); go("style"); });
+}
+function stepStyle(){
+  const btns = renderQ(routeName[answers.purpose], "どんな本がいい？", [
+    {label:"講義で理解したい", sub:"読んで分かる本", value:"quality"},
+    {label:"問題を解いて覚えたい", sub:"演習中心の本", value:"quantity"},
+  ]);
+  bindChoice(btns, v => { answers.style = v; go("result"); });
+}
+
+/* ============================================================
+   結果算出
+   ============================================================ */
+const SHIBOU_TIER = { chuken:3, nankan:4, saiken:5 };
+function pickTier(){
+  const a = answers;
+  if(a.bunya){
+    if(a.purpose!=="niji") return 2;
+    return SHIBOU_TIER[a.shibou] || 3;
+  }
+  if(a.statusKey==="hajime") return 1;
+  if(a.statusKey==="yonda") return 2;
+  if(a.statusKey==="nankan") return SHIBOU_TIER[a.shibou] || 4;
+  return 2;
+}
+function scoreBook(b, targetTier){
+  const a = answers;
+  if(!b.purposes.includes(a.purpose)) return -Infinity;
+  if(a.range==="kiso" && b.scope==="full") return -Infinity;
+  if(a.range==="full" && b.scope==="kiso") return -Infinity;
+  if(b.igaku && a.shibou!=="saiken") return -Infinity;
+  let s = 0;
+  if(a.bunya){
+    const primary = b.bunya.includes(a.bunya), also = b.also.includes(a.bunya);
+    if(!primary && !also) return -Infinity;
+    if(primary) s += 6;
+  } else if(b.bunya.length){
+    return -Infinity;
+  }
+  s += 5 - Math.abs(b.tier - targetTier)*2;
+  if(a.purpose==="kyoutsuu" && b.purposes.length===1) s += 1; // 共通テスト専用の本は、共通テスト対策で汎用書より少し優先する
+  if(b.support) s -= 3; // 一問一答・用語集・書き込みノートは補助教材なので、メインの本より下に出す
+  if(a.style==="quality" && b.type==="quality") s += 2;
+  if(a.style==="quantity" && b.type==="quantity") s += 2;
+  return s;
+}
+function explainBook(b, s, targetTier, maxScore){
+  const tags = [];
+  const primary = answers.bunya && b.bunya.includes(answers.bunya);
+  if(primary) tags.push({t:`${BUNYA_NAME[answers.bunya]}の専用書`});
+  const d = primary ? 0 : b.tier - targetTier; // 専用書は分野の基礎から扱うので、レベルの差は表示しない
+  if(primary) {}
+  else if(d===0) tags.push({t:"レベルがぴったり"});
+  else if(d>0) tags.push({t:"やや難しめ", warn:true});
+  else tags.push({t:"やや易しめ", warn:true});
+  tags.push({t:{teiki:"定期テスト向け", kyoutsuu:"共通テスト向け", niji:"二次・私大向け"}[answers.purpose]});
+  if(answers.style==="quality" && b.type==="quality") tags.push({t:"講義型"});
+  if(answers.style==="quantity" && b.type==="quantity") tags.push({t:"問題演習型"});
+  const pct = Math.max(0, Math.min(100, Math.round(s / maxScore * 100)));
+  return {pct, tags};
+}
+function hitokoto(ex){
+  const sh = answers.shibouLabel;
+  const lead = sh ? `${sh}志望なら、` : "今の条件なら、";
+  const t = ex.tags.map(x=>x.t);
+  let body;
+  if(t.some(x=>/の専用書$/.test(x))) body = "苦手な分野だけを集中して固められる1冊です。解けなかった問題は教科書の該当ページにも戻りましょう。";
+  else if(t.includes("やや難しめ")) body = "少し背伸びになるので、前段階の本と並行すると効果的です。";
+  else if(t.includes("やや易しめ")) body = "穴を埋める総復習として短期間で回すのに向いています。";
+  else body = "今のレベルにちょうど合う1冊です。";
+  return lead + body;
+}
+
+function typeDescriptions(){
+  const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const list = document.querySelector(".book-list");
+  if(!list || reduce) return;
+  const items = Array.from(list.querySelectorAll(":scope > .book-item")).slice(0,3);
+  const jobs = items.map(item => {
+    const desc = item.querySelector(".desc");
+    if(!desc) return null;
+    desc.style.minHeight = desc.offsetHeight + "px";
+    const walker = document.createTreeWalker(desc, NodeFilter.SHOW_TEXT);
+    const nodes = [];
+    while(walker.nextNode()) nodes.push({node:walker.currentNode, text:walker.currentNode.nodeValue});
+    nodes.forEach(n => n.node.nodeValue = "");
+    const job = {item, desc, nodes, ni:0, ci:0, done:false, caret:null};
+    item.addEventListener("click", e => { if(e.target.closest("a")) return; finish(job); }, {once:true});
+    return job;
+  }).filter(Boolean);
+  function finish(job){
+    if(job.done) return;
+    job.nodes.forEach(n => n.node.nodeValue = n.text);
+    if(job.caret) job.caret.remove();
+    job.done = true; job.desc.style.minHeight = "";
+  }
+  let k = 0;
+  function step(){
+    while(k < jobs.length && jobs[k].done) k++;
+    if(k >= jobs.length) return;
+    const job = jobs[k];
+    if(!job.caret){ job.caret = document.createElement("span"); job.caret.className = "type-caret"; }
+    const cur = job.nodes[job.ni];
+    if(!cur){ finish(job); k++; setTimeout(step, 260); return; }
+    if(job.caret.previousSibling !== cur.node) cur.node.parentNode.insertBefore(job.caret, cur.node.nextSibling);
+    job.ci++;
+    cur.node.nodeValue = cur.text.slice(0, job.ci);
+    if(job.ci >= cur.text.length){ job.ni++; job.ci = 0; }
+    setTimeout(step, 25);
+  }
+  setTimeout(step, 350);
+}
+
+function bookItemHtml(b, i, chipLabel, chipBg, ex, isSub){
+  const cv = COVERS[b.name];
+  const scopeLabel = b.scope==="kiso" ? "生物基礎" : (b.scope==="full" ? "生物" : "");
+  return `<div class="book-item rank-${i+1}">
+    <div class="book-chip${isSub?' sub-rank':''}" style="background:${chipBg}; color:var(--ink);">${chipLabel}</div>
+    <div class="book-info">
+      ${cv&&cv.i?`<a class="book-cover" href="${cv.u}" target="_blank" rel="sponsored noopener" aria-label="${b.name}を楽天で見る"><img src="${cv.i}" alt="${b.name}の表紙" width="84" height="120" loading="lazy" decoding="async"><span>楽天で見る</span></a>`:''}
+      <p class="name">${b.name}${scopeLabel?`<span class="scope-tag">${scopeLabel}</span>`:''}</p>
+      <div class="match"><span class="m-num">一致度 ${ex.pct}%</span><span class="m-bar"><i style="width:${ex.pct}%"></i></span></div>
+      <div class="reasons">${ex.tags.map(x=>`<span${x.warn?' class="warn"':''}>${x.t}</span>`).join('')}</div>
+      <p class="desc">${b.note?`<span class="d-note">${b.note}</span>`:''}<span class="d-you"><b>あなたへのひとこと</b>${hitokoto(ex)}</span></p>
+      <div class="book-actions">
+        <a class="buy-link" href="${amazonUrl(b)}" target="_blank" rel="sponsored noopener">Amazonで見る</a>
+        ${cv?`<a class="buy-link buy-rakuten" href="${cv.u}" target="_blank" rel="sponsored noopener">楽天で見る</a>`:''}
+        ${b.article?`<a class="article-link" href="articles/${b.article}.html">解説記事を読む →</a>`:''}
+      </div>
+    </div>
+  </div>`;
+}
+
+const TEXTBOOK_HTML = `<div class="textbook-base">
+  <span class="tb-label">すべての土台</span>
+  <p class="tb-name">学校の教科書（生物基礎・生物）</p>
+  <p class="tb-desc">入試で問われる知識の出どころは教科書です。難関大の問題も教科書の知識を使って初めて見る実験やデータを考えさせる形になっています。<b>下の参考書は教科書を置き換えるものではなく、教科書を読みやすくして使える形にするための補助です。</b>迷ったら教科書に戻りましょう。</p>
+  <a class="article-link" href="articles/seibutsu-benkyouhou.html">生物の勉強法の記事を読む →</a>
+</div>`;
+
+function renderResult(){
+  const targetTier = pickTier();
+  const scored = BOOKS.map(b => ({b, s:scoreBook(b, targetTier)}))
+                      .filter(x => x.s > -Infinity)
+                      .sort((a,b)=> b.s - a.s);
+  const top = scored.slice(0,3), others = scored.slice(3,6);
+  const maxScore = (answers.bunya ? 6 : 0) + 7;
+  const exOf = x => explainBook(x.b, x.s, targetTier, maxScore);
+
+  document.getElementById("page-title").innerHTML = "診断結果";
+  document.getElementById("page-lead").innerHTML = top.length<=1 ? "あなたに一番合う参考書はこちらです。" : ("あなたに一番合う参考書、ベスト" + top.length + "はこちら。");
+
+  const parts = [answers.range==="kiso" ? "生物基礎" : "生物基礎＋生物"];
+  if(answers.bunya) parts.push(BUNYA_NAME[answers.bunya] + "が苦手");
+  else parts.push(answers.statusLabel);
+  if(answers.shibouLabel) parts.push(answers.shibouLabel + "志望");
+
+  const MEDAL = ["var(--amber)", "#C7CDD6", "#C98A4B"];
+  const MEDAL_LABEL = ["No.1 イチオシ", "No.2", "No.3"];
+  let bodyHtml;
+  if(!top.length){
+    bodyHtml = '<div class="empty-note">条件に合う参考書が見つかりませんでした。選択を変えてもう一度お試しください。</div>';
+  } else {
+    let podiumHtml = '';
+    if(top.length >= 2){
+      const order = top.length===3 ? [1,0,2] : [0,1];
+      podiumHtml = '<div class="podium">' + order.map(idx => `
+        <div class="podium-col ${idx===0?"podium-1":(idx===1?"podium-2":"podium-3")}">
+          <div class="podium-book" style="background:${MEDAL[idx]}"><span class="podium-rank">${idx+1}</span></div>
+          <div class="podium-base" style="background:${MEDAL[idx]}"></div>
+        </div>`).join('') + '</div>';
+    }
+    let listHtml = '<div class="book-list">';
+    top.forEach((x,i)=>{ listHtml += bookItemHtml(x.b, i, top.length===1 ? "イチオシ" : MEDAL_LABEL[i], MEDAL[i], exOf(x), false); });
+    listHtml += '</div>';
+    if(others.length){
+      listHtml += `<details class="more-books"><summary>ほかの候補（${others.length}冊）</summary><div class="book-list">`;
+      others.forEach((x,k)=>{ listHtml += bookItemHtml(x.b, 3+k, `No.${4+k}`, "", exOf(x), true); });
+      listHtml += '</div></details>';
+    }
+    bodyHtml = '<p class="pr-note"><span class="pr-tag">PR</span>このページにはアフィリエイト広告が含まれています</p>' + TEXTBOOK_HTML + podiumHtml + listHtml;
+  }
+
+  quizArea.innerHTML = `
+    <div class="result-head">
+      <span class="route-badge" style="background:${routeColor[answers.purpose]}">${routeName[answers.purpose]}</span>
+      <h2>${parts.join(" ・ ")}</h2>
+    </div>
+    ${bodyHtml}
+    <div style="text-align:center;"><button class="retry-btn" id="retry-btn">もう一度診断する</button></div>
+    <p class="disclaimer" style="margin-top:28px;">
+      ※本診断は一般的な学習ルートの目安であり、個々の学力・志望校の出題傾向によって最適な参考書は異なります。<br>
+      ※Amazonのアソシエイトとして、当メンバーは適格販売により収入を得ています。当サイトは楽天アフィリエイトに参加しています。
+    </p>`;
+  renderCrumbs();
+  typeDescriptions();
+  document.getElementById("retry-btn").addEventListener("click", ()=>{
+    answers = {}; stack = [{step:"start", snap:{}}];
+    document.getElementById("page-title").innerHTML = "目的別・生物参考書診断";
+    document.getElementById("page-lead").innerHTML = PAGE_LEAD;
+    renderStep("start");
+  });
+}
+const PAGE_LEAD = document.getElementById("page-lead").innerHTML;
+renderStep("start");
+</script>
+</body>
+</html>

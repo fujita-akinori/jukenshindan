@@ -41,6 +41,7 @@ TAG_COLOR = {"参考書比較": "var(--tag-sankousho)", "受験戦略": "var(--t
 STATIC_PAGES = [  # (ファイル, パンくず名, sitemap に載せるか)
     ("index.html", None, True),
     ("sugaku-shindan.html", "数学の参考書診断", True),
+    ("seibutsu-shindan.html", "生物の参考書診断", True),
     ("about.html", "運営者情報", True),
     ("contact.html", "お問い合わせ", True),
     ("privacy-policy.html", "プライバシーポリシー", True),
@@ -342,9 +343,9 @@ def build_static_pages():
             continue
         s = read(rel)
         lds = [crumb_ld([("ホーム", BASE + "/"), (crumb, url_of(rel))])]
-        if rel == "sugaku-shindan.html":
+        if rel.endswith("-shindan.html"):
             title, desc = meta_of(s)
-            lds.append({"@context": "https://schema.org", "@type": "WebApplication", "name": "数学の参考書診断",
+            lds.append({"@context": "https://schema.org", "@type": "WebApplication", "name": crumb,
                         "url": url_of(rel), "description": desc, "applicationCategory": "EducationalApplication",
                         "operatingSystem": "All", "inLanguage": "ja",
                         "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}, "publisher": ORG})
@@ -416,6 +417,8 @@ def main():
         print("  強調する文が見つからない:", slug, sent[:30])
     got, total = affbox.build_diag(ROOT, read, write)
     print(f"数学診断の表紙: {got}/{total} 冊")
+    got, total = affbox.build_diag(ROOT, read, write, "seibutsu-shindan.html")
+    print(f"生物診断の表紙: {got}/{total} 冊")
     build_articles(arts)
     build_list_pages(arts)
     build_home(arts)

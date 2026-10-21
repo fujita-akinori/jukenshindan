@@ -42,7 +42,8 @@ def build(root, read, write):
             for m in re.finditer(r"<p>(.*?)</p>", s[start:], re.S):
                 if sent.strip() not in _plain(m.group(1)):
                     continue
-                if f'<strong class="hl">' in m.group(1) and sent.strip() in _plain(re.search(r'<strong class="hl">(.*?)</strong>', m.group(1), re.S).group(1)):
+                inner = m.group(1)
+                if any(_plain(inner[k.end():]).startswith(sent.strip()) for k in re.finditer(r'<strong class="hl">', inner)):
                     ok = True
                     break
                 new = _wrap_in_p(m.group(1), sent)
