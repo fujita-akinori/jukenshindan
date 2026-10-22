@@ -29,7 +29,7 @@ const ARTICLES = [
   { slug:"kyoutsuu-test-kaitou-junjo.html", title:"共通テスト数学、時間が足りない人のための解答順序戦略", description:"共通テスト数学で時間が足りない受験生に向けて、解答順序の工夫とマークミスを防ぐ習慣を解説します。", tag:"勉強法", subject:"数学", date:"2026-07-08", order:14 },
   { slug:"seisuu-mondai-pattern.html", title:"整数問題の解き方は「必要条件で絞る」だけ｜積の形・余り・範囲の3パターンを例題で解説", description:"整数問題の解き方は本質的に「必要条件で絞る」1つ。積の形・余り（mod）・範囲を絞る3つのパターンと十分性の確認を、例題つきで京大生が解説します。", tag:"勉強法", subject:"数学", date:"2026-07-08", order:15 },
   { slug:"vector-zu-de-kangaero.html", title:"ベクトルは図で考えろ：計算に逃げると伸びない理由", description:"ベクトル分野で計算だけに頼ると応用問題で詰まる理由と、図を描く習慣の重要性を解説します。", tag:"勉強法", subject:"数学", date:"2026-07-08", order:16 },
-  { slug:"bisekibun-imi-de-rikai.html", title:"微積分は「公式より意味」で理解しろ", description:"微分・積分の公式暗記だけでは対応できない理由と、意味から理解する重要性を解説します。", tag:"勉強法", subject:"数学", date:"2026-07-08", order:17 },
+  { slug:"bisekibun-imi-de-rikai.html", title:"微積分の本質は「一次近似」｜公式を丸暗記せずに意味から理解する方法を京大生が解説", description:"微積分の本質は一次近似。積の微分・合成関数の微分・増減と極値・積分と微分の関係・置換積分までを一次近似で理解する方法を、図と例題で京大生が解説します。", tag:"勉強法", subject:"数学", date:"2026-07-08", order:17 },
   { slug:"ichitaichi-vs-shinsuta.html", title:"1対1対応の演習と新数学スタンダード演習はどっちをやるべき？レベル・解説・レイアウトを京大生が比較", description:"同じ東京出版の1対1対応の演習と新数学スタンダード演習を、レベル・問題数・解説・レイアウトで比較。多くの人に勧められるのはどちらか、1対1の次に進む本まで京大生が解説します。", tag:"参考書比較", subject:"数学", date:"2026-07-08", order:18 },
   { slug:"bunkei-purachika.html", title:"文系プラチカは理系プラチカより難しい？レベル・対象・理系が使う意味を京大生が解説", description:"文系プラチカは名前に反して理系プラチカより難しい。理由とレベル、向いている人、理系が数IIの微積分対策に使う意味までを京大生が解説します。", tag:"参考書比較", subject:"数学", date:"2026-07-08", order:19 },
   { slug:"tokui-nobasu-ka-nigate-umeru-ka.html", title:"「得意科目を伸ばす」か「苦手科目を埋める」か", description:"限られた勉強時間の配分について、得意を伸ばす戦略と苦手を埋める戦略のどちらが向いているかを解説します。", tag:"受験戦略", date:"2026-07-08", order:20 },
