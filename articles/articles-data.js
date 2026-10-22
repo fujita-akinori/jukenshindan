@@ -23,7 +23,7 @@ const ARTICLES = [
   { slug:"shin-kaihou-eno-michi.html", title:"これさえやれば大丈夫？難関大受験の新定番「真・解法への道」を紹介", description:"網羅系参考書を終えたのに難関大の過去問で手が止まる受験生に向けて、特徴と使い方を解説します。", tag:"参考書比較", subject:"数学", date:"2026-07-08", order:8 },
   { slug:"yobiko-no-jugyou-3sen.html", title:"まるで予備校の授業な数学の参考書3選", description:"ハイレベル完全攻略・世界一わかりやすい京大の理系数学/文系数学・真解法への道の3冊を、著者の講師経歴と合わせて紹介します。", tag:"参考書比較", subject:"数学", date:"2026-07-08", order:9 },
   { slug:"zeppan-kami-sankousho-3sen.html", title:"絶版になってしまった神参考書3選", description:"長岡亮介『総合的研究』、松田聡平『最高の演習』、秋山仁『発見的教授法による数学シリーズ』。今は入手困難な伝説の参考書と著者の経歴を紹介します。", tag:"参考書比較", subject:"数学", date:"2026-07-08", order:10 },
-  { slug:"sankousho-syuukaisuu.html", title:"「1冊を完璧に」は本当か？参考書の周回数について", description:"「1冊を完璧にすべき」という定番アドバイスを、周回数の目安と「完璧」の正しい定義から解説します。", tag:"受験戦略", date:"2026-07-08", order:11 },
+  { slug:"sankousho-syuukaisuu.html", title:"「1冊を完璧に」は本当か？参考書の周回数について", description:"「1冊を完璧に」は1冊目の基本書だけ正しい。土台の1冊は覚えるまで繰り返し、上達後は一期一会で問題に向き合う勉強法と、段階別の周回数の目安を京大生が解説します。", tag:"勉強法", date:"2026-07-08", order:11 },
   { slug:"moshi-tokinaoshi-note.html", title:"模試の解き直しノート、意味があるのか問題", description:"模試の解き直しノートが機能しない理由と、本当に実力につながる解き直しの条件を解説します。", tag:"受験戦略", date:"2026-07-08", order:12 },
   { slug:"natsuyasumi-suugaku-jikan.html", title:"夏休みの数学、何時間やればいいのか問題", description:"夏休みに数学へ割く時間について、「時間数」ではなく「到達点」から逆算する考え方を解説します。", tag:"受験戦略", subject:"数学", date:"2026-07-08", order:13 },
   { slug:"kyoutsuu-test-kaitou-junjo.html", title:"共通テスト数学、時間が足りない人のための解答順序戦略", description:"共通テスト数学で時間が足りない受験生に向けて、解答順序の工夫とマークミスを防ぐ習慣を解説します。", tag:"勉強法", subject:"数学", date:"2026-07-08", order:14 },
