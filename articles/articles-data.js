@@ -20,7 +20,7 @@ const ARTICLES = [
   { slug:"pomodoro-syuuchuuryoku.html", title:"集中力を持続させる方法：ポモドーロ・テクニック", description:"受験勉強の集中力が続かない人向けに、時間管理法「ポモドーロ・テクニック」の仕組みと取り入れ方を解説します。", tag:"受験戦略", date:"2026-07-08", order:5 },
   { slug:"sawaruna-sankousho-3sen.html", title:"触れるな注意 難しすぎる受験参考書3選", description:"内容は良書でも、対象読者を間違えると挫折を招く難関参考書3冊を紹介。自分に合うレベルの見極め方を解説します。", tag:"参考書比較", subject:"数学", date:"2026-07-08", order:6 },
   { slug:"sankousho-root-no-yami.html", title:"参考書ルートの闇：参考書診断がなぜ必要なのか", description:"ネット上に溢れる「参考書ルート」コンテンツに共通する3つの問題点と、個別診断という形が必要な理由を解説します。", tag:"受験戦略", date:"2026-07-08", order:7 },
-  { slug:"shin-kaihou-eno-michi.html", title:"これさえやれば大丈夫？難関大受験の新定番「真・解法への道」を紹介", description:"網羅系参考書を終えたのに難関大の過去問で手が止まる受験生に向けて、特徴と使い方を解説します。", tag:"参考書比較", subject:"数学", date:"2026-07-08", order:8 },
+  { slug:"shin-kaihou-eno-michi.html", title:"真・解法への道！のレベルと使い方｜網羅系の次に万人におすすめできる講義形式の参考書", description:"真・解法への道！（箕輪浩嗣・東京出版）のレベル・特徴・使い方を京大生が解説。なぜ解けるかまで教える講義形式と横割り構成で、数学が苦手な人にも思考の型が身につく。数III・C巻が医学部志望におすすめな理由やハイレベル完全攻略との使い分けも紹介。", tag:"参考書比較", subject:"数学", date:"2026-07-08", order:8 },
   { slug:"yobiko-no-jugyou-3sen.html", title:"まるで予備校の授業な数学の参考書3選", description:"ハイレベル完全攻略・世界一わかりやすい京大の理系数学/文系数学・真解法への道の3冊を、著者の講師経歴と合わせて紹介します。", tag:"参考書比較", subject:"数学", date:"2026-07-08", order:9 },
   { slug:"zeppan-kami-sankousho-3sen.html", title:"絶版になってしまった神参考書3選", description:"長岡亮介『総合的研究』、松田聡平『最高の演習』、秋山仁『発見的教授法による数学シリーズ』。今は入手困難な伝説の参考書と著者の経歴を紹介します。", tag:"参考書比較", subject:"数学", date:"2026-07-08", order:10 },
   { slug:"sankousho-syuukaisuu.html", title:"参考書は何周すべき？「1冊を完璧に」が正しいのは1冊目だけ｜京大生の周回数と一期一会の勉強法", description:"「1冊を完璧に」は1冊目の基本書だけ正しい。土台の1冊は覚えるまで繰り返し、上達後は一期一会で問題に向き合う勉強法と、段階別の周回数の目安を京大生が解説します。", tag:"勉強法", date:"2026-07-08", order:11 },
