@@ -459,6 +459,7 @@ const BOOKS = [
 const FAVORITE = new Set(["do-riron","do-muki","do-yuki","do-mondai","sei-nyumon","sei-kiso","sei-hyojun","sei-jokyu"]);
 const ARTICLE_OF = { "do-riron":1, "do-muki":1, "do-yuki":1, "sei-nyumon":1, "sei-kiso":1, "sei-hyojun":1, "sei-jokyu":1 };
 BOOKS.forEach(b => { if(ARTICLE_OF[b.key]) b.article = "kagaku-benkyouhou"; });
+BOOKS.forEach(b => { if(b.key==="kouzou") b.article = "kouzou-kettei-youten-ensyu"; });
 const byKey = k => BOOKS.find(b => b.key===k);
 
 /* ============================================================
