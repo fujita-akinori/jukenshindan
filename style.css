@@ -358,7 +358,7 @@ div.aff-box li:first-child{ border-top:none; }
 
 /* 本文中の本の紹介：左に表紙、右に説明（複数冊はスマホで表紙を上に並べる） */
 .paper-sheet .book-feature{ display:flex; gap:22px; align-items:flex-start; margin:10px 0 28px; clear:both; }
-.paper-sheet .book-feature .bf-covers{ display:flex; gap:12px; flex-shrink:0; }
+.paper-sheet .book-feature .bf-covers{ display:flex; flex-wrap:wrap; gap:12px; flex-shrink:0; max-width:100%; }
 .paper-sheet .book-feature .inline-cover{ float:none; margin:0; width:120px; }
 .paper-sheet .book-feature .bf-text{ flex:1; min-width:0; }
 .paper-sheet .book-feature .bf-text p:first-child{ margin-top:0; }
