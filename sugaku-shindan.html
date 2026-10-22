@@ -420,7 +420,7 @@ const BOOKS = [
   // ---- Tier3 応用・難関 ----
   {name:"1対1対応の演習（数学I・A/II・B）",note:"入試の典型問題を例題と演習題の1対1の形で学ぶ、東京出版の定番演習書です。網羅系参考書を終えたあと、解法を入試レベルで使いこなせるよう仕上げる段階で使います。新数学スタンダード演習との比較は解説記事で紹介しています。",asin:"4887422636",scope:"common",tier:3,purposes:["niji"],type:"quality",bunya:[]},
   {name:"1対1対応の演習（数学III）",note:"数学IIIの微積分や極限を例題と演習題の1対1形式で固める1冊です。理系の網羅系参考書から入試レベルの数IIIへ橋渡しする段階に向いています。",asin:"4887422792",scope:"rikei",tier:3,purposes:["niji"],type:"quality",bunya:[]},
-  {name:"新数学スタンダード演習",note:"『大学への数学』編集部による、入試の標準からやや難レベルをまとめて演習できる問題集です。1対1対応の演習で解法を整えたあと、初見の問題で実戦力を試す段階で使います。",asin:"B0GK6S4JPF",scope:"common",tier:3,purposes:["niji"],type:"quantity",bunya:[],incl3:true},
+  {name:"新数学スタンダード演習",note:"『大学への数学』の増刊として毎年出る、難関大レベルの典型問題を必要十分に網羅した演習書です。やり切れば難関大レベルまで届きますが、レイアウトが見づらく解説もシンプルなので、真・解法への道などのほうが取り組みやすい人も多い1冊です。比較は解説記事で紹介しています。",asin:"B0GK6S4JPF",scope:"common",tier:4,purposes:["niji"],type:"quantity",bunya:[],incl3:true,demote:true},
   {name:"文系の数学 良問プラチカ",note:"文系数学の入試良問を厳選した河合出版の演習書です。難関大の文系数学に必要な典型から標準レベルを押さえられ、網羅系の次に取り組む実戦演習の1冊になります。レベル感と使い方は解説記事で紹介しています。",asin:"4777227200",scope:"bunkei",tier:3,purposes:["niji"],type:"quantity",bunya:[]},
   {name:"理系数学の良問プラチカ",note:"理系数学の入試良問を集めた演習書で、標準からやや難の問題を収録しています。網羅系を終えた理系受験生が、難関国公立の二次試験に向けて演習量を確保するのに向いています。",asin:"4777227219",scope:"rikei",tier:3,purposes:["niji"],type:"quantity",bunya:[]},
   {name:"文系の数学 実践力向上編",note:"河合出版の文系数学シリーズのうち、入試の実戦問題で得点力を伸ばすための演習編です。重要事項を一通り身につけたあとに、記述式の入試問題を時間内に解き切る力を鍛えます。",asin:"4777231461",scope:"bunkei",tier:3,purposes:["niji"],type:"quantity",bunya:[]},
@@ -964,6 +964,7 @@ function scoreBook(b, targetTier, scopes, purpose, style, bunya, bunyaHasMatch, 
   // スタイル
   if(style==="quality" && b.type==="quality") s += 2;
   if((style==="quantity"||style==="jissen") && b.type==="quantity") s += 2;
+  if(b.demote) s -= 3; // 新数学スタンダード演習：力はつくが勧められる人が限られるので、同じレベルの真・解法への道などより下に出す
   return s + shibouBonus;
 }
 

@@ -30,7 +30,7 @@ const ARTICLES = [
   { slug:"seisuu-mondai-pattern.html", title:"整数問題が苦手な人へ：頻出解法パターンの整理", description:"因数分解・余りによる分類・不等式による絞り込みなど、整数問題の頻出解法パターンを整理します。", tag:"勉強法", subject:"数学", date:"2026-07-08", order:15 },
   { slug:"vector-zu-de-kangaero.html", title:"ベクトルは図で考えろ：計算に逃げると伸びない理由", description:"ベクトル分野で計算だけに頼ると応用問題で詰まる理由と、図を描く習慣の重要性を解説します。", tag:"勉強法", subject:"数学", date:"2026-07-08", order:16 },
   { slug:"bisekibun-imi-de-rikai.html", title:"微積分は「公式より意味」で理解しろ", description:"微分・積分の公式暗記だけでは対応できない理由と、意味から理解する重要性を解説します。", tag:"勉強法", subject:"数学", date:"2026-07-08", order:17 },
-  { slug:"ichitaichi-vs-shinsuta.html", title:"1対1対応の演習 vs 新数学スタンダード演習、どっちをやるべきか", description:"同じ東京出版の1対1対応の演習と新数学スタンダード演習を、レベル・問題数・解説・レイアウトで比較。多くの人に勧められるのはどちらか、1対1の次に進む本まで京大生が解説します。", tag:"参考書比較", subject:"数学", date:"2026-07-08", order:18 },
+  { slug:"ichitaichi-vs-shinsuta.html", title:"1対1対応の演習と新数学スタンダード演習はどっちをやるべき？レベル・解説・レイアウトを京大生が比較", description:"同じ東京出版の1対1対応の演習と新数学スタンダード演習を、レベル・問題数・解説・レイアウトで比較。多くの人に勧められるのはどちらか、1対1の次に進む本まで京大生が解説します。", tag:"参考書比較", subject:"数学", date:"2026-07-08", order:18 },
   { slug:"bunkei-purachika.html", title:"文系の数学 良問プラチカ、実際のレベル感と使い方", description:"文系数学の定番演習書「良問プラチカ」のレベル感、着手のタイミング、効果的な使い方を解説します。", tag:"参考書比較", subject:"数学", date:"2026-07-08", order:19 },
   { slug:"tokui-nobasu-ka-nigate-umeru-ka.html", title:"「得意科目を伸ばす」か「苦手科目を埋める」か", description:"限られた勉強時間の配分について、得意を伸ばす戦略と苦手を埋める戦略のどちらが向いているかを解説します。", tag:"受験戦略", date:"2026-07-08", order:20 },
   { slug:"yobiko-type-betsu-matome.html", title:"結局どこが良いの？東進・河合塾・駿台・武田塾をタイプ別に整理", description:"東進・河合塾・駿台・武田塾の4校を授業形式と管理のされ方で整理し、向いている人と注意点を比較します。", tag:"予備校", date:"2026-10-17", order:21 },
