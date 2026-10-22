@@ -77,10 +77,17 @@
 
     <div class="point-box"><span class="point-label">この記事でわかること</span><ul>
       <li>一次近似とは何か、なぜそれが微積分の本質なのか</li>
-      <li>積の微分や合成関数の微分が一次近似から出てくる理由</li>
+      <li>なぜ高校の微積分は分かりにくいのか</li>
+      <li>積の微分・合成関数・逆関数・陰関数の微分が一次近似から出てくる理由</li>
       <li>増減・極値・積分・置換積分を一次近似で理解する方法</li>
       <li>微積分を意味から鍛える参考書と取り組む順番</li>
     </ul></div>
+
+    <h2>なぜ高校の微積分は分かりにくいのか</h2>
+    <p>高校数学の微積分は、そもそも定義にかなり無理があります。微分も積分も極限の上に成り立っているのに、高校数学では極限をまともに定義していないからです。数学的に厳密な議論を高校の範囲でやろうとすること自体に無理があるのです。</p>
+    <p>だとすれば、直感的な説明で原理を解説すればいいはずです。ところがなぜかそこにはアレルギー反応があって、直感的な説明は避けられる傾向にあります。その結果、公式の形と小手先の説明だけが残り、何をやっているのかさっぱり分からないという状態が生まれます。</p>
+    <p><strong class="hl">本当は「微分可能な関数は、どんどん拡大していくと直線になる」。ただそれだけのことです。</strong>この直感さえ持っていれば、高校の微積分の公式はほとんどすべて説明できます。</p>
+    <p>この分かりにくさのせいで、数IIIは「簡単」「暗記すればいいだけ」と言われるのに、苦手意識だけが芽生えてしまう人がたくさんいます。何をやっているか分からないので勉強する気になれず、問題の解答もなかなか覚えられない。数IIIがなかなか得意にならない原因はここにあります。</p>
 
     <h2>微積分の本質は一次近似</h2>
     <p>なめらかな曲線は、1点の近くを拡大していくとだんだん直線に見えてきます。<strong>曲線を、ある点の近くで直線（一次関数）とみなす</strong>こと。これが一次近似です。</p>
@@ -118,6 +125,30 @@
     \[ \begin{aligned} &f(g(x+h)) \\ &\fallingdotseq f\bigl(g(x)+g'(x)\,h\bigr) \\ &\fallingdotseq f(g(x))+f'(g(x))\,g'(x)\,h \end{aligned} \]
     <p>\(h\) の係数を読むと \(\{f(g(x))\}'=f'(g(x))\,g'(x)\) です。<strong>「外の微分×中の微分」は、一次近似を2回重ねただけ</strong>なのです。形を丸暗記した人が迷いやすい公式ほど、一次近似で考えると自然に出てきます。</p>
 
+    <h2>逆関数と陰関数の微分も一次近似で分かる</h2>
+    <p>高校の微積分で特に分かりにくいのが、逆関数の微分と陰関数の微分です。教科書では合成関数の微分の公式に当てはめて納得させようとしますが、納得できたようなできないような説明になりがちです。どちらも一次近似で考えると、何をしているのかがはっきりします。</p>
+
+    <h3>逆関数の微分</h3>
+    <p>\(y=f(x)\) の近くでは、一次近似で \(y\) の変化は \(x\) の変化のおよそ \(f'(x)\) 倍です。逆関数はこれを反対から見るだけなので、\(x\) の変化は \(y\) の変化のおよそ \(\dfrac{1}{f'(x)}\) 倍になります。</p>
+    \[ \Delta y\fallingdotseq f'(x)\,\Delta x\ \Longrightarrow\ \Delta x\fallingdotseq\frac{1}{f'(x)}\,\Delta y \]
+    <p>グラフで言えば、逆関数のグラフは元のグラフを直線 \(y=x\) で折り返したものです。拡大すれば直線に見えるので、接線も一緒に折り返されて傾きが逆数になる。逆関数の微分の公式 \(\dfrac{dx}{dy}=1\Big/\dfrac{dy}{dx}\) は、それだけのことを言っています。</p>
+
+    <h3>陰関数の微分（楕円の接線）</h3>
+    <p>一番ひどいのが陰関数の微分です。代表的なのが楕円の接線の求め方です。</p>
+    <div class="point-box"><span class="point-label">問題</span><p>楕円 \(\dfrac{x^2}{a^2}+\dfrac{y^2}{b^2}=1\) 上の点 \((x_0,\,y_0)\) における接線の方程式を求めよ。</p></div>
+    <p>教科書では「\(y\) を \(x\) の関数とみなして両辺を \(x\) で微分する」と説明し、合成関数の微分の公式で \(y^2\) を微分して \(2y\,y'\) とします。</p>
+    \[ \frac{2x}{a^2}+\frac{2y\,y'}{b^2}=0\ \Longrightarrow\ y'=-\frac{b^2x}{a^2y} \]
+    <p>答えは出ますが、楕円は \(y\) が \(x\) の関数になっていない曲線です。それを無理やり関数とみなして合成関数の公式に当てはめるので、何をしているのか分からないまま手順だけを覚えることになります。本当は、この計算は高校の範囲を超えた考え方、つまり2変数の関数の一次近似（接平面）を使わないときちんと説明できないはずのものです。</p>
+    <div class="callout">
+      <p><strong>高校の範囲を少し超えた本当の説明</strong></p>
+      <p>\(F(x,\,y)=\dfrac{x^2}{a^2}+\dfrac{y^2}{b^2}\) とおくと、楕円は \(F\) の値が \(1\) になる点の集まり、つまり \(F\) の等高線です。2変数の関数も、1点の近くを拡大すれば平面（接平面）とみなせます。\(x\) だけを動かしたときの変化の割合は \(\dfrac{2x_0}{a^2}\)、\(y\) だけを動かしたときは \(\dfrac{2y_0}{b^2}\) なので、次のように一次近似できます。</p>
+      \[ \begin{aligned} &F(x_0+h,\,y_0+k) \\ &\fallingdotseq F(x_0,\,y_0)+\frac{2x_0}{a^2}h+\frac{2y_0}{b^2}k \end{aligned} \]
+      <p>楕円に沿って動くなら \(F\) の値は \(1\) のまま変わらないので、変化の部分が \(0\) になる方向が接線の方向です。</p>
+      \[ \begin{gathered} \frac{2x_0}{a^2}(x-x_0)+\frac{2y_0}{b^2}(y-y_0)=0 \\ \iff\ \frac{x_0x}{a^2}+\frac{y_0y}{b^2}=1 \end{gathered} \]
+      <p>最後は \(\dfrac{x_0^2}{a^2}+\dfrac{y_0^2}{b^2}=1\) を使っています。「\(F\) が変わらない方向に進む直線」が接線だと分かれば、教科書の計算が何をしていたのかも見えてきます。</p>
+    </div>
+    <p><strong class="hl">合成関数の公式に無理やり当てはめた説明で納得できなくても、それはあなたの理解力のせいではありません。</strong>拡大すれば直線（平面）になる、という一次近似に立ち返れば筋は通ります。</p>
+
     <h2>増減と極値も一次近似で読む</h2>
     <p>\(f'(a)>0\) なら、点 \(a\) の近くで関数は右上がりの直線とほぼ同じなので増加しています。\(f'(a)&lt;0\) なら減少です。増減表は、各点の一次近似の傾きの符号を並べたものだと言えます。</p>
     <p>注意が必要なのは \(f'(a)=0\) のときです。一次近似の直線が水平になるだけで、近くで増えるか減るかは一次近似からは分かりません。たとえば \(f(x)=x^3\) は \(f'(0)=0\) ですが、\(x=0\) の前後でずっと増加していて極値をとりません。</p>
@@ -142,6 +173,7 @@
       <tr><th>つまずく場面</th><th>一次近似で考えると</th></tr>
       <tr><td>公式を忘れた・形が少し違う</td><td>一次近似を重ねて自分で組み立て直せる</td></tr>
       <tr><td>合成関数の微分で中の微分を忘れる</td><td>一次近似を2回重ねると考えれば中の微分は必ず出てくる</td></tr>
+      <tr><td>陰関数の微分（楕円の接線など）で何をしているか分からない</td><td>値が変わらない方向に進む直線が接線だと分かる</td></tr>
       <tr><td>\(f'(a)=0\) だけで極値と決めつける</td><td>一次近似が水平なだけで増減は分からないと気付ける</td></tr>
       <tr><td>置換積分で \(dx\) の書き換えを忘れる</td><td>幅の変換を一次近似していると分かれば忘れない</td></tr>
     </table>
@@ -155,17 +187,22 @@
     <p>意味が分かっていても、最後まで正確に計算できなければ点にはなりません。筆者は現役のとき、京大の入試で積分計算の小問を解ききれずに15点を落とし、ちょうど15点差で不合格になりました。一次近似で全体の意味をつかみつつ、計算は反復で鍛える必要があります。計算力の鍛え方は<a href="keisanryoku-9wari.html">受験数学は計算力で決まる？</a>で書いています。</p>
 
     <h2>微積分を鍛える参考書</h2>
+    <h3>一番のおすすめ：微積分 基礎の極意</h3>
+    <div class="book-feature"><div class="bf-covers"><!-- COVER:微積分基礎の極意 --><a class="inline-cover" href="https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F1141368%2F" target="_blank" rel="sponsored noopener" aria-label="微積分 基礎の極意を楽天で見る"><img src="https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/0298/9784887420298.jpg?_ex=400x400" alt="微積分 基礎の極意の表紙" width="200" height="284" loading="lazy" decoding="async"><span>楽天で見る</span></a><!-- /COVER --></div><div class="bf-text">
+      <p>東京出版から出ている微積分の参考書で、高校の教科書が避けがちな本質的な説明がしっかり載っています。一次近似のように「何をしているのか」から微積分を学び直したい人に一番のおすすめです。使い方は<a href="bisekibun-kiso-no-gokui.html">微積分 基礎の極意の使い方とレベル</a>で紹介しています。</p>
+    </div></div>
+    <h3>レベルに合わせた進め方</h3>
     <div class="route">
       <div class="route-step"><span class="r-role">数IIIの入口</span><span class="r-name">坂田アキラの数IIIの微分積分が面白いほどわかる本</span></div>
       <div class="route-arrow">↓</div>
       <div class="route-step"><span class="r-role">入試レベルの理解</span><span class="r-name">教科書だけでは足りない 大学入試攻略 数II・数III微分・積分</span></div>
       <div class="route-arrow">↓</div>
-      <div class="route-step"><span class="r-role">計算と基本の仕上げ</span><span class="r-name">微積分 基礎の極意</span></div>
+      <div class="route-step"><span class="r-role">本質的な説明で理解する（一番のおすすめ）</span><span class="r-name">微積分 基礎の極意</span></div>
       <div class="route-arrow">↓ 微積分を得点源にしたい最難関志望</div>
       <div class="route-step option"><span class="r-role">最難関</span><span class="r-name">解法の探求・微積分</span></div>
     </div>
-    <div class="book-feature multi"><div class="bf-covers"><!-- COVER:坂田アキラの数iiiの微分積分が面白いほどわかる --><a class="inline-cover" href="https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F13312392%2F" target="_blank" rel="sponsored noopener" aria-label="坂田アキラの数IIIの微分積分が面白いほどわかる本を楽天で見る"><img src="https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/7346/9784046007346_1_5.jpg?_ex=400x400" alt="坂田アキラの数IIIの微分積分が面白いほどわかる本の表紙" width="200" height="284" loading="lazy" decoding="async"><span>楽天で見る</span></a><!-- /COVER --><!-- COVER:教科書だけでは足りない大学入試攻略数ii数iii --><a class="inline-cover" href="https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F14902150%2F" target="_blank" rel="sponsored noopener" aria-label="教科書だけでは足りない 大学入試攻略 数II・数III微分・積分を楽天で見る"><img src="https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/4945/9784777214945.jpg?_ex=400x400" alt="教科書だけでは足りない 大学入試攻略 数II・数III微分・積分の表紙" width="200" height="284" loading="lazy" decoding="async"><span>楽天で見る</span></a><!-- /COVER --><!-- COVER:微積分基礎の極意 --><a class="inline-cover" href="https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F1141368%2F" target="_blank" rel="sponsored noopener" aria-label="微積分 基礎の極意を楽天で見る"><img src="https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/0298/9784887420298.jpg?_ex=400x400" alt="微積分 基礎の極意の表紙" width="200" height="284" loading="lazy" decoding="async"><span>楽天で見る</span></a><!-- /COVER --><!-- COVER:解法の探求微積分 --><a class="inline-cover" href="https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F6013889%2F" target="_blank" rel="sponsored noopener" aria-label="解法の探求・微積分（東京出版）を楽天で見る"><img src="https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/1516/9784887421516.jpg?_ex=400x400" alt="解法の探求・微積分（東京出版）の表紙" width="200" height="284" loading="lazy" decoding="async"><span>楽天で見る</span></a><!-- /COVER --></div><div class="bf-text">
-      <p>左から坂田アキラの数IIIの微分積分、教科書だけでは足りない 微分・積分、微積分 基礎の極意、解法の探求・微積分です。どの本でも、公式や解法が出てきたら一次近似で説明できるかを確かめながら進めてください。微積分 基礎の極意の使い方は<a href="bisekibun-kiso-no-gokui.html">微積分 基礎の極意の使い方とレベル</a>で紹介しています。</p>
+    <div class="book-feature multi"><div class="bf-covers"><!-- COVER:坂田アキラの数iiiの微分積分が面白いほどわかる --><a class="inline-cover" href="https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F13312392%2F" target="_blank" rel="sponsored noopener" aria-label="坂田アキラの数IIIの微分積分が面白いほどわかる本を楽天で見る"><img src="https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/7346/9784046007346_1_5.jpg?_ex=400x400" alt="坂田アキラの数IIIの微分積分が面白いほどわかる本の表紙" width="200" height="284" loading="lazy" decoding="async"><span>楽天で見る</span></a><!-- /COVER --><!-- COVER:教科書だけでは足りない大学入試攻略数ii数iii --><a class="inline-cover" href="https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F14902150%2F" target="_blank" rel="sponsored noopener" aria-label="教科書だけでは足りない 大学入試攻略 数II・数III微分・積分を楽天で見る"><img src="https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/4945/9784777214945.jpg?_ex=400x400" alt="教科書だけでは足りない 大学入試攻略 数II・数III微分・積分の表紙" width="200" height="284" loading="lazy" decoding="async"><span>楽天で見る</span></a><!-- /COVER --><!-- COVER:解法の探求微積分 --><a class="inline-cover" href="https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F6013889%2F" target="_blank" rel="sponsored noopener" aria-label="解法の探求・微積分（東京出版）を楽天で見る"><img src="https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/1516/9784887421516.jpg?_ex=400x400" alt="解法の探求・微積分（東京出版）の表紙" width="200" height="284" loading="lazy" decoding="async"><span>楽天で見る</span></a><!-- /COVER --></div><div class="bf-text">
+      <p>左から坂田アキラの数IIIの微分積分、教科書だけでは足りない 微分・積分、解法の探求・微積分です。どの本でも、公式や解法が出てきたら一次近似で説明できるかを確かめながら進めてください。</p>
     </div></div>
 
     <h2>よくある質問</h2>
@@ -180,7 +217,8 @@
     <p>微積分とは一次近似です。微分は関数をある点の近くで直線とみなしたときの傾きで、積の微分や合成関数の微分もこの考え方から組み立てられます。増減は一次近似の傾きの符号で読み、積分は小さな区間ごとの近似を足し合わせたもので、面積の増え方を一次近似で見ると微分と積分が逆の関係になります。</p>
     <div class="point-box"><span class="point-label">公式を丸暗記していて応用で止まる人</span><p>覚えた公式を一次近似で説明できるかを1つずつ確かめてください。積の微分と合成関数の微分から始めるのがおすすめです。</p></div>
     <div class="point-box"><span class="point-label">数IIIの微積分に入る理系</span><p>数IIの段階で一次近似の見方を固めてから進むと、新しい公式も同じ考え方で整理できます。</p></div>
-    <div class="point-box"><span class="point-label">意味は分かるが点が取れない人</span><p>計算力の不足を疑ってください。微積分 基礎の極意などで計算を反復して鍛えます。</p></div>
+    <div class="point-box"><span class="point-label">数IIIに苦手意識がある人</span><p>あなたの理解力ではなく、高校の説明の仕方に原因があることが多いです。微積分 基礎の極意で本質的な説明から学び直してください。</p></div>
+    <div class="point-box"><span class="point-label">意味は分かるが点が取れない人</span><p>計算力の不足を疑ってください。計算を反復して鍛えます。</p></div>
     <p><strong class="hl">公式の数だけ覚えることがあるのではなく、一次近似という1つの考え方からすべてが出てきます。</strong></p>
 
       <div class="aff-box">
