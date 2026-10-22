@@ -27,7 +27,7 @@ const ARTICLES = [
   { slug:"moshi-tokinaoshi-note.html", title:"模試の解き直しノート、意味があるのか問題", description:"模試の解き直しノートが機能しない理由と、本当に実力につながる解き直しの条件を解説します。", tag:"受験戦略", date:"2026-07-08", order:12 },
   { slug:"natsuyasumi-suugaku-jikan.html", title:"夏休みの数学、何時間やればいいのか問題", description:"夏休みに数学へ割く時間について、「時間数」ではなく「到達点」から逆算する考え方を解説します。", tag:"受験戦略", subject:"数学", date:"2026-07-08", order:13 },
   { slug:"kyoutsuu-test-kaitou-junjo.html", title:"共通テスト数学、時間が足りない人のための解答順序戦略", description:"共通テスト数学で時間が足りない受験生に向けて、解答順序の工夫とマークミスを防ぐ習慣を解説します。", tag:"勉強法", subject:"数学", date:"2026-07-08", order:14 },
-  { slug:"seisuu-mondai-pattern.html", title:"整数問題が苦手な人へ：頻出解法パターンの整理", description:"因数分解・余りによる分類・不等式による絞り込みなど、整数問題の頻出解法パターンを整理します。", tag:"勉強法", subject:"数学", date:"2026-07-08", order:15 },
+  { slug:"seisuu-mondai-pattern.html", title:"整数問題の解き方は「必要条件で絞る」だけ｜積の形・余り・範囲の3パターンを例題で解説", description:"整数問題の解き方は本質的に「必要条件で絞る」1つ。積の形・余り（mod）・範囲を絞る3つのパターンと十分性の確認を、例題つきで京大生が解説します。", tag:"勉強法", subject:"数学", date:"2026-07-08", order:15 },
   { slug:"vector-zu-de-kangaero.html", title:"ベクトルは図で考えろ：計算に逃げると伸びない理由", description:"ベクトル分野で計算だけに頼ると応用問題で詰まる理由と、図を描く習慣の重要性を解説します。", tag:"勉強法", subject:"数学", date:"2026-07-08", order:16 },
   { slug:"bisekibun-imi-de-rikai.html", title:"微積分は「公式より意味」で理解しろ", description:"微分・積分の公式暗記だけでは対応できない理由と、意味から理解する重要性を解説します。", tag:"勉強法", subject:"数学", date:"2026-07-08", order:17 },
   { slug:"ichitaichi-vs-shinsuta.html", title:"1対1対応の演習と新数学スタンダード演習はどっちをやるべき？レベル・解説・レイアウトを京大生が比較", description:"同じ東京出版の1対1対応の演習と新数学スタンダード演習を、レベル・問題数・解説・レイアウトで比較。多くの人に勧められるのはどちらか、1対1の次に進む本まで京大生が解説します。", tag:"参考書比較", subject:"数学", date:"2026-07-08", order:18 },
