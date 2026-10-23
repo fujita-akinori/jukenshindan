@@ -649,6 +649,12 @@ function seikoKey(){
 }
 function tierGap(b, t){ const lo=b.tier, hi=b.tierMax||b.tier; return t<lo ? lo-t : (t>hi ? t-hi : 0); }
 function signedGap(b, t){ const lo=b.tier, hi=b.tierMax||b.tier; return t<lo ? lo-t : (t>hi ? hi-t : 0); }
+/* 共通テスト対策では共通テスト専用の本を上位に出す（専用書が足りないときだけ汎用書で埋める） */
+function kyoutsuuFirst(list, get){
+  if(answers.purpose!=="kyoutsuu") return list;
+  const ded = x => { const p=get(x).purposes||[]; return p.length===1 && p[0]==="kyoutsuu"; };
+  return list.filter(ded).concat(list.filter(x => !ded(x)));
+}
 function scoreBook(b, targetTier){
   const a = answers;
   if(!b.purposes.includes(a.purpose)) return -Infinity;
@@ -661,7 +667,8 @@ function scoreBook(b, targetTier){
   let s = 0;
   if(specialRoute()){
     const primary = b.bunya.includes(a.bunya), also = b.also.includes(a.bunya);
-    if(!primary && !also) return -Infinity;
+    const kyoDed = a.purpose==="kyoutsuu" && b.purposes.length===1;
+    if(!primary && !also && !kyoDed) return -Infinity; // 共通テスト専用書は全分野を扱うので分野を選んでも候補に残す
     if(primary) s += 6;
   } else if(b.onlyBunya){
     return -Infinity;
@@ -813,10 +820,11 @@ function orderBooks(scored){
 
 function renderResult(){
   const targetTier = pickTier();
-  const scored = BOOKS.map(b => ({b, s:scoreBook(b, targetTier)}))
+  let scored = BOOKS.map(b => ({b, s:scoreBook(b, targetTier)}))
                       .filter(x => x.s > -Infinity)
                       .sort((a,b)=> b.s - a.s);
   orderBooks(scored);
+  scored = kyoutsuuFirst(scored, x => x.b);
   const top = scored.slice(0,3), others = scored.slice(3,6);
   const maxScore = (specialRoute() ? 6 : 0) + 10;
   const exOf = x => explainBook(x.b, x.s, targetTier, maxScore);

@@ -930,6 +930,12 @@ function pickTier(){
   return Math.max(sougouHensachiToTier(answers.hensachiKey), shibouToTier(answers.shibou));
 }
 
+/* 共通テスト対策では共通テスト専用の本を上位に出す（専用書が足りないときだけ汎用書で埋める） */
+function kyoutsuuFirst(list, get){
+  if(answers.purpose!=="kyoutsuu") return list;
+  const ded = x => { const p=get(x).purposes||[]; return p.length===1 && p[0]==="kyoutsuu"; };
+  return list.filter(ded).concat(list.filter(x => !ded(x)));
+}
 function scoreBook(b, targetTier, scopes, purpose, style, bunya, bunyaHasMatch, krangeWanted, bunyaProfile, excludeBunyaSpecific, shibou, shibouDetail, mouraikeiChoice){
   // 数IIIを選んだときは scopes に "common3" が入る：文理共通の本は数IIIまで載っている本（incl3）だけ出す
   const bookScopes = (b.scope==="common" && b.incl3) ? ["common","common3"] : [b.scope];
@@ -1078,6 +1084,7 @@ function renderResult(){
   let scored = BOOKS.map(b => ({b, s:scoreBook(b, targetTier, scopes, purposeForMatch, answers.style, bunya, null, krangeWanted, answers.bunyaProfile, excludeBunyaSpecific, answers.shibou, answers.shibouDetail, answers.mouraikeiChoice)}))
                     .filter(x => x.s > -Infinity)
                     .sort((a,b)=> b.s - a.s);
+  scored = kyoutsuuFirst(scored, x => x.b);
   let picks = scored.slice(0, 3).map(x=>x.b);
   const others = scored.slice(3, 6);
   const maxScore = 10 + (scored.some(x => hasShibouBonus(x.b, targetTier)) ? 4 : 0);
