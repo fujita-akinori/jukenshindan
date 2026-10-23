@@ -397,3 +397,79 @@ body.nav-open .nav-drawer{ transform:none; visibility:visible; }
 .home-count .hc-hms{ font-size:14px; font-variant-numeric:tabular-nums; color:var(--text-on-ink-muted); }
 .home-count .hc-more{ font-size:13px; font-weight:700; color:var(--amber); }
 @media (max-width:560px){ .home-count{ padding:14px 16px; } .home-count .hc-days b{ font-size:38px; } }
+
+/* --- 京大生の備忘録 --- */
+.bb-index h1.page-title{ font-family:'Shippori Mincho', serif; font-weight:800; font-size:clamp(26px, 4.8vw, 38px); margin:0 0 6px; line-height:1.4; }
+.bb-index .page-title-rule{ width:56px; height:3px; background:var(--amber); border:none; margin:14px 0 22px; border-radius:2px; }
+.bb-index .page-lead{ color:var(--text-on-ink-muted); font-size:14.5px; margin:0 0 30px; max-width:56ch; line-height:1.9; }
+.bb-index .filter-chip{ font-family:'Zen Kaku Gothic New', sans-serif; font-size:12.5px; font-weight:700; padding:7px 16px; border-radius:999px; background:var(--ink-soft); color:var(--text-on-ink-muted); border:1px solid rgba(255,255,255,0.08); text-decoration:none; display:inline-block; transition:background .12s ease, color .12s ease, border-color .12s ease; }
+.bb-index .filter-chip:hover{ border-color:var(--amber); }
+.bb-index .filter-chip.active{ background:var(--amber); color:var(--ink); border-color:var(--amber); }
+.bb-tabs{ display:flex; gap:10px; flex-wrap:wrap; margin-bottom:30px; }
+.bb-sec{ font-family:'Shippori Mincho', serif; font-size:19px; font-weight:700; margin:0 0 14px; color:var(--text-on-ink); display:flex; align-items:baseline; gap:12px; }
+.bb-sec span{ font-family:'Zen Kaku Gothic New', sans-serif; font-size:12px; font-weight:500; color:var(--text-on-ink-muted); }
+.bb-cat + .bb-cat{ margin-top:36px; }
+.bb-pl-grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(300px, 1fr)); gap:18px; }
+.bb-pl{ background:var(--ink-soft); border:1px solid rgba(255,255,255,0.07); border-radius:12px; overflow:hidden; display:flex; flex-direction:column; min-width:0; }
+.bb-pl-head{ display:block; padding:20px 22px 16px; text-decoration:none; color:var(--text-on-ink); border-bottom:1px solid rgba(255,255,255,0.07); transition:background .15s ease; }
+.bb-pl-head:hover{ background:var(--ink-softer); }
+.bb-pl-count{ display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:700; letter-spacing:0.06em; color:var(--amber); margin-bottom:8px; }
+.bb-pl-count::before{ content:''; width:0; height:0; border-left:8px solid var(--amber); border-top:5px solid transparent; border-bottom:5px solid transparent; }
+.bb-pl-head h3{ font-family:'Shippori Mincho', serif; font-size:18px; font-weight:700; margin:0 0 8px; line-height:1.5; }
+.bb-pl-head p{ font-size:12.5px; color:var(--text-on-ink-muted); margin:0; line-height:1.8; }
+.bb-pl ol{ list-style:none; margin:0; padding:8px 0; }
+.bb-pl li a{ display:grid; grid-template-columns:2.4em 1fr; gap:6px; padding:9px 22px; color:var(--text-on-ink); text-decoration:none; font-size:13.5px; line-height:1.6; }
+.bb-pl li a:hover{ color:var(--amber); }
+.bb-pl .ep{ font-variant-numeric:tabular-nums; color:var(--text-on-ink-muted); font-size:12px; padding-top:2px; }
+.bb-all{ display:grid; gap:12px; }
+.bb-post{ display:grid; grid-template-columns:5.4em 1fr; gap:16px; padding:18px 20px; background:var(--ink-soft); border:1px solid rgba(255,255,255,0.07); border-radius:12px; text-decoration:none; color:var(--text-on-ink); transition:border-color .15s ease; }
+.bb-post:hover{ border-color:var(--amber); }
+.bb-post time{ font-size:12px; color:var(--text-on-ink-muted); font-variant-numeric:tabular-nums; padding-top:3px; }
+.bb-post .bb-where{ display:block; font-size:11px; font-weight:700; letter-spacing:0.06em; color:var(--lv2); margin-bottom:4px; }
+.bb-post h3{ font-family:'Shippori Mincho', serif; font-size:16px; font-weight:700; margin:0 0 6px; line-height:1.6; }
+.bb-post p{ font-size:12.5px; color:var(--text-on-ink-muted); margin:0; line-height:1.8; }
+@media (max-width:560px){ .bb-post{ grid-template-columns:1fr; gap:4px; } .bb-pl-grid{ grid-template-columns:1fr; } }
+
+/* 記事末尾の再生リスト欄 */
+.paper-sheet .bb-playlist{ max-width:38em; margin:44px auto 0; border:1px solid var(--sheet-rule); border-radius:10px; background:#fffdf7; overflow:hidden; }
+.paper-sheet .bb-playlist-head{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap; padding:14px 18px; background:#1b2130; color:#f6f1e4; }
+.paper-sheet .bb-playlist-head a{ color:#f6f1e4; font-weight:700; text-decoration:none; font-size:15px; }
+.paper-sheet .bb-playlist-head span{ font-size:12px; color:#c9c3b3; font-variant-numeric:tabular-nums; }
+.paper-sheet .bb-playlist ol{ list-style:none; margin:0; padding:6px 0; }
+.paper-sheet .bb-playlist li a, .paper-sheet .bb-playlist li > span{ display:grid; grid-template-columns:2.4em 1fr; gap:6px; padding:9px 18px; font-size:14px; line-height:1.6; color:var(--sheet-text); text-decoration:none; }
+.paper-sheet .bb-playlist li a:hover{ color:var(--sheet-accent); }
+.paper-sheet .bb-playlist li.now > span{ background:var(--sheet-box); font-weight:700; }
+.paper-sheet .bb-playlist .ep{ color:var(--sheet-muted); font-size:12.5px; font-variant-numeric:tabular-nums; padding-top:1px; }
+.paper-sheet .bb-playlist .soon{ color:var(--sheet-muted); font-size:13px; padding:4px 18px 12px; margin:0; }
+.paper-sheet .bb-next{ display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; padding:12px 18px; border-top:1px solid var(--sheet-rule); font-size:13.5px; }
+.paper-sheet .bb-next a{ color:var(--sheet-accent); font-weight:700; text-decoration:none; }
+
+/* 備忘録の記事本文 */
+.paper-sheet .article-body figure.math-fig{ margin:18px auto 26px; max-width:300px; text-align:center; }
+.paper-sheet .article-body figure.bb-fig{ max-width:480px; }
+.paper-sheet .article-body figure.math-fig svg{ width:100%; height:auto; display:block; }
+.paper-sheet .article-body figure.math-fig figcaption{ font-size:13px; color:#6b6355; margin-top:4px; line-height:1.7; }
+.paper-sheet .article-body .bb-pair{ display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:10px; margin:0 0 8px; }
+.paper-sheet .article-body .bb-pair figure.math-fig{ margin:8px 0 18px; max-width:none; }
+.paper-sheet .article-body .katex-display{ margin:14px 0 22px; overflow-x:auto; overflow-y:hidden; }
+.math-fig .ax{ stroke:#596072; stroke-width:1; } .math-fig .arh{ fill:#596072; }
+.math-fig .cv{ fill:none; stroke:#596072; stroke-width:1.4; }
+.math-fig .thin{ fill:none; stroke:#596072; stroke-width:1.2; stroke-dasharray:3 4; }
+.math-fig .seg{ stroke:var(--lv2); stroke-width:2.6; fill:none; }
+.math-fig .bd{ fill:none; stroke:#1b2130; stroke-width:1.8; }
+.math-fig .dash{ fill:none; stroke:#8a8f9c; stroke-width:1; stroke-dasharray:4 4; }
+.math-fig .reg{ fill:rgba(61,111,180,0.16); stroke:#1b2130; stroke-width:1.2; }
+.math-fig .pt{ fill:#1b2130; } .math-fig .pta{ fill:var(--lv2); }
+.math-fig .lb{ fill:#1b2130; font:500 15px 'Zen Kaku Gothic New', sans-serif; } .math-fig .lba{ fill:var(--lv2); }
+.math-fig .sm{ fill:#596072; font:12px 'Zen Kaku Gothic New', sans-serif; } .math-fig .it{ font-style:italic; }
+.paper-sheet .book-links{ display:grid; gap:12px; margin:0 0 10px; }
+.paper-sheet .book-link{ display:grid; grid-template-columns:72px 1fr; gap:16px; align-items:start; padding:14px 16px; background:#fffdf7; border:1px solid var(--sheet-rule); border-radius:10px; }
+.paper-sheet .book-link.no-cover{ grid-template-columns:1fr; }
+.paper-sheet .book-link .bl-cover{ display:block; text-decoration:none; text-align:center; }
+.paper-sheet .book-link .bl-cover img{ width:72px; height:auto; display:block; border-radius:3px; box-shadow:0 2px 6px rgba(27,33,48,0.18); }
+.paper-sheet .book-link .bl-cover span{ display:block; font-size:10.5px; color:var(--sheet-muted); margin-top:4px; }
+.paper-sheet .book-link .bl-main{ min-width:0; }
+.paper-sheet .article-body .book-link a.bl-name{ display:block; font-weight:700; font-size:15px; color:var(--sheet-text); text-decoration:none; margin-bottom:4px; }
+.paper-sheet .article-body .book-link p{ font-size:13.5px; line-height:1.8; margin:0 0 6px; color:var(--sheet-muted); }
+.paper-sheet .article-body .book-link a.bl-go{ font-size:13px; font-weight:700; color:var(--sheet-accent); text-decoration:none; }
+.paper-sheet .article-body .bl-disclosure{ font-size:11.5px; color:var(--sheet-muted); margin:0 0 22px; }

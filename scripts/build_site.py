@@ -9,6 +9,8 @@ articles/articles-data.js の記事データをもとに、次のものを生成
   - 記事ページのパンくずと執筆者表示
   - sitemap.xml
 
+  - 京大生の備忘録（biboroku/）のトップ・再生リスト欄・パンくず・SEO用タグ（データは biboroku/biboroku-data.js）
+
 記事を追加・修正したら、リポジトリのルートで次を実行してからコミットしてください。
     python3 scripts/build_site.py
 何度実行しても同じ結果になります（マーカーで囲んだ部分だけを書き換えます）。
@@ -73,6 +75,8 @@ def url_of(rel):
         return BASE + "/"
     if rel == "articles/index.html":
         return BASE + "/articles/"
+    if rel == "biboroku/index.html":
+        return BASE + "/biboroku/"
     return f"{BASE}/{rel}"
 
 
@@ -313,7 +317,7 @@ GA4_TAG = f"""<script async src="https://www.googletagmanager.com/gtag/js?id={GA
 
 def add_ga4():
     """全ページの <head> の直後に Google アナリティクス（GA4）のタグを入れる"""
-    pages = sorted(f for f in os.listdir(ROOT) if f.endswith(".html")) + ["articles/" + f for f in sorted(os.listdir(path("articles"))) if f.endswith(".html")]
+    pages = sorted(f for f in os.listdir(ROOT) if f.endswith(".html")) + ["articles/" + f for f in sorted(os.listdir(path("articles"))) if f.endswith(".html")] + bibo_pages()
     for rel in pages:
         s = read(rel)
         if "<head>" not in s:
@@ -324,12 +328,13 @@ def add_ga4():
 
 
 def add_nav_search():
-    pages = [p for p, _, _ in STATIC_PAGES] + ["articles/" + f for f in sorted(os.listdir(path("articles"))) if f.endswith(".html")]
+    pages = [p for p, _, _ in STATIC_PAGES] + ["articles/" + f for f in sorted(os.listdir(path("articles"))) if f.endswith(".html")] + bibo_pages()
     for rel in pages:
         s = read(rel)
         if '<nav class="nav-links">' not in s:
             continue
-        href = "index.html#search" if rel.startswith("articles/") else "articles/index.html#search"
+        href = ("index.html#search" if rel.startswith("articles/") else
+                "../articles/index.html#search" if rel.startswith("biboroku/") else "articles/index.html#search")
         nav = s[s.index('<nav class="nav-links">'):]
         nav_end = s.index('<nav class="nav-links">') + nav.index("</nav>")
         head, tail = s[:nav_end], s[nav_end:]
@@ -460,7 +465,7 @@ def bust_css_cache():
     """style.css の内容から版番号を作り、全ページの読み込みURLに付ける（ブラウザに古いデザインを使わせない）"""
     import hashlib
     ver = hashlib.md5(read("style.css").encode("utf-8")).hexdigest()[:8]
-    pages = [p for p, _, _ in STATIC_PAGES] + ["articles/" + f for f in sorted(os.listdir(path("articles"))) if f.endswith(".html")]
+    pages = [p for p, _, _ in STATIC_PAGES] + ["articles/" + f for f in sorted(os.listdir(path("articles"))) if f.endswith(".html")] + bibo_pages()
     for rel in pages:
         s = read(rel)
         s2 = re.sub(r'href="((?:\.\./)?style\.css)(?:\?v=[0-9a-f]+)?"', lambda m: f'href="{m.group(1)}?v={ver}"', s)
@@ -468,7 +473,7 @@ def bust_css_cache():
             write(rel, s2)
 
 
-def build_sitemap(arts):
+def build_sitemap(arts, bibo_posts=()):
     rows = []
     for rel, _, on in STATIC_PAGES:
         if on:
@@ -479,8 +484,209 @@ def build_sitemap(arts):
     for a in arts:
         rel = f"articles/{a['slug']}"
         rows.append((url_of(rel), max(a["date"], git_date(rel))))
+    if bibo_posts:
+        rows.append((BASE + "/biboroku/", date.today().isoformat()))
+        for a in bibo_posts:
+            rel = f"biboroku/{a['slug']}"
+            rows.append((url_of(rel), max(a["date"], git_date(rel))))
     body = "\n".join(f"  <url><loc>{u}</loc><lastmod>{d}</lastmod></url>" for u, d in rows)
     write("sitemap.xml", f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{body}\n</urlset>\n')
+
+
+# ---------------------------------------------------------------- 京大生の備忘録
+BIBO = "京大生の備忘録"
+BIBO_CATEGORIES = ["受験数学", "受験化学", "受験生物", "参考書の使い方", "京大のリアル"]  # 備忘録トップに出す順（記事があるカテゴリだけ出す）
+
+
+def bibo_pages():
+    d = path("biboroku")
+    return ["biboroku/" + f for f in sorted(os.listdir(d)) if f.endswith(".html")] if os.path.isdir(d) else []
+
+
+def load_bibo():
+    if not os.path.exists(path("biboroku", "biboroku-data.js")):
+        return [], []
+    src = read("biboroku/biboroku-data.js")
+
+    def get(obj, k):
+        m = re.search(k + r':"((?:[^"\\]|\\.)*)"', obj)
+        return m.group(1) if m else ""
+
+    pl_src = src[src.index("const PLAYLISTS"):src.index("const POSTS")]
+    playlists = []
+    for m in re.finditer(r'\{\s*id:"[^"]+".*?\}', pl_src):
+        o = m.group(0)
+        playlists.append({"id": get(o, "id"), "title": get(o, "title"), "category": get(o, "category"),
+                          "description": get(o, "description")})
+    posts = []
+    for m in re.finditer(r'\{\s*slug:"[^"]+".*?\}', src[src.index("const POSTS"):]):
+        o = m.group(0)
+        ep = re.search(r"ep:(\d+)", o)
+        posts.append({"slug": get(o, "slug"), "title": get(o, "title"), "description": get(o, "description"),
+                      "playlist": get(o, "playlist"), "ep": int(ep.group(1)) if ep else 0,
+                      "category": get(o, "category"), "date": get(o, "date"),
+                      "order": int(re.search(r"order:(\d+)", o).group(1))})
+    pls = {pl["id"]: pl for pl in playlists}
+    for a in posts:
+        if a["playlist"]:
+            assert a["playlist"] in pls, (a["slug"], a["playlist"])
+            a["category"] = pls[a["playlist"]]["category"]
+        assert a["category"] in BIBO_CATEGORIES, (a["slug"], a["category"])
+        assert os.path.exists(path("biboroku", a["slug"])), a["slug"]
+    posts.sort(key=lambda a: (a["date"], a["order"]), reverse=True)
+    return posts, playlists
+
+
+def _bibo_label(a, pls):
+    return f'{pls[a["playlist"]]["title"]} #{a["ep"]}' if a["playlist"] else a["category"]
+
+
+def _bibo_playlist_panel(a, eps, pl):
+    rows = []
+    for x in eps:
+        inner = f'<span class="ep">#{x["ep"]}</span>{x["title"]}'
+        if x is a:
+            rows.append(f'      <li class="now"><span aria-current="page">{inner}</span></li>')
+        else:
+            rows.append(f'      <li><a href="{x["slug"]}">{inner}</a></li>')
+    i = eps.index(a)
+    prev_ = f'<a href="{eps[i - 1]["slug"]}">← 前の回</a>' if i > 0 else "<span></span>"
+    next_ = f'<a href="{eps[i + 1]["slug"]}">次の回 →</a>' if i + 1 < len(eps) else ""
+    soon = '\n    <p class="soon">次の回は準備中です。</p>' if i + 1 == len(eps) else ""
+    nav = f'\n    <div class="bb-next">{prev_}{next_}</div>' if (i > 0 or next_) else ""
+    head = (f'    <div class="bb-playlist-head"><a href="index.html#pl-{pl["id"]}">再生リスト：{pl["title"]}</a>'
+            f'<span>{i + 1} / {len(eps)}</span></div>')
+    return ('  <section class="bb-playlist" aria-label="再生リスト">\n' + head + "\n    <ol>\n"
+            + "\n".join(rows) + f"\n    </ol>{soon}{nav}\n  </section>")
+
+
+def _bibo_book_covers(s):
+    import rakuten
+    e = lambda x: html.escape(x, quote=True)
+
+    def fill(m):
+        name, amz = html.unescape(m.group(2)), html.unescape(m.group(3))
+        r = rakuten.lookup(name, amz)
+        cover = ""
+        if r["image"]:
+            cover = (f'<a class="bl-cover" href="{e(r["url"])}" target="_blank" rel="sponsored noopener" aria-label="{e(name)}を楽天で見る">'
+                     f'<img src="{e(r["image"].replace("_ex=200x200", "_ex=400x400"))}" alt="{e(name)}の表紙" width="72" height="102" loading="lazy" decoding="async">'
+                     f'<span>楽天で見る</span></a>')
+        cls = "book-link" if cover else "book-link no-cover"
+        return (f'<div class="{cls}" data-book="{m.group(2)}" data-amz="{m.group(3)}">\n'
+                f'<!-- BOOKCOVER:BEGIN -->{cover}<!-- BOOKCOVER:END -->')
+
+    s = re.sub(r'<div class="(book-link(?: no-cover)?)" data-book="([^"]+)" data-amz="([^"]+)">\s*<!-- BOOKCOVER:BEGIN -->.*?<!-- BOOKCOVER:END -->',
+               fill, s, flags=re.S)
+    rakuten.save_cache()
+    return s
+
+
+def _bibo_pl_card(pl, eps):
+    items = "\n".join(f'          <li><a href="{x["slug"]}"><span class="ep">#{x["ep"]}</span>{x["title"]}</a></li>' for x in eps)
+    return (f'      <article class="bb-pl" id="pl-{pl["id"]}">\n'
+            f'        <a class="bb-pl-head" href="{eps[0]["slug"]}">\n'
+            f'          <span class="bb-pl-count">全{len(eps)}本・第1回から読む</span>\n'
+            f'          <h3>{pl["title"]}</h3>\n'
+            f'          <p>{pl["description"]}</p>\n'
+            f'        </a>\n'
+            f'        <ol>\n{items}\n        </ol>\n'
+            f'      </article>')
+
+
+def _bibo_post_card(a, where):
+    return (f'      <a class="bb-post" href="{a["slug"]}"><time datetime="{a["date"]}">{a["date"].replace("-", ".")}</time>'
+            f'<div><span class="bb-where">{where}</span><h3>{a["title"]}</h3><p>{a["description"]}</p></div></a>')
+
+
+def build_bibo(posts, playlists):
+    if not posts:
+        return
+    pls = {pl["id"]: pl for pl in playlists}
+    eps_of = {pid: sorted([a for a in posts if a["playlist"] == pid], key=lambda a: a["ep"]) for pid in pls}
+    for a in posts:
+        rel = f"biboroku/{a['slug']}"
+        s = read(rel)
+        if a["playlist"]:
+            last = f'<span>›</span><a href="index.html#pl-{a["playlist"]}">{pls[a["playlist"]]["title"]}</a>'
+        else:
+            last = f'<span>›</span><span>{a["category"]}</span>'
+        crumbs_html = (f'    <nav class="crumbs" aria-label="パンくずリスト"><a href="../index.html">ホーム</a>'
+                       f'<span>›</span><a href="index.html">{BIBO}</a>{last}</nav>')
+        s = replace_block(s, "CRUMBS", crumbs_html, anchor_after='<div class="article-header">')
+        s = re.sub(r'(<!-- CRUMBS:END -->\n)    <span class="tag">.*?</span>',
+                   lambda m: m.group(1) + f'    <span class="tag">{_bibo_label(a, pls)}</span>', s, count=1, flags=re.S)
+        byline = f'    <span class="byline">執筆：<a href="../about.html">{AUTHOR_NAME}</a></span>'
+        s = replace_block(s, "BYLINE", byline, anchor_before="  </div>\n\n  <div class=\"article-body\">")
+        if a["playlist"]:
+            s = replace_block(s, "PLAYLIST", _bibo_playlist_panel(a, eps_of[a["playlist"]], pls[a["playlist"]]),
+                              anchor_before='  <div class="diag-cta">')
+        s = _bibo_book_covers(s)
+        modified = max(a["date"], git_date(rel))
+        title, desc = meta_of(s)
+        article = {"@context": "https://schema.org", "@type": "Article", "headline": a["title"],
+                   "description": desc, "datePublished": a["date"], "dateModified": modified,
+                   "image": [OG_IMAGE], "inLanguage": "ja", "articleSection": a["category"],
+                   "mainEntityOfPage": {"@type": "WebPage", "@id": url_of(rel)},
+                   "author": {"@type": "Organization", "name": AUTHOR_NAME, "url": BASE + "/about.html"},
+                   "publisher": ORG}
+        crumbs = [("ホーム", BASE + "/"), (BIBO, BASE + "/biboroku/")]
+        if a["playlist"]:
+            article["isPartOf"] = {"@type": "CreativeWorkSeries", "name": pls[a["playlist"]]["title"],
+                                   "url": f"{BASE}/biboroku/#pl-{a['playlist']}"}
+            crumbs.append((pls[a["playlist"]]["title"], f"{BASE}/biboroku/#pl-{a['playlist']}"))
+        crumbs.append((a["title"], url_of(rel)))
+        write(rel, seo_head(rel, s, "article", [article, crumb_ld(crumbs)]))
+
+    # 備忘録トップ：再生リスト（カテゴリ別）とすべての投稿（新しい順）
+    blocks = []
+    for cat in BIBO_CATEGORIES:
+        cards = [_bibo_pl_card(pl, eps_of[pl["id"]]) for pl in playlists if pl["category"] == cat and eps_of[pl["id"]]]
+        singles = [a for a in posts if not a["playlist"] and a["category"] == cat]
+        if not cards and not singles:
+            continue
+        part = [f'    <div class="bb-cat">', f'    <h2 class="bb-sec">{cat}<span>再生リスト {len(cards)}本</span></h2>']
+        if cards:
+            part += ['    <div class="bb-pl-grid">'] + cards + ['    </div>']
+        if singles:
+            part += ['    <div class="bb-all bb-singles">'] + [_bibo_post_card(a, "単発の記事") for a in singles] + ['    </div>']
+        part.append('    </div>')
+        blocks.append("\n".join(part))
+    all_html = "\n".join(['    <div class="bb-all">'] + [_bibo_post_card(a, _bibo_label(a, pls)) for a in posts] + ['    </div>'])
+    s = read("biboroku/index.html")
+    s = replace_block(s, "BIBO-PLAYLISTS", "\n".join(blocks))
+    s = replace_block(s, "BIBO-ALL", all_html)
+    item_list = {"@context": "https://schema.org", "@type": "ItemList",
+                 "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": f"{BASE}/biboroku/{a['slug']}"}
+                                     for i, a in enumerate(posts)]}
+    s = seo_head("biboroku/index.html", s, "website",
+                 [crumb_ld([("ホーム", BASE + "/"), (BIBO, BASE + "/biboroku/")]), item_list])
+    write("biboroku/index.html", s)
+
+
+def add_nav_bibo():
+    """全ページのヘッダーに「備忘録」へのリンクを入れる（「記事」の直後）"""
+    pages = ([p for p, _, _ in STATIC_PAGES] + ["articles/" + f for f in sorted(os.listdir(path("articles"))) if f.endswith(".html")]
+             + bibo_pages())
+    for rel in pages:
+        s = read(rel)
+        if '<nav class="nav-links">' not in s:
+            continue
+        href = "index.html" if rel.startswith("biboroku/") else ("../biboroku/index.html" if "/" in rel else "biboroku/index.html")
+        i = s.index('<nav class="nav-links">')
+        j = i + s[i:].index("</nav>")
+        nav = s[i:j]
+        block = f'<!-- NAVBIBO:BEGIN --><a href="{href}">備忘録</a><!-- NAVBIBO:END -->'
+        if "NAVBIBO:BEGIN" in nav:
+            nav = re.sub(r"<!-- NAVBIBO:BEGIN -->.*?<!-- NAVBIBO:END -->", lambda _: block, nav, flags=re.S)
+        else:
+            m = re.search(r'<a href="[^"]*">記事</a>', nav)
+            if not m:
+                continue
+            nav = nav[:m.end()] + "\n      " + block + nav[m.end():]
+        s2 = s[:i] + nav + s[j:]
+        if s2 != s:
+            write(rel, s2)
 
 
 def main():
@@ -504,15 +710,18 @@ def main():
     got, total = affbox.build_diag(ROOT, read, write, "eitango-shindan.html")
     print(f"英単語帳診断の表紙: {got}/{total} 冊")
     build_articles(arts)
+    bibo_posts, bibo_playlists = load_bibo()
+    build_bibo(bibo_posts, bibo_playlists)
     build_list_pages(arts)
     build_home(arts)
     build_static_pages()
     build_search_index(arts)
     add_nav_search()
+    add_nav_bibo()
     add_ga4()
     bust_css_cache()
-    build_sitemap(arts)
-    print(f"OK: 記事 {len(arts)} 本 / タグページ {len(TAGS)} 枚を生成しました")
+    build_sitemap(arts, bibo_posts)
+    print(f"OK: 記事 {len(arts)} 本 / タグページ {len(TAGS)} 枚 / 備忘録 {len(bibo_posts)} 本を生成しました")
 
 
 if __name__ == "__main__":
