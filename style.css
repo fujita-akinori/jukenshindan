@@ -473,3 +473,27 @@ body.nav-open .nav-drawer{ transform:none; visibility:visible; }
 .paper-sheet .article-body .book-link p{ font-size:13.5px; line-height:1.8; margin:0 0 6px; color:var(--sheet-muted); }
 .paper-sheet .article-body .book-link a.bl-go{ font-size:13px; font-weight:700; color:var(--sheet-accent); text-decoration:none; }
 .paper-sheet .article-body .bl-disclosure{ font-size:11.5px; color:var(--sheet-muted); margin:0 0 22px; }
+
+/* ホームの「京大生の備忘録」：方眼ノートの紙で他のセクションから浮かせる */
+.home-bibo .hb-sheet{ position:relative; background-color:var(--paper); color:var(--text-on-paper); border-radius:14px; padding:30px clamp(18px, 4vw, 36px) 32px; overflow:hidden;
+  background-image:linear-gradient(rgba(27,33,48,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(27,33,48,0.06) 1px, transparent 1px); background-size:22px 22px; }
+.home-bibo .hb-sheet::before{ content:''; position:absolute; top:0; left:0; right:0; height:5px; background:var(--amber); }
+.home-bibo .section-head h2{ color:#1b2130; font-family:'Shippori Mincho', serif; }
+.home-bibo .section-head .note a{ color:#9a5f12; font-weight:700; text-decoration:none; }
+.home-bibo .hb-lead{ margin:0 0 22px; font-size:14px; line-height:1.9; color:#596072; max-width:60ch; }
+.home-bibo .hb-grid{ display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+.home-bibo .hb-col{ display:grid; gap:10px; align-content:start; min-width:0; }
+.home-bibo .hb-col h3{ margin:0 0 2px; font-size:12px; font-weight:700; letter-spacing:0.08em; color:#9a5f12; }
+.home-bibo .hb-pl, .home-bibo .hb-post{ display:grid; gap:4px; padding:14px 16px; background:#fffdf7; border:1px solid rgba(27,33,48,0.12); border-radius:10px; text-decoration:none; color:#1b2130; transition:border-color .15s ease, transform .15s ease; }
+.home-bibo .hb-pl:hover, .home-bibo .hb-post:hover{ border-color:var(--amber); transform:translateY(-2px); }
+.home-bibo .hb-pl{ background:#1b2130; color:#f6f1e4; border-color:#1b2130; }
+.home-bibo .hb-pl strong{ font-family:'Shippori Mincho', serif; font-size:18px; line-height:1.5; }
+.home-bibo .hb-cat{ font-size:11px; font-weight:700; letter-spacing:0.06em; color:var(--amber); }
+.home-bibo .hb-go{ font-size:12.5px; font-weight:700; color:var(--amber); }
+.home-bibo .hb-post time{ font-size:11.5px; color:#596072; font-variant-numeric:tabular-nums; }
+.home-bibo .hb-where{ font-size:11px; font-weight:700; color:var(--lv2); }
+.home-bibo .hb-post strong{ font-size:14.5px; line-height:1.6; }
+@media (max-width:700px){ .home-bibo .hb-grid{ grid-template-columns:1fr; } }
+@media (prefers-reduced-motion: reduce){ .home-bibo .hb-pl, .home-bibo .hb-post{ transition:none; } }
+.nav-links a.nav-bibo{ color:var(--amber); }
+.nav-links a.nav-bibo:hover{ color:#f3c27a; }

@@ -7,11 +7,11 @@
   var items = [
     ["index.html", "ホーム"],
     ["shindan-ichiran.html", "診断一覧"],
+    ["articles/index.html", "記事一覧"],
+    ["articles/index.html#search", "記事を検索"],
     ["shindan-ichiran.html#tools", "受験ツール"],
     ["kyoutsuu-countdown.html", "共通テストまであと何日？"],
-    ["articles/index.html", "記事一覧"],
     ["biboroku/index.html", "京大生の備忘録"],
-    ["articles/index.html#search", "記事を検索"],
     ["contact.html", "お問い合わせ"]
   ];
   var btn = document.createElement("button");
