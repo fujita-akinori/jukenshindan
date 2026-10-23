@@ -29,7 +29,7 @@ BASE = "https://jukenshindan.com"
 SITE = "受験診断ドットコム"
 OG_IMAGE = f"{BASE}/og-image.png"
 LOGO = f"{BASE}/logo-mark.png"
-AUTHOR_NAME = "受験診断ドットコム運営メンバー（現役京大生）"
+AUTHOR_NAME = "受験診断ドットコム運営者（現役京大生）"
 
 TAGS = [  # (タグ名, ファイル名, 説明)
     ("参考書比較", "tag-sankousho-hikaku.html", "数学・英語などの参考書を比較し、レベル感や使い方を解説した記事の一覧です。"),
