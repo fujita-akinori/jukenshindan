@@ -445,7 +445,7 @@ const BOOKS = [
   {name:"化学一問一答【完全版】3rd edition",note:"橋爪先生による化学の一問一答です。入試で問われる用語を網羅していて、教科書で理解した知識を素早く確認できます。",asin:"4890859497",key:"ichimon",scope:"full",tier:1,tierMax:3,purposes:["teiki", "kyoutsuu", "niji"],type:"quantity",bunya:[],also:["muki", "yuki"],support:true},
   {name:"改訂版 大学入学共通テスト 化学の点数が面白いほどとれる一問一答",note:"西章嘉先生による共通テスト化学の一問一答です。過去問の選択肢の文をそのまま問いにしているので正誤を見分ける練習ができます。2025年10月刊行で新課程の熱化学にも対応しています。",asin:"4046074493",key:"ichimon-kyoutsuu",scope:"full",tier:2,tierMax:3,purposes:["kyoutsuu"],type:"quantity",bunya:[],also:[],support:true},
   {name:"原点からの化学 化学の理論〈改訂版〉",note:"駿台の石川正明先生による原点からの化学シリーズの1冊です。化学の理論を原理から組み立て直す内容で、Doシリーズの鎌田先生の師にあたる石川先生の考え方を直接学べます。入試問題が一通り解けるようになった人がさらに上を目指すのに向いています。",asin:"4796116583",key:"gen-riron",scope:"both",tier:4,tierMax:5,purposes:["niji"],type:"quality",bunya:["riron"],also:[],adv:true},
-  {name:"原点からの化学 化学の計算〈四訂版〉",note:"石川先生による化学の計算問題の解き方の本です。問題を必要なものに絞ってそれぞれに原理的な説明を加えていて、計算の背景にある化学現象の理解まで深められます。",asin:"4796117881",key:"gen-keisan",scope:"both",tier:4,tierMax:5,purposes:["niji"],type:"quality",bunya:["riron"],also:[],adv:true},
+  {name:"原点からの化学 化学の計算〈四訂版〉",note:"石川先生による化学の計算問題の解き方の本です。問題を必要なものに絞ってそれぞれに原理的な説明を加えていて、計算の背景にある化学現象の理解まで深められます。",asin:"4796117881",key:"gen-keisan",scope:"both",tier:3,tierMax:5,purposes:["niji"],type:"quality",bunya:["riron"],also:[]},
   {name:"原点からの化学 無機化学〈四訂版〉",note:"原点からの化学シリーズの無機化学編です。無機の知識を原理から整理し直して、難関大で問われる見慣れない物質や反応にも対応できる力をつけます。",asin:"4796116680",key:"gen-muki",scope:"full",tier:4,tierMax:5,purposes:["niji"],type:"quality",bunya:["muki"],also:[],adv:true},
   {name:"原点からの化学 有機化学〈六訂版〉",note:"原点からの化学シリーズの有機化学編です。有機化学を原理から理解し直して、難関大の構造決定や見慣れない反応の問題に備えます。",asin:"4796116699",key:"gen-yuki",scope:"full",tier:4,tierMax:5,purposes:["niji"],type:"quality",bunya:["yuki"],also:[],adv:true},
   {name:"原点からの化学 化学の発想法〈三訂版〉",note:"原点からの化学シリーズの1冊で、化学の問題に向かうときの考え方の筋道を石川先生が解説します。分野をまたいだ問題で手が止まる上位層に向いています。",asin:"4796117873",key:"gen-hassou",scope:"both",tier:4,tierMax:5,purposes:["niji"],type:"quality",bunya:[],also:["sougou"],adv:true},
@@ -460,6 +460,7 @@ const FAVORITE = new Set(["do-riron","do-muki","do-yuki","do-mondai","sei-nyumon
 const ARTICLE_OF = { "do-riron":1, "do-muki":1, "do-yuki":1, "sei-nyumon":1, "sei-kiso":1, "sei-hyojun":1, "sei-jokyu":1 };
 BOOKS.forEach(b => { if(ARTICLE_OF[b.key]) b.article = "kagaku-benkyouhou"; });
 BOOKS.forEach(b => { if(b.key==="kouzou") b.article = "kouzou-kettei-youten-ensyu"; });
+BOOKS.forEach(b => { if(/^(gen-|shinrikei-)/.test(b.key)) b.article = "ishikawa-masaaki-kagaku"; });
 const byKey = k => BOOKS.find(b => b.key===k);
 
 /* ============================================================
