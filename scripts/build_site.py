@@ -663,23 +663,19 @@ def build_bibo(posts, playlists):
                  [crumb_ld([("ホーム", BASE + "/"), (BIBO, BASE + "/biboroku/")]), item_list])
     write("biboroku/index.html", s)
 
-    # ホームの「京大生の備忘録」：再生リストと新着の投稿
-    pl_cards = []
-    for pl in playlists:
-        eps = eps_of[pl["id"]]
-        if not eps:
-            continue
-        pl_cards.append(f'          <a class="hb-pl" href="biboroku/{eps[0]["slug"]}"><span class="hb-cat">{pl["category"]}・全{len(eps)}本</span>'
-                        f'<strong>{pl["title"]}</strong><span class="hb-go">第1回から読む →</span></a>')
-    new_rows = [f'          <a class="hb-post" href="biboroku/{a["slug"]}"><time datetime="{a["date"]}">{a["date"].replace("-", ".")}</time>'
-                f'<span class="hb-where">{_bibo_label(a, pls)}</span><strong>{a["title"]}</strong></a>' for a in posts[:3]]
-    home = ('      <div class="hb-grid">\n'
-            '        <div class="hb-col"><h3>再生リスト</h3>\n' + "\n".join(pl_cards) + '\n        </div>\n'
-            '        <div class="hb-col"><h3>新着の投稿</h3>\n' + "\n".join(new_rows) + '\n        </div>\n'
-            '      </div>')
+    # ホームの「京大生の備忘録」：記事と同じカードで新着3本
+    cards = []
+    for a in posts[:3]:
+        c = "var(--lv2)"
+        cards.append(f'''      <a href="biboroku/{a["slug"]}" class="diag-card available" style="--tag-color:{c};">
+        <div class="subject-tag" style="color:{c};">{_bibo_label(a, pls)}</div>
+        <h3>{a["title"]}</h3>
+        <p>{a["description"]}</p>
+        <span class="status" style="color:{c};"><span class="status-dot" style="background:{c};"></span>{a["date"].replace("-", ".")}</span>
+      </a>''')
     s = read("index.html")
     if "HOME-BIBO:BEGIN" in s:
-        write("index.html", replace_block(s, "HOME-BIBO", home))
+        write("index.html", replace_block(s, "HOME-BIBO", "\n".join(cards)))
 
 
 def add_nav_bibo():
@@ -694,7 +690,7 @@ def add_nav_bibo():
         i = s.index('<nav class="nav-links">')
         j = i + s[i:].index("</nav>")
         nav = s[i:j]
-        block = f'<!-- NAVBIBO:BEGIN --><a class="nav-bibo" href="{href}">備忘録</a><!-- NAVBIBO:END -->'
+        block = f'<!-- NAVBIBO:BEGIN --><a href="{href}">備忘録</a><!-- NAVBIBO:END -->'
         if "NAVBIBO:BEGIN" in nav:
             nav = re.sub(r"<!-- NAVBIBO:BEGIN -->.*?<!-- NAVBIBO:END -->", lambda _: block, nav, flags=re.S)
         else:

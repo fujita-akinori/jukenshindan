@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=1580409c">
+<link rel="stylesheet" href="style.css?v=161ae32b">
 <style>
   /* --- hero --- */
   .hero{
@@ -201,7 +201,7 @@
     <nav class="nav-links">
       <a href="#diagnosis">診断一覧</a>
       <a href="#articles">記事</a>
-      <!-- NAVBIBO:BEGIN --><a class="nav-bibo" href="biboroku/index.html">備忘録</a><!-- NAVBIBO:END -->
+      <!-- NAVBIBO:BEGIN --><a href="biboroku/index.html">備忘録</a><!-- NAVBIBO:END -->
       <a href="contact.html">お問い合わせ</a>
       <!-- NAVSEARCH:BEGIN --><a class="nav-search" href="articles/index.html#search" aria-label="記事を検索" title="記事を検索"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="16.5" y1="16.5" x2="21" y2="21"></line></svg></a><!-- NAVSEARCH:END -->
     </nav>
@@ -342,22 +342,19 @@
     </div>
   </section>
 
-  <section class="section home-bibo" id="biboroku">
-    <div class="hb-sheet">
-      <div class="section-head">
-        <h2>京大生の備忘録</h2>
-        <span class="note"><a href="biboroku/index.html">備忘録一覧を見る →</a></span>
-      </div>
-      <p class="hb-lead">受験で役に立った考え方や参考書の使い方、京大に入ってから知ったことを京大生が書きためています。続きものは再生リストにまとめています。</p>
+  <section class="section" id="biboroku">
+    <div class="section-head">
+      <h2>京大生の備忘録</h2>
+      <span class="note"><a href="biboroku/index.html" style="color:var(--text-on-ink-muted);">備忘録一覧を見る →</a></span>
+    </div>
+    <div class="diag-grid">
 <!-- HOME-BIBO:BEGIN -->
-      <div class="hb-grid">
-        <div class="hb-col"><h3>再生リスト</h3>
-          <a class="hb-pl" href="biboroku/junzouhou-gyakuzouhou.html"><span class="hb-cat">受験数学・全1本</span><strong>論理で解く軌跡と領域</strong><span class="hb-go">第1回から読む →</span></a>
-        </div>
-        <div class="hb-col"><h3>新着の投稿</h3>
-          <a class="hb-post" href="biboroku/junzouhou-gyakuzouhou.html"><time datetime="2026-10-24">2026.10.24</time><span class="hb-where">論理で解く軌跡と領域 #1</span><strong>順像法と逆像法の違いとは？実は同じものだと論理で示す【軌跡・領域】</strong></a>
-        </div>
-      </div>
+      <a href="biboroku/junzouhou-gyakuzouhou.html" class="diag-card available" style="--tag-color:var(--lv2);">
+        <div class="subject-tag" style="color:var(--lv2);">論理で解く軌跡と領域 #1</div>
+        <h3>順像法と逆像法の違いとは？実は同じものだと論理で示す【軌跡・領域】</h3>
+        <p>2007年東大理系第3問（改題）を順像法と逆像法の両方で解き比べ、2つが軌跡の定義の言い換えにすぎないことを論理で示します。</p>
+        <span class="status" style="color:var(--lv2);"><span class="status-dot" style="background:var(--lv2);"></span>2026.10.24</span>
+      </a>
 <!-- HOME-BIBO:END -->
     </div>
   </section>
