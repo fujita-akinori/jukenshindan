@@ -940,6 +940,19 @@ function pickTier(){
   return Math.max(sougouHensachiToTier(answers.hensachiKey), shibouToTier(answers.shibou));
 }
 
+/* 京大・阪大・九大志望の総合ルートでは「世界一わかりやすい」の各大学の数学を1位に出す
+   （偏差値65以上の超上位層・問題集を選んだ人・偏差値50未満の人は今の1位を残して2位にする） */
+function sekaiichiFirst(list){
+  if(answers.purpose!=="niji" || answers.nijiType!=="sougou") return list;
+  const univ = {kyodai:"京大", handai:"阪大", kyudai:"九大"}[answers.shibouDetail];
+  if(!univ) return list;
+  const i = list.findIndex(x => x.b.name.startsWith("世界一わかりやすい "+univ));
+  if(i < 0) return list;
+  const second = answers.hensachiKey==="gte65" || answers.style==="quantity" || answers.hensachiKey==="lt50";
+  const pos = second ? 1 : 0;
+  if(i > pos) list.splice(pos, 0, list.splice(i, 1)[0]);
+  return list;
+}
 /* 共通テスト対策では共通テスト専用の本を上位に出す（専用書が足りないときだけ汎用書で埋める） */
 function kyoutsuuFirst(list, get){
   if(answers.purpose!=="kyoutsuu") return list;
@@ -1122,6 +1135,7 @@ function renderResult(){
       .concat(scored.filter(x => !order.includes(x.b.name)))
       .map((x,i) => ({b:x.b, s:10 - i}));
   }
+  scored = sekaiichiFirst(scored);
   let picks = scored.slice(0, 3).map(x=>x.b);
   const others = scored.slice(3, 6);
   const maxScore = 10 + (scored.some(x => hasShibouBonus(x.b, targetTier)) ? 4 : 0);
