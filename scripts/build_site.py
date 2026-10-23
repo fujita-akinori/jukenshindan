@@ -44,6 +44,7 @@ STATIC_PAGES = [  # (ファイル, パンくず名, sitemap に載せるか)
     ("sugaku-shindan.html", "数学の参考書診断", True),
     ("seibutsu-shindan.html", "生物の参考書診断", True),
     ("kagaku-shindan.html", "化学の参考書診断", True),
+    ("eitango-shindan.html", "英単語帳・英熟語帳診断", True),
     ("shindan-ichiran.html", "診断一覧", True),
     ("about.html", "運営者情報", True),
     ("contact.html", "お問い合わせ", True),
@@ -498,6 +499,8 @@ def main():
     print(f"生物診断の表紙: {got}/{total} 冊")
     got, total = affbox.build_diag(ROOT, read, write, "kagaku-shindan.html")
     print(f"化学診断の表紙: {got}/{total} 冊")
+    got, total = affbox.build_diag(ROOT, read, write, "eitango-shindan.html")
+    print(f"英単語帳診断の表紙: {got}/{total} 冊")
     build_articles(arts)
     build_list_pages(arts)
     build_home(arts)

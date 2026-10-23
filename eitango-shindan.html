@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- GA4:BEGIN -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2WNQN0ZF8D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2WNQN0ZF8D');
+</script>
+<!-- GA4:END -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>英単語帳診断｜あなたに合う英単語帳・英熟語帳が分かる | 受験診断ドットコム</title>
+<meta name="description" content="今の語彙レベル・志望校・覚え方の好みなどの質問に答えるだけで、26冊の中から今のあなたに合う英単語帳・英熟語帳を診断します。ターゲット・シス単・LEAP・鉄壁・DUOなどの定番から難単語帳や表現集まで対応しています。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=61513461">
+<style>
+  /* ==========================================================
+     受験診断ドットコム — 英単語帳診断 デザイントークン拡張
+     ルートカラー：単語帳 = lv3（オレンジ） / 熟語帳 = lv5（紫）
+     ========================================================== */
+  :root{
+    --lv5:#7d5ba6; /* 超級 */
+    --paper-shadow: 0 28px 70px -24px rgba(0,0,0,0.6), 0 2px 0 rgba(255,255,255,0.4) inset;
+  }
+
+  @media (prefers-reduced-motion: no-preference){
+    .card, .result-head, .shelf-wrap, .book-list{ animation: riseIn .38s cubic-bezier(.2,.8,.2,1) both; }
+    .book-item{ animation: riseIn .3s cubic-bezier(.2,.8,.2,1) both; }
+    .book-item:nth-child(1){ animation-delay:.02s; } .book-item:nth-child(2){ animation-delay:.06s; }
+    .book-item:nth-child(3){ animation-delay:.10s; } .book-item:nth-child(4){ animation-delay:.14s; }
+    .book-item:nth-child(5){ animation-delay:.18s; } .book-item:nth-child(6){ animation-delay:.22s; }
+  }
+  @keyframes riseIn{ from{ opacity:0; transform:translateY(10px); } to{ opacity:1; transform:none; } }
+
+  .page-wrap{ padding-top:44px; padding-bottom:130px; }
+  h1.page-title{
+    font-family:'Shippori Mincho', serif; font-weight:800;
+    font-size:clamp(26px, 4.8vw, 38px); margin:0 0 6px; line-height:1.4; letter-spacing:0.01em;
+  }
+  .page-title-rule{
+    width:56px; height:3px; background:var(--amber); border:none; margin:14px 0 18px; border-radius:2px;
+  }
+  .page-lead{ color:var(--text-on-ink-muted); font-size:14.5px; margin:0 0 30px; max-width:56ch; }
+
+  /* -------------------- 経路表示（分岐ツリーを辿る足あと） -------------------- */
+  .crumbs{ display:flex; flex-wrap:wrap; align-items:center; gap:0; margin-bottom:26px; row-gap:10px; }
+  .crumb{
+    font-size:11.5px; font-weight:700; padding:6px 13px 6px 12px; border-radius:8px;
+    background:var(--ink-soft); color:var(--text-on-ink-muted);
+    border:1px solid rgba(255,255,255,0.08);
+    display:inline-flex; align-items:center; gap:6px;
+    position:relative;
+  }
+  .crumb .k{ font-weight:500; opacity:.7; font-size:10.5px; }
+  .crumb b{ color:var(--amber); font-weight:700; }
+  .crumb + .crumb{ margin-left:6px; }
+  .crumb-arrow{ color:var(--text-on-ink-muted); opacity:.4; font-size:12px; margin:0 2px; }
+
+  /* -------------------- 質問カード -------------------- */
+  .q-index{
+    font-family:'Shippori Mincho', serif; font-size:12.5px; font-weight:700;
+    color:var(--amber-deep); letter-spacing:0.14em; margin-bottom:12px;
+    text-transform:uppercase;
+  }
+  .q-text{
+    font-family:'Shippori Mincho', serif; font-size:clamp(19px, 3.4vw, 25px);
+    font-weight:800; margin:0 0 26px; line-height:1.55; color:var(--text-on-paper);
+  }
+  .choices{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .choices.cols-1{ grid-template-columns:1fr; }
+  .choices.cols-3{ grid-template-columns:1fr 1fr 1fr; }
+  .choices.tags-grid{ grid-template-columns:repeat(3, 1fr); gap:10px; }
+
+  .choice-btn{
+    font-family:'Zen Kaku Gothic New', sans-serif; font-weight:700; font-size:15px;
+    padding:16px 17px; border-radius:10px; border:2px solid rgba(27,33,48,0.10);
+    background:#fff; color:var(--text-on-paper); cursor:pointer; text-align:left;
+    transition:transform .14s cubic-bezier(.2,.8,.2,1), border-color .14s ease, background .14s ease, box-shadow .14s ease;
+    position:relative;
+  }
+  .choice-btn:hover{
+    border-color:var(--amber); background:#fffaf0; transform:translateY(-3px);
+    box-shadow:0 10px 22px -12px rgba(196,127,31,0.5);
+  }
+  .choice-btn:active{ transform:translateY(-1px); }
+  .choice-btn:focus-visible{ outline:2px solid var(--amber-deep); outline-offset:2px; }
+  .choice-btn .sub{ display:block; font-weight:400; font-size:11.5px; color:#6b6250; margin-top:4px; }
+
+  /* タグ風の分野選択（12分野）はコンパクトに */
+  .tags-grid .choice-btn{
+    text-align:center; padding:13px 10px; font-size:13.5px; border-radius:999px;
+  }
+
+  /* -------------------- スタート画面：単語帳と熟語帳を「見出しタブ」として -------------------- */
+  .choice-btn[data-value="tango"],
+  .choice-btn[data-value="jukugo"]{
+    padding:22px 22px 20px 24px; border-left-width:5px; border-radius:12px;
+  }
+  .choice-btn[data-value="tango"]{ border-left-color:var(--lv3); }
+  .choice-btn[data-value="jukugo"]{ border-left-color:var(--lv5); }
+  .choice-btn[data-value="tango"]:hover{ box-shadow:0 12px 26px -14px var(--lv3); border-color:var(--lv3); }
+  .choice-btn[data-value="jukugo"]:hover{ box-shadow:0 12px 26px -14px var(--lv5); border-color:var(--lv5); }
+  .choice-btn[data-value="tango"] .sub,
+  .choice-btn[data-value="jukugo"] .sub{ font-size:12.5px; margin-top:6px; }
+
+  /* もう一方の診断への導線 */
+  .cross-box{ margin:30px 0 0; padding:20px 20px 22px; border-radius:12px; text-align:center;
+    background:var(--ink-soft); border:1px solid rgba(255,255,255,0.08); }
+  .cross-box p{ font-size:13.5px; color:var(--text-on-ink-muted); margin:0 0 14px; line-height:1.8; }
+  .cross-btn{ font-family:'Zen Kaku Gothic New', sans-serif; font-weight:700; font-size:14px; cursor:pointer;
+    background:var(--amber); color:var(--ink); border:none; padding:12px 24px; border-radius:999px;
+    transition:background .12s ease, transform .12s ease; }
+  .cross-btn:hover{ background:#f0b357; transform:translateY(-2px); }
+
+  .nav-row{ display:flex; gap:16px; margin-top:20px; align-items:center; }
+  .back-link{
+    font-size:13px; color:var(--text-on-ink-muted); text-decoration:none; cursor:pointer;
+    display:inline-flex; align-items:center; gap:5px;
+  }
+  .back-link:hover{ color:var(--amber); }
+
+  /* -------------------- 結果画面 -------------------- */
+  .result-head{ text-align:center; margin-bottom:32px; }
+  .route-badge{
+    display:inline-block; font-family:'Shippori Mincho', serif; font-weight:800;
+    font-size:13px; letter-spacing:0.12em; padding:7px 18px; border-radius:999px;
+    color:#fff; margin-bottom:16px; box-shadow:0 8px 18px -8px rgba(0,0,0,0.5);
+  }
+  .result-head h2{ font-family:'Shippori Mincho', serif; font-size:clamp(21px,4vw,27px); margin:0 0 10px; font-weight:800; }
+  .result-head p{ color:var(--text-on-ink-muted); font-size:13.5px; max-width:52ch; margin:0 auto; }
+
+  /* -------------------- 本棚（サイン要素）-------------------- */
+  .shelf-wrap{ margin:26px 0 22px; }
+  .shelf-label{
+    font-size:11.5px; letter-spacing:0.1em; color:var(--text-on-ink-muted); margin-bottom:12px;
+    font-weight:700; text-transform:uppercase;
+  }
+  .shelf{
+    display:flex; align-items:flex-end; gap:7px;
+    background:
+      linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.3) 92%);
+    padding:26px 18px 0;
+    border-bottom:12px solid #3a2a1a;
+    box-shadow: 0 8px 0 -2px #2a1d11, inset 0 -2px 4px rgba(0,0,0,0.3);
+    border-radius:4px 4px 0 0; overflow-x:auto;
+  }
+  .spine{
+    flex:0 0 auto; width:56px; height:182px; border-radius:3px 3px 1px 1px;
+    display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
+    padding-top:16px;
+    box-shadow:
+      inset 3px 0 0 rgba(255,255,255,0.15),
+      inset -7px 0 12px rgba(0,0,0,0.22),
+      0 6px 14px rgba(0,0,0,0.35);
+    position:relative; transition:transform .18s cubic-bezier(.2,.8,.2,1);
+  }
+  .spine:hover{ transform:translateY(-10px) rotate(-0.5deg); }
+  .spine span{
+    writing-mode:vertical-rl; text-orientation:mixed; font-family:'Shippori Mincho', serif;
+    font-weight:700; font-size:12px; color:#fff; letter-spacing:0.05em; max-height:118px;
+  }
+  .spine.tall{ height:200px; } .spine.short{ height:162px; }
+  /* 帯（おび）— 日本の参考書によくある色帯を背表紙下部に */
+  .spine::after{
+    content:''; position:absolute; left:0; right:0; bottom:14px; height:22px;
+    background:rgba(0,0,0,0.22);
+    border-top:1px solid rgba(255,255,255,0.25);
+    border-bottom:1px solid rgba(0,0,0,0.3);
+  }
+  .spine .rank{
+    position:relative; z-index:1; margin-top:auto; margin-bottom:18px;
+    font-family:'Zen Kaku Gothic New', sans-serif; font-weight:900; font-size:11px; color:#fff;
+    writing-mode:horizontal-tb; opacity:.85;
+  }
+
+  .book-list{ margin-top:26px; display:flex; flex-direction:column; gap:12px; }
+
+  /* -------------------- 表彰台（ベスト3ランキング） -------------------- */
+  .podium{
+    display:flex; align-items:flex-end; justify-content:center; gap:14px;
+    margin:30px 0 8px; padding:0 10px;
+  }
+  .podium-col{ display:flex; flex-direction:column; align-items:center; width:96px; }
+  .podium-book{
+    width:100%; border-radius:10px 10px 0 0;
+    display:flex; align-items:flex-start; justify-content:center; padding-top:12px;
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.35), 0 6px 14px rgba(0,0,0,0.3);
+  }
+  .podium-rank{ font-family:'Shippori Mincho', serif; font-weight:900; font-size:22px; color:var(--ink); }
+  .podium-base{ width:100%; border-radius:0 0 6px 6px; box-shadow: inset 0 -3px 0 rgba(0,0,0,0.15); }
+  .podium-1 .podium-book{ height:76px; } .podium-1 .podium-base{ height:56px; }
+  .podium-2 .podium-book{ height:58px; } .podium-2 .podium-base{ height:40px; }
+  .podium-3 .podium-book{ height:46px; } .podium-3 .podium-base{ height:30px; }
+  .podium-1{ z-index:2; }
+  .podium-2, .podium-3{ margin-bottom:2px; }
+
+  /* 進捗 */
+  .progress{ margin:0 0 14px; }
+  .progress .p-label{ display:flex; justify-content:space-between; font-size:12.5px; font-weight:700; color:var(--text-on-ink-muted); margin-bottom:7px; }
+  .progress .p-label b{ color:var(--amber); font-size:14px; }
+  .progress .p-bar{ height:6px; border-radius:999px; background:rgba(255,255,255,0.10); overflow:hidden; }
+  .progress .p-bar i{ display:block; height:100%; border-radius:999px; background:var(--amber); transition:width .3s cubic-bezier(.2,.8,.2,1); }
+  .back-btn{
+    font-family:'Zen Kaku Gothic New', sans-serif; font-size:13.5px; font-weight:700; cursor:pointer;
+    background:none; border:1px solid rgba(255,255,255,0.25); color:var(--text-on-ink);
+    padding:9px 18px; border-radius:999px; transition:border-color .14s ease, color .14s ease;
+  }
+  .back-btn:hover{ border-color:var(--amber); color:var(--amber); }
+
+  /* 一致度・理由 */
+  .match{ display:flex; align-items:center; gap:9px; margin:2px 0 8px; }
+  .match .m-num{ font-weight:800; font-size:13px; color:var(--amber); white-space:nowrap; }
+  .match .m-bar{ flex:1; max-width:160px; height:5px; border-radius:999px; background:rgba(255,255,255,0.10); overflow:hidden; }
+  .match .m-bar i{ display:block; height:100%; background:var(--amber); border-radius:999px; }
+  .reasons{ display:flex; flex-wrap:wrap; gap:6px; margin:0 0 10px; }
+  .reasons span{ font-size:11px; font-weight:700; padding:3px 9px; border-radius:999px; background:rgba(232,163,61,0.12); color:#f0c27a; }
+  .reasons span.warn{ background:rgba(255,255,255,0.08); color:var(--text-on-ink-muted); }
+  .book-actions{ display:flex; flex-wrap:wrap; align-items:center; gap:14px; }
+  .article-link{ font-size:12px; font-weight:700; color:var(--text-on-ink-muted); text-decoration:none; }
+  .article-link:hover{ color:var(--amber); }
+  .more-books{ margin-top:14px; border:1px solid rgba(255,255,255,0.08); border-radius:10px; background:rgba(255,255,255,0.02); }
+  .more-books summary{ cursor:pointer; padding:13px 17px; font-size:13.5px; font-weight:700; color:var(--text-on-ink); list-style:none; }
+  .more-books summary::-webkit-details-marker{ display:none; }
+  .more-books summary::after{ content:"＋"; float:right; color:var(--text-on-ink-muted); }
+  .more-books[open] summary::after{ content:"－"; }
+  .more-books .book-list{ padding:0 12px 12px; }
+  .book-chip.sub-rank{ background:rgba(255,255,255,0.12) !important; color:var(--text-on-ink) !important; }
+
+  .book-item.rank-1{
+    border-color:rgba(232,163,61,0.4); background:linear-gradient(135deg, rgba(232,163,61,0.10), var(--ink-soft) 60%);
+  }
+  .book-item{
+    background:var(--ink-soft); border-radius:10px; padding:15px 17px;
+    display:flex; gap:13px; align-items:flex-start; border:1px solid rgba(255,255,255,0.06);
+    transition:border-color .15s ease;
+  }
+  .book-item:hover{ border-color:rgba(232,163,61,0.3); }
+  .book-chip{
+    flex:0 0 auto; min-width:30px; height:30px; padding:0 8px; border-radius:8px; display:flex;
+    align-items:center; justify-content:center; font-family:'Shippori Mincho', serif;
+    font-weight:800; font-size:12px; color:#fff; white-space:nowrap;
+  }
+  .book-info{ flex:1; }
+  .book-info .name{ font-weight:700; font-size:14.5px; margin:0 0 4px; line-height:1.5; }
+  .book-info .name .scope-tag{
+    display:inline-block; font-size:10px; font-weight:700; padding:2px 8px; border-radius:999px;
+    margin-left:6px; background:rgba(255,255,255,0.1); color:var(--text-on-ink-muted); vertical-align:middle;
+  }
+  .book-info .desc{ font-size:13px; color:#cfccc3; margin:2px 0 12px; line-height:1.85; }
+  .book-info .desc .d-you{ display:block; margin-top:8px; padding-top:8px; border-top:1px dashed rgba(255,255,255,0.12); color:#f3e3c3; }
+  .book-info .desc .d-you b{ display:block; font-size:11px; letter-spacing:0.08em; color:var(--amber); margin-bottom:2px; }
+  .type-caret{ display:inline-block; width:0.55em; height:1.05em; margin-left:1px; vertical-align:-0.15em; background:var(--amber); animation:caret-blink .9s steps(1) infinite; }
+  @keyframes caret-blink{ 50%{ opacity:0; } }
+  .buy-link{
+    display:inline-block; font-size:12px; font-weight:700; color:var(--ink);
+    background:var(--amber); padding:6px 14px; border-radius:999px; text-decoration:none;
+    transition:background .12s ease, transform .12s ease;
+  }
+  .pr-note{ text-align:center; font-size:12px; color:var(--text-on-ink-muted); margin:-20px 0 22px; }
+  .pr-note .pr-tag{ display:inline-block; font-weight:700; font-size:11px; padding:1px 7px; margin-right:6px; border:1px solid currentColor; border-radius:4px; }
+  .buy-link:hover{ background:#f0b357; transform:translateY(-1px); }
+  .buy-link.buy-rakuten{ background:#bf0000; color:#fff; }
+  .buy-link.buy-rakuten:hover{ background:#d81f1f; }
+  .book-cover{ float:right; width:84px; margin:0 0 10px 16px; display:block; text-decoration:none; text-align:center; }
+  .book-cover img{ display:block; width:84px; height:auto; border-radius:3px; background:#fff; box-shadow:0 6px 16px rgba(0,0,0,0.45); transition:transform .15s ease; }
+  .book-cover:hover img{ transform:translateY(-2px); }
+  .book-cover span{ display:block; margin-top:6px; font-size:10.5px; font-weight:700; color:#ff6b6b; }
+  .book-info{ min-width:0; } .book-actions{ clear:both; }
+  @media (max-width:560px){ .book-cover{ width:60px; margin-left:10px; } .book-cover img{ width:60px; } .book-cover span{ font-size:9.5px; } }
+
+  .empty-note{
+    background:var(--ink-soft); border:1px dashed rgba(255,255,255,0.15); border-radius:10px;
+    padding:24px; text-align:center; color:var(--text-on-ink-muted); font-size:13px;
+  }
+
+  .retry-btn{
+    margin-top:34px; display:inline-block; background:none; border:1px solid rgba(255,255,255,0.25);
+    color:var(--text-on-ink); padding:13px 24px; border-radius:999px; font-size:14px; font-weight:700;
+    cursor:pointer; font-family:'Zen Kaku Gothic New', sans-serif;
+    transition:border-color .14s ease, color .14s ease, transform .14s ease;
+  }
+  .retry-btn:hover{ border-color:var(--amber); color:var(--amber); transform:translateY(-2px); }
+
+  @media (max-width:520px){
+    .choices, .choices.cols-3{ grid-template-columns:1fr; }
+    .choices.tags-grid{ grid-template-columns:repeat(2, 1fr); }
+    .card{ padding:26px 20px; }
+  }
+  .textbook-base{ background:var(--ink-soft); border:1px solid rgba(232,163,61,0.45); border-left:4px solid var(--amber); border-radius:10px; padding:16px 18px; margin:0 0 22px; }
+  .textbook-base .tb-label{ display:inline-block; font-size:11px; font-weight:700; letter-spacing:.06em; color:var(--ink); background:var(--amber); padding:2px 9px; border-radius:999px; }
+  .textbook-base .tb-name{ font-weight:700; font-size:15.5px; margin:8px 0 6px; }
+  .textbook-base .tb-desc{ font-size:13.5px; line-height:1.85; color:var(--text-on-ink-muted); margin:0 0 10px; }
+  .textbook-base .tb-desc b{ color:var(--text-on-ink); }
+  .must-head{ font-family:'Shippori Mincho', serif; font-weight:800; font-size:16px; margin:26px 0 12px; color:var(--text-on-ink); }
+  .must-list{ margin-bottom:8px; }
+</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6837829466798350" crossorigin="anonymous"></script>
+<!-- SEO:BEGIN -->
+<link rel="canonical" href="https://jukenshindan.com/eitango-shindan.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="受験診断ドットコム">
+<meta property="og:title" content="英単語帳診断｜あなたに合う英単語帳・英熟語帳が分かる | 受験診断ドットコム">
+<meta property="og:description" content="今の語彙レベル・志望校・覚え方の好みなどの質問に答えるだけで、26冊の中から今のあなたに合う英単語帳・英熟語帳を診断します。ターゲット・シス単・LEAP・鉄壁・DUOなどの定番から難単語帳や表現集まで対応しています。">
+<meta property="og:url" content="https://jukenshindan.com/eitango-shindan.html">
+<meta property="og:image" content="https://jukenshindan.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="英単語帳診断｜あなたに合う英単語帳・英熟語帳が分かる | 受験診断ドットコム">
+<meta name="twitter:description" content="今の語彙レベル・志望校・覚え方の好みなどの質問に答えるだけで、26冊の中から今のあなたに合う英単語帳・英熟語帳を診断します。ターゲット・シス単・LEAP・鉄壁・DUOなどの定番から難単語帳や表現集まで対応しています。">
+<meta name="twitter:image" content="https://jukenshindan.com/og-image.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ホーム","item":"https://jukenshindan.com/"},{"@type":"ListItem","position":2,"name":"英単語帳・英熟語帳診断","item":"https://jukenshindan.com/eitango-shindan.html"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"英単語帳・英熟語帳診断","url":"https://jukenshindan.com/eitango-shindan.html","description":"今の語彙レベル・志望校・覚え方の好みなどの質問に答えるだけで、26冊の中から今のあなたに合う英単語帳・英熟語帳を診断します。ターゲット・シス単・LEAP・鉄壁・DUOなどの定番から難単語帳や表現集まで対応しています。","applicationCategory":"EducationalApplication","operatingSystem":"All","inLanguage":"ja","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"},"publisher":{"@type":"Organization","name":"受験診断ドットコム","url":"https://jukenshindan.com/","logo":{"@type":"ImageObject","url":"https://jukenshindan.com/logo-mark.png"}}}</script>
+<!-- SEO:END -->
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="logo"><img src="logo-mark.png" class="mark" alt="受験診断ドットコム">受験診断ドットコム</a>
+    <nav class="nav-links">
+      <a href="shindan-ichiran.html">診断一覧</a>
+      <a href="index.html#articles">記事</a>
+      <a href="contact.html">お問い合わせ</a>
+      <!-- NAVSEARCH:BEGIN --><a class="nav-search" href="articles/index.html#search" aria-label="記事を検索" title="記事を検索"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="16.5" y1="16.5" x2="21" y2="21"></line></svg></a><!-- NAVSEARCH:END -->
+    </nav>
+  </div>
+</header>
+
+<div class="wrap page-wrap">
+  <div class="eyebrow">英語 &middot; 単語帳診断</div>
+  <h1 class="page-title" id="page-title">英単語帳・英熟語帳診断</h1>
+  <hr class="page-title-rule">
+  <p class="page-lead" id="page-lead">今の語彙レベルと志望校と覚え方の好みから、あなたに合う英単語帳と英熟語帳を診断します。</p>
+
+  <div id="crumbs" class="crumbs"></div>
+  <div id="quiz-area"></div>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>&copy; 2026 受験診断ドットコム</span>
+    <div class="footer-links">
+      <a href="about.html">運営者情報</a>
+      <a href="privacy-policy.html">プライバシーポリシー</a>
+      <a href="contact.html">お問い合わせ</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   英単語帳・英熟語帳データベース
+   fields: name, note, asin, short, kind[], tier, unit, ほか
+   kind: tango（単語帳ルートに出す）/ jukugo（熟語帳ルートに出す）
+   tier: 0 基礎（中学〜高1） / 1 標準（共テ〜MARCH・地方国公立） / 2 難関（旧帝大・早慶）
+   unit（単語帳の覚え方）: imi 単語と意味 / phrase 短いフレーズ / reibun 例文 / bunsho 長文
+   hasshin: 英作文・和訳で使える度合い（0〜3）  onsei: 音声で覚えやすい度合い（0〜2）
+   secondOnly: 標準の単語帳を1冊終えた人にだけ出す  first2: 難関レベルでも1冊目にしてよい
+   thick: 分量が多く途中でやめやすい  kanen: 熟語もまとめて覚えられる
+   jstyle（熟語帳の覚え方）: ichiran 一覧で速く / riron 前置詞や動詞のイメージから / bunsho 英文の中で / matome 単語とまとめて / hyougen 表現集
+   hard: 単語帳を1冊終えた旧帝大・早慶志望にだけ出す
+   ============================================================ */
+const AMAZON_TAG = "jukenshindan-22";
+/* COVERS:BEGIN */const COVERS = {"中学版 システム英単語（改訂版）":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/1539/9784796111539_1_3.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F16660056%2F"},"英単語ターゲット1200（改訂版）":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/6488/9784010346488_1_2.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F16110197%2F"},"システム英単語Basic（5訂版）":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/1416/9784796111416_1_2.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F16118431%2F"},"改訂版 必携英単語LEAP Basic":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/4332/9784410144332_1_4.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F18387572%2F"},"速読英単語 入門編［改訂第3版］":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3642/9784865313642.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F16636928%2F"},"英単語Stock3000":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/1413/9784578271413.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F15696885%2F"},"英単語ターゲット1400（5訂版）":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/6471/9784010346471_1_2.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F16110199%2F"},"英単語ターゲット1900（6訂版）":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/6464/9784010346464_1_2.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F16110198%2F"},"システム英単語（5訂版）":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/1379/9784796111379_1_2.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F16118430%2F"},"改訂版 必携英単語LEAP":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/4233/9784410144233_1_6.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F18012693%2F"},"速読英単語 必修編［改訂第8版］":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/6421/9784865316421_1_6.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F18109917%2F"},"英単語Stock4500":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/1420/9784578271420.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F15696886%2F"},"DUO 3.0":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/0056/9784900790056_1_3.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F1140552%2F"},"英文で覚える 英単語ターゲットR 英単語ターゲット1400レベル":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/7461/9784010347461.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F16373473%2F"},"英文で覚える 英単語ターゲットR 英単語ターゲット1900レベル":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/7454/9784010347454.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F16373475%2F"},"改訂版 鉄緑会東大英単語熟語 鉄壁":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/4112/9784046044112_1_3.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F16214686%2F"},"単語王2202":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/9016/90163500.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F1399512%2F"},"速読英単語 上級編［改訂第5版］":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/5219/9784865315219_1_2.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F17420539%2F"},"話題別英単語 リンガメタリカ［改訂第2版］":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/6513/9784865316513_1_3.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F18500716%2F"},"大学入試 無敵の難単語 PINNACLE 420":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/0692/9784757440692_1_3.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F17598324%2F"},"英熟語ターゲット1000（5訂版）":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/6495/9784010346495.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F16775134%2F"},"英文で覚える 英熟語ターゲットR（英熟語ターゲット1000対応）":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/8482/9784010348482.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F16775137%2F"},"システム英熟語（5訂版）":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/1454/9784796111454_1_2.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F16118432%2F"},"解体英熟語（改訂第2版）":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2721/9784860662721.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F14142239%2F"},"速読英熟語（改訂版）":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/5875/9784865315875_1_2.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F17725403%2F"},"大学入試 飛躍のフレーズ IDIOMATIC 300":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2108/9784757442108_1_4.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F17916796%2F"}};/* COVERS:END */
+function amazonUrl(b){
+  if(b.asin) return `https://www.amazon.co.jp/dp/${b.asin}?tag=${AMAZON_TAG}`;
+  return `https://www.amazon.co.jp/s?k=${encodeURIComponent(b.q || b.name)}&i=stripbooks&tag=${AMAZON_TAG}`;
+}
+
+const BOOKS = [
+  // ---- 基礎（中学〜高1） ----
+  {name:"中学版 システム英単語（改訂版）",note:"シス単と同じ短いフレーズ（ミニマルフレーズ）で中学範囲の英単語を覚え直せる駿台文庫の単語帳です。高校の単語帳に進む前に中学単語の穴を埋めたい人に向いています。",asin:"4796111530",short:"シス単 中学版",kind:["tango"],tier:0,unit:"phrase",hasshin:1,onsei:1},
+  {name:"英単語ターゲット1200（改訂版）",note:"旺文社のターゲットシリーズで最も易しい1冊です。高校必修レベルの1200語を出題頻度順に並べていて、一語一義で速く回せます。ターゲット1900に進む前の土台作りに向いています。",asin:"4010346485",short:"ターゲット1200",kind:["tango"],tier:0,unit:"imi",hasshin:0,onsei:1,teiban:true},
+  {name:"システム英単語Basic（5訂版）",note:"シス単の前段階にあたる駿台文庫の単語帳です。中学〜高校基礎の単語をミニマルフレーズで覚えるので、単語の使われ方も一緒に頭に入ります。終えたらシス単本編に進むのが定番のルートです。",asin:"4796111417",short:"シス単Basic",kind:["tango"],tier:0,unit:"phrase",hasshin:1,onsei:1,teiban:true},
+  {name:"改訂版 必携英単語LEAP Basic",note:"LEAPの易しい姉妹編で中学〜高校基礎の単語をLEAPと同じ構成で覚えられる数研出版の単語帳です。例文と使い方の解説が丁寧なので、基礎の段階から英作文で使える語彙を作れます。",asin:"4410144332",short:"LEAP Basic",kind:["tango"],tier:0,unit:"reibun",hasshin:3,onsei:1,fav:true},
+  {name:"速読英単語 入門編［改訂第3版］",note:"Z会の速単シリーズの入門編です。短い英文を読みながら中学〜高校基礎の単語を覚えるので、単語だけを並べた本が続かない人でも進めやすい作りです。音声を聞きながら英文ごと覚えられます。",asin:"4865313648",short:"速単 入門編",kind:["tango"],tier:0,unit:"bunsho",hasshin:1,onsei:2},
+  {name:"英単語Stock3000",note:"学校で配られることの多い文英堂の単語帳で、高校基礎レベルの語彙を固められます。学校で配られている人は新しく買わずにそれを使い切りましょう。",asin:"4578271412",short:"Stock3000",kind:["tango"],tier:0,unit:"imi",hasshin:0,onsei:0,school:true},
+  // ---- 標準（共テ〜MARCH・地方国公立） ----
+  {name:"英単語ターゲット1400（5訂版）",note:"ターゲットシリーズの中間にあたる1冊で、共通テストや中堅私大に必要な1400語を出題頻度順に覚えられます。ターゲット1900では難しすぎる人や共通テストまでの語彙を最短で固めたい人に向いています。",asin:"4010346477",short:"ターゲット1400",kind:["tango"],tier:1,unit:"imi",hasshin:0,onsei:1,kyotsu:true},
+  {name:"英単語ターゲット1900（6訂版）",note:"大学入試の出題頻度順に1900語を並べた旺文社の定番単語帳です。一語一義で覚える意味を絞っているので周回が速く、例文はコロケーションを含む形に書き換えられています。アプリ「ターゲットの友」と組み合わせるとすき間時間でも回せます。",asin:"4010346469",short:"ターゲット1900",kind:["tango"],tier:1,unit:"imi",hasshin:1,onsei:1,teiban:true},
+  {name:"システム英単語（5訂版）",note:"霜康司先生と刀祢雅彦先生による駿台文庫の定番単語帳です。単語を短いフレーズ（ミニマルフレーズ）で覚えるので、意味だけでなく実際の使われ方まで頭に入ります。最後のStageは入試で狙われやすい多義語に絞った章になっています。",asin:"4796111379",short:"システム英単語",kind:["tango"],tier:1,unit:"phrase",hasshin:2,onsei:1,teiban:true},
+  {name:"改訂版 必携英単語LEAP",note:"竹岡広信先生による数研出版の単語帳で、約2,300語を英作文で使う発信語彙と読めればよい受信語彙に分けています。第一義だけを隠して速く周回でき、例文と使い分けの解説で英作文や和訳にそのまま使える語彙が身につきます。",asin:"4410144235",short:"LEAP",kind:["tango"],tier:1,unit:"reibun",hasshin:3,onsei:1,fav:true},
+  {name:"速読英単語 必修編［改訂第8版］",note:"Z会の速単シリーズの中心になる1冊で、テーマごとの長文を読みながら入試に必要な単語を覚えます。単語を文脈の中で覚えるので記憶に残りやすく、長文を読む速さも一緒に鍛えられます。音声を使って英文ごと聞き込むのが効果的です。",asin:"4865316426",short:"速単 必修編",kind:["tango"],tier:1,unit:"bunsho",hasshin:1,onsei:2},
+  {name:"英単語Stock4500",note:"学校で配られることの多い文英堂の単語帳で、入試標準レベルまでの語彙を1冊で扱います。学校で配られていて小テストにも使われているなら、新しく買わずにそれを使い切るのが一番の近道です。",asin:"4578271420",short:"Stock4500",kind:["tango"],tier:1,unit:"imi",hasshin:0,onsei:0,school:true},
+  {name:"DUO 3.0",note:"560本の例文に重要単語約1,600語と熟語約1,000個を詰め込んだ鈴木陽一先生の単語帳です。1つの例文で複数の単語と熟語をまとめて覚えられるので、熟語帳を別に買わずに済みます。例文の音声（別売のCD）を繰り返し聞いて覚えるのが王道の使い方です。",asin:"4900790052",short:"DUO 3.0",kind:["tango","jukugo"],tier:1,unit:"reibun",hasshin:2,onsei:2,kanen:true,jstyle:"matome"},
+  {name:"英文で覚える 英単語ターゲットR 英単語ターゲット1400レベル",note:"ターゲット1400レベルの単語を短い英文の中で覚える旺文社の単語帳です。単語と意味を一覧で覚えるのが続かなかった人が文脈の助けを借りて覚え直すのに向いています。",asin:"4010347465",short:"ターゲットR 1400",kind:["tango"],tier:1,unit:"bunsho",hasshin:1,onsei:2,kyotsu:true},
+  {name:"英文で覚える 英単語ターゲットR 英単語ターゲット1900レベル",note:"ターゲット1900レベルの単語を英文の中で覚える旺文社の単語帳です。入試レベルの英文を読みながら語彙を増やせるので、長文の練習と単語の暗記を同時に進めたい人に向いています。",asin:"4010347457",short:"ターゲットR 1900",kind:["tango"],tier:1,unit:"bunsho",hasshin:1,onsei:2},
+  // ---- 難関（旧帝大・早慶） ----
+  {name:"改訂版 鉄緑会東大英単語熟語 鉄壁",note:"東大受験指導専門塾の鉄緑会による単語帳で、単語と熟語を語源やイラストや関連語とあわせてまとめて覚えます。分量は多いものの1冊で難関大に必要な語彙と熟語がそろうので、東大・京大志望なら最初の1冊にもなります。",asin:"404604411X",short:"鉄壁",kind:["tango","jukugo"],tier:2,unit:"imi",hasshin:2,onsei:1,first2:true,thick:true,kanen:true,jstyle:"matome",hard:true},
+  {name:"単語王2202",note:"見出し語2202語に派生語や関連語までまとめて載せた難関大向けの単語帳です。1つの見出し語から関連する語を芋づる式に覚えられるので、短期間で語彙を大きく増やしたい人に向いています。2001年刊行の本なので書店で見つからなければ通販で探しましょう。",asin:"490163500X",short:"単語王2202",kind:["tango"],tier:2,unit:"imi",hasshin:1,onsei:0,first2:true,thick:true},
+  {name:"速読英単語 上級編［改訂第5版］",note:"速単シリーズの上級編で、難関大レベルの長文を読みながら必修編より上の語彙を覚えます。必修編などで標準レベルの単語を終えた人が長文の中で上級語彙と背景知識を広げるのに向いています。",asin:"4865315217",short:"速単 上級編",kind:["tango"],tier:2,unit:"bunsho",hasshin:1,onsei:2,secondOnly:true},
+  {name:"話題別英単語 リンガメタリカ［改訂第2版］",note:"環境・医療・科学・社会などの話題ごとの英文で論説文によく出る語彙を覚えるZ会の単語帳です。2026年2月に改訂第2版が出ました。単語と一緒に入試の長文で頻出のテーマの背景知識が身につくので、難関大の長文や英作文の準備にもなります。",asin:"4865316515",short:"リンガメタリカ",kind:["tango"],tier:2,unit:"bunsho",hasshin:2,onsei:1,secondOnly:true},
+  {name:"大学入試 無敵の難単語 PINNACLE 420",note:"駿台の山崎竜成先生による標準の単語帳には載っていない難単語を集めたアルクの単語帳です。標準レベルの単語帳を仕上げた人が最難関大の長文で差がつく語彙を上積みするのに向いています。",asin:"4757440693",short:"PINNACLE 420",kind:["tango"],tier:2,unit:"reibun",hasshin:1,onsei:1,secondOnly:true},
+  // ---- 熟語帳 ----
+  {name:"英熟語ターゲット1000（5訂版）",note:"入試に出る熟語1000個を出題頻度順に並べた旺文社の定番熟語帳です。熟語と意味を一覧で速く回せるので、短期間で入試に必要な熟語を一通り押さえたい人に向いています。",asin:"4010346493",kind:["jukugo"],jstyle:"ichiran",kyotsu:true},
+  {name:"英文で覚える 英熟語ターゲットR（英熟語ターゲット1000対応）",note:"ターゲット1000の熟語を英文の中で覚える旺文社の熟語帳です。熟語と意味を一覧で覚えても使われ方が分からない人が文脈の中で意味をつかむのに向いています。",asin:"4010348488",kind:["jukugo"],jstyle:"bunsho",kyotsu:true},
+  {name:"システム英熟語（5訂版）",note:"熟語を前置詞や副詞の意味ごとに整理した駿台文庫の熟語帳です。丸暗記ではなく前置詞や動詞の働きから熟語の意味を理解できるので、初めて見る熟語の意味も推測しやすくなります。",asin:"479611145X",kind:["jukugo"],jstyle:"riron",hasshin:1},
+  {name:"解体英熟語（改訂第2版）",note:"熟語を前置詞や副詞の核となるイメージから「解体」して理解するZ会の熟語帳です。覚える熟語の数が多く入試問題からの用例も豊富なので、難関大の熟語まで理屈で押さえたい人に向いています。",asin:"4860662725",kind:["jukugo"],jstyle:"riron",hasshin:1},
+  {name:"速読英熟語（改訂版）",note:"Z会の速単シリーズの熟語版で、長文を読みながら熟語と構文を覚えます。熟語を文脈の中で覚えたい人や速読英単語で文章から覚えるやり方が合っていた人に向いています。",asin:"486531587X",kind:["jukugo"],jstyle:"bunsho"},
+  {name:"大学入試 飛躍のフレーズ IDIOMATIC 300",note:"駿台の山崎竜成先生による英語表現の参考書で、熟語帳ではなく英語として自然な言い回しやコロケーションを例文の中で覚える本です。覚える量は書名の300よりはるかに多く、完成までには半年から1年かかります。英作文や和訳で自然な英語を書けるようになりたい難関大志望者に向いています。",asin:"4757442106",kind:["jukugo"],jstyle:"hyougen",hasshin:3,hard:true},
+];
+const ARTICLE_OF = {
+  "改訂版 必携英単語LEAP":"leap-saikyou",
+  "改訂版 必携英単語LEAP Basic":"leap-saikyou",
+  "大学入試 飛躍のフレーズ IDIOMATIC 300":"idiomatic-300",
+};
+BOOKS.forEach(b => { if(ARTICLE_OF[b.name]) b.article = ARTICLE_OF[b.name]; });
+
+/* ============================================================
+   質問の流れ
+   ============================================================ */
+const routeColor = { tango:"var(--lv3)", jukugo:"var(--lv5)" };
+const routeName = { tango:"英単語帳", jukugo:"英熟語帳" };
+const SHIBOU_NAME = { kyotsu:"共通テストまで", hyojun:"MARCH・関関同立・地方国公立", nankan:"旧帝大・早慶・医学部" };
+const TIER_NAME = ["基礎", "標準", "難関"];
+
+let answers = {};
+let stack = [{step:"start", snap:{}}];
+const clone = o => JSON.parse(JSON.stringify(o));
+const quizArea = document.getElementById("quiz-area");
+const crumbsEl = document.getElementById("crumbs");
+
+function renderCrumbs(){
+  const a = answers, labels = [];
+  if(a.kind) labels.push(["種類", routeName[a.kind]]);
+  if(a.kind==="tango"){
+    if(a.chugaku) labels.push(["中学単語", a.chugaku==="yes" ? "覚えている" : "自信がない"]);
+    if(a.doneLabel) labels.push(["終えた本", a.doneLabel]);
+  }
+  if(a.kind==="jukugo" && a.jprog) labels.push(["単語帳", a.jprog==="done" ? "1冊終えた" : "1冊目の途中"]);
+  if(a.shibou) labels.push(["志望", SHIBOU_NAME[a.shibou]]);
+  if(a.jstyleLabel) labels.push(["覚え方", a.jstyleLabel]);
+  crumbsEl.innerHTML = labels.map(([k,v], i) =>
+    (i>0?'<span class="crumb-arrow">→</span>':'') + `<span class="crumb"><span class="k">${k}</span><b>${v}</b></span>`
+  ).join("");
+}
+
+function go(step){ stack.push({step, snap:clone(answers)}); renderStep(step); }
+function back(){
+  if(stack.length<=1) return;
+  stack.pop();
+  const top = stack[stack.length-1];
+  answers = clone(top.snap);
+  renderStep(top.step);
+}
+
+/* 残りの質問数を出すための予定ルート */
+function plannedSteps(){
+  const a = answers, list = ["start"];
+  if(!a.kind) return null;
+  if(a.kind==="tango"){
+    list.push("chugaku");
+    if(a.chugaku!=="no") list.push("done");
+    if(a.chugaku!=="no" && a.done==="yes") list.push("which");
+    list.push("shibou");
+    if(a.shibou!=="kyotsu") list.push("sakubun");
+    list.push("zasetsu","choubun","onsei");
+  } else {
+    list.push("jprog");
+    if(!a.shibouFromTango) list.push("shibou");
+    list.push("jstyle");
+    if(a.shibou!=="kyotsu") list.push("jsakubun");
+  }
+  return list;
+}
+function progressHtml(){
+  const cur = stack.length;
+  const plan = plannedSteps();
+  const total = plan ? Math.max(plan.length, cur) : null;
+  const pct = total ? Math.round((cur-1)/total*100) : 6;
+  return `<div class="progress"><div class="p-label"><span><b>Q${cur}</b>${total?` / ${total}`:''}</span><span>${total?`あと${total-cur+1}問`:''}</span></div>
+    <div class="p-bar"><i style="width:${pct}%"></i></div></div>`;
+}
+function renderQ(index, qText, choices, colClass){
+  let html = progressHtml() + `<div class="card">
+    <div class="q-index">${index}</div>
+    <p class="q-text">${qText}</p>
+    <div class="choices ${colClass||''}">`;
+  choices.forEach(c=>{
+    html += `<button class="choice-btn" data-value="${c.value}">${c.label}${c.sub?`<span class="sub">${c.sub}</span>`:''}</button>`;
+  });
+  html += `</div></div>`;
+  if(stack.length > 1) html += `<div class="nav-row"><button class="back-btn" id="back-btn">← 前の質問に戻る</button></div>`;
+  quizArea.innerHTML = html;
+  renderCrumbs();
+  const bb = document.getElementById("back-btn");
+  if(bb) bb.addEventListener("click", back);
+  return quizArea.querySelectorAll(".choice-btn");
+}
+function bindChoice(btns, handler){
+  btns.forEach(b => b.addEventListener("click", ()=> handler(b.dataset.value, b)));
+}
+
+function renderStep(step){
+  window.scrollTo({top:0, behavior:"auto"});
+  switch(step){
+    case "start": return stepStart();
+    case "chugaku": return stepChugaku();
+    case "done": return stepDone();
+    case "which": return stepWhich();
+    case "shibou": return stepShibou();
+    case "sakubun": return stepSakubun();
+    case "zasetsu": return stepZasetsu();
+    case "choubun": return stepChoubun();
+    case "onsei": return stepOnsei();
+    case "jprog": return stepJprog();
+    case "jstyle": return stepJstyle();
+    case "jsakubun": return stepJsakubun();
+    case "result": return renderResult();
+  }
+}
+function stepStart(){
+  const btns = renderQ("STEP 1", "探しているのはどっち？", [
+    {label:"英単語帳", sub:"ターゲット・シス単・LEAP・鉄壁など20冊から診断", value:"tango"},
+    {label:"英熟語帳", sub:"熟語帳・表現集など8冊から診断", value:"jukugo"},
+  ], "cols-1");
+  bindChoice(btns, v => { answers = {kind:v}; go(v==="tango" ? "chugaku" : "jprog"); });
+}
+
+/* ---------- 単語帳ルート ---------- */
+function stepChugaku(){
+  const btns = renderQ("英単語帳", "中学英語の単語はほぼ覚えている？", [
+    {label:"ほぼ覚えている", value:"yes"},
+    {label:"自信がない", sub:"中学の単語にも穴がある", value:"no"},
+  ]);
+  bindChoice(btns, v => {
+    answers.chugaku = v;
+    delete answers.done; delete answers.doneBook; delete answers.doneTier; delete answers.doneLabel;
+    go(v==="yes" ? "done" : "shibou");
+  });
+}
+function stepDone(){
+  const btns = renderQ("英単語帳", "最後まで覚えきった高校の単語帳はある？", [
+    {label:"まだない", sub:"これから1冊目を選ぶ", value:"no"},
+    {label:"ある", sub:"→ 終えた本を選べます", value:"yes"},
+  ]);
+  bindChoice(btns, v => {
+    answers.done = v;
+    delete answers.doneBook; delete answers.doneTier; delete answers.doneLabel;
+    go(v==="yes" ? "which" : "shibou");
+  });
+}
+function stepWhich(){
+  const opts = BOOKS.filter(b => b.kind.includes("tango") && b.tier>=0 && !b.name.startsWith("中学版"))
+                    .map(b => ({label:b.short, value:b.name}));
+  opts.push({label:"上にない本（基礎）", value:"other0"},{label:"上にない本（標準）", value:"other1"},{label:"上にない本（難関）", value:"other2"});
+  const btns = renderQ("英単語帳", "覚えきった単語帳はどれ？<br><span style=\"font-size:0.7em;font-weight:500;\">何冊か終えた人は一番難しい本を選んでください</span>", opts, "tags-grid");
+  bindChoice(btns, v => {
+    if(v.startsWith("other")){
+      answers.doneTier = +v.slice(5); answers.doneBook = null; answers.doneLabel = TIER_NAME[answers.doneTier] + "レベルの本";
+    } else {
+      const b = BOOKS.find(x => x.name===v);
+      answers.doneTier = b.tier; answers.doneBook = b.name; answers.doneLabel = b.short;
+    }
+    go("shibou");
+  });
+}
+function stepShibou(){
+  const btns = renderQ(routeName[answers.kind], "志望校で英語はどこまで必要？", [
+    {label:"共通テストまで", sub:"英語は共通テストだけ・中堅私大", value:"kyotsu"},
+    {label:"MARCH・関関同立・地方国公立", value:"hyojun"},
+    {label:"旧帝大・早慶・医学部", value:"nankan"},
+  ], "cols-1");
+  bindChoice(btns, v => {
+    answers.shibou = v;
+    if(answers.kind==="tango") go(v==="kyotsu" ? "zasetsu" : "sakubun");
+    else go("jstyle");
+  });
+}
+function stepSakubun(){
+  const btns = renderQ("英単語帳", "二次試験や個別試験に英作文や和訳はある？", [
+    {label:"ある", value:"yes"},
+    {label:"ない", sub:"マーク式や選択問題が中心", value:"no"},
+    {label:"まだ分からない", value:"unknown"},
+  ], "cols-1");
+  bindChoice(btns, v => { answers.sakubun = v; go("zasetsu"); });
+}
+function stepZasetsu(){
+  const btns = renderQ("英単語帳", "単語帳を途中でやめてしまったことはある？", [
+    {label:"ある", sub:"単語と意味を眺めるだけだと続かなかった", value:"yes"},
+    {label:"ない", value:"no"},
+  ]);
+  bindChoice(btns, v => { answers.zasetsu = v; go("choubun"); });
+}
+function stepChoubun(){
+  const btns = renderQ("英単語帳", "英語の長い文章を読むのは苦にならない？", [
+    {label:"苦にならない", value:"ok"},
+    {label:"苦手", value:"ng"},
+  ]);
+  bindChoice(btns, v => { answers.choubun = v; go("onsei"); });
+}
+function stepOnsei(){
+  const btns = renderQ("英単語帳", "単語はどうやって覚えたい？", [
+    {label:"音声を聞きながら覚えたい", sub:"通学中などに耳で回したい", value:"yes"},
+    {label:"目で見て覚えたい", sub:"赤シートで隠して回したい", value:"no"},
+  ], "cols-1");
+  bindChoice(btns, v => { answers.onsei = v; go("result"); });
+}
+
+/* ---------- 熟語帳ルート ---------- */
+function stepJprog(){
+  const btns = renderQ("英熟語帳", "単語帳はどこまで進んでいる？", [
+    {label:"1冊目の途中", sub:"まだ単語帳を覚えている最中", value:"naka"},
+    {label:"1冊目を終えた", value:"done"},
+  ]);
+  bindChoice(btns, v => { answers.jprog = v; go(answers.shibouFromTango ? "jstyle" : "shibou"); });
+}
+function stepJstyle(){
+  const opts = [
+    {label:"熟語と意味を一覧で速く回したい", value:"ichiran", s:"一覧で速く回したい"},
+    {label:"前置詞や動詞のイメージから理屈で理解したい", value:"riron", s:"理屈で理解したい"},
+    {label:"長文や例文の中で覚えたい", value:"bunsho", s:"文章の中で覚えたい"},
+    {label:"単語とまとめて1冊で覚えたい", value:"matome", s:"単語とまとめて覚えたい"},
+  ];
+  const btns = renderQ("英熟語帳", "熟語はどうやって覚えたい？", opts, "cols-1");
+  bindChoice(btns, v => {
+    answers.jstyle = v; answers.jstyleLabel = opts.find(x => x.value===v).s;
+    go(answers.shibou==="kyotsu" ? "result" : "jsakubun");
+  });
+}
+function stepJsakubun(){
+  const btns = renderQ("英熟語帳", "英作文で使える表現まで身につけたい？", [
+    {label:"身につけたい", sub:"英作文や和訳で自然な英語を書きたい", value:"yes"},
+    {label:"読めればよい", value:"no"},
+  ], "cols-1");
+  bindChoice(btns, v => { answers.jsakubun = v; go("result"); });
+}
+
+/* ============================================================
+   結果算出
+   ============================================================ */
+function tangoTarget(){
+  const a = answers;
+  if(a.chugaku==="no") return 0;
+  if(a.done==="yes") return Math.min(a.doneTier + 1, 2);
+  return 1;
+}
+function tangoMaxTier(){
+  if(answers.chugaku==="no") return 0;
+  return answers.shibou==="nankan" ? 2 : 1;
+}
+function scoreTango(b){
+  const a = answers, t = tangoTarget(), maxTier = tangoMaxTier();
+  if(!b.kind.includes("tango")) return -Infinity;
+  if(b.tier > maxTier) return -Infinity;
+  if(a.done==="yes" && a.chugaku!=="no"){
+    if(b.name===a.doneBook) return -Infinity;
+    if(b.tier < a.doneTier) return -Infinity;
+    if(b.tier===a.doneTier && a.doneTier < 2) return -Infinity;
+  } else {
+    if(b.secondOnly) return -Infinity;
+    if(b.tier===2 && !b.first2) return -Infinity;
+  }
+  if(b.name.startsWith("中学版") && a.chugaku!=="no") return -Infinity;
+  let s = 10 - Math.abs(b.tier - t) * 3;
+  if(a.shibou==="nankan" && b.tier===2 && b.first2) s += 2;
+  if(a.shibou==="kyotsu" && b.kyotsu) s += 2;
+  if(a.shibou!=="kyotsu" && b.kyotsu) s -= 1;                 // 1400レベルの本は二次・私大には少し物足りない
+  if(b.teiban) s += 1;                                         // ターゲット・シス単は定番として少し優先する
+  if(a.sakubun==="yes") s += (b.hasshin||0);
+  if(a.sakubun==="no" && (b.hasshin||0) >= 3) s -= 1;
+  if(a.zasetsu==="yes"){
+    if(b.unit==="bunsho" || b.unit==="reibun") s += 2;
+    if(b.thick) s -= 3;
+    if(b.unit==="imi") s -= 1;                                  // 一覧で眺めるだけの本は続かなかった人には合いにくい
+  } else if(b.unit==="imi" || b.unit==="phrase") s += 1;       // 続けられる人は一覧で速く回せる本で十分
+  if(a.choubun==="ok" && b.unit==="bunsho") s += 1;
+  if(a.choubun==="ng" && b.unit==="bunsho") s -= 3;
+  if(a.onsei==="yes") s += (b.onsei||0);
+  if(a.onsei==="no" && (b.unit==="imi" || b.unit==="phrase")) s += 2;
+  if(b.fav) s += 1;
+  if(b.school) s -= 1;
+  return s;
+}
+function tangoMax(){
+  const a = answers;
+  return 11 + (a.shibou==="nankan"?2:0) + (a.shibou==="kyotsu"?2:0) + (a.sakubun==="yes"?3:0)
+       + (a.zasetsu==="yes"?2:1) + (a.choubun==="ok"?1:0) + 2;
+}
+function scoreJukugo(b){
+  const a = answers;
+  if(!b.kind.includes("jukugo")) return -Infinity;
+  if(b.hard && (a.jprog!=="done" || a.shibou!=="nankan")) return -Infinity;
+  let s = 10;
+  if(b.jstyle===a.jstyle) s += 6;
+  if(a.jstyle==="bunsho" && b.name==="DUO 3.0") s += 2;      // DUOは例文で覚える本でもある
+  if(a.jstyle==="matome" && b.jstyle==="hyougen") s -= 2;
+  if(a.jsakubun==="yes"){
+    s += (b.hasshin||0) + (b.jstyle==="hyougen" ? 2 : 0);
+  }
+  if(a.shibou==="kyotsu" && b.kyotsu) s += 2;
+  if(a.jprog==="naka" && (b.jstyle==="ichiran" || b.jstyle==="matome")) s += 1;
+  return s;
+}
+function jukugoMax(){
+  const a = answers;
+  return 16 + (a.jsakubun==="yes"?5:0) + (a.shibou==="kyotsu"?2:0) + (a.jprog==="naka"?1:0);
+}
+
+function explainBook(b, s, maxScore){
+  const a = answers, tags = [];
+  if(a.kind==="tango"){
+    const d = b.tier - tangoTarget();
+    if(d===0) tags.push({t:"レベルがぴったり"});
+    else if(d>0) tags.push({t:"やや難しめ", warn:true});
+    else tags.push({t:"やや易しめ", warn:true});
+    tags.push({t:TIER_NAME[b.tier]+"レベル"});
+    if(a.sakubun==="yes" && (b.hasshin||0) >= 2) tags.push({t:"英作文に強い"});
+    if(b.unit==="bunsho") tags.push({t:"文章で覚える"});
+    else if(b.unit==="reibun") tags.push({t:"例文で覚える"});
+    else if(b.unit==="phrase") tags.push({t:"フレーズで覚える"});
+    else tags.push({t:"一覧で速く回せる"});
+    if(a.onsei==="yes" && (b.onsei||0) >= 2) tags.push({t:"音声で覚えやすい"});
+    if(b.kanen) tags.push({t:"熟語も兼ねられる"});
+    if(b.school) tags.push({t:"学校採用の本", warn:true});
+  } else {
+    if(b.jstyle===a.jstyle) tags.push({t:"覚え方がぴったり"});
+    if(b.jstyle==="matome") tags.push({t:"単語とまとめて覚えられる"});
+    if(b.jstyle==="hyougen") tags.push({t:"熟語帳ではなく表現集"});
+    if(a.jsakubun==="yes" && ((b.hasshin||0) >= 2 || b.name==="DUO 3.0")) tags.push({t:"英作文に強い"});
+    if(a.shibou==="kyotsu" && b.kyotsu) tags.push({t:"共通テストに十分"});
+  }
+  const pct = Math.max(0, Math.min(100, Math.round(s / maxScore * 100)));
+  return {pct, tags};
+}
+function hitokoto(b, ex){
+  const a = answers, t = ex.tags.map(x=>x.t);
+  const lead = a.shibou ? `${SHIBOU_NAME[a.shibou]}${a.shibou==="kyotsu" ? "なら" : "志望なら"}、` : "今の条件なら、";
+  let body;
+  if(a.kind==="jukugo"){
+    if(b.jstyle==="hyougen") body = "熟語帳を1冊終えてから取り組むと効果が大きい本です。毎日少しずつ例文を暗唱して長く付き合いましょう。";
+    else if(b.jstyle==="matome") body = "単語と熟語を1冊で済ませられるので、ほかの熟語帳に手を広げずにこの本を周回しましょう。";
+    else if(t.includes("覚え方がぴったり")) body = "あなたの覚え方に合う1冊です。単語帳と並行して毎日少しずつ回しましょう。";
+    else body = "覚え方の好みとは少し違いますが、入試に必要な熟語を押さえられる1冊です。";
+  } else {
+    if(b.school) body = "学校で配られているならこの本を使い切りましょう。配られていないなら上位の本を選ぶのがおすすめです。";
+    else if(t.includes("やや難しめ")) body = "少し背伸びになるので、分からない単語が多すぎると感じたら1つ下のレベルの本から始めましょう。";
+    else if(t.includes("やや易しめ")) body = "短期間で回し切って、次のレベルの本に進む土台にしましょう。";
+    else if(b.kanen) body = "単語と熟語を1冊で済ませられるので、熟語帳を別に買う必要はありません。";
+    else body = "今のレベルにちょうど合う1冊です。1冊を決めたら最後まで周回しましょう。";
+  }
+  return lead + body;
+}
+
+function typeDescriptions(){
+  const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const list = document.querySelector(".book-list:not(.must-list)");
+  if(!list || reduce) return;
+  const items = Array.from(list.querySelectorAll(":scope > .book-item")).slice(0,3);
+  const jobs = items.map(item => {
+    const desc = item.querySelector(".desc");
+    if(!desc) return null;
+    desc.style.minHeight = desc.offsetHeight + "px";
+    const walker = document.createTreeWalker(desc, NodeFilter.SHOW_TEXT);
+    const nodes = [];
+    while(walker.nextNode()) nodes.push({node:walker.currentNode, text:walker.currentNode.nodeValue});
+    nodes.forEach(n => n.node.nodeValue = "");
+    const job = {item, desc, nodes, ni:0, ci:0, done:false, caret:null};
+    item.addEventListener("click", e => { if(e.target.closest("a")) return; finish(job); }, {once:true});
+    return job;
+  }).filter(Boolean);
+  function finish(job){
+    if(job.done) return;
+    job.nodes.forEach(n => n.node.nodeValue = n.text);
+    if(job.caret) job.caret.remove();
+    job.done = true; job.desc.style.minHeight = "";
+  }
+  let k = 0;
+  function step(){
+    while(k < jobs.length && jobs[k].done) k++;
+    if(k >= jobs.length) return;
+    const job = jobs[k];
+    if(!job.caret){ job.caret = document.createElement("span"); job.caret.className = "type-caret"; }
+    const cur = job.nodes[job.ni];
+    if(!cur){ finish(job); k++; setTimeout(step, 260); return; }
+    if(job.caret.previousSibling !== cur.node) cur.node.parentNode.insertBefore(job.caret, cur.node.nextSibling);
+    job.ci++;
+    cur.node.nodeValue = cur.text.slice(0, job.ci);
+    if(job.ci >= cur.text.length){ job.ni++; job.ci = 0; }
+    setTimeout(step, 25);
+  }
+  setTimeout(step, 350);
+}
+
+function bookItemHtml(b, i, chipLabel, chipBg, ex, isSub){
+  const cv = COVERS[b.name];
+  const scopeLabel = answers.kind==="tango" ? TIER_NAME[b.tier] : "";
+  return `<div class="book-item rank-${i+1}">
+    <div class="book-chip${isSub?' sub-rank':''}" style="background:${chipBg}; color:var(--ink);">${chipLabel}</div>
+    <div class="book-info">
+      ${cv&&cv.i?`<a class="book-cover" href="${cv.u}" target="_blank" rel="sponsored noopener" aria-label="${b.name}を楽天で見る"><img src="${cv.i}" alt="${b.name}の表紙" width="84" height="120" loading="lazy" decoding="async"><span>楽天で見る</span></a>`:''}
+      <p class="name">${b.name}${scopeLabel?`<span class="scope-tag">${scopeLabel}</span>`:''}</p>
+      <div class="match"><span class="m-num">一致度 ${ex.pct}%</span><span class="m-bar"><i style="width:${ex.pct}%"></i></span></div>
+      <div class="reasons">${ex.tags.map(x=>`<span${x.warn?' class="warn"':''}>${x.t}</span>`).join('')}</div>
+      <p class="desc">${b.note?`<span class="d-note">${b.note}</span>`:''}<span class="d-you"><b>あなたへのひとこと</b>${hitokoto(b, ex)}</span></p>
+      <div class="book-actions">
+        <a class="buy-link" href="${amazonUrl(b)}" target="_blank" rel="sponsored noopener">Amazonで見る</a>
+        ${cv?`<a class="buy-link buy-rakuten" href="${cv.u}" target="_blank" rel="sponsored noopener">楽天で見る</a>`:''}
+        ${b.article?`<a class="article-link" href="articles/${b.article}.html">解説記事を読む →</a>`:''}
+      </div>
+    </div>
+  </div>`;
+}
+
+const TIP_HTML = {
+  tango:`<div class="textbook-base">
+  <span class="tb-label">選ぶ前に</span>
+  <p class="tb-name">単語帳は1冊を決めて周回する</p>
+  <p class="tb-desc">単語帳は何冊も手を出すより<b>1冊を決めて何周もする方が確実に力になります。</b>下の結果から1冊を選んだら、覚えきるまでほかの単語帳に乗り換えないようにしましょう。</p>
+  <a class="article-link" href="articles/sankousho-syuukaisuu.html">参考書の周回数の記事を読む →</a>
+</div>`,
+  jukugo:`<div class="textbook-base">
+  <span class="tb-label">選ぶ前に</span>
+  <p class="tb-name">熟語帳は単語帳と並行して進める</p>
+  <p class="tb-desc">熟語は知っている単語の組み合わせなので<b>単語帳をある程度進めてから始める方が覚えやすくなります。</b>1冊目の単語帳の途中なら、単語帳を優先しながら熟語帳を少しずつ並行させましょう。</p>
+</div>`,
+};
+
+function renderResult(){
+  const a = answers, isTango = a.kind==="tango";
+  const scorer = isTango ? scoreTango : scoreJukugo;
+  const maxScore = isTango ? tangoMax() : jukugoMax();
+  const scored = BOOKS.map((b, i) => ({b, s:scorer(b), i}))
+                      .filter(x => x.s > -Infinity)
+                      .sort((x,y)=> y.s - x.s || x.i - y.i);
+  const top = scored.slice(0,3), others = scored.slice(3,6);
+  const exOf = x => explainBook(x.b, x.s, maxScore);
+
+  document.getElementById("page-title").innerHTML = "診断結果";
+  document.getElementById("page-lead").innerHTML = top.length ? ("あなたに一番合う" + routeName[a.kind] + "、ベスト" + top.length + "はこちら。") : "診断結果はこちら。";
+
+  const parts = [];
+  if(isTango){
+    if(a.chugaku==="no") parts.push("中学単語から固める");
+    else if(a.doneLabel) parts.push(a.doneLabel + "を終えた");
+    else parts.push("1冊目を選ぶ");
+  } else {
+    parts.push(a.jprog==="done" ? "単語帳を1冊終えた" : "単語帳の1冊目の途中");
+  }
+  parts.push(SHIBOU_NAME[a.shibou] + (a.shibou==="kyotsu" ? "" : "志望"));
+  if(a.jstyleLabel) parts.push(a.jstyleLabel);
+
+  const MEDAL = ["var(--amber)", "#C7CDD6", "#C98A4B"];
+  const MEDAL_LABEL = ["No.1 イチオシ", "No.2", "No.3"];
+  let bodyHtml;
+  if(!top.length){
+    const doneBook = BOOKS.find(b => b.name===a.doneBook);
+    bodyHtml = `<div class="textbook-base">
+      <span class="tb-label">新しい単語帳は要りません</span>
+      <p class="tb-name">${doneBook ? doneBook.name : "今の単語帳"}を周回しましょう</p>
+      <p class="tb-desc">${SHIBOU_NAME[a.shibou]}${a.shibou==="kyotsu" ? "なら" : "志望なら"}必要な語彙はすでに1冊でそろっています。<b>新しい単語帳に手を広げるより、終えた本を何周もして忘れない状態を保つ方が得点に直結します。</b>余った時間は熟語や長文に回しましょう。</p>
+      <a class="article-link" href="articles/sankousho-syuukaisuu.html">参考書の周回数の記事を読む →</a>
+    </div>`;
+  } else {
+    let podiumHtml = '';
+    if(top.length >= 2){
+      const order = top.length===3 ? [1,0,2] : [0,1];
+      podiumHtml = '<div class="podium">' + order.map(idx => `
+        <div class="podium-col ${idx===0?"podium-1":(idx===1?"podium-2":"podium-3")}">
+          <div class="podium-book" style="background:${MEDAL[idx]}"><span class="podium-rank">${idx+1}</span></div>
+          <div class="podium-base" style="background:${MEDAL[idx]}"></div>
+        </div>`).join('') + '</div>';
+    }
+    let listHtml = '<div class="book-list">';
+    top.forEach((x,i)=>{ listHtml += bookItemHtml(x.b, i, top.length===1 ? "イチオシ" : MEDAL_LABEL[i], MEDAL[i], exOf(x), false); });
+    listHtml += '</div>';
+    if(others.length){
+      listHtml += `<details class="more-books"><summary>ほかの候補（${others.length}冊）</summary><div class="book-list">`;
+      others.forEach((x,k)=>{ listHtml += bookItemHtml(x.b, 3+k, `No.${4+k}`, "", exOf(x), true); });
+      listHtml += '</div></details>';
+    }
+    bodyHtml = '<p class="pr-note"><span class="pr-tag">PR</span>このページにはアフィリエイト広告が含まれています</p>' + TIP_HTML[a.kind] + podiumHtml + listHtml;
+  }
+
+  /* もう一方の診断への導線 */
+  let crossHtml;
+  if(isTango){
+    const kanenTop = top.find(x => x.b.kanen);
+    const lead = kanenTop
+      ? `${kanenTop.b.short}を選ぶなら熟語帳は別に買わなくて大丈夫です。ほかの単語帳を選ぶ人は熟語帳も診断してみましょう。`
+      : "単語帳が決まったら、熟語帳も同じように診断できます。";
+    crossHtml = `<div class="cross-box"><p>${lead}</p><button class="cross-btn" id="cross-btn">熟語帳も診断する →</button></div>`;
+  } else {
+    crossHtml = `<div class="cross-box"><p>単語帳がまだ決まっていない人は、単語帳も診断できます。</p><button class="cross-btn" id="cross-btn">単語帳も診断する →</button></div>`;
+  }
+
+  quizArea.innerHTML = `
+    <div class="result-head">
+      <span class="route-badge" style="background:${routeColor[a.kind]}">${routeName[a.kind]}</span>
+      <h2>${parts.join(" ・ ")}</h2>
+    </div>
+    ${bodyHtml}
+    ${crossHtml}
+    <div style="text-align:center;"><button class="retry-btn" id="retry-btn">もう一度診断する</button></div>
+    <p class="disclaimer" style="margin-top:28px;">
+      ※本診断は一般的な学習ルートの目安であり、個々の学力・志望校の出題傾向によって最適な単語帳は異なります。<br>
+      ※Amazonのアソシエイトとして、当メンバーは適格販売により収入を得ています。当サイトは楽天アフィリエイトに参加しています。
+    </p>`;
+  renderCrumbs();
+  typeDescriptions();
+  document.getElementById("cross-btn").addEventListener("click", ()=>{
+    const keep = a.shibou;
+    resetTitle();
+    if(isTango){
+      answers = {kind:"jukugo", shibou:keep, shibouFromTango:true};
+      stack = [{step:"start", snap:{}}];
+      go("jprog");
+    } else {
+      answers = {kind:"tango"};
+      stack = [{step:"start", snap:{}}];
+      go("chugaku");
+    }
+  });
+  document.getElementById("retry-btn").addEventListener("click", ()=>{
+    answers = {}; stack = [{step:"start", snap:{}}];
+    resetTitle();
+    renderStep("start");
+  });
+}
+function resetTitle(){
+  document.getElementById("page-title").innerHTML = PAGE_TITLE;
+  document.getElementById("page-lead").innerHTML = PAGE_LEAD;
+}
+const PAGE_TITLE = document.getElementById("page-title").innerHTML;
+const PAGE_LEAD = document.getElementById("page-lead").innerHTML;
+renderStep("start");
+</script>
+</body>
+</html>
