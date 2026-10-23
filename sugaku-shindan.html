@@ -970,6 +970,30 @@ function probOrder(){
   if(isElite()) return q ? [H,G,K,P,M] : [K,G,H,P,M];
   return q ? [H,G,P,S] : [G,H,P,S];
 }
+/* 定期テスト：範囲の合わない分冊を除く（数I・数Aを選んだら数II・B版、数II・数B・ベクトルを選んだら数I・A版を出さない） */
+function teikiRangeOk(b){
+  const n = b.name, hasII = n.includes("II") || n.includes("2BC"), hasIA = /I・A|I\+A|IA/.test(n);
+  const r = answers.teikiRange;
+  if(["数I","数A"].includes(r)) return !(hasII && !hasIA);
+  if(["数II","数B","ベクトル"].includes(r)) return !(hasIA && !hasII);
+  return true;
+}
+/* 定期テストは状況ごとに順位を直接指定する（はじはじは「まったく勉強していない」だけ） */
+function teikiOrder(){
+  const q = answers.style==="quality", st = answers.status;
+  if(["数III","複素数平面・式と曲線"].includes(answers.teikiRange)){
+    const K="基礎問題精講（数学III）", Y="やさしい高校数学（数学III・C）", T="数学のトリセツ！数学III", A="青チャート（チャート式 基礎からの数学III+C）", O="1対1対応の演習（数学III）";
+    if(st==="none") return [Y,T,K];
+    if(st==="some") return q ? [Y,K,T] : [K,Y,T];
+    return q ? [A,O,K] : [O,A,K];
+  }
+  const IA = ["数I","数A"].includes(answers.teikiRange);
+  const H="はじめからはじめる数学（マセマ）", N="入門問題精講", Y = IA ? "やさしい高校数学（数学I・A）" : "やさしい高校数学（数学II・B）", K="基礎問題精講（数学I・A/II・B）",
+        W="白チャート（チャート式 基礎と演習）", A="青チャート（チャート式 基礎からの数学）", O="1対1対応の演習（数学I・A/II・B）", Ki="黄チャート（チャート式 解法と演習）";
+  if(st==="none") return q ? [H,N,Y] : [H,N,K];
+  if(st==="some") return q ? [N,W,K] : [W,N,K];
+  return q ? [A,O,W] : [O,A,Ki];
+}
 function scoreBook(b, targetTier, scopes, purpose, style, bunya, bunyaHasMatch, krangeWanted, bunyaProfile, excludeBunyaSpecific, shibou, shibouDetail, mouraikeiChoice){
   // 数IIIを選んだときは scopes に "common3" が入る：文理共通の本は数IIIまで載っている本（incl3）だけ出す
   const bookScopes = (b.scope==="common" && b.incl3) ? ["common","common3"] : [b.scope];
@@ -1129,6 +1153,13 @@ function renderResult(){
                     .filter(x => x.s > -Infinity)
                     .sort((a,b)=> b.s - a.s);
   scored = kyoutsuuFirst(scored, x => x.b);
+  if(answers.purpose==="teiki"){
+    const order = teikiOrder();
+    const H = "はじめからはじめる数学（マセマ）";
+    scored = order.map(n => BOOKS.find(b => b.name===n)).filter(Boolean).map(b => ({b}))
+      .concat(scored.filter(x => !order.includes(x.b.name) && x.b.purposes.includes("teiki") && !(x.b.bunya && x.b.bunya.length) && teikiRangeOk(x.b) && !(x.b.name===H && answers.status!=="none") && !x.b.unconditional))
+      .map((x,i) => ({b:x.b, s:10 - i}));
+  }
   if(bunya==="場合の数・確率"){
     const order = probOrder();
     scored = order.map(n => scored.find(x => x.b.name===n)).filter(Boolean)
