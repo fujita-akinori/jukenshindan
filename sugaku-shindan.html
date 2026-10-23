@@ -940,6 +940,11 @@ function pickTier(){
   return Math.max(sougouHensachiToTier(answers.hensachiKey), shibouToTier(answers.shibou));
 }
 
+/* 基礎問題精講は1位には出さない（基礎の段階は講義で理解する本を先に勧める）。1位になったら2位に下げる */
+function kisoSeikoNotFirst(list){
+  if(list.length > 1 && list[0].b.name.startsWith("基礎問題精講")) list.splice(1, 0, list.shift());
+  return list;
+}
 /* 京大・阪大・九大志望の総合ルートでは「世界一わかりやすい」の各大学の数学を1位に出す
    （偏差値65以上の超上位層・問題集を選んだ人・偏差値50未満の人は今の1位を残して2位にする） */
 function sekaiichiFirst(list){
@@ -1166,6 +1171,7 @@ function renderResult(){
       .concat(scored.filter(x => !order.includes(x.b.name)))
       .map((x,i) => ({b:x.b, s:10 - i}));
   }
+  scored = kisoSeikoNotFirst(scored);
   scored = sekaiichiFirst(scored);
   let picks = scored.slice(0, 3).map(x=>x.b);
   const others = scored.slice(3, 6);
