@@ -697,6 +697,7 @@ function scoreJukugo(b){
   }
   if(a.shibou==="kyotsu" && b.kyotsu) s += 2;
   if(a.jprog==="naka" && (b.jstyle==="ichiran" || b.jstyle==="matome")) s += 1;
+  if(a.jprog==="done" && b.name.startsWith("英熟語ターゲット1000")) s -= 4;   // 単語帳を1冊終えた人には易しすぎる
   return s;
 }
 function jukugoMax(){
@@ -830,6 +831,8 @@ function renderResult(){
   const scored = BOOKS.map((b, i) => ({b, s:scorer(b), i}))
                       .filter(x => x.s > -Infinity)
                       .sort((x,y)=> y.s - x.s || x.i - y.i);
+  // 単語帳を1冊終えた人に英熟語ターゲット1000を1位では出さない
+  if(!isTango && a.jprog==="done" && scored.length > 1 && scored[0].b.name.startsWith("英熟語ターゲット1000")) scored.splice(1, 0, scored.shift());
   const top = scored.slice(0,3), others = scored.slice(3,6);
   const exOf = x => explainBook(x.b, x.s, maxScore);
 
