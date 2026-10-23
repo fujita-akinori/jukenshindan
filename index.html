@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=61513461">
+<link rel="stylesheet" href="style.css?v=aefb541a">
 <style>
   /* --- hero --- */
   .hero{
@@ -209,6 +209,28 @@
 
 <main class="wrap">
 
+  <a class="home-count" href="kyoutsuu-countdown.html" id="home-count" aria-label="共通テストまでのカウントダウンを見る">
+    <span class="hc-label" id="hc-label">2027年度 共通テストまで</span>
+    <span class="hc-days">あと<b id="hc-days">--</b>日</span>
+    <span class="hc-hms" id="hc-hms"></span>
+    <span class="hc-more">今やるべきことを見る →</span>
+  </a>
+  <script>
+  (function(){
+    var T = [["2027年度 共通テストまで", new Date("2027-01-16T09:30:00+09:00")], ["国公立二次（前期）まで", new Date("2027-02-25T09:00:00+09:00")]];
+    function tick(){
+      var now = new Date(), t = T.find(function(x){ return x[1] > now; });
+      var box = document.getElementById("home-count");
+      if(!t){ box.style.display = "none"; return; }
+      var s = Math.floor((t[1] - now) / 1000);
+      document.getElementById("hc-label").textContent = t[0];
+      document.getElementById("hc-days").textContent = Math.floor(s / 86400);
+      document.getElementById("hc-hms").textContent = Math.floor(s % 86400 / 3600) + "時間" + String(Math.floor(s % 3600 / 60)).padStart(2, "0") + "分" + String(s % 60).padStart(2, "0") + "秒";
+    }
+    tick(); setInterval(tick, 1000);
+  })();
+  </script>
+
   <section class="hero">
     <canvas id="bg-shapes"></canvas>
     <div class="eyebrow">JUKEN SHINDAN LABO</div>
@@ -342,5 +364,6 @@
 
 <script src="bg-shapes-v3.js"></script>
 
+<script src="nav.js" defer></script>
 </body>
 </html>
