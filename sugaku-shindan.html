@@ -769,7 +769,7 @@ function stepNijiBunyaExtra(){
   bindChoice(btns, (v)=>{ answers.bunyaProfile = v; go("niji_bunya_hensachi"); });
 }
 function stepBunyaHensachi(){
-  const btns = renderQ("二次・分野別", "", "あなたの偏差値は？", [
+  const btns = renderQ("二次・分野別", "", "あなたの偏差値は？（河合全統記述模試基準）", [
     {label:"50未満", value:"lt50"},{label:"50〜65", value:"mid"},{label:"65以上", value:"gte65"},
   ], "cols-3");
   bindChoice(btns, (v)=>{ answers.hensachi = {lt50:"50未満",mid:"50〜65",gte65:"65以上"}[v]; answers.hensachiKey=v; go("niji_bunya_shibou"); });
@@ -828,7 +828,7 @@ function stepSougouStatus(){
   });
 }
 function stepSougouHensachi(){
-  const btns = renderQ("二次・総合", "", "あなたの偏差値は？", [
+  const btns = renderQ("二次・総合", "", "あなたの偏差値は？（河合全統記述模試基準）", [
     {label:"50未満", value:"lt50"},{label:"50〜65", value:"mid"},{label:"65以上", value:"gte65"},
   ], "cols-3");
   bindChoice(btns, (v)=>{
