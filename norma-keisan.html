@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- GA4:BEGIN -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2WNQN0ZF8D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2WNQN0ZF8D');
+</script>
+<!-- GA4:END -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>参考書の1日ノルマ計算機｜周回数と期限から1日何ページ・何問か計算 | 受験診断ドットコム</title>
+<meta name="description" content="参考書のページ数・問題数と周回数・終わらせたい日を入れるだけで1日のノルマと日ごとの予定が分かる無料ツールです。2周目以降は速く進む前提で計算し休みの曜日も設定できます。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=61513461">
+<style>
+  .page-wrap{ padding-top:36px; padding-bottom:120px; max-width:760px; }
+  .crumbs-dark{ font-size:12.5px; color:var(--text-on-ink-muted); margin-bottom:14px; }
+  .crumbs-dark a{ color:var(--text-on-ink-muted); }
+  h1.page-title{ font-family:'Shippori Mincho', serif; font-weight:800; font-size:clamp(24px,4.5vw,32px); margin:0 0 8px; line-height:1.4; }
+  .page-title-rule{ width:56px; height:3px; background:var(--amber); border:none; margin:14px 0 22px; border-radius:2px; }
+  .lead{ color:var(--text-on-ink-muted); font-size:14.5px; line-height:1.9; margin:0 0 26px; }
+  .lead b{ color:var(--text-on-ink); }
+  .tool-card{ background:var(--ink-soft); border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:24px 22px; margin:0 0 20px; }
+  .tool-card h2{ font-size:19px; margin:0 0 14px; }
+  .tool-card h3{ font-size:15.5px; margin:24px 0 10px; }
+  .tool-card p{ font-size:14px; line-height:1.9; color:var(--text-on-ink); margin:0 0 10px; }
+  .tool-card a{ color:var(--amber); }
+  .row{ margin:0 0 16px; }
+  .row.two{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  label, .lbl{ display:block; font-size:13px; font-weight:700; margin:0 0 6px; color:var(--text-on-ink); }
+  input[type=text], input[type=number], input[type=date], select{ width:100%; background:var(--ink); color:var(--text-on-ink); border:1px solid rgba(255,255,255,0.18); border-radius:8px; padding:11px 12px; font:inherit; font-size:15px; color-scheme:dark; }
+  input:focus, select:focus{ outline:2px solid var(--amber); outline-offset:1px; }
+  .inline{ display:flex; gap:8px; } .inline input{ flex:1; min-width:0; } .inline select{ width:96px; flex:none; }
+  .days{ display:flex; flex-wrap:wrap; gap:8px; }
+  .days label{ display:inline-flex; align-items:center; gap:6px; margin:0; font-weight:500; background:var(--ink); border:1px solid rgba(255,255,255,0.18); border-radius:20px; padding:7px 13px; cursor:pointer; }
+  .days input{ accent-color:var(--amber); }
+  .adv{ margin:4px 0 18px; border-top:1px dashed rgba(255,255,255,0.15); padding-top:14px; }
+  .adv summary{ cursor:pointer; font-size:13.5px; font-weight:700; color:var(--amber); margin-bottom:14px; }
+  .hint{ font-size:12.5px !important; color:var(--text-on-ink-muted) !important; }
+  .calc-btn{ width:100%; border:none; cursor:pointer; font-size:16px; padding:14px; }
+  .err{ color:#ff8a7a !important; font-size:13px !important; margin:10px 0 0 !important; min-height:1em; }
+  .result .big{ font-size:22px; line-height:1.6; margin:4px 0 16px; }
+  .result .big b{ color:var(--amber); font-size:30px; }
+  .result .big span{ display:block; font-size:14px; color:var(--text-on-ink-muted); }
+  .rounds{ list-style:none; padding:0; margin:0 0 12px; }
+  .rounds li{ display:flex; justify-content:space-between; gap:10px; padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.08); font-size:14px; }
+  .meta{ font-size:12.5px !important; color:var(--text-on-ink-muted) !important; }
+  .cal-wrap{ max-height:420px; overflow:auto; border:1px solid rgba(255,255,255,0.1); border-radius:8px; }
+  .cal{ width:100%; border-collapse:collapse; font-size:13.5px; }
+  .cal th, .cal td{ text-align:left; padding:9px 12px; border-bottom:1px solid rgba(255,255,255,0.07); vertical-align:top; }
+  .cal th{ position:sticky; top:0; background:var(--ink-softer); }
+  .cal td:first-child{ white-space:nowrap; color:var(--text-on-ink-muted); width:1%; }
+  .muted{ color:var(--text-on-ink-muted); }
+  .share-wrap{ margin:6px 0 4px; }
+  .share-x{ display:inline-flex; align-items:center; gap:9px; background:#fff; color:#0f1419 !important; border:none; border-radius:999px; padding:12px 22px; font-size:14px; font-weight:700; text-decoration:none; transition:transform .15s ease, opacity .15s ease; }
+  .share-x:hover{ transform:translateY(-2px); opacity:.9; }
+  .share-x svg{ width:16px; height:16px; fill:currentColor; }
+  .count{ text-align:center; padding:34px 20px; border-color:rgba(232,163,61,0.35); }
+  .count-label{ font-size:14px !important; color:var(--text-on-ink-muted) !important; }
+  .count-days{ font-family:'Shippori Mincho', serif; font-weight:800; line-height:1; margin:6px 0 10px; }
+  .count-days span{ font-size:clamp(72px,18vw,120px); color:var(--amber); }
+  .count-days small{ font-size:28px; margin-left:6px; }
+  .count-hms{ font-size:20px; font-variant-numeric:tabular-nums; letter-spacing:.04em; }
+  .count-sub{ font-size:12px !important; color:var(--text-on-ink-muted) !important; margin-top:12px !important; }
+  .links{ margin:8px 0 0; padding-left:1.2em; } .links li{ margin:6px 0; font-size:14px; }
+  .dates{ list-style:none; padding:0; margin:0 0 12px; }
+  .dates li{ display:grid; grid-template-columns:1fr auto; gap:2px 12px; padding:12px 0; border-bottom:1px solid rgba(255,255,255,0.08); font-size:14px; }
+  .dates li span{ color:var(--text-on-ink-muted); grid-column:1 / -1; font-size:12.5px; }
+  .dates li em{ font-style:normal; color:var(--amber); font-weight:700; }
+  @media (max-width:560px){ .row.two{ grid-template-columns:1fr; } .tool-card{ padding:20px 16px; } }
+</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6837829466798350" crossorigin="anonymous"></script>
+<!-- SEO:BEGIN -->
+<link rel="canonical" href="https://jukenshindan.com/norma-keisan.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="受験診断ドットコム">
+<meta property="og:title" content="参考書の1日ノルマ計算機｜周回数と期限から1日何ページ・何問か計算 | 受験診断ドットコム">
+<meta property="og:description" content="参考書のページ数・問題数と周回数・終わらせたい日を入れるだけで1日のノルマと日ごとの予定が分かる無料ツールです。2周目以降は速く進む前提で計算し休みの曜日も設定できます。">
+<meta property="og:url" content="https://jukenshindan.com/norma-keisan.html">
+<meta property="og:image" content="https://jukenshindan.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="参考書の1日ノルマ計算機｜周回数と期限から1日何ページ・何問か計算 | 受験診断ドットコム">
+<meta name="twitter:description" content="参考書のページ数・問題数と周回数・終わらせたい日を入れるだけで1日のノルマと日ごとの予定が分かる無料ツールです。2周目以降は速く進む前提で計算し休みの曜日も設定できます。">
+<meta name="twitter:image" content="https://jukenshindan.com/og-image.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ホーム","item":"https://jukenshindan.com/"},{"@type":"ListItem","position":2,"name":"参考書の1日ノルマ計算機","item":"https://jukenshindan.com/norma-keisan.html"}]}</script>
+<!-- SEO:END -->
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="logo"><img src="logo-mark.png" class="mark" alt="受験診断ドットコム">受験診断ドットコム</a>
+    <nav class="nav-links">
+      <a href="shindan-ichiran.html">診断一覧</a>
+      <a href="articles/index.html">記事</a>
+      <a href="contact.html">お問い合わせ</a>
+      <!-- NAVSEARCH:BEGIN --><a class="nav-search" href="articles/index.html#search" aria-label="記事を検索" title="記事を検索"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="16.5" y1="16.5" x2="21" y2="21"></line></svg></a><!-- NAVSEARCH:END -->
+    </nav>
+  </div>
+</header>
+
+<main class="wrap page-wrap tool-page">
+  <nav class="crumbs-dark"><a href="index.html">ホーム</a> › <a href="shindan-ichiran.html">診断・ツール</a> › 参考書の1日ノルマ計算</nav>
+  <h1 class="page-title">参考書の1日ノルマ計算機</h1>
+  <hr class="page-title-rule">
+  <p class="lead">参考書の量と周回数・終わらせたい日を入れると、1日に何ページ（何問）やればいいかと日ごとの予定が分かります。2周目以降は速く進む前提で計算するので、無理のない計画が立てられます。</p>
+
+  <form id="nf" class="tool-card" autocomplete="off">
+    <div class="row"><label for="n-name">参考書の名前（任意）</label><input id="n-name" type="text" placeholder="例：1対1対応の演習 数学A"></div>
+    <div class="row two">
+      <div><label for="n-amount">量</label><div class="inline"><input id="n-amount" type="number" min="1" inputmode="numeric" placeholder="例：120" required><select id="n-unit"><option value="問">問</option><option value="ページ">ページ</option></select></div></div>
+      <div><label for="n-rounds">周回数</label><select id="n-rounds"><option>1</option><option>2</option><option selected>3</option><option>4</option><option>5</option></select></div>
+    </div>
+    <div class="row two">
+      <div><label for="n-start">開始日</label><input id="n-start" type="date" required></div>
+      <div><label for="n-end">終わらせたい日</label><input id="n-end" type="date" required></div>
+    </div>
+    <div class="row"><span class="lbl">勉強しない曜日</span>
+      <div class="days" id="n-off">
+        <label><input type="checkbox" value="1">月</label><label><input type="checkbox" value="2">火</label><label><input type="checkbox" value="3">水</label><label><input type="checkbox" value="4">木</label><label><input type="checkbox" value="5">金</label><label><input type="checkbox" value="6">土</label><label><input type="checkbox" value="0">日</label>
+      </div>
+    </div>
+    <details class="adv" id="n-adv">
+      <summary>2周目以降の設定</summary>
+      <div class="row two">
+        <div><label for="n-speed">1問（1ページ）にかかる時間</label><select id="n-speed"><option value="1">1周目と同じ</option><option value="0.75">1周目の3/4</option><option value="0.5" selected>1周目の半分</option><option value="0.33">1周目の1/3</option></select></div>
+        <div><label for="n-redo">解き直す量</label><select id="n-redo"><option value="1" selected>全部</option><option value="0.7">7割（できた問題を少し飛ばす）</option><option value="0.5">半分（間違えた問題中心）</option><option value="0.3">3割（間違えた問題だけ）</option></select></div>
+      </div>
+      <p class="hint">周回を重ねるほど速く進めるのが普通です。間違えた問題だけを解き直すなら量も絞れます。</p>
+    </details>
+    <button type="submit" class="btn btn-primary calc-btn">ノルマを計算する</button>
+    <p class="err" id="n-err" role="alert"></p>
+  </form>
+
+  <section id="n-result" class="tool-card result" hidden>
+    <h2 id="r-title">計算結果</h2>
+    <div class="big" id="r-big"></div>
+    <ul class="rounds" id="r-rounds"></ul>
+    <p class="meta" id="r-meta"></p>
+    <div class="share-wrap" id="r-share"></div>
+    <h3>日ごとの予定</h3>
+    <div class="cal-wrap"><table class="cal" id="r-cal"><thead><tr><th>日付</th><th>やる範囲</th></tr></thead><tbody></tbody></table></div>
+  </section>
+
+  <section class="tool-card tips">
+    <h2>計画を立てるときのコツ</h2>
+    <p>1冊目の参考書は完璧を目指して何周もするのが基本ですが、2冊目以降は1周で次に進んでいい場合もあります。周回数の決め方は<a href="articles/sankousho-syuukaisuu.html">参考書は何周すべきかの記事</a>で解説しています。どの参考書から始めるか迷ったら<a href="shindan-ichiran.html">参考書診断</a>で今の自分に合う1冊を確かめてみましょう。</p>
+  </section>
+</main>
+
+<script>
+(function(){
+  const $ = id => document.getElementById(id);
+  const KEY = "jukenshindan-norma";
+  const WD = ["日","月","火","水","木","金","土"];
+  const fmt = d => `${d.getMonth()+1}/${d.getDate()}（${WD[d.getDay()]}）`;
+  const iso = d => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+  const parse = s => { const [y,m,d] = s.split("-").map(Number); return new Date(y, m-1, d); };
+  const offBoxes = () => [...$("n-off").querySelectorAll("input")];
+
+  // 初期値：今日から60日後
+  const today = new Date(); today.setHours(0,0,0,0);
+  $("n-start").value = iso(today);
+  const later = new Date(today); later.setDate(later.getDate()+60); $("n-end").value = iso(later);
+
+  // 前回の入力を復元
+  try {
+    const saved = JSON.parse(localStorage.getItem(KEY) || "null");
+    if(saved){
+      ["name","amount","unit","rounds","start","end","speed","redo"].forEach(k => { if(saved[k] !== undefined) $("n-"+k).value = saved[k]; });
+      offBoxes().forEach(b => b.checked = (saved.off||[]).includes(b.value));
+      if(saved.start && parse(saved.start) < today) $("n-start").value = iso(today);
+    }
+  } catch(e) {}
+
+  function range(unit, a, b){ return unit==="ページ" ? (a===b ? `p.${a}` : `p.${a}〜${b}`) : (a===b ? `問${a}` : `問${a}〜${b}`); }
+
+  $("nf").addEventListener("submit", e => {
+    e.preventDefault();
+    $("n-err").textContent = "";
+    const name = $("n-name").value.trim();
+    const N = parseInt($("n-amount").value, 10);
+    const unit = $("n-unit").value;
+    const R = parseInt($("n-rounds").value, 10);
+    const speed = parseFloat($("n-speed").value), redo = parseFloat($("n-redo").value);
+    const off = offBoxes().filter(b => b.checked).map(b => b.value);
+    if(!N || N < 1) return $("n-err").textContent = "量を1以上で入れてください。";
+    if(!$("n-start").value || !$("n-end").value) return $("n-err").textContent = "開始日と終わらせたい日を入れてください。";
+    const start = parse($("n-start").value), end = parse($("n-end").value);
+    if(end < start) return $("n-err").textContent = "終わらせたい日は開始日より後にしてください。";
+    if(off.length === 7) return $("n-err").textContent = "勉強する曜日を1日以上残してください。";
+    const days = [];
+    for(let d = new Date(start); d <= end; d.setDate(d.getDate()+1)) if(!off.includes(String(d.getDay()))) days.push(new Date(d));
+    if(!days.length) return $("n-err").textContent = "期間内に勉強する日がありません。";
+
+    try { localStorage.setItem(KEY, JSON.stringify({name, amount:N, unit, rounds:R, start:$("n-start").value, end:$("n-end").value, speed, redo, off})); } catch(e) {}
+
+    // 周回ごとの量と重さ（1周目の1問＝1）
+    const rounds = [];
+    for(let r = 1; r <= R; r++){
+      const items = r===1 ? N : Math.max(1, Math.round(N*redo));
+      rounds.push({r, items, w: r===1 ? 1 : speed});
+    }
+    const total = rounds.reduce((s,x) => s + x.items*x.w, 0);
+    const cap = total / days.length; // 1日に使える重さ
+
+    // 日ごとに割り振る
+    const plan = []; let ri = 0, done = 0, carry = cap < 1 ? 1 - cap : 0; // 量が少ないときも初日から始める
+    for(const d of days){
+      let budget = cap + carry; const tasks = [];
+      while(ri < rounds.length && budget >= rounds[ri].w*0.999){
+        const R0 = rounds[ri];
+        const can = Math.min(R0.items - done, Math.floor(budget / R0.w + 1e-9));
+        if(can <= 0) break;
+        tasks.push({r:R0.r, a:done+1, b:done+can});
+        done += can; budget -= can*R0.w;
+        if(done >= R0.items){ R0.finish = d; ri++; done = 0; }
+      }
+      carry = budget;
+      plan.push({d, tasks});
+    }
+    // 端数で残った分は最終日に回す
+    while(ri < rounds.length){
+      const R0 = rounds[ri]; const last = plan[plan.length-1];
+      last.tasks.push({r:R0.r, a:done+1, b:R0.items}); R0.finish = last.d; ri++; done = 0;
+    }
+
+    const perDay = cap; // 1周目の1日あたりの量
+    const pace = (v) => { if(v < 1) return `${Math.round(1/v)}日に1${unit}`; const lo = Math.floor(v+1e-9), hi = Math.ceil(v-1e-9); return lo===hi ? `1日${lo}${unit}` : `1日${lo}〜${hi}${unit}`; };
+    $("r-title").textContent = name ? `『${name}』の計算結果` : "計算結果";
+    $("r-big").innerHTML = `1周目は<b>${pace(perDay)}</b>` + (R>1 ? `<span>2周目以降は${pace(perDay/speed)}ほど</span>` : "");
+    $("r-rounds").innerHTML = rounds.map(x => `<li><span>${x.r}周目（${x.items}${unit}）</span><b>${fmt(x.finish)} に完了</b></li>`).join("");
+    $("r-meta").textContent = `勉強する日は${days.length}日（${fmt(start)}〜${fmt(end)}）。` + (off.length ? `${off.map(v => WD[v]).join("・")}曜日は休みにしています。` : "");
+    $("r-cal").querySelector("tbody").innerHTML = plan.map(p => `<tr><td>${fmt(p.d)}</td><td>${p.tasks.length ? p.tasks.map(t => `${R>1 ? t.r+"周目 " : ""}${range(unit,t.a,t.b)}`).join("<br>") : '<span class="muted">空き日（復習や遅れの調整に）</span>'}</td></tr>`).join("");
+
+    const text = `${name ? "『"+name+"』を" : "参考書を"}${R}周、${pace(perDay)}のペースで進める計画を立てました📚`;
+    const url = "https://jukenshindan.com/norma-keisan.html?utm_source=x&utm_medium=share";
+    $("r-share").innerHTML = `<a class="share-x" href="https://x.com/intent/post?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>計画をXで共有</a>`;
+    $("n-result").hidden = false;
+    $("n-result").scrollIntoView({behavior:"smooth", block:"start"});
+  });
+})();
+</script>
+
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>&copy; 2026 受験診断ドットコム</span>
+    <div class="footer-links">
+      <a href="about.html">運営者情報</a>
+      <a href="privacy-policy.html">プライバシーポリシー</a>
+      <a href="contact.html">お問い合わせ</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

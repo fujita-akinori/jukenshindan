@@ -46,6 +46,8 @@ STATIC_PAGES = [  # (ファイル, パンくず名, sitemap に載せるか)
     ("kagaku-shindan.html", "化学の参考書診断", True),
     ("eitango-shindan.html", "英単語帳・英熟語帳診断", True),
     ("shindan-ichiran.html", "診断一覧", True),
+    ("norma-keisan.html", "参考書の1日ノルマ計算機", True),
+    ("kyoutsuu-countdown.html", "共通テストカウントダウン", True),
     ("about.html", "運営者情報", True),
     ("contact.html", "お問い合わせ", True),
     ("privacy-policy.html", "プライバシーポリシー", True),

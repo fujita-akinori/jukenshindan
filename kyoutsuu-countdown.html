@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- GA4:BEGIN -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2WNQN0ZF8D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2WNQN0ZF8D');
+</script>
+<!-- GA4:END -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>共通テストまであと何日？2027年度カウントダウン｜残り日数と今やるべきこと | 受験診断ドットコム</title>
+<meta name="description" content="2027年度大学入学共通テスト（2027年1月16日・17日）まであと何日かを秒単位で表示します。残り日数に合わせて今やるべき対策と関連記事も紹介します。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=61513461">
+<style>
+  .page-wrap{ padding-top:36px; padding-bottom:120px; max-width:760px; }
+  .crumbs-dark{ font-size:12.5px; color:var(--text-on-ink-muted); margin-bottom:14px; }
+  .crumbs-dark a{ color:var(--text-on-ink-muted); }
+  h1.page-title{ font-family:'Shippori Mincho', serif; font-weight:800; font-size:clamp(24px,4.5vw,32px); margin:0 0 8px; line-height:1.4; }
+  .page-title-rule{ width:56px; height:3px; background:var(--amber); border:none; margin:14px 0 22px; border-radius:2px; }
+  .lead{ color:var(--text-on-ink-muted); font-size:14.5px; line-height:1.9; margin:0 0 26px; }
+  .lead b{ color:var(--text-on-ink); }
+  .tool-card{ background:var(--ink-soft); border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:24px 22px; margin:0 0 20px; }
+  .tool-card h2{ font-size:19px; margin:0 0 14px; }
+  .tool-card h3{ font-size:15.5px; margin:24px 0 10px; }
+  .tool-card p{ font-size:14px; line-height:1.9; color:var(--text-on-ink); margin:0 0 10px; }
+  .tool-card a{ color:var(--amber); }
+  .row{ margin:0 0 16px; }
+  .row.two{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  label, .lbl{ display:block; font-size:13px; font-weight:700; margin:0 0 6px; color:var(--text-on-ink); }
+  input[type=text], input[type=number], input[type=date], select{ width:100%; background:var(--ink); color:var(--text-on-ink); border:1px solid rgba(255,255,255,0.18); border-radius:8px; padding:11px 12px; font:inherit; font-size:15px; color-scheme:dark; }
+  input:focus, select:focus{ outline:2px solid var(--amber); outline-offset:1px; }
+  .inline{ display:flex; gap:8px; } .inline input{ flex:1; min-width:0; } .inline select{ width:96px; flex:none; }
+  .days{ display:flex; flex-wrap:wrap; gap:8px; }
+  .days label{ display:inline-flex; align-items:center; gap:6px; margin:0; font-weight:500; background:var(--ink); border:1px solid rgba(255,255,255,0.18); border-radius:20px; padding:7px 13px; cursor:pointer; }
+  .days input{ accent-color:var(--amber); }
+  .adv{ margin:4px 0 18px; border-top:1px dashed rgba(255,255,255,0.15); padding-top:14px; }
+  .adv summary{ cursor:pointer; font-size:13.5px; font-weight:700; color:var(--amber); margin-bottom:14px; }
+  .hint{ font-size:12.5px !important; color:var(--text-on-ink-muted) !important; }
+  .calc-btn{ width:100%; border:none; cursor:pointer; font-size:16px; padding:14px; }
+  .err{ color:#ff8a7a !important; font-size:13px !important; margin:10px 0 0 !important; min-height:1em; }
+  .result .big{ font-size:22px; line-height:1.6; margin:4px 0 16px; }
+  .result .big b{ color:var(--amber); font-size:30px; }
+  .result .big span{ display:block; font-size:14px; color:var(--text-on-ink-muted); }
+  .rounds{ list-style:none; padding:0; margin:0 0 12px; }
+  .rounds li{ display:flex; justify-content:space-between; gap:10px; padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.08); font-size:14px; }
+  .meta{ font-size:12.5px !important; color:var(--text-on-ink-muted) !important; }
+  .cal-wrap{ max-height:420px; overflow:auto; border:1px solid rgba(255,255,255,0.1); border-radius:8px; }
+  .cal{ width:100%; border-collapse:collapse; font-size:13.5px; }
+  .cal th, .cal td{ text-align:left; padding:9px 12px; border-bottom:1px solid rgba(255,255,255,0.07); vertical-align:top; }
+  .cal th{ position:sticky; top:0; background:var(--ink-softer); }
+  .cal td:first-child{ white-space:nowrap; color:var(--text-on-ink-muted); width:1%; }
+  .muted{ color:var(--text-on-ink-muted); }
+  .share-wrap{ margin:6px 0 4px; }
+  .share-x{ display:inline-flex; align-items:center; gap:9px; background:#fff; color:#0f1419 !important; border:none; border-radius:999px; padding:12px 22px; font-size:14px; font-weight:700; text-decoration:none; transition:transform .15s ease, opacity .15s ease; }
+  .share-x:hover{ transform:translateY(-2px); opacity:.9; }
+  .share-x svg{ width:16px; height:16px; fill:currentColor; }
+  .count{ text-align:center; padding:34px 20px; border-color:rgba(232,163,61,0.35); }
+  .count-label{ font-size:14px !important; color:var(--text-on-ink-muted) !important; }
+  .count-days{ font-family:'Shippori Mincho', serif; font-weight:800; line-height:1; margin:6px 0 10px; }
+  .count-days span{ font-size:clamp(72px,18vw,120px); color:var(--amber); }
+  .count-days small{ font-size:28px; margin-left:6px; }
+  .count-hms{ font-size:20px; font-variant-numeric:tabular-nums; letter-spacing:.04em; }
+  .count-sub{ font-size:12px !important; color:var(--text-on-ink-muted) !important; margin-top:12px !important; }
+  .links{ margin:8px 0 0; padding-left:1.2em; } .links li{ margin:6px 0; font-size:14px; }
+  .dates{ list-style:none; padding:0; margin:0 0 12px; }
+  .dates li{ display:grid; grid-template-columns:1fr auto; gap:2px 12px; padding:12px 0; border-bottom:1px solid rgba(255,255,255,0.08); font-size:14px; }
+  .dates li span{ color:var(--text-on-ink-muted); grid-column:1 / -1; font-size:12.5px; }
+  .dates li em{ font-style:normal; color:var(--amber); font-weight:700; }
+  @media (max-width:560px){ .row.two{ grid-template-columns:1fr; } .tool-card{ padding:20px 16px; } }
+</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6837829466798350" crossorigin="anonymous"></script>
+<!-- SEO:BEGIN -->
+<link rel="canonical" href="https://jukenshindan.com/kyoutsuu-countdown.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="受験診断ドットコム">
+<meta property="og:title" content="共通テストまであと何日？2027年度カウントダウン｜残り日数と今やるべきこと | 受験診断ドットコム">
+<meta property="og:description" content="2027年度大学入学共通テスト（2027年1月16日・17日）まであと何日かを秒単位で表示します。残り日数に合わせて今やるべき対策と関連記事も紹介します。">
+<meta property="og:url" content="https://jukenshindan.com/kyoutsuu-countdown.html">
+<meta property="og:image" content="https://jukenshindan.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="共通テストまであと何日？2027年度カウントダウン｜残り日数と今やるべきこと | 受験診断ドットコム">
+<meta name="twitter:description" content="2027年度大学入学共通テスト（2027年1月16日・17日）まであと何日かを秒単位で表示します。残り日数に合わせて今やるべき対策と関連記事も紹介します。">
+<meta name="twitter:image" content="https://jukenshindan.com/og-image.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ホーム","item":"https://jukenshindan.com/"},{"@type":"ListItem","position":2,"name":"共通テストカウントダウン","item":"https://jukenshindan.com/kyoutsuu-countdown.html"}]}</script>
+<!-- SEO:END -->
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="logo"><img src="logo-mark.png" class="mark" alt="受験診断ドットコム">受験診断ドットコム</a>
+    <nav class="nav-links">
+      <a href="shindan-ichiran.html">診断一覧</a>
+      <a href="articles/index.html">記事</a>
+      <a href="contact.html">お問い合わせ</a>
+      <!-- NAVSEARCH:BEGIN --><a class="nav-search" href="articles/index.html#search" aria-label="記事を検索" title="記事を検索"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="16.5" y1="16.5" x2="21" y2="21"></line></svg></a><!-- NAVSEARCH:END -->
+    </nav>
+  </div>
+</header>
+
+<main class="wrap page-wrap tool-page">
+  <nav class="crumbs-dark"><a href="index.html">ホーム</a> › <a href="shindan-ichiran.html">診断・ツール</a> › 共通テストまであと何日</nav>
+  <h1 class="page-title">共通テストまであと何日？カウントダウン</h1>
+  <hr class="page-title-rule">
+  <p class="lead">2027年度（令和9年度）大学入学共通テストの本試験は<b>2027年1月16日（土）・17日（日）</b>です。本番までの残り時間と、今の時期にやるべきことを表示します。</p>
+
+  <section class="tool-card count">
+    <p class="count-label">共通テスト本試験 1日目まで</p>
+    <div class="count-days"><span id="c-days">--</span><small>日</small></div>
+    <div class="count-hms" id="c-hms">--時間--分--秒</div>
+    <p class="count-sub">2027年1月16日（土）9:30 試験開始を基準にしています</p>
+  </section>
+
+  <section class="tool-card advice">
+    <h2 id="a-title">今やるべきこと</h2>
+    <p id="a-body"></p>
+    <ul class="links" id="a-links"></ul>
+  </section>
+
+  <section class="tool-card other">
+    <h2>そのほかの日程</h2>
+    <ul class="dates">
+      <li><span>共通テスト 追試験</span><b>2027年1月23日（土）・24日（日）</b><em id="c-tsui"></em></li>
+      <li><span>国公立大学 二次試験（前期日程）</span><b>2027年2月25日（木）〜</b><em id="c-niji"></em></li>
+    </ul>
+    <p class="hint">試験日は大学入試センターの発表にもとづいています。国公立二次の日程は大学ごとに異なるので志望校の募集要項で確認してください。</p>
+  </section>
+
+  <section class="tool-card tips">
+    <h2>共通テスト対策の記事</h2>
+    <ul class="links">
+      <li><a href="articles/yosou-mondaishu-tsukaikata.html">黒本・青本など予想問題集の使い方</a></li>
+      <li><a href="articles/kyoutsuu-eigo-9wari.html">共通テスト英語で9割を取る方法</a></li>
+      <li><a href="articles/kyoutsuu-test-kaitou-junjo.html">共通テスト数学の解く順番と時間配分</a></li>
+      <li><a href="articles/kyoutsuu-jouhou1-9wari.html">共通テスト情報Ⅰは正月からでも9割取れる</a></li>
+      <li><a href="articles/kyoutsuu-seikei-shougatsu.html">正月から始めて9割：共通テスト政経の最短勉強法</a></li>
+      <li><a href="articles/kyoutsuu-mochimono.html">共通テスト当日に忘れたら困る持ち物チェックリスト</a></li>
+    </ul>
+  </section>
+</main>
+
+<script>
+(function(){
+  const EXAM = new Date("2027-01-16T09:30:00+09:00");
+  const TSUI = new Date("2027-01-23T09:30:00+09:00");
+  const NIJI = new Date("2027-02-25T09:00:00+09:00");
+  const $ = id => document.getElementById(id);
+  // 日本時間の日付で「あと何日」を数える
+  const jstDay = t => Math.floor((t.getTime() + 9*3600e3) / 86400e3);
+  const daysTo = (target, now) => jstDay(target) - jstDay(now);
+  const A = [
+    {min:91, t:"二次の地力をつける時期", b:"共通テストの独自対策はまだ最小限で大丈夫です。単語・文法や数学の典型問題など二次に向けた地道な勉強がそのまま共通テストの点数にもつながります。過去問は取っておかずに早めに1年分解いて形式と自分の距離を確かめておきましょう。", l:[["articles/yosou-mondaishu-tsukaikata.html","過去問を早く使うべき理由"],["shindan-ichiran.html","今の自分に合う参考書を診断する"]]},
+    {min:61, t:"過去問で形式を確かめ弱点を洗い出す時期", b:"科目ごとに過去問を1年分ずつ解いて、どの大問で点を落としているかを確かめましょう。共通テストは毎年の傾向がよく似ているので、解く順番と時間配分の方針もこの時期に決めておくと直前に慌てません。", l:[["articles/kyoutsuu-test-kaitou-junjo.html","共通テスト数学の解く順番と時間配分"],["articles/kyoutsuu-eigo-9wari.html","共通テスト英語の解く順番"]]},
+    {min:31, t:"予想問題集で時間を計り始める時期", b:"自学自習が終わった科目から予想問題集を時間を計って解き始めましょう。本番より少し短い制限時間で解き切る練習をしておくと緊張で頭の回転が鈍っても崩れません。", l:[["articles/yosou-mondaishu-tsukaikata.html","黒本・青本など予想問題集の使い方"],["norma-keisan.html","問題集の1日ノルマを計算する"]]},
+    {min:15, t:"暗記科目を一気に仕上げる時期", b:"情報Ⅰや政経のような暗記中心の科目は正月からでも9割が狙えます。映像講義を流し見してとっかかりを作り、あとは毎日1年分ずつ解いていきましょう。リスニングも毎日1年分解いて耳とフォーマットに慣れておきます。", l:[["articles/kyoutsuu-jouhou1-9wari.html","情報Ⅰは正月からでも9割取れる"],["articles/kyoutsuu-seikei-shougatsu.html","正月から始めて9割：政経の最短勉強法"]]},
+    {min:1, t:"新しいことに手を出さず仕上げる時期", b:"新しい問題集には手を出さず、予想問題で時間配分の最終調整をしましょう。直前に覚えたことは本番まで忘れないので知識の総点検にも時間を使います。持ち物の準備も早めに済ませておきましょう。", l:[["articles/kyoutsuu-mochimono.html","持ち物チェックリスト"],["articles/yosou-mondaishu-tsukaikata.html","直前期の予想問題集の使い方"]]},
+    {min:0, t:"本番当日", b:"共通テストは疲労との戦いです。休み時間はしっかり休み、終わった科目のことは考えずに次の科目に集中しましょう。リスニングの前に音声を聞いて耳を慣らしておくのもおすすめです。", l:[["articles/kyoutsuu-mochimono.html","持ち物チェックリスト"],["articles/kyoutsuu-eigo-9wari.html","本番当日の過ごし方（英語の記事）"]]},
+    {min:-Infinity, t:"二次試験に向けて切り替える時期", b:"共通テストおつかれさまでした。ここからは二次試験に向けた本番形式の演習が中心です。冠模試の過去問をまとめた予想問題集で時間配分を固めましょう。", l:[["articles/yosou-mondaishu-tsukaikata.html","二次の予想問題集の使い方"],["articles/kyodai-kagaku-taisaku.html","京大化学の対策と勉強法"]]}
+  ];
+  function tick(){
+    const now = new Date();
+    const ms = EXAM - now;
+    const d = daysTo(EXAM, now);
+    if(ms > 0){
+      const s = Math.floor(ms/1000);
+      $("c-days").textContent = Math.floor(s/86400);
+      $("c-hms").textContent = `${Math.floor(s%86400/3600)}時間${String(Math.floor(s%3600/60)).padStart(2,"0")}分${String(s%60).padStart(2,"0")}秒`;
+    } else {
+      $("c-days").textContent = "0";
+      $("c-hms").textContent = now < new Date("2027-01-18T00:00:00+09:00") ? "本番です。がんばってください！" : "本試験は終了しました";
+    }
+    const dt = daysTo(TSUI, now), dn = daysTo(NIJI, now);
+    $("c-tsui").textContent = dt > 0 ? `あと${dt}日` : "";
+    $("c-niji").textContent = dn > 0 ? `あと${dn}日` : "";
+    const key = ms <= 0 && now >= new Date("2027-01-18T00:00:00+09:00") ? A[A.length-1] : (d <= 1 && ms <= 0 ? A[5] : A.find(x => d >= x.min));
+    if($("a-title").dataset.k !== key.t){
+      $("a-title").dataset.k = key.t;
+      $("a-title").textContent = `今やるべきこと：${key.t}`;
+      $("a-body").textContent = key.b;
+      $("a-links").innerHTML = key.l.map(([h,t]) => `<li><a href="${h}">${t} →</a></li>`).join("");
+    }
+  }
+  tick(); setInterval(tick, 1000);
+})();
+</script>
+
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>&copy; 2026 受験診断ドットコム</span>
+    <div class="footer-links">
+      <a href="about.html">運営者情報</a>
+      <a href="privacy-policy.html">プライバシーポリシー</a>
+      <a href="contact.html">お問い合わせ</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
