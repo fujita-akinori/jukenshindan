@@ -423,7 +423,7 @@ const BOOKS = [
   {name:"2027年用 共通テスト実戦模試 化学基礎（Z会）",note:"Z会の共通テスト形式の模試問題集の化学基礎編で毎年改訂されています。本番前の仕上げとして時間配分の練習に使います。",asin:"4865317317",key:"z-moshi-kiso",scope:"kiso",tier:3,purposes:["kyoutsuu"],type:"quantity",bunya:[],also:[]},
   {name:"共通テスト過去問研究 化学（赤本）",note:"教学社の共通テストの過去問集で毎年改訂されています。本番の問題で出題の形式と難しさを確かめ、解けなかった分野を参考書に戻って復習するのに使います。",asin:"4325273468",key:"akahon",scope:"full",tier:2,tierMax:3,purposes:["kyoutsuu"],type:"quantity",bunya:[],also:[]},
   {name:"共通テスト過去問研究 物理基礎／化学基礎／生物基礎／地学基礎（赤本）",note:"教学社の共通テストの過去問集で理科基礎4科目をまとめた版です。化学基礎の過去問で本番の形式と時間配分を確かめられます。",asin:"4325273484",key:"akahon-kiso",scope:"kiso",tier:2,tierMax:3,purposes:["kyoutsuu"],type:"quantity",bunya:[],also:[]},
-  {name:"2027 実戦 化学重要問題集 化学基礎・化学",note:"数研出版の毎年改訂される定番の入試問題集です。A問題とB問題で難しさが分かれていて、標準から難関レベルまでの典型問題を網羅的に演習できます。",asin:"4410143379",key:"juumon",scope:"both",tier:3,tierMax:4,purposes:["kyoutsuu", "niji"],type:"quantity",bunya:[],also:["riron", "muki", "yuki", "sougou"]},
+  {name:"2027 実戦 化学重要問題集 化学基礎・化学",note:"数研出版の毎年改訂される定番の問題集で、化学の典型問題がコンパクトにまとまっています。A問題は基礎問題精講、B問題は標準問題精講より少しやさしいくらいのレベルです。解説は簡潔なので講義系の本を横に置いて演習量を稼ぐのに向いています。",asin:"4410143379",key:"juumon",scope:"both",tier:3,tierMax:4,purposes:["kyoutsuu", "niji"],type:"quantity",bunya:[],also:["riron", "muki", "yuki", "sougou"]},
   {name:"大学入試 全レベル問題集 化学 1 基礎レベル 改訂版",note:"旺文社の全レベル問題集の基礎レベル編で西村淳矢先生が執筆しています。教科書レベルの典型問題で入試の基本を確認できます。",asin:"401035383X",key:"zenlv1",scope:"both",tier:1,tierMax:2,purposes:["teiki", "kyoutsuu", "niji"],type:"quantity",bunya:[],also:["sougou"]},
   {name:"大学入試 全レベル問題集 化学 2 共通テストレベル 三訂版",note:"全レベル問題集の共通テストレベル編です。共通テストの形式に沿った問題で得点力を固められます。",asin:"4010353848",key:"zenlv2",scope:"both",tier:2,purposes:["kyoutsuu"],type:"quantity",bunya:[],also:["sougou"]},
   {name:"大学入試 全レベル問題集 化学 3 私大標準・国公立大レベル 改訂版",note:"全レベル問題集の私大標準と国公立大レベル編で岡島光洋先生が執筆しています。入試標準の問題で解き方を固めるのに向いています。",asin:"4010353856",key:"zenlv3",scope:"both",tier:3,purposes:["niji"],type:"quantity",bunya:[],also:["sougou"]},
@@ -470,6 +470,7 @@ const BOOKS = [
 const FAVORITE = new Set(["do-riron","do-muki","do-yuki","do-mondai","sei-nyumon","sei-kiso","sei-hyojun","sei-jokyu"]);
 const ARTICLE_OF = { "do-riron":1, "do-muki":1, "do-yuki":1, "sei-nyumon":1, "sei-kiso":1, "sei-hyojun":1, "sei-jokyu":1 };
 BOOKS.forEach(b => { if(ARTICLE_OF[b.key]) b.article = "kagaku-benkyouhou"; });
+BOOKS.forEach(b => { if(b.key==="juumon") b.article = "kagaku-juumon"; });
 BOOKS.forEach(b => { if(b.key==="kouzou") b.article = "kouzou-kettei-youten-ensyu"; });
 BOOKS.forEach(b => { if(/^(gen-|shinrikei-)/.test(b.key)) b.article = "ishikawa-masaaki-kagaku"; });
 const byKey = k => BOOKS.find(b => b.key===k);
