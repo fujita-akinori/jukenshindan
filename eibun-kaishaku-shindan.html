@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- GA4:BEGIN -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2WNQN0ZF8D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2WNQN0ZF8D');
+</script>
+<!-- GA4:END -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>英文解釈の参考書診断｜英文熟考・英文解釈クラシックなど23冊からあなたに合う1冊が分かる | 受験診断ドットコム</title>
+<meta name="description" content="今の到達度・志望校・進め方の好みなど5つの質問に答えるだけで、英文熟考・英文解釈クラシック・動画でわかる英文法・Code70・ポラリス・Realizeなど23冊の中から今のあなたに合う英文解釈の参考書を診断します。竹岡ルート・久保田ルートの順番も分かります。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=161ae32b">
+<style>
+  /* ==========================================================
+     受験診断ドットコム — 英文解釈診断 デザイントークン拡張
+     ルートカラー：単語帳 = lv3（オレンジ） / 熟語帳 = lv5（紫）
+     ========================================================== */
+  :root{
+    --lv5:#7d5ba6; /* 超級 */
+    --paper-shadow: 0 28px 70px -24px rgba(0,0,0,0.6), 0 2px 0 rgba(255,255,255,0.4) inset;
+  }
+
+  @media (prefers-reduced-motion: no-preference){
+    .card, .result-head, .shelf-wrap, .book-list{ animation: riseIn .38s cubic-bezier(.2,.8,.2,1) both; }
+    .book-item{ animation: riseIn .3s cubic-bezier(.2,.8,.2,1) both; }
+    .book-item:nth-child(1){ animation-delay:.02s; } .book-item:nth-child(2){ animation-delay:.06s; }
+    .book-item:nth-child(3){ animation-delay:.10s; } .book-item:nth-child(4){ animation-delay:.14s; }
+    .book-item:nth-child(5){ animation-delay:.18s; } .book-item:nth-child(6){ animation-delay:.22s; }
+  }
+  @keyframes riseIn{ from{ opacity:0; transform:translateY(10px); } to{ opacity:1; transform:none; } }
+
+  .page-wrap{ padding-top:44px; padding-bottom:130px; }
+  h1.page-title{
+    font-family:'Shippori Mincho', serif; font-weight:800;
+    font-size:clamp(26px, 4.8vw, 38px); margin:0 0 6px; line-height:1.4; letter-spacing:0.01em;
+  }
+  .page-title-rule{
+    width:56px; height:3px; background:var(--amber); border:none; margin:14px 0 18px; border-radius:2px;
+  }
+  .page-lead{ color:var(--text-on-ink-muted); font-size:14.5px; margin:0 0 30px; max-width:56ch; }
+
+  /* -------------------- 経路表示（分岐ツリーを辿る足あと） -------------------- */
+  .crumbs{ display:flex; flex-wrap:wrap; align-items:center; gap:0; margin-bottom:26px; row-gap:10px; }
+  .crumb{
+    font-size:11.5px; font-weight:700; padding:6px 13px 6px 12px; border-radius:8px;
+    background:var(--ink-soft); color:var(--text-on-ink-muted);
+    border:1px solid rgba(255,255,255,0.08);
+    display:inline-flex; align-items:center; gap:6px;
+    position:relative;
+  }
+  .crumb .k{ font-weight:500; opacity:.7; font-size:10.5px; }
+  .crumb b{ color:var(--amber); font-weight:700; }
+  .crumb + .crumb{ margin-left:6px; }
+  .crumb-arrow{ color:var(--text-on-ink-muted); opacity:.4; font-size:12px; margin:0 2px; }
+
+  /* -------------------- 質問カード -------------------- */
+  .q-index{
+    font-family:'Shippori Mincho', serif; font-size:12.5px; font-weight:700;
+    color:var(--amber-deep); letter-spacing:0.14em; margin-bottom:12px;
+    text-transform:uppercase;
+  }
+  .q-text{
+    font-family:'Shippori Mincho', serif; font-size:clamp(19px, 3.4vw, 25px);
+    font-weight:800; margin:0 0 26px; line-height:1.55; color:var(--text-on-paper);
+  }
+  .choices{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .choices.cols-1{ grid-template-columns:1fr; }
+  .choices.cols-3{ grid-template-columns:1fr 1fr 1fr; }
+  .choices.tags-grid{ grid-template-columns:repeat(3, 1fr); gap:10px; }
+
+  .choice-btn{
+    font-family:'Zen Kaku Gothic New', sans-serif; font-weight:700; font-size:15px;
+    padding:16px 17px; border-radius:10px; border:2px solid rgba(27,33,48,0.10);
+    background:#fff; color:var(--text-on-paper); cursor:pointer; text-align:left;
+    transition:transform .14s cubic-bezier(.2,.8,.2,1), border-color .14s ease, background .14s ease, box-shadow .14s ease;
+    position:relative;
+  }
+  .choice-btn:hover{
+    border-color:var(--amber); background:#fffaf0; transform:translateY(-3px);
+    box-shadow:0 10px 22px -12px rgba(196,127,31,0.5);
+  }
+  .choice-btn:active{ transform:translateY(-1px); }
+  .choice-btn:focus-visible{ outline:2px solid var(--amber-deep); outline-offset:2px; }
+  .choice-btn .sub{ display:block; font-weight:400; font-size:11.5px; color:#6b6250; margin-top:4px; }
+
+  /* タグ風の分野選択（12分野）はコンパクトに */
+  .tags-grid .choice-btn{
+    text-align:center; padding:13px 10px; font-size:13.5px; border-radius:999px;
+  }
+
+  /* -------------------- スタート画面：単語帳と熟語帳を「見出しタブ」として -------------------- */
+  .choice-btn[data-value="tango"],
+  .choice-btn[data-value="jukugo"]{
+    padding:22px 22px 20px 24px; border-left-width:5px; border-radius:12px;
+  }
+  .choice-btn[data-value="tango"]{ border-left-color:var(--lv3); }
+  .choice-btn[data-value="jukugo"]{ border-left-color:var(--lv5); }
+  .choice-btn[data-value="tango"]:hover{ box-shadow:0 12px 26px -14px var(--lv3); border-color:var(--lv3); }
+  .choice-btn[data-value="jukugo"]:hover{ box-shadow:0 12px 26px -14px var(--lv5); border-color:var(--lv5); }
+  .choice-btn[data-value="tango"] .sub,
+  .choice-btn[data-value="jukugo"] .sub{ font-size:12.5px; margin-top:6px; }
+
+  /* もう一方の診断への導線 */
+  .cross-box{ margin:30px 0 0; padding:20px 20px 22px; border-radius:12px; text-align:center;
+    background:var(--ink-soft); border:1px solid rgba(255,255,255,0.08); }
+  .cross-box p{ font-size:13.5px; color:var(--text-on-ink-muted); margin:0 0 14px; line-height:1.8; }
+  .cross-btn{ font-family:'Zen Kaku Gothic New', sans-serif; font-weight:700; font-size:14px; cursor:pointer;
+    background:var(--amber); color:var(--ink); border:none; padding:12px 24px; border-radius:999px;
+    transition:background .12s ease, transform .12s ease; }
+  .cross-btn:hover{ background:#f0b357; transform:translateY(-2px); }
+
+  .nav-row{ display:flex; gap:16px; margin-top:20px; align-items:center; }
+  .back-link{
+    font-size:13px; color:var(--text-on-ink-muted); text-decoration:none; cursor:pointer;
+    display:inline-flex; align-items:center; gap:5px;
+  }
+  .back-link:hover{ color:var(--amber); }
+
+  /* -------------------- 結果画面 -------------------- */
+  .result-head{ text-align:center; margin-bottom:32px; }
+  .route-badge{
+    display:inline-block; font-family:'Shippori Mincho', serif; font-weight:800;
+    font-size:13px; letter-spacing:0.12em; padding:7px 18px; border-radius:999px;
+    color:#fff; margin-bottom:16px; box-shadow:0 8px 18px -8px rgba(0,0,0,0.5);
+  }
+  .result-head h2{ font-family:'Shippori Mincho', serif; font-size:clamp(21px,4vw,27px); margin:0 0 10px; font-weight:800; }
+  .result-head p{ color:var(--text-on-ink-muted); font-size:13.5px; max-width:52ch; margin:0 auto; }
+
+  /* -------------------- 本棚（サイン要素）-------------------- */
+  .shelf-wrap{ margin:26px 0 22px; }
+  .shelf-label{
+    font-size:11.5px; letter-spacing:0.1em; color:var(--text-on-ink-muted); margin-bottom:12px;
+    font-weight:700; text-transform:uppercase;
+  }
+  .shelf{
+    display:flex; align-items:flex-end; gap:7px;
+    background:
+      linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.3) 92%);
+    padding:26px 18px 0;
+    border-bottom:12px solid #3a2a1a;
+    box-shadow: 0 8px 0 -2px #2a1d11, inset 0 -2px 4px rgba(0,0,0,0.3);
+    border-radius:4px 4px 0 0; overflow-x:auto;
+  }
+  .spine{
+    flex:0 0 auto; width:56px; height:182px; border-radius:3px 3px 1px 1px;
+    display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
+    padding-top:16px;
+    box-shadow:
+      inset 3px 0 0 rgba(255,255,255,0.15),
+      inset -7px 0 12px rgba(0,0,0,0.22),
+      0 6px 14px rgba(0,0,0,0.35);
+    position:relative; transition:transform .18s cubic-bezier(.2,.8,.2,1);
+  }
+  .spine:hover{ transform:translateY(-10px) rotate(-0.5deg); }
+  .spine span{
+    writing-mode:vertical-rl; text-orientation:mixed; font-family:'Shippori Mincho', serif;
+    font-weight:700; font-size:12px; color:#fff; letter-spacing:0.05em; max-height:118px;
+  }
+  .spine.tall{ height:200px; } .spine.short{ height:162px; }
+  /* 帯（おび）— 日本の参考書によくある色帯を背表紙下部に */
+  .spine::after{
+    content:''; position:absolute; left:0; right:0; bottom:14px; height:22px;
+    background:rgba(0,0,0,0.22);
+    border-top:1px solid rgba(255,255,255,0.25);
+    border-bottom:1px solid rgba(0,0,0,0.3);
+  }
+  .spine .rank{
+    position:relative; z-index:1; margin-top:auto; margin-bottom:18px;
+    font-family:'Zen Kaku Gothic New', sans-serif; font-weight:900; font-size:11px; color:#fff;
+    writing-mode:horizontal-tb; opacity:.85;
+  }
+
+  .book-list{ margin-top:26px; display:flex; flex-direction:column; gap:12px; }
+
+  /* -------------------- 表彰台（ベスト3ランキング） -------------------- */
+  .podium{
+    display:flex; align-items:flex-end; justify-content:center; gap:14px;
+    margin:30px 0 8px; padding:0 10px;
+  }
+  .podium-col{ display:flex; flex-direction:column; align-items:center; width:96px; }
+  .podium-book{
+    width:100%; border-radius:10px 10px 0 0;
+    display:flex; align-items:flex-start; justify-content:center; padding-top:12px;
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.35), 0 6px 14px rgba(0,0,0,0.3);
+  }
+  .podium-rank{ font-family:'Shippori Mincho', serif; font-weight:900; font-size:22px; color:var(--ink); }
+  .podium-base{ width:100%; border-radius:0 0 6px 6px; box-shadow: inset 0 -3px 0 rgba(0,0,0,0.15); }
+  .podium-1 .podium-book{ height:76px; } .podium-1 .podium-base{ height:56px; }
+  .podium-2 .podium-book{ height:58px; } .podium-2 .podium-base{ height:40px; }
+  .podium-3 .podium-book{ height:46px; } .podium-3 .podium-base{ height:30px; }
+  .podium-1{ z-index:2; }
+  .podium-2, .podium-3{ margin-bottom:2px; }
+
+  /* 進捗 */
+  .progress{ margin:0 0 14px; }
+  .progress .p-label{ display:flex; justify-content:space-between; font-size:12.5px; font-weight:700; color:var(--text-on-ink-muted); margin-bottom:7px; }
+  .progress .p-label b{ color:var(--amber); font-size:14px; }
+  .progress .p-bar{ height:6px; border-radius:999px; background:rgba(255,255,255,0.10); overflow:hidden; }
+  .progress .p-bar i{ display:block; height:100%; border-radius:999px; background:var(--amber); transition:width .3s cubic-bezier(.2,.8,.2,1); }
+  .back-btn{
+    font-family:'Zen Kaku Gothic New', sans-serif; font-size:13.5px; font-weight:700; cursor:pointer;
+    background:none; border:1px solid rgba(255,255,255,0.25); color:var(--text-on-ink);
+    padding:9px 18px; border-radius:999px; transition:border-color .14s ease, color .14s ease;
+  }
+  .back-btn:hover{ border-color:var(--amber); color:var(--amber); }
+
+  /* 一致度・理由 */
+  .match{ display:flex; align-items:center; gap:9px; margin:2px 0 8px; }
+  .match .m-num{ font-weight:800; font-size:13px; color:var(--amber); white-space:nowrap; }
+  .match .m-bar{ flex:1; max-width:160px; height:5px; border-radius:999px; background:rgba(255,255,255,0.10); overflow:hidden; }
+  .match .m-bar i{ display:block; height:100%; background:var(--amber); border-radius:999px; }
+  .reasons{ display:flex; flex-wrap:wrap; gap:6px; margin:0 0 10px; }
+  .reasons span{ font-size:11px; font-weight:700; padding:3px 9px; border-radius:999px; background:rgba(232,163,61,0.12); color:#f0c27a; }
+  .reasons span.warn{ background:rgba(255,255,255,0.08); color:var(--text-on-ink-muted); }
+  .book-actions{ display:flex; flex-wrap:wrap; align-items:center; gap:14px; }
+  .article-link{ font-size:12px; font-weight:700; color:var(--text-on-ink-muted); text-decoration:none; }
+  .article-link:hover{ color:var(--amber); }
+  .more-books{ margin-top:14px; border:1px solid rgba(255,255,255,0.08); border-radius:10px; background:rgba(255,255,255,0.02); }
+  .more-books summary{ cursor:pointer; padding:13px 17px; font-size:13.5px; font-weight:700; color:var(--text-on-ink); list-style:none; }
+  .more-books summary::-webkit-details-marker{ display:none; }
+  .more-books summary::after{ content:"＋"; float:right; color:var(--text-on-ink-muted); }
+  .more-books[open] summary::after{ content:"－"; }
+  .more-books .book-list{ padding:0 12px 12px; }
+  .book-chip.sub-rank{ background:rgba(255,255,255,0.12) !important; color:var(--text-on-ink) !important; }
+
+  .book-item.rank-1{
+    border-color:rgba(232,163,61,0.4); background:linear-gradient(135deg, rgba(232,163,61,0.10), var(--ink-soft) 60%);
+  }
+  .book-item{
+    background:var(--ink-soft); border-radius:10px; padding:15px 17px;
+    display:flex; gap:13px; align-items:flex-start; border:1px solid rgba(255,255,255,0.06);
+    transition:border-color .15s ease;
+  }
+  .book-item:hover{ border-color:rgba(232,163,61,0.3); }
+  .book-chip{
+    flex:0 0 auto; min-width:30px; height:30px; padding:0 8px; border-radius:8px; display:flex;
+    align-items:center; justify-content:center; font-family:'Shippori Mincho', serif;
+    font-weight:800; font-size:12px; color:#fff; white-space:nowrap;
+  }
+  .book-info{ flex:1; }
+  .book-info .name{ font-weight:700; font-size:14.5px; margin:0 0 4px; line-height:1.5; }
+  .book-info .name .scope-tag{
+    display:inline-block; font-size:10px; font-weight:700; padding:2px 8px; border-radius:999px;
+    margin-left:6px; background:rgba(255,255,255,0.1); color:var(--text-on-ink-muted); vertical-align:middle;
+  }
+  .book-info .desc{ font-size:13px; color:#cfccc3; margin:2px 0 12px; line-height:1.85; }
+  .book-info .desc .d-you{ display:block; margin-top:8px; padding-top:8px; border-top:1px dashed rgba(255,255,255,0.12); color:#f3e3c3; }
+  .book-info .desc .d-you b{ display:block; font-size:11px; letter-spacing:0.08em; color:var(--amber); margin-bottom:2px; }
+  .type-caret{ display:inline-block; width:0.55em; height:1.05em; margin-left:1px; vertical-align:-0.15em; background:var(--amber); animation:caret-blink .9s steps(1) infinite; }
+  @keyframes caret-blink{ 50%{ opacity:0; } }
+  .buy-link{
+    display:inline-block; font-size:12px; font-weight:700; color:var(--ink);
+    background:var(--amber); padding:6px 14px; border-radius:999px; text-decoration:none;
+    transition:background .12s ease, transform .12s ease;
+  }
+  .pr-note{ text-align:center; font-size:12px; color:var(--text-on-ink-muted); margin:-20px 0 22px; }
+  .pr-note .pr-tag{ display:inline-block; font-weight:700; font-size:11px; padding:1px 7px; margin-right:6px; border:1px solid currentColor; border-radius:4px; }
+  .buy-link:hover{ background:#f0b357; transform:translateY(-1px); }
+  .buy-link.buy-rakuten{ background:#bf0000; color:#fff; }
+  .buy-link.buy-rakuten:hover{ background:#d81f1f; }
+  .book-cover{ float:right; width:84px; margin:0 0 10px 16px; display:block; text-decoration:none; text-align:center; }
+  .book-cover img{ display:block; width:84px; height:auto; border-radius:3px; background:#fff; box-shadow:0 6px 16px rgba(0,0,0,0.45); transition:transform .15s ease; }
+  .book-cover:hover img{ transform:translateY(-2px); }
+  .book-cover span{ display:block; margin-top:6px; font-size:10.5px; font-weight:700; color:#ff6b6b; }
+  .book-info{ min-width:0; } .book-actions{ clear:both; }
+  @media (max-width:560px){ .book-cover{ width:60px; margin-left:10px; } .book-cover img{ width:60px; } .book-cover span{ font-size:9.5px; } }
+
+  .empty-note{
+    background:var(--ink-soft); border:1px dashed rgba(255,255,255,0.15); border-radius:10px;
+    padding:24px; text-align:center; color:var(--text-on-ink-muted); font-size:13px;
+  }
+
+  .retry-btn{
+    margin-top:34px; display:inline-block; background:none; border:1px solid rgba(255,255,255,0.25);
+    color:var(--text-on-ink); padding:13px 24px; border-radius:999px; font-size:14px; font-weight:700;
+    cursor:pointer; font-family:'Zen Kaku Gothic New', sans-serif;
+    transition:border-color .14s ease, color .14s ease, transform .14s ease;
+  }
+  .retry-btn:hover{ border-color:var(--amber); color:var(--amber); transform:translateY(-2px); }
+
+  .share-x{
+    margin-top:34px; display:inline-flex; align-items:center; gap:9px;
+    background:#fff; color:#0f1419; border:none; padding:13px 24px; border-radius:999px;
+    font-size:14px; font-weight:700; text-decoration:none; font-family:'Zen Kaku Gothic New', sans-serif;
+    transition:transform .14s ease, opacity .14s ease;
+  }
+  .share-x:hover{ transform:translateY(-2px); opacity:.9; }
+  .share-x svg{ width:16px; height:16px; fill:currentColor; }
+  .share-x + br + .retry-btn{ margin-top:14px; }
+
+  @media (max-width:520px){
+    .choices, .choices.cols-3{ grid-template-columns:1fr; }
+    .choices.tags-grid{ grid-template-columns:repeat(2, 1fr); }
+    .card{ padding:26px 20px; }
+  }
+  .textbook-base{ background:var(--ink-soft); border:1px solid rgba(232,163,61,0.45); border-left:4px solid var(--amber); border-radius:10px; padding:16px 18px; margin:0 0 22px; }
+  .textbook-base .tb-label{ display:inline-block; font-size:11px; font-weight:700; letter-spacing:.06em; color:var(--ink); background:var(--amber); padding:2px 9px; border-radius:999px; }
+  .textbook-base .tb-name{ font-weight:700; font-size:15.5px; margin:8px 0 6px; }
+  .textbook-base .tb-desc{ font-size:13.5px; line-height:1.85; color:var(--text-on-ink-muted); margin:0 0 10px; }
+  .textbook-base .tb-desc b{ color:var(--text-on-ink); }
+  .must-head{ font-family:'Shippori Mincho', serif; font-weight:800; font-size:16px; margin:26px 0 12px; color:var(--text-on-ink); }
+  .must-list{ margin-bottom:8px; }
+</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6837829466798350" crossorigin="anonymous"></script>
+<!-- SEO:BEGIN -->
+<link rel="canonical" href="https://jukenshindan.com/eibun-kaishaku-shindan.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="受験診断ドットコム">
+<meta property="og:title" content="英文解釈の参考書診断｜英文熟考・英文解釈クラシックなど23冊からあなたに合う1冊が分かる | 受験診断ドットコム">
+<meta property="og:description" content="今の到達度・志望校・進め方の好みなど5つの質問に答えるだけで、英文熟考・英文解釈クラシック・動画でわかる英文法・Code70・ポラリス・Realizeなど23冊の中から今のあなたに合う英文解釈の参考書を診断します。竹岡ルート・久保田ルートの順番も分かります。">
+<meta property="og:url" content="https://jukenshindan.com/eibun-kaishaku-shindan.html">
+<meta property="og:image" content="https://jukenshindan.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="英文解釈の参考書診断｜英文熟考・英文解釈クラシックなど23冊からあなたに合う1冊が分かる | 受験診断ドットコム">
+<meta name="twitter:description" content="今の到達度・志望校・進め方の好みなど5つの質問に答えるだけで、英文熟考・英文解釈クラシック・動画でわかる英文法・Code70・ポラリス・Realizeなど23冊の中から今のあなたに合う英文解釈の参考書を診断します。竹岡ルート・久保田ルートの順番も分かります。">
+<meta name="twitter:image" content="https://jukenshindan.com/og-image.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ホーム","item":"https://jukenshindan.com/"},{"@type":"ListItem","position":2,"name":"英文解釈の参考書診断","item":"https://jukenshindan.com/eibun-kaishaku-shindan.html"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"英文解釈の参考書診断","url":"https://jukenshindan.com/eibun-kaishaku-shindan.html","description":"今の到達度・志望校・進め方の好みなど5つの質問に答えるだけで、英文熟考・英文解釈クラシック・動画でわかる英文法・Code70・ポラリス・Realizeなど23冊の中から今のあなたに合う英文解釈の参考書を診断します。竹岡ルート・久保田ルートの順番も分かります。","applicationCategory":"EducationalApplication","operatingSystem":"All","inLanguage":"ja","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"},"publisher":{"@type":"Organization","name":"受験診断ドットコム","url":"https://jukenshindan.com/","logo":{"@type":"ImageObject","url":"https://jukenshindan.com/logo-mark.png"}}}</script>
+<!-- SEO:END -->
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="logo"><img src="logo-mark.png" class="mark" alt="受験診断ドットコム">受験診断ドットコム</a>
+    <nav class="nav-links">
+      <a href="shindan-ichiran.html">診断一覧</a>
+      <a href="index.html#articles">記事</a>
+      <!-- NAVBIBO:BEGIN --><a href="biboroku/index.html">備忘録</a><!-- NAVBIBO:END -->
+      <a href="contact.html">お問い合わせ</a>
+      <!-- NAVSEARCH:BEGIN --><a class="nav-search" href="articles/index.html#search" aria-label="記事を検索" title="記事を検索"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="16.5" y1="16.5" x2="21" y2="21"></line></svg></a><!-- NAVSEARCH:END -->
+    </nav>
+  </div>
+</header>
+
+<div class="wrap page-wrap">
+  <div class="eyebrow">英語 &middot; 英文解釈診断</div>
+  <h1 class="page-title" id="page-title">英文解釈の参考書診断</h1>
+  <hr class="page-title-rule">
+  <p class="page-lead" id="page-lead">今の到達度と志望校と進め方の好みから、あなたに合う英文解釈の参考書を診断します。</p>
+
+  <div id="crumbs" class="crumbs"></div>
+  <div id="quiz-area"></div>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>&copy; 2026 受験診断ドットコム</span>
+    <div class="footer-links">
+      <a href="about.html">運営者情報</a>
+      <a href="privacy-policy.html">プライバシーポリシー</a>
+      <a href="contact.html">お問い合わせ</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   英文解釈の参考書データベース
+   fields: name, note, asin, short, tier, ほか
+   tier: 0 入門 / 1 標準 / 2 発展 / 3 最難関
+   low: 評価が低い本。上位3冊には出さず「ほかの候補」にだけ出す
+   noFirst: 1位には出さない（肘井シリーズ・ポラリス）
+   polaris: 文章を読むのが得意ではない人に上げる
+   fast: 効率よく終わらせたい人に上げる
+   kyodai: 京大志望に上げる
+   sensei: takeoka 竹岡先生 / kubota 久保田先生
+   ============================================================ */
+const AMAZON_TAG = "jukenshindan-22";
+/* COVERS:BEGIN */const COVERS = {"大学入試 Basic Lecture 動画でわかる英文法［読解入門編］":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/1284/9784010351284_1_2.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/58abd59b.2a7aebd9.58abd59c.6bc494c1/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Fsearch%3Fsitem%3D%25E5%258B%2595%25E7%2594%25BB%25E3%2581%25A7%25E3%2582%258F%25E3%2581%258B%25E3%2582%258B%25E8%258B%25B1%25E6%2596%2587%25E6%25B3%2595%2520%25E8%25AA%25AD%25E8%25A7%25A3%25E5%2585%25A5%25E9%2596%2580%25E7%25B7%25A8"},"英文読解入門 基本はここだ！ 改訂版":{"i":"","u":"https://hb.afl.rakuten.co.jp/hgc/58abd59b.2a7aebd9.58abd59c.6bc494c1/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Fsearch%3Fsitem%3D%25E8%258B%25B1%25E6%2596%2587%25E8%25AA%25AD%25E8%25A7%25A3%25E5%2585%25A5%25E9%2596%2580%2520%25E5%259F%25BA%25E6%259C%25AC%25E3%2581%25AF%25E3%2581%2593%25E3%2581%2593%25E3%2581%25A0"},"入門英文問題精講 4訂版":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/5719/9784010345719.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/58abd59b.2a7aebd9.58abd59c.6bc494c1/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Fsearch%3Fsitem%3D%25E5%2585%25A5%25E9%2596%2580%25E8%258B%25B1%25E6%2596%2587%25E5%2595%258F%25E9%25A1%258C%25E7%25B2%25BE%25E8%25AC%259B%2520%25E7%25AB%25B9%25E5%25B2%25A1%25E5%25BA%2583%25E4%25BF%25A1"},"大学入試 基礎からの英文解釈クラシック":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/4975/9784327764975.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/58abd59b.2a7aebd9.58abd59c.6bc494c1/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Fsearch%3Fsitem%3D%25E5%259F%25BA%25E7%25A4%258E%25E3%2581%258B%25E3%2582%2589%25E3%2581%25AE%25E8%258B%25B1%25E6%2596%2587%25E8%25A7%25A3%25E9%2587%2588%25E3%2582%25AF%25E3%2583%25A9%25E3%2582%25B7%25E3%2583%2583%25E3%2582%25AF"},"関正生の英文解釈ポラリス［1 標準〜応用レベル］":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2390/9784046062390_1_2.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/58abd59b.2a7aebd9.58abd59c.6bc494c1/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Fsearch%3Fsitem%3D%25E8%258B%25B1%25E6%2596%2587%25E8%25A7%25A3%25E9%2587%2588%25E3%2583%259D%25E3%2583%25A9%25E3%2583%25AA%25E3%2582%25B9%25201"},"肘井学の読解のための英文法が面白いほどわかる本 必修編":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/0564/9784046050564.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/58abd59b.2a7aebd9.58abd59c.6bc494c1/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Fsearch%3Fsitem%3D%25E8%2582%2598%25E4%25BA%2595%25E5%25AD%25A6%2520%25E8%25AA%25AD%25E8%25A7%25A3%25E3%2581%25AE%25E3%2581%259F%25E3%2582%2581%25E3%2581%25AE%25E8%258B%25B1%25E6%2596%2587%25E6%25B3%2595%2520%25E5%25BF%2585%25E4%25BF%25AE%25E7%25B7%25A8"},"入門英文解釈の技術70 音声オンライン提供版":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/0136/9784342210136.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/58abd59b.2a7aebd9.58abd59c.6bc494c1/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Fsearch%3Fsitem%3D%25E5%2585%25A5%25E9%2596%2580%25E8%258B%25B1%25E6%2596%2587%25E8%25A7%25A3%25E9%2587%2588%25E3%2581%25AE%25E6%258A%2580%25E8%25A1%259370"},"大学受験のための英文熟考 上 改訂版":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/1253/9784010351253.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/58abd59b.2a7aebd9.58abd59c.6bc494c1/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Fsearch%3Fsitem%3D%25E8%258B%25B1%25E6%2596%2587%25E7%2586%259F%25E8%2580%2583%2520%25E4%25B8%258A%2520%25E7%25AB%25B9%25E5%25B2%25A1%25E5%25BA%2583%25E4%25BF%25A1"},"大学入試 英文解釈クラシック":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/4920/9784327764920.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/58abd59b.2a7aebd9.58abd59c.6bc494c1/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Fsearch%3Fsitem%3D%25E8%258B%25B1%25E6%2596%2587%25E8%25A7%25A3%25E9%2587%2588%25E3%2582%25AF%25E3%2583%25A9%25E3%2582%25B7%25E3%2583%2583%25E3%2582%25AF%2520%25E4%25B9%2585%25E4%25BF%259D%25E7%2594%25B0%25E6%2599%25BA%25E5%25A4%25A7"},"難関大に合格する 英文解釈Code70":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/1194/9784761231194.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/58abd59b.2a7aebd9.58abd59c.6bc494c1/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Fsearch%3Fsitem%3D%25E8%258B%25B1%25E6%2596%2587%25E8%25A7%25A3%25E9%2587%2588Code70%2520%25E6%259D%2589%25E6%259D%2591%25E5%25B9%25B4%25E5%25BD%25A6"},"関正生の英文解釈ポラリス［2 発展レベル］":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2406/9784046062406.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/58abd59b.2a7aebd9.58abd59c.6bc494c1/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Fsearch%3Fsitem%3D%25E8%258B%25B1%25E6%2596%2587%25E8%25A7%25A3%25E9%2587%2588%25E3%2583%259D%25E3%2583%25A9%25E3%2583%25AA%25E3%2582%25B9%25202"},"肘井学の読解のための英文法が面白いほどわかる本 難関大編":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/0571/9784046050571.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/58abd59b.2a7aebd9.58abd59c.6bc494c1/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Fsearch%3Fsitem%3D%25E8%2582%2598%25E4%25BA%2595%25E5%25AD%25A6%2520%25E8%25AA%25AD%25E8%25A7%25A3%25E3%2581%25AE%25E3%2581%259F%25E3%2582%2581%25E3%2581%25AE%25E8%258B%25B1%25E6%2596%2587%25E6%25B3%2595%2520%25E9%259B%25A3%25E9%2596%25A2%25E5%25A4%25A7%25E7%25B7%25A8"},"肘井学の読解のための英文法が面白いほどわかる本 構文制覇編":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/6250/9784046076250_1_2.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/58abd59b.2a7aebd9.58abd59c.6bc494c1/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Fsearch%3Fsitem%3D%25E8%2582%2598%25E4%25BA%2595%25E5%25AD%25A6%2520%25E8%25AA%25AD%25E8%25A7%25A3%25E3%2581%25AE%25E3%2581%259F%25E3%2582%2581%25E3%2581%25AE%25E8%258B%25B1%25E6%2596%2587%25E6%25B3%2595%2520%25E6%25A7%258B%25E6%2596%2587%25E5%2588%25B6%25E8%25A6%2587%25E7%25B7%25A8"},"基礎英文解釈の技術100 音声オンライン提供版":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/0112/9784342210112.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/58abd59b.2a7aebd9.58abd59c.6bc494c1/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Fsearch%3Fsitem%3D%25E5%259F%25BA%25E7%25A4%258E%25E8%258B%25B1%25E6%2596%2587%25E8%25A7%25A3%25E9%2587%2588%25E3%2581%25AE%25E6%258A%2580%25E8%25A1%2593100"},"大学受験のための英文熟考 下 改訂版":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/1260/9784010351260.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/58abd59b.2a7aebd9.58abd59c.6bc494c1/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Fsearch%3Fsitem%3D%25E8%258B%25B1%25E6%2596%2587%25E7%2586%259F%25E8%2580%2583%2520%25E4%25B8%258B%2520%25E7%25AB%25B9%25E5%25B2%25A1%25E5%25BA%2583%25E4%25BF%25A1"},"新版 富田の英文読解100の原則 上":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/0462/9784479190462.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/58abd59b.2a7aebd9.58abd59c.6bc494c1/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Fsearch%3Fsitem%3D%25E5%25AF%258C%25E7%2594%25B0%25E3%2581%25AE%25E8%258B%25B1%25E6%2596%2587%25E8%25AA%25AD%25E8%25A7%25A3100%25E3%2581%25AE%25E5%258E%259F%25E5%2589%2587%2520%25E4%25B8%258A"},"英文読解の透視図":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3466/9784327763466.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/58abd59b.2a7aebd9.58abd59c.6bc494c1/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Fsearch%3Fsitem%3D%25E8%258B%25B1%25E6%2596%2587%25E8%25AA%25AD%25E8%25A7%25A3%25E3%2581%25AE%25E9%2580%258F%25E8%25A6%2596%25E5%259B%25B3"},"ポレポレ英文読解プロセス50":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3389/9784896803389.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/58abd59b.2a7aebd9.58abd59c.6bc494c1/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Fsearch%3Fsitem%3D%25E3%2583%259D%25E3%2583%25AC%25E3%2583%259D%25E3%2583%25AC%25E8%258B%25B1%25E6%2596%2587%25E8%25AA%25AD%25E8%25A7%25A3%25E3%2583%2597%25E3%2583%25AD%25E3%2582%25BB%25E3%2582%25B950"},"英文解釈の技術100 音声オンライン提供版":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/0129/9784342210129.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/58abd59b.2a7aebd9.58abd59c.6bc494c1/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Fsearch%3Fsitem%3D%25E8%258B%25B1%25E6%2596%2587%25E8%25A7%25A3%25E9%2587%2588%25E3%2581%25AE%25E6%258A%2580%25E8%25A1%2593100"},"Realize 英文「解釈」演習99［発展レベル］":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2764/9784757442764_1_2.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/58abd59b.2a7aebd9.58abd59c.6bc494c1/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Fsearch%3Fsitem%3DRealize%2520%25E8%258B%25B1%25E6%2596%2587%25E8%25A7%25A3%25E9%2587%2588%25E6%25BC%2594%25E7%25BF%259299"},"英文解体新書":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2926/9784327452926.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/58abd59b.2a7aebd9.58abd59c.6bc494c1/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Fsearch%3Fsitem%3D%25E8%258B%25B1%25E6%2596%2587%25E8%25A7%25A3%25E4%25BD%2593%25E6%2596%25B0%25E6%259B%25B8%2520%25E5%258C%2597%25E6%259D%2591%25E4%25B8%2580%25E7%259C%259F"},"読解のための上級英文法":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3176/9784327453176.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/58abd59b.2a7aebd9.58abd59c.6bc494c1/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Fsearch%3Fsitem%3D%25E8%25AA%25AD%25E8%25A7%25A3%25E3%2581%25AE%25E3%2581%259F%25E3%2582%2581%25E3%2581%25AE%25E4%25B8%258A%25E7%25B4%259A%25E8%258B%25B1%25E6%2596%2587%25E6%25B3%2595%2520%25E7%2594%25B0%25E4%25B8%258A%25E8%258A%25B3%25E5%25BD%25A6"},"英文解釈教室 新装版":{"i":"https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/4876/9784327764876.jpg?_ex=200x200","u":"https://hb.afl.rakuten.co.jp/hgc/58abd59b.2a7aebd9.58abd59c.6bc494c1/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Fsearch%3Fsitem%3D%25E8%258B%25B1%25E6%2596%2587%25E8%25A7%25A3%25E9%2587%2588%25E6%2595%2599%25E5%25AE%25A4%2520%25E4%25BC%258A%25E8%2597%25A4%25E5%2592%258C%25E5%25A4%25AB"}};/* COVERS:END */
+function amazonUrl(b){
+  if(b.asin) return `https://www.amazon.co.jp/dp/${b.asin}?tag=${AMAZON_TAG}`;
+  return `https://www.amazon.co.jp/s?k=${encodeURIComponent(b.q || b.name)}&i=stripbooks&tag=${AMAZON_TAG}`;
+}
+
+const BOOKS = [
+  // ---- 入門 ----
+  {name:"大学入試 Basic Lecture 動画でわかる英文法［読解入門編］",note:"旺文社の本と動画を組み合わせたシリーズの読解入門編です。英文の構造の取り方を初歩から動画つきで学べるので、英文解釈を初めて学ぶ人の1冊目として特におすすめです。",asin:"4010351284",short:"動画でわかる英文法［読解入門編］",tier:0,first0:true},
+  {name:"英文読解入門 基本はここだ！ 改訂版",note:"西きょうじ先生による英文解釈の入門書です。英文解釈を初めて学ぶ人が文の構造を取る基本を身につけるのに向いています。",asin:"4896808371",short:"基本はここだ！",tier:0,second0:true},
+  {name:"入門英文問題精講 4訂版",note:"竹岡広信先生による旺文社の英文解釈の入門書です。この本から英文熟考の上・下へ進むと、竹岡先生の系統で英文解釈の力を一通り固められます。",asin:"4010345713",short:"入門英文問題精講",tier:0,sensei:"takeoka"},
+  {name:"大学入試 基礎からの英文解釈クラシック",note:"駿台の久保田智大先生による英文解釈クラシックの基礎編です。この本から英文解釈クラシックへ進むと、久保田先生の系統で硬派な英文解釈の力をつけられます。",asin:"4327764973",short:"基礎からの英文解釈クラシック",tier:0,sensei:"kubota",kyodai:true},
+  {name:"関正生の英文解釈ポラリス［1 標準〜応用レベル］",note:"関正生先生による英文解釈の問題集です。解説がかみくだかれているので、文章を読むのがあまり得意ではない人でも進めやすい本です。",asin:"4046062398",short:"英文解釈ポラリス1",tier:0,noFirst:true,polaris:true},
+  {name:"肘井学の読解のための英文法が面白いほどわかる本 必修編",note:"肘井学先生による読解のための英文法の本で、英文の構造を図で示しながら解説しています。有名な本ですが、ほかに優先したい入門書があります。",asin:"404605056X",short:"肘井 必修編",tier:0,noFirst:true},
+  {name:"入門英文解釈の技術70 音声オンライン提供版",note:"桐原書店の英文解釈の技術シリーズの入門編です。長く使われてきた定番ですが、意訳が多く時代遅れになりつつあるのでおすすめはしません。",asin:"4342210134",short:"入門英文解釈の技術70",tier:0,low:true},
+  // ---- 標準 ----
+  {name:"大学受験のための英文熟考 上 改訂版",note:"竹岡広信先生による英文解釈の定番です。自然な英文が使われていて問題の選定も解説の質も高く、解説もシャープで分かりやすいので、どの志望校でもまず最初にすすめたい1冊です。",asin:"401035125X",short:"英文熟考 上",tier:1,sensei:"takeoka",jukko:true},
+  {name:"大学入試 英文解釈クラシック",note:"駿台の久保田智大先生による英文解釈の本で、伊藤和夫先生の『英文解釈教室』を現代風にリメイクしたような硬派な作りです。情報構造や長文の読み方まで踏み込んでいて実践的な和訳の力がつくので、京大の雰囲気にも合っています。",asin:"4327764922",short:"英文解釈クラシック",tier:1,sensei:"kubota",kyodai:true},
+  {name:"難関大に合格する 英文解釈Code70",note:"杉村年彦先生による英文解釈の本です。分量は短いのに内容のレベルは高く、ステップバイステップで解けるようになる構成なので、効率よく英文解釈を仕上げたい人に向いています。",asin:"476123119X",short:"英文解釈Code70",tier:1,fast:true},
+  {name:"関正生の英文解釈ポラリス［2 発展レベル］",note:"英文解釈ポラリスの発展編です。難関大の英文を関先生のかみくだいた解説で読めるので、文章を読むのがあまり得意ではない人に向いています。",asin:"4046062401",short:"英文解釈ポラリス2",tier:1,noFirst:true,polaris:true},
+  {name:"肘井学の読解のための英文法が面白いほどわかる本 難関大編",note:"肘井学先生の読解のための英文法の続編で、難関大で狙われる倒置や挿入などを扱います。有名な本ですが、ほかに優先したい本があります。",asin:"4046050578",short:"肘井 難関大編",tier:1,noFirst:true},
+  {name:"肘井学の読解のための英文法が面白いほどわかる本 構文制覇編",note:"肘井学先生の読解のための英文法シリーズの新刊で、2026年9月に発売されました。有名なシリーズですが、ほかに優先したい本があります。",asin:"4046076259",short:"肘井 構文制覇編",tier:1,noFirst:true},
+  {name:"基礎英文解釈の技術100 音声オンライン提供版",note:"桐原書店の英文解釈の技術シリーズの基礎編です。意訳が多く古くなっているのでおすすめはしません。",asin:"4342210118",short:"基礎英文解釈の技術100",tier:1,low:true},
+  // ---- 発展 ----
+  {name:"大学受験のための英文熟考 下 改訂版",note:"英文熟考の下巻です。上巻で身につけた読み方を難関大レベルの英文で仕上げます。英文熟考の上を終えた人が次に進むならまずこの本です。",asin:"4010351268",short:"英文熟考 下",tier:2,sensei:"takeoka",jukko:true},
+  {name:"新版 富田の英文読解100の原則 上",note:"富田一彦先生による英文読解の本で、レベルは英文熟考とほぼ同じです。いい本なので、英文熟考や英文解釈クラシックの次の1冊としておすすめできます。下巻とあわせて使います。",asin:"4479190465",short:"富田の英文読解100の原則",tier:2},
+  {name:"英文読解の透視図",note:"1993年に出た英文解釈の定番です。いい本ではありますが、例文が古いままで、みんなが言うほどこの本を選ぶ必要があるかは疑問です。",asin:"4327763462",short:"英文読解の透視図",tier:2,low:true},
+  {name:"ポレポレ英文読解プロセス50",note:"1997年に出た西きょうじ先生の英文解釈の定番です。かなり古くなっているので、今から選ぶならほかの本をおすすめします。",asin:"4896803388",short:"ポレポレ",tier:2,low:true},
+  {name:"英文解釈の技術100 音声オンライン提供版",note:"桐原書店の英文解釈の技術シリーズの最上位の本です。意訳が多く古くなっているのでおすすめはしません。",asin:"4342210126",short:"英文解釈の技術100",tier:2,low:true},
+  // ---- 最難関（東大・京大志望で英文解釈の本を終えた人にだけ出す） ----
+  {name:"Realize 英文「解釈」演習99［発展レベル］",note:"IDIOMATIC 300の山崎竜成先生による英文解釈の本で、レベルはかなり高めです。よく出る表現をまるごと覚える考え方に加えて、構文解説で終わらずに構文の先の読解力まで学べるので、東大・京大志望が英文熟考の下や英文解釈クラシックのあとに取り組むのに向いています。",asin:"4757442769",short:"Realize 英文「解釈」演習99",tier:3,kyodai:true},
+  {name:"英文解体新書",note:"北村一真先生による英文解釈の本です。実用英語の棚に置かれていることも多いマニア向けの本でレベルは高めですが、英文解釈教室に手を出すくらいならこちらがおすすめです。",asin:"4327452920",short:"英文解体新書",tier:3},
+  {name:"読解のための上級英文法",note:"田上芳彦先生による研究社の本で、一般的な参考書では見落とされがちな文法・語法を入試の英文を使って解説しています。英文を細部まで正確に読みたい最上位層に向いています。",asin:"432745317X",short:"読解のための上級英文法",tier:3},
+  {name:"英文解釈教室 新装版",note:"伊藤和夫先生による英文解釈の歴史的名著で、構文的にとても難しいことで有名です。今となっては古いので、まずは英文解釈クラシックをやり、それでも足りない人だけが手を出せば十分です。",asin:"4327764876",short:"英文解釈教室",tier:3,low3:true},
+];
+const ARTICLE_OF = {
+  "大学受験のための英文熟考 上 改訂版":"kyodai-eigo-taisaku", "大学受験のための英文熟考 下 改訂版":"kyodai-eigo-taisaku",
+  "入門英文問題精講 4訂版":"kyodai-eigo-taisaku", "大学入試 英文解釈クラシック":"kyodai-eigo-taisaku",
+  "大学入試 基礎からの英文解釈クラシック":"kyodai-eigo-taisaku", "Realize 英文「解釈」演習99［発展レベル］":"kyodai-eigo-taisaku",
+  "難関大に合格する 英文解釈Code70":"kyodai-eigo-taisaku", "英文解体新書":"kyodai-eigo-taisaku", "英文解釈教室 新装版":"kyodai-eigo-taisaku",
+};
+BOOKS.forEach(b => { if(ARTICLE_OF[b.name]) b.article = ARTICLE_OF[b.name]; });
+
+/* ============================================================
+   質問の流れ
+   ============================================================ */
+const COLOR = "var(--lv3)";
+const SHIBOU_NAME = { kyotsu:"共通テストのみ", hyojun:"地方国公立・MARCH", nankan:"旧帝大・早慶", todai:"東大", kyodai:"京大" };
+const LEVEL_NAME = { bunpo:"英文法がまだ不安", hajime:"英文解釈は初めて", one:"英文解釈の本を1冊終えた", two:"2冊以上終えた" };
+const TIER_NAME = ["入門", "標準", "発展", "最難関"];
+const SENSEI_NAME = { takeoka:"竹岡先生", kubota:"久保田先生", any:"こだわらない" };
+const ROUTES = {
+  takeoka:{label:"竹岡ルート", books:["入門英文問題精講 4訂版","大学受験のための英文熟考 上 改訂版","大学受験のための英文熟考 下 改訂版"]},
+  kubota:{label:"久保田ルート", books:["大学入試 基礎からの英文解釈クラシック","大学入試 英文解釈クラシック"]},
+};
+
+let answers = {};
+let stack = [{step:"level", snap:{}}];
+const clone = o => JSON.parse(JSON.stringify(o));
+const quizArea = document.getElementById("quiz-area");
+const crumbsEl = document.getElementById("crumbs");
+
+function renderCrumbs(){
+  const a = answers, labels = [];
+  if(a.level) labels.push(["到達度", LEVEL_NAME[a.level]]);
+  if(a.shibou) labels.push(["志望", SHIBOU_NAME[a.shibou]]);
+  if(a.pace) labels.push(["進め方", a.pace==="fast" ? "効率よく" : "じっくり"]);
+  if(a.yomu) labels.push(["読むのは", a.yomu==="ok" ? "得意" : "得意ではない"]);
+  if(a.sensei) labels.push(["先生", SENSEI_NAME[a.sensei]]);
+  crumbsEl.innerHTML = labels.map(([k,v], i) =>
+    (i>0?'<span class="crumb-arrow">→</span>':'') + `<span class="crumb"><span class="k">${k}</span><b>${v}</b></span>`
+  ).join("");
+}
+function go(step){ stack.push({step, snap:clone(answers)}); renderStep(step); }
+function back(){
+  if(stack.length<=1) return;
+  stack.pop();
+  const top = stack[stack.length-1];
+  answers = clone(top.snap);
+  renderStep(top.step);
+}
+function progressHtml(){
+  const cur = stack.length, total = 5;
+  const pct = Math.round((cur-1)/total*100);
+  return `<div class="progress"><div class="p-label"><span><b>Q${cur}</b> / ${total}</span><span>あと${total-cur+1}問</span></div>
+    <div class="p-bar"><i style="width:${pct}%"></i></div></div>`;
+}
+function renderQ(index, qText, choices, colClass){
+  let html = progressHtml() + `<div class="card">
+    <div class="q-index">${index}</div>
+    <p class="q-text">${qText}</p>
+    <div class="choices ${colClass||''}">`;
+  choices.forEach(c=>{
+    html += `<button class="choice-btn" data-value="${c.value}">${c.label}${c.sub?`<span class="sub">${c.sub}</span>`:''}</button>`;
+  });
+  html += `</div></div>`;
+  if(stack.length > 1) html += `<div class="nav-row"><button class="back-btn" id="back-btn">← 前の質問に戻る</button></div>`;
+  quizArea.innerHTML = html;
+  renderCrumbs();
+  const bb = document.getElementById("back-btn");
+  if(bb) bb.addEventListener("click", back);
+  return quizArea.querySelectorAll(".choice-btn");
+}
+function bindChoice(btns, handler){
+  btns.forEach(b => b.addEventListener("click", ()=> handler(b.dataset.value, b)));
+}
+function renderStep(step){
+  window.scrollTo({top:0, behavior:"auto"});
+  switch(step){
+    case "level": return stepLevel();
+    case "shibou": return stepShibou();
+    case "pace": return stepPace();
+    case "yomu": return stepYomu();
+    case "sensei": return stepSensei();
+    case "result": return renderResult();
+  }
+}
+function stepLevel(){
+  const btns = renderQ("英文解釈", "今の英文解釈の到達度は？", [
+    {label:"英文法がまだ不安", sub:"文法の参考書を一通り終えていない", value:"bunpo"},
+    {label:"英文法は終えたが英文解釈は初めて", sub:"SVOCを意識して読んだことがあまりない", value:"hajime"},
+    {label:"英文解釈の本を1冊終えた", sub:"短めの文なら構造を取れる", value:"one"},
+    {label:"英文解釈の本を2冊以上終えた", sub:"難関大の長い文も構造を取って読める", value:"two"},
+  ], "cols-1");
+  bindChoice(btns, v => { answers.level = v; go("shibou"); });
+}
+function stepShibou(){
+  const btns = renderQ("英文解釈", "志望校はどこ？", [
+    {label:"共通テストのみ", sub:"二次や個別試験で英語を使わない", value:"kyotsu"},
+    {label:"地方国公立・MARCH・関関同立", value:"hyojun"},
+    {label:"旧帝大・早慶", value:"nankan"},
+    {label:"東大", value:"todai"},
+    {label:"京大", sub:"英文和訳が中心の試験", value:"kyodai"},
+  ], "cols-1");
+  bindChoice(btns, v => { answers.shibou = v; go("pace"); });
+}
+function stepPace(){
+  const btns = renderQ("英文解釈", "どう進めたい？", [
+    {label:"解説をじっくり読みたい", value:"slow"},
+    {label:"短く効率よく終わらせたい", value:"fast"},
+  ]);
+  bindChoice(btns, v => { answers.pace = v; go("yomu"); });
+}
+function stepYomu(){
+  const btns = renderQ("英文解釈", "長い文章や解説を読むのは得意？", [
+    {label:"得意", value:"ok"},
+    {label:"あまり得意ではない", value:"ng"},
+  ]);
+  bindChoice(btns, v => { answers.yomu = v; go("sensei"); });
+}
+function stepSensei(){
+  const btns = renderQ("英文解釈", "先生の系統で揃えたい？", [
+    {label:"竹岡先生で揃えたい", sub:"入門英文問題精講 → 英文熟考 上・下", value:"takeoka"},
+    {label:"久保田先生で揃えたい", sub:"基礎からの英文解釈クラシック → 英文解釈クラシック", value:"kubota"},
+    {label:"こだわらない", value:"any"},
+  ], "cols-1");
+  bindChoice(btns, v => { answers.sensei = v; go("result"); });
+}
+
+/* ============================================================
+   スコアリング
+   ============================================================ */
+const isTopTwo = () => answers.shibou==="todai" || answers.shibou==="kyodai";
+function targetTier(){
+  const a = answers;
+  let t = (a.level==="bunpo" || a.level==="hajime") ? 0 : (a.level==="one" ? 1 : 2);
+  const cap = (a.shibou==="kyotsu" || a.shibou==="hyojun") ? 1 : 2;
+  return Math.min(t, cap);
+}
+function maxTier(){
+  const a = answers;
+  if(isTopTwo() && (a.level==="one" || a.level==="two")) return 3;   // 最難関の本は東大・京大志望で解釈の本を終えた人だけ
+  if(a.shibou==="kyotsu" || a.shibou==="hyojun") return Math.max(1, targetTier());
+  return 2;
+}
+function scoreBook(b){
+  const a = answers, t = targetTier();
+  if(b.tier > maxTier()) return -Infinity;
+  if(b.tier < t - 1) return -Infinity;                               // 終えた段階より易しい本は出さない
+  let s = 10 - (b.tier - t) * 3;
+  if(b.tier < t) s -= 7;                                             // 1つ下の段階の本は、まだやっていない人向けに下位にだけ出す
+  if(b.tier===3){ s += (a.level==="two" ? 4 : 1); if(b.low3) s -= 2; }
+  if(t===0 && b.first0) s += 4;                                      // 初めての人には動画でわかる英文法を1位に
+  if(t===0 && b.second0) s += 2;                                     // 基本はここだ！は2〜3位
+  if(b.jukko && b.tier===t) s += 5;                                  // 標準・発展の段階は英文熟考が軸
+  if(a.sensei!=="any" && b.sensei===a.sensei && b.tier >= t) s += 6;
+  if(a.pace==="fast" && b.fast) s += 3;
+  if(a.yomu==="ng" && b.polaris) s += 4;
+  if(a.yomu==="ok" && b.polaris) s -= 1;
+  if(a.shibou==="kyodai" && b.kyodai) s += 2;
+  if(b.low) s -= 6;
+  return s;
+}
+function maxScore(){ return 10 + 5 + 6 + 4; }
+
+function explainBook(b, s){
+  const a = answers, tags = [], t = targetTier();
+  const d = b.tier - t;
+  if(d===0) tags.push({t:"レベルがぴったり"});
+  else if(d<0) tags.push({t:"1つ前の段階", warn:true});
+  else tags.push({t:"次の段階", warn:true});
+  tags.push({t:TIER_NAME[b.tier]+"レベル"});
+  if(b.jukko) tags.push({t:"どの志望校でも軸になる本"});
+  if(b.sensei==="takeoka") tags.push({t:"竹岡先生"});
+  if(b.sensei==="kubota") tags.push({t:"久保田先生"});
+  if(a.pace==="fast" && b.fast) tags.push({t:"効率よく仕上がる"});
+  if(a.yomu==="ng" && b.polaris) tags.push({t:"読むのが苦手でも進めやすい"});
+  if(a.shibou==="kyodai" && b.kyodai) tags.push({t:"京大の和訳に合う"});
+  if(b.low) tags.push({t:"今はおすすめしない", warn:true});
+  const pct = Math.max(0, Math.min(100, Math.round(s / maxScore() * 100)));
+  return {pct, tags};
+}
+function hitokoto(b, ex){
+  const a = answers;
+  const lead = `${SHIBOU_NAME[a.shibou]}${a.shibou==="kyotsu" ? "なら" : "志望なら"}、`;
+  let body;
+  if(b.low) body = "名前をよく聞く本ですが、今から選ぶなら上位の本をおすすめします。";
+  else if(b.tier < targetTier()) body = "まだやっていなければ、先にこの段階の本で読み方を固めておきましょう。";
+  else if(b.tier===3) body = "英文熟考の下や英文解釈クラシックを終えたあとに、余裕があれば取り組みましょう。";
+  else if(b.tier > targetTier()) body = "今の本を終えたら次に進む候補です。";
+  else if(b.jukko) body = "どの志望校でもまず最初にすすめたい本です。1冊を決めたら最後までやり切りましょう。";
+  else if(b.first0) body = "英文解釈を初めて学ぶ人に特におすすめの入門書です。動画と一緒に進めましょう。";
+  else body = "今のレベルにちょうど合う1冊です。1冊を決めたら最後まで周回しましょう。";
+  return lead + body;
+}
+
+function bookItemHtml(b, i, chipLabel, chipBg, ex, isSub){
+  const cv = COVERS[b.name];
+  return `<div class="book-item rank-${i+1}">
+    <div class="book-chip${isSub?' sub-rank':''}" style="background:${chipBg}; color:var(--ink);">${chipLabel}</div>
+    <div class="book-info">
+      ${cv&&cv.i?`<a class="book-cover" href="${cv.u}" target="_blank" rel="sponsored noopener" aria-label="${b.name}を楽天で見る"><img src="${cv.i}" alt="${b.name}の表紙" width="84" height="120" loading="lazy" decoding="async"><span>楽天で見る</span></a>`:''}
+      <p class="name">${b.name}<span class="scope-tag">${TIER_NAME[b.tier]}</span></p>
+      <div class="match"><span class="m-num">一致度 ${ex.pct}%</span><span class="m-bar"><i style="width:${ex.pct}%"></i></span></div>
+      <div class="reasons">${ex.tags.map(x=>`<span${x.warn?' class="warn"':''}>${x.t}</span>`).join('')}</div>
+      <p class="desc">${b.note?`<span class="d-note">${b.note}</span>`:''}<span class="d-you"><b>あなたへのひとこと</b>${hitokoto(b, ex)}</span></p>
+      <div class="book-actions">
+        <a class="buy-link" href="${amazonUrl(b)}" target="_blank" rel="sponsored noopener">Amazonで見る</a>
+        ${cv?`<a class="buy-link buy-rakuten" href="${cv.u}" target="_blank" rel="sponsored noopener">楽天で見る</a>`:''}
+        ${b.article?`<a class="article-link" href="articles/${b.article}.html">解説記事を読む →</a>`:''}
+      </div>
+    </div>
+  </div>`;
+}
+
+function shareXHtml(bookName){
+  const url = "https://jukenshindan.com/eibun-kaishaku-shindan.html?utm_source=x&utm_medium=share";
+  const text = "英文解釈の参考書診断の結果、私のイチオシは『" + bookName + "』でした！\n#受験診断ドットコム #参考書診断";
+  const href = "https://x.com/intent/post?text=" + encodeURIComponent(text) + "&url=" + encodeURIComponent(url);
+  return `<a class="share-x" href="${href}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>結果をXでシェア</a><br>`;
+}
+
+/* 並べ替えのルール */
+function arrange(scored){
+  const a = answers, t = targetTier();
+  const main = scored.filter(x => !x.b.low), low = scored.filter(x => x.b.low);
+  // 1位にする本：先生の系統を選んだ人はその系統の今の段階の本、そうでなければ標準・発展は英文熟考、入門は動画でわかる英文法
+  let firstName = null;
+  if(a.sensei!=="any"){
+    const r = ROUTES[a.sensei].books.map(n => BOOKS.find(b => b.name===n));
+    const cand = r.find(b => b.tier===t) || r.find(b => b.tier>t);
+    if(cand) firstName = cand.name;
+  }
+  if(!firstName){
+    if(t===1) firstName = "大学受験のための英文熟考 上 改訂版";
+    else if(t===2) firstName = "大学受験のための英文熟考 下 改訂版";
+    else firstName = "大学入試 Basic Lecture 動画でわかる英文法［読解入門編］";
+  }
+  const fi = main.findIndex(x => x.b.name===firstName);
+  if(fi > 0) main.unshift(main.splice(fi,1)[0]);
+  // 肘井シリーズとポラリスは1位に出さない
+  if(main.length > 1 && main[0].b.noFirst){ main.splice(1, 0, main.shift()); }
+  // 東大・京大志望で2冊以上終えた人には最難関の本を少なくとも1冊は上位3冊に入れる
+  if(isTopTwo() && a.level==="two"){
+    const top3 = main.slice(0,3);
+    if(!top3.some(x => x.b.tier===3)){
+      const hi = main.findIndex(x => x.b.tier===3);
+      if(hi >= 3){ const item = main.splice(hi,1)[0]; main.splice(2, 0, item); }
+    }
+  }
+  return main.concat(low);
+}
+
+function routeHtml(){
+  const a = answers;
+  if(a.sensei==="any") return '';
+  const r = ROUTES[a.sensei], t = targetTier();
+  const steps = r.books.map(n => BOOKS.find(b => b.name===n));
+  let html = `<div class="textbook-base"><span class="tb-label">${r.label}</span><p class="tb-name">${steps.map(b => b.short).join(" → ")}</p><p class="tb-desc">`;
+  const now = steps.find(b => b.tier>=t);
+  if(now) html += `今のあなたは<b>${now.short}</b>から始めましょう。`;
+  else html += `${r.label}の${steps.length}冊はもう終えている段階です。次は下の本に進みましょう。`;
+  if(isTopTwo()) html += `終えたら3冊目としてRealize 英文「解釈」演習99に進むのもおすすめです。`;
+  html += `</p><a class="article-link" href="articles/kyodai-eigo-taisaku.html">英文解釈のルートを記事で読む →</a></div>`;
+  return html;
+}
+
+const TIP_HTML = `<div class="textbook-base">
+  <span class="tb-label">選ぶ前に</span>
+  <p class="tb-name">英文解釈の前に単語と文法を</p>
+  <p class="tb-desc">英文解釈は<b>単語と英文法の知識があってはじめて力になります。</b>単語帳がまだ決まっていない人は英単語帳診断もあわせて使ってみてください。</p>
+  <a class="article-link" href="eitango-shindan.html">英単語帳診断を試す →</a>
+</div>`;
+
+function renderResult(){
+  const a = answers;
+  let scored = BOOKS.map((b, i) => ({b, s:scoreBook(b), i}))
+                    .filter(x => x.s > -Infinity)
+                    .sort((x,y)=> y.s - x.s || x.i - y.i);
+  scored = arrange(scored);
+  const main = scored.filter(x => !x.b.low);
+  const top = main.slice(0,3);
+  const others = scored.filter(x => !top.includes(x)).slice(0,6);
+  const exOf = x => explainBook(x.b, x.s);
+
+  document.getElementById("page-title").innerHTML = "診断結果";
+  document.getElementById("page-lead").innerHTML = "あなたに一番合う英文解釈の参考書、ベスト" + top.length + "はこちら。";
+
+  const parts = [LEVEL_NAME[a.level], SHIBOU_NAME[a.shibou] + (a.shibou==="kyotsu" ? "" : "志望")];
+  const MEDAL = ["var(--amber)", "#C7CDD6", "#C98A4B"];
+  const MEDAL_LABEL = ["No.1 イチオシ", "No.2", "No.3"];
+  let podiumHtml = '';
+  if(top.length >= 2){
+    const order = top.length===3 ? [1,0,2] : [0,1];
+    podiumHtml = '<div class="podium">' + order.map(idx => `
+      <div class="podium-col ${idx===0?"podium-1":(idx===1?"podium-2":"podium-3")}">
+        <div class="podium-book" style="background:${MEDAL[idx]}"><span class="podium-rank">${idx+1}</span></div>
+        <div class="podium-base" style="background:${MEDAL[idx]}"></div>
+      </div>`).join('') + '</div>';
+  }
+  let listHtml = '<div class="book-list">';
+  top.forEach((x,i)=>{ listHtml += bookItemHtml(x.b, i, MEDAL_LABEL[i], MEDAL[i], exOf(x), false); });
+  listHtml += '</div>';
+  if(others.length){
+    listHtml += `<details class="more-books"><summary>ほかの候補（${others.length}冊）</summary><div class="book-list">`;
+    others.forEach((x,k)=>{ listHtml += bookItemHtml(x.b, 3+k, `No.${4+k}`, "", exOf(x), true); });
+    listHtml += '</div></details>';
+  }
+  const bodyHtml = '<p class="pr-note"><span class="pr-tag">PR</span>このページにはアフィリエイト広告が含まれています</p>' + TIP_HTML + routeHtml() + podiumHtml + listHtml;
+
+  quizArea.innerHTML = `
+    <div class="result-head">
+      <span class="route-badge" style="background:${COLOR}">英文解釈</span>
+      <h2>${parts.join(" ・ ")}</h2>
+    </div>
+    ${bodyHtml}
+    <div style="text-align:center;">${top.length ? shareXHtml(top[0].b.name) : ''}<button class="retry-btn" id="retry-btn">もう一度診断する</button></div>
+    <p class="disclaimer" style="margin-top:28px;">
+      ※本診断は一般的な学習ルートの目安であり、個々の学力・志望校の出題傾向によって最適な参考書は異なります。<br>
+      ※Amazonのアソシエイトとして、当メンバーは適格販売により収入を得ています。当サイトは楽天アフィリエイトに参加しています。
+    </p>`;
+  renderCrumbs();
+  document.getElementById("retry-btn").addEventListener("click", ()=>{
+    answers = {}; stack = [{step:"level", snap:{}}];
+    document.getElementById("page-title").innerHTML = PAGE_TITLE;
+    document.getElementById("page-lead").innerHTML = PAGE_LEAD;
+    renderStep("level");
+  });
+}
+const PAGE_TITLE = document.getElementById("page-title").innerHTML;
+const PAGE_LEAD = document.getElementById("page-lead").innerHTML;
+renderStep("level");
+</script>
+<script src="nav.js" defer></script>
+</body>
+</html>
