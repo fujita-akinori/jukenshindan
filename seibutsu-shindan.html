@@ -431,7 +431,7 @@ const BOOKS = [
   {name:"佐野芳史・河崎健吾の生物［生物基礎・生物］解法研究",note:"駿台の佐野芳史先生と河崎健吾先生による難関大向けの問題集です。解説が基本事項を問う設問と思考・考察の設問に分けられていて、知識問題と記述・論述問題のどこで得点するのかがはっきり分かります。",asin:"4046044713",scope:"both",tier:4,purposes:["niji"],type:"quantity",bunya:[],also:["kousatsu","jikken","ronjutsu"]},
   {name:"志望大学の過去問（赤本／青本）",note:"志望校の実際の入試問題に取り組む最終段階の1冊です。解けなかった問題は教科書とこれまで使った本の同じ分野に戻って復習しましょう。",scope:"both",tier:4,purposes:["niji"],type:"quantity",bunya:[],also:[]},
   // ---- tier5 最難関 ----
-  {name:"生物［生物基礎・生物］上級問題精講",note:"石原將弘先生による問題精講シリーズの最上位の1冊で、2026年7月に刊行されました。最難関大の入試問題で、初めて見る実験やデータを読み解いて論理的に答える力を鍛えられます。標準問題精講を終えてから取り組みましょう。",asin:"4010355352",scope:"both",tier:5,purposes:["niji"],type:"quantity",bunya:[],also:["kousatsu","jikken","ronjutsu"]},
+  {name:"生物［生物基礎・生物］上級問題精講",note:"石原將弘先生による問題精講シリーズの最上位の1冊で、2026年7月に刊行されました。旧『思考力問題精講』を改題した本で、京大・阪大を中心とする難しい考察問題を論理的な解説で解き切る力を鍛えられます。京大・阪大（と東大）志望が満点を狙うための本なので、それ以外の大学の志望者は標準問題精講までで十分です。",asin:"4010355352",scope:"both",tier:5,purposes:["niji"],type:"quantity",bunya:[],also:["kousatsu","jikken","ronjutsu"]},
   {name:"生物 知識の焦点（Z会）",note:"Z会の、入試で問われる生物の知識を整理した1冊です。難関大の論述や考察で使う知識を正確に確認したい人に向いています。2013年刊行なので、新課程で扱いが変わった内容は教科書で確認しましょう。",asin:"4860669150",scope:"both",tier:4,purposes:["niji"],type:"quality",bunya:[],also:["ronjutsu"],support:true},
   {name:"キャンベル生物学 原書11版",note:"世界中の大学で使われている生物学の教科書の日本語版です。受験の範囲を大きく超えますが、最難関大の考察問題の背景にある生物学を深く知りたい人が辞書のように引くのに向いています。",asin:"4621302760",scope:"both",tier:5,purposes:["niji"],type:"quality",bunya:[],also:[],support:true,saikenOnly:true},
   {name:"生物 理系上級問題集（駿台）",note:"駿台の大森徹先生による最難関大向けの問題集です。東大・京大・医学部レベルの考察問題と論述問題で、初見の実験を読み解く力を鍛えられます。",asin:"4796117768",scope:"both",tier:5,purposes:["niji"],type:"quantity",bunya:[],also:["kousatsu"]},
@@ -451,7 +451,7 @@ const ARTICLE_OF = {
   "生物合格77講【完全版】2nd edition":"seibutsu-goukaku-77kou",
   "大森徹の最強講義126講 生物［生物基礎・生物］":"seibutsu-benkyouhou",
   "セミナー生物基礎＋生物（第一学習社）":"seibutsu-benkyouhou", "セミナー生物基礎（第一学習社）":"seibutsu-benkyouhou",
-  "生物［生物基礎・生物］標準問題精講":"seibutsu-benkyouhou",
+  "生物［生物基礎・生物］標準問題精講":"seibutsu-hyoujun-joukyuu-seikou", "生物［生物基礎・生物］上級問題精講":"seibutsu-hyoujun-joukyuu-seikou",
 };
 BOOKS.forEach(b => { if(ARTICLE_OF[b.name]) b.article = ARTICLE_OF[b.name]; });
 
