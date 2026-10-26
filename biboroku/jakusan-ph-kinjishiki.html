@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- GA4:BEGIN -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2WNQN0ZF8D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2WNQN0ZF8D');
+</script>
+<!-- GA4:END -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>弱酸のpHの近似式の求め方｜高校教科書と大学教科書の2通りで導く【京大頻出・電離平衡】 | 受験診断ドットコム</title>
+<meta name="description" content="弱酸のpHの近似式[H+]=√(cKa)を高校教科書の電離度による方法と大学教科書の物質収支・電荷収支による方法の2通りで導き、近似が使えるかの確かめ方まで京大生が解説。京大化学2002年度第2問（改題）で使い方を確認します。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css?v=161ae32b">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js" onload="renderMathInElement(document.querySelector('.article-body'),{delimiters:[{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]})"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6837829466798350" crossorigin="anonymous"></script>
+<!-- SEO:BEGIN -->
+<link rel="canonical" href="https://jukenshindan.com/biboroku/jakusan-ph-kinjishiki.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="受験診断ドットコム">
+<meta property="og:title" content="弱酸のpHの近似式の求め方｜高校教科書と大学教科書の2通りで導く【京大頻出・電離平衡】 | 受験診断ドットコム">
+<meta property="og:description" content="弱酸のpHの近似式[H+]=√(cKa)を高校教科書の電離度による方法と大学教科書の物質収支・電荷収支による方法の2通りで導き、近似が使えるかの確かめ方まで京大生が解説。京大化学2002年度第2問（改題）で使い方を確認します。">
+<meta property="og:url" content="https://jukenshindan.com/biboroku/jakusan-ph-kinjishiki.html">
+<meta property="og:image" content="https://jukenshindan.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="弱酸のpHの近似式の求め方｜高校教科書と大学教科書の2通りで導く【京大頻出・電離平衡】 | 受験診断ドットコム">
+<meta name="twitter:description" content="弱酸のpHの近似式[H+]=√(cKa)を高校教科書の電離度による方法と大学教科書の物質収支・電荷収支による方法の2通りで導き、近似が使えるかの確かめ方まで京大生が解説。京大化学2002年度第2問（改題）で使い方を確認します。">
+<meta name="twitter:image" content="https://jukenshindan.com/og-image.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"弱酸のpHの近似式の求め方｜高校教科書と大学教科書の2通りで導く【京大頻出・電離平衡】","description":"弱酸のpHの近似式[H+]=√(cKa)を高校教科書の電離度による方法と大学教科書の物質収支・電荷収支による方法の2通りで導き、近似が使えるかの確かめ方まで京大生が解説。京大化学2002年度第2問（改題）で使い方を確認します。","datePublished":"2026-10-26","dateModified":"2026-10-26","image":["https://jukenshindan.com/og-image.png"],"inLanguage":"ja","articleSection":"受験化学","mainEntityOfPage":{"@type":"WebPage","@id":"https://jukenshindan.com/biboroku/jakusan-ph-kinjishiki.html"},"author":{"@type":"Organization","name":"受験診断ドットコム運営者（現役京大生）","url":"https://jukenshindan.com/about.html"},"publisher":{"@type":"Organization","name":"受験診断ドットコム","url":"https://jukenshindan.com/","logo":{"@type":"ImageObject","url":"https://jukenshindan.com/logo-mark.png"}},"isPartOf":{"@type":"CreativeWorkSeries","name":"近似で解く電離平衡","url":"https://jukenshindan.com/biboroku/#pl-denri-heikou"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ホーム","item":"https://jukenshindan.com/"},{"@type":"ListItem","position":2,"name":"京大生の備忘録","item":"https://jukenshindan.com/biboroku/"},{"@type":"ListItem","position":3,"name":"近似で解く電離平衡","item":"https://jukenshindan.com/biboroku/#pl-denri-heikou"},{"@type":"ListItem","position":4,"name":"弱酸のpHの近似式の求め方｜高校教科書と大学教科書の2通りで導く【京大頻出・電離平衡】","item":"https://jukenshindan.com/biboroku/jakusan-ph-kinjishiki.html"}]}</script>
+<!-- SEO:END -->
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="../index.html" class="logo"><img src="../logo-mark.png" class="mark" alt="受験診断ドットコム">受験診断ドットコム</a>
+    <nav class="nav-links">
+      <a href="../shindan-ichiran.html">診断一覧</a>
+      <a href="../articles/index.html">記事</a>
+      <!-- NAVBIBO:BEGIN --><a href="index.html">備忘録</a><!-- NAVBIBO:END -->
+      <a href="../contact.html">お問い合わせ</a>
+      <!-- NAVSEARCH:BEGIN --><a class="nav-search" href="../articles/index.html#search" aria-label="記事を検索" title="記事を検索"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="16.5" y1="16.5" x2="21" y2="21"></line></svg></a><!-- NAVSEARCH:END -->
+    </nav>
+  </div>
+</header>
+
+<main class="wrap page-wrap">
+<div class="paper-sheet">
+
+  <div class="article-header">
+<!-- CRUMBS:BEGIN -->
+    <nav class="crumbs" aria-label="パンくずリスト"><a href="../index.html">ホーム</a><span>›</span><a href="index.html">京大生の備忘録</a><span>›</span><a href="index.html#pl-denri-heikou">近似で解く電離平衡</a></nav>
+<!-- CRUMBS:END -->
+    <span class="tag">近似で解く電離平衡 #1</span>
+    <h1>弱酸のpHの近似式の求め方｜高校教科書と大学教科書の2通りで導く【京大頻出・電離平衡】</h1>
+    <span class="meta">2026.10.26 公開</span>
+<!-- BYLINE:BEGIN -->
+    <span class="byline">執筆：<a href="../about.html">受験診断ドットコム運営者（現役京大生）</a></span>
+<!-- BYLINE:END -->
+  </div>
+
+  <div class="article-body">
+
+    <p>弱酸のpHは \([\mathrm{H^+}]=\sqrt{cK_a}\) で求めると習います。ところがこの式がどんな近似から出てきたのかを説明できる人は多くありません。京大の化学はまさにその近似の中身を問う問題をくり返し出しています。この記事では近似式を高校教科書の方法と大学教科書の方法の2通りで導き、京大の過去問で使い方を確かめます。</p>
+
+    <h2>結論</h2>
+    <div class="point-box">
+      <p>\([\mathrm{H^+}]=\sqrt{cK_a}\) は「水の電離を無視する」と「弱酸の電離はわずかである」の2つの近似を重ねた式です。高校教科書の方法では1つ目の近似が式に現れないまま使われます。大学教科書の方法では2つの近似がどちらも式の上ではっきり見えるので、近似が使えない場面にも対応できます。</p>
+    </div>
+
+    <h2>高校教科書の導き方（電離度を使う）</h2>
+    <p>濃度 \(c\) の1価の弱酸HAの電離度を \(\alpha\) とします。電離前と平衡時の濃度を表にすると次のようになります。</p>
+    <div class="table-scroll"><table class="compare-table">
+      <thead><tr><th></th><th>\(\mathrm{HA}\)</th><th>\(\mathrm{H^+}\)</th><th>\(\mathrm{A^-}\)</th></tr></thead>
+      <tbody>
+        <tr><td>電離前</td><td>\(c\)</td><td>\(0\)</td><td>\(0\)</td></tr>
+        <tr><td>平衡時</td><td>\(c(1-\alpha)\)</td><td>\(c\alpha\)</td><td>\(c\alpha\)</td></tr>
+      </tbody>
+    </table></div>
+    <p>これを電離定数の式に入れると</p>
+    \[K_a=\frac{[\mathrm{H^+}][\mathrm{A^-}]}{[\mathrm{HA}]}=\frac{c\alpha^2}{1-\alpha}\]
+    <p>弱酸では \(\alpha\) が1に比べて十分小さいので \(1-\alpha\approx1\) とすると</p>
+    \[\alpha=\sqrt{\frac{K_a}{c}},\qquad [\mathrm{H^+}]=c\alpha=\sqrt{cK_a}\]
+    <p>が得られます。ここで使った近似は \(1-\alpha\approx1\) だけに見えます。しかし実はもう1つの近似が表の段階で入っています。<strong class="hl">表の \(\mathrm{H^+}\) の欄を「電離前 0」とした時点で水から出てくる \(\mathrm{H^+}\) を無視しているのです。</strong>この見えない近似が破れる場面が後で問題になります。</p>
+
+    <h2>大学教科書の導き方（物質収支と電荷収支）</h2>
+    <p>大学の教科書では表を作らず、溶液の中で成り立つ式をすべて書き出してから必要に応じて近似します。弱酸HAの水溶液で成り立つ式は次の4本です。</p>
+    \[\begin{aligned}
+    &\text{物質収支}\quad & c&=[\mathrm{HA}]+[\mathrm{A^-}]\\
+    &\text{電荷収支}\quad & [\mathrm{H^+}]&=[\mathrm{A^-}]+[\mathrm{OH^-}]\\
+    &\text{電離定数}\quad & K_a&=\frac{[\mathrm{H^+}][\mathrm{A^-}]}{[\mathrm{HA}]}\\
+    &\text{水のイオン積}\quad & K_w&=[\mathrm{H^+}][\mathrm{OH^-}]
+    \end{aligned}\]
+    <p>物質収支はAを含む粒子の合計が最初に溶かした量に等しいことを表します。電荷収支は溶液全体が電気的に中性であることを表し、電気的中性の条件とも呼ばれます。未知数は \([\mathrm{H^+}],[\mathrm{OH^-}],[\mathrm{HA}],[\mathrm{A^-}]\) の4つで式も4本なので、これで答えは決まります。</p>
+
+    <h3>近似1　水の電離を無視する</h3>
+    <p>酸性の溶液では \([\mathrm{OH^-}]\) は \([\mathrm{A^-}]\) に比べて十分小さいので、電荷収支から \([\mathrm{OH^-}]\) を落とします。</p>
+    \[[\mathrm{H^+}]\approx[\mathrm{A^-}]\]
+    <p>これを物質収支と電離定数の式に入れると \([\mathrm{H^+}]\) の2次方程式になります。</p>
+    \[K_a=\frac{[\mathrm{H^+}]^2}{c-[\mathrm{H^+}]}\]
+
+    <h3>近似2　弱酸の電離はわずかとする</h3>
+    <p>さらに \([\mathrm{A^-}]\) が \(c\) に比べて十分小さければ物質収支から \([\mathrm{A^-}]\) を落として \([\mathrm{HA}]\approx c\) とできます。</p>
+    \[K_a\approx\frac{[\mathrm{H^+}]^2}{c}\qquad\therefore\ [\mathrm{H^+}]=\sqrt{cK_a}\]
+    <p>こうして同じ近似式にたどり着きます。違うのは<strong class="hl">どの式からどの項を捨てたかが1つずつ見えている</strong>点です。</p>
+    <div class="callout">近似をまったくしない場合は4本の式から \([\mathrm{H^+}]\) の3次方程式 \([\mathrm{H^+}]^3+K_a[\mathrm{H^+}]^2-(cK_a+K_w)[\mathrm{H^+}]-K_aK_w=0\) が出ます。入試でこれを解かせることはまずありませんが、近似1と近似2はこの3次方程式の項を順に落とす操作だと理解しておくと見通しがよくなります。</div>
+
+    <h2>2つの導き方を並べる</h2>
+    <div class="table-scroll"><table class="compare-table">
+      <thead><tr><th>近似</th><th>高校教科書の方法</th><th>大学教科書の方法</th></tr></thead>
+      <tbody>
+        <tr><td>水の電離を無視</td><td>表で \(\mathrm{H^+}\) の初めを0とする（式には出ない）</td><td>電荷収支で \([\mathrm{OH^-}]\ll[\mathrm{A^-}]\) とする</td></tr>
+        <tr><td>電離はわずか</td><td>\(1-\alpha\approx1\)</td><td>物質収支で \([\mathrm{A^-}]\ll c\) とする</td></tr>
+        <tr><td>得られる式</td><td>\([\mathrm{H^+}]=\sqrt{cK_a}\)</td><td>\([\mathrm{H^+}]=\sqrt{cK_a}\)</td></tr>
+      </tbody>
+    </table></div>
+    <p>中身は同じですが、高校の方法は1つ目の近似が表に埋もれています。大学の方法は4本の式を書いた時点で捨てる候補がすべて並ぶので、問題に合わせてどれを捨てるかを選べます。この差が京大の問題でははっきり効いてきます。</p>
+
+    <h2>近似が使えるかの確かめ方</h2>
+    <p>近似は使う前に判断するのではなく、近似して解いたあとで捨てた項が本当に小さかったかを確かめます。目安は捨てた項が残した項の5%以下であることです。酢酸（\(K_a=2.7\times10^{-5}\ \mathrm{mol/L}\)）で濃度を変えて比べると次のようになります。</p>
+    <div class="table-scroll"><table class="compare-table">
+      <thead><tr><th>濃度 \(c\)</th><th>近似2を使った \(\alpha\)</th><th>近似式の \([\mathrm{H^+}]\)</th><th>2次方程式の \([\mathrm{H^+}]\)</th></tr></thead>
+      <tbody>
+        <tr><td>\(0.10\)</td><td>\(0.016\)</td><td>\(1.6\times10^{-3}\)</td><td>\(1.6\times10^{-3}\)</td></tr>
+        <tr><td>\(1.0\times10^{-3}\)</td><td>\(0.16\)</td><td>\(1.6\times10^{-4}\)</td><td>\(1.5\times10^{-4}\)</td></tr>
+        <tr><td>\(1.0\times10^{-5}\)</td><td>\(1.6\)</td><td>\(1.6\times10^{-5}\)</td><td>\(7.8\times10^{-6}\)</td></tr>
+      </tbody>
+    </table></div>
+    <p>\(0.10\ \mathrm{mol/L}\) では \(\alpha\) が5%を下回るので近似2は使えます。\(1.0\times10^{-5}\ \mathrm{mol/L}\) では \(\alpha\) が1を超えてしまい、近似2が成り立たないことが一目で分かります。このときは近似1だけを使った2次方程式を解きます。濃度が薄くなると電離度が大きくなるので近似2が先に破れる、と覚えておきましょう。</p>
+
+    <h2>例題　京大化学2002年度第2問（改題）</h2>
+    <div class="point-box">
+      <span class="point-label">2002 京都大学 化学 第2問（改題）</span>
+      <p>雨水には大気中の二酸化炭素が溶けて炭酸 \(\mathrm{H_2CO_3}\) が生じている。雨水中の \([\mathrm{H_2CO_3}]\) は大気中の二酸化炭素と平衡にあり \(9.6\times10^{-6}\ \mathrm{mol/L}\) で一定とする。炭酸の電離定数を \(K_1=4.2\times10^{-7}\ \mathrm{mol/L}\) と \(K_2=5.5\times10^{-11}\ \mathrm{mol/L}\) 、水のイオン積を \(1.0\times10^{-14}\ (\mathrm{mol/L})^2\) とする。</p>
+      <p>(A) 二酸化炭素だけが溶けた雨水のpHを求めよ。</p>
+      <p>(B) 雨水に硝酸も溶けてpHが5.0になった。雨水中の \([\mathrm{NO_3^-}]\) を求めよ。</p>
+    </div>
+    <p>原題は雨水のpHを題材にした大問で、ヘンリーの法則から \([\mathrm{H_2CO_3}]\) を求める部分や電気的中性の式の係数を答える部分もあります。ここでは電離平衡の近似に関わる部分だけを取り出しました。</p>
+
+    <h3>(A) の解き方</h3>
+    <p>大学教科書の方法で電荷収支を書きます。</p>
+    \[[\mathrm{H^+}]=[\mathrm{HCO_3^-}]+2[\mathrm{CO_3^{2-}}]+[\mathrm{OH^-}]\]
+    <p>雨水は酸性なので \([\mathrm{OH^-}]\) を落とします。また \(K_2\) は \(K_1\) よりはるかに小さいので2段階目の電離による \([\mathrm{CO_3^{2-}}]\) も落とします。すると \([\mathrm{H^+}]\approx[\mathrm{HCO_3^-}]\) となり、\(K_1\) の式から</p>
+    \[[\mathrm{H^+}]^2=K_1[\mathrm{H_2CO_3}]=4.2\times10^{-7}\times9.6\times10^{-6}\approx4.0\times10^{-12}\]
+    \[[\mathrm{H^+}]=2.0\times10^{-6}\ \mathrm{mol/L},\qquad \mathrm{pH}=6-\log_{10}2.0\approx5.7\]
+    <p>確かめると \([\mathrm{OH^-}]=K_w/[\mathrm{H^+}]=5.0\times10^{-9}\) で \([\mathrm{H^+}]\) の0.3%ほどしかないので近似は妥当です。なおこの問題では \([\mathrm{H_2CO_3}]\) が大気との平衡で一定なので、近似2（\([\mathrm{HA}]\approx c\)）はそもそも必要ありません。使った近似は水の電離と2段階目の電離を捨てることだけです。高校教科書の方法で \(\sqrt{cK_a}\) に当てはめても同じ答えが出ますが、なぜ当てはめてよいのかまで説明できるのは大学教科書の方法です。</p>
+
+    <h3>(B) の解き方</h3>
+    <p>ここで2つの方法の差が出ます。硝酸は強酸なので \(\mathrm{NO_3^-}\) が電荷収支に加わります。</p>
+    \[[\mathrm{H^+}]=[\mathrm{HCO_3^-}]+2[\mathrm{CO_3^{2-}}]+[\mathrm{OH^-}]+[\mathrm{NO_3^-}]\]
+    <p>(A)と同じく \([\mathrm{OH^-}]\) と \([\mathrm{CO_3^{2-}}]\) を落とすと \([\mathrm{NO_3^-}]\approx[\mathrm{H^+}]-[\mathrm{HCO_3^-}]\) です。pH 5.0より \([\mathrm{H^+}]=1.0\times10^{-5}\) で</p>
+    \[[\mathrm{HCO_3^-}]=\frac{K_1[\mathrm{H_2CO_3}]}{[\mathrm{H^+}]}=\frac{4.0\times10^{-12}}{1.0\times10^{-5}}=4.0\times10^{-7}\]
+    \[[\mathrm{NO_3^-}]=1.0\times10^{-5}-4.0\times10^{-7}\approx9.6\times10^{-6}\ \mathrm{mol/L}\]
+    <p>酸が2種類混ざると「電離前の表」をどう作ればよいかが分からなくなり、高校教科書の方法では手が止まります。<strong class="hl">電荷収支を書く方法なら硝酸の分の項を1つ足すだけで(A)と同じ手順で解けます。</strong>京大がこの形で出題するのは近似を式として扱えるかを見たいからです。</p>
+
+    <h2>京大での出題</h2>
+    <p>京大化学は電離平衡で近似を判断させる問題をくり返し出しています。2002年度第2問では電気的中性の式を自分で立てて小さい項を捨てさせました。2020年度第1問では硫化水素の2段階電離を扱い、2段階目の電離を無視する判断や \(0.1-x\approx0.1\) の近似を使わせています。問題文に「十分小さい」と書かれていたら、どの式のどの項を捨てる合図なのかを読み取れるようにしておきましょう。</p>
+
+    <h2>よくある間違い</h2>
+    <div class="point-box">
+      <span class="point-label">薄い強酸でpHが7を超える</span>
+      <p>\(1.0\times10^{-8}\ \mathrm{mol/L}\) の塩酸のpHを8と答えるのは近似1を確かめずに使った結果です。電荷収支 \([\mathrm{H^+}]=[\mathrm{Cl^-}]+[\mathrm{OH^-}]\) から \([\mathrm{OH^-}]\) を落とせません。\([\mathrm{H^+}]^2-1.0\times10^{-8}[\mathrm{H^+}]-1.0\times10^{-14}=0\) を解くと \([\mathrm{H^+}]\approx1.05\times10^{-7}\) でpHは約6.98です。</p>
+    </div>
+    <div class="point-box">
+      <span class="point-label">確かめを省く</span>
+      <p>近似式で出した \(\alpha\) が5%を超えていても気づかずに答えを書いてしまうミスです。近似したら必ず捨てた項の大きさを計算し直しましょう。答案に「\(\alpha\ll1\) より」と一言書くだけでも採点者に判断を示せます。</p>
+    </div>
+    <div class="point-box">
+      <span class="point-label">何でも \(\sqrt{cK_a}\) に当てはめる</span>
+      <p>(B)のように強酸が混ざった溶液や緩衝液に近似式をそのまま使うと答えが大きくずれます。近似式は弱酸だけが溶けた溶液のための式です。迷ったら4本の式に戻りましょう。</p>
+    </div>
+
+    <h2>この考え方をもっと学ぶなら</h2>
+    <p>物質収支と電荷収支から近似する考え方は駿台の石川正明先生の本でしっかり学べます。各本のレベルと使い方は<a href="../articles/ishikawa-masaaki-kagaku.html">石川正明の化学参考書まとめ</a>で詳しく解説しています。</p>
+    <div class="book-links">
+      <div class="book-link" data-book="原点からの化学 化学の理論〈改訂版〉" data-amz="https://www.amazon.co.jp/dp/4796116583?tag=jukenshindan-22">
+<!-- BOOKCOVER:BEGIN --><a class="bl-cover" href="https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F17502102%2F" target="_blank" rel="sponsored noopener" aria-label="原点からの化学 化学の理論〈改訂版〉を楽天で見る"><img src="https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/6589/9784796116589_1_4.jpg?_ex=400x400" alt="原点からの化学 化学の理論〈改訂版〉の表紙" width="72" height="102" loading="lazy" decoding="async"><span>楽天で見る</span></a><!-- BOOKCOVER:END -->
+        <div class="bl-main"><a class="bl-name" href="../articles/ishikawa-masaaki-kagaku.html">原点からの化学 化学の理論</a><p>理論化学を原理から組み立て直す1冊です。電離平衡を電荷収支から考える見方を短い分量で身につけられます。</p><a class="bl-go" href="../articles/ishikawa-masaaki-kagaku.html">解説記事を読む →</a></div>
+      </div>
+      <div class="book-link" data-book="新理系の化学 上巻〈五訂版〉" data-amz="https://www.amazon.co.jp/dp/4796116664?tag=jukenshindan-22">
+<!-- BOOKCOVER:BEGIN --><a class="bl-cover" href="https://hb.afl.rakuten.co.jp/hgc/g00q072o.lpmzf0a4.g00q072o.lpmzge97/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F18049625%2F" target="_blank" rel="sponsored noopener" aria-label="新理系の化学 上巻〈五訂版〉を楽天で見る"><img src="https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/6664/9784796116664_1_5.jpg?_ex=400x400" alt="新理系の化学 上巻〈五訂版〉の表紙" width="72" height="102" loading="lazy" decoding="async"><span>楽天で見る</span></a><!-- BOOKCOVER:END -->
+        <div class="bl-main"><a class="bl-name" href="../articles/ishikawa-masaaki-kagaku.html">新理系の化学 上巻</a><p>理論化学を網羅した石川正明先生の本格派の参考書です。近似の根拠まで丁寧に書かれているので京大対策の辞書として使えます。</p><a class="bl-go" href="../articles/ishikawa-masaaki-kagaku.html">解説記事を読む →</a></div>
+      </div>
+    </div>
+    <p class="aff-disclosure bl-disclosure">当サイトは楽天アフィリエイトに参加しています。</p>
+
+  </div>
+
+<!-- PLAYLIST:BEGIN -->
+  <section class="bb-playlist" aria-label="再生リスト">
+    <div class="bb-playlist-head"><a href="index.html#pl-denri-heikou">再生リスト：近似で解く電離平衡</a><span>1 / 1</span></div>
+    <ol>
+      <li class="now"><span aria-current="page"><span class="ep">#1</span>弱酸のpHの近似式の求め方｜高校教科書と大学教科書の2通りで導く【京大頻出・電離平衡】</span></li>
+    </ol>
+    <p class="soon">次の回は準備中です。</p>
+  </section>
+<!-- PLAYLIST:END -->
+  <div class="diag-cta">
+    <p>化学の参考書をどの順番で使うか迷ったら、参考書診断で今のレベルに合ったルートを確認してみましょう。</p>
+    <a href="../kagaku-shindan.html" class="btn btn-primary">化学の参考書診断を試す →</a>
+  </div>
+
+  <section class="related">
+    <h2 class="related-title">あわせて読みたい</h2>
+    <ul>
+      <li><a href="../articles/kyodai-kagaku-taisaku.html"><span class="r-tag">勉強法</span>京大化学の対策と勉強法｜有機・平衡・結晶格子の頻出分野と京大入試詳解25年・石川正明の本の使い方</a></li>
+      <li><a href="../articles/ishikawa-masaaki-kagaku.html"><span class="r-tag">参考書比較</span>石川正明の化学参考書まとめ｜新理系の化学・原点からの化学のレベルと使い方を京大生が解説</a></li>
+      <li><a href="junzouhou-gyakuzouhou.html"><span class="r-tag">京大生の備忘録</span>順像法と逆像法の違いとは？実は同じものだと論理で示す【軌跡・領域】</a></li>
+    </ul>
+  </section>
+
+  </div>
+
+  <a href="index.html" class="back-to-list">← 京大生の備忘録に戻る</a>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>&copy; 2026 受験診断ドットコム</span>
+    <div class="footer-links">
+      <a href="../about.html">運営者情報</a>
+      <a href="../privacy-policy.html">プライバシーポリシー</a>
+      <a href="../contact.html">お問い合わせ</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../nav.js" defer></script>
+</body>
+</html>
