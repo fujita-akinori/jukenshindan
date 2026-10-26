@@ -415,6 +415,7 @@ const BOOKS = [
 ];
 const ARTICLE_OF = {};
 BOOKS.forEach(b => { ARTICLE_OF[b.name] = "eibun-kaishaku-sankousho"; });
+ARTICLE_OF["大学受験のための英文熟考 上 改訂版"] = ARTICLE_OF["大学受験のための英文熟考 下 改訂版"] = "eibun-jukkou";
 BOOKS.forEach(b => { if(ARTICLE_OF[b.name]) b.article = ARTICLE_OF[b.name]; });
 
 /* ============================================================
