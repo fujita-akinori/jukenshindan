@@ -58,8 +58,16 @@ def _core(text):
     return t
 
 
+# AdSense審査中は本文中の表紙をリンクにしない（記事末の「紹介した参考書」だけにリンクを置く）。
+# 承認後に True に戻せば本文中の表紙も楽天へのリンクに戻る。
+INLINE_AFF_LINKS = False
+
+
 def _cover_html(name, r):
     e = lambda x: html.escape(x, quote=True)
+    if not INLINE_AFF_LINKS:
+        return (f'<span class="inline-cover"><img src="{e(r["image"].replace("_ex=200x200", "_ex=400x400"))}" alt="{e(name)}の表紙" '
+                f'width="200" height="284" loading="lazy" decoding="async"></span>')
     return (f'<a class="inline-cover" href="{e(r["url"])}" target="_blank" rel="sponsored noopener" '
             f'aria-label="{e(name)}を楽天で見る"><img src="{e(r["image"].replace("_ex=200x200", "_ex=400x400"))}" alt="{e(name)}の表紙" '
             f'width="200" height="284" loading="lazy" decoding="async"><span>楽天で見る</span></a>')

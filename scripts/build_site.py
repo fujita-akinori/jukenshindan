@@ -562,6 +562,7 @@ def _bibo_playlist_panel(a, eps, pl):
 
 
 def _bibo_book_covers(s):
+    import affbox
     import rakuten
     e = lambda x: html.escape(x, quote=True)
 
@@ -569,7 +570,9 @@ def _bibo_book_covers(s):
         name, amz = html.unescape(m.group(2)), html.unescape(m.group(3))
         r = rakuten.lookup(name, amz)
         cover = ""
-        if r["image"]:
+        if r["image"] and not affbox.INLINE_AFF_LINKS:
+            cover = (f'<span class="bl-cover"><img src="{e(r["image"].replace("_ex=200x200", "_ex=400x400"))}" alt="{e(name)}の表紙" width="72" height="102" loading="lazy" decoding="async"></span>')
+        elif r["image"]:
             cover = (f'<a class="bl-cover" href="{e(r["url"])}" target="_blank" rel="sponsored noopener" aria-label="{e(name)}を楽天で見る">'
                      f'<img src="{e(r["image"].replace("_ex=200x200", "_ex=400x400"))}" alt="{e(name)}の表紙" width="72" height="102" loading="lazy" decoding="async">'
                      f'<span>楽天で見る</span></a>')
