@@ -413,12 +413,8 @@ const BOOKS = [
   {name:"読解のための上級英文法",note:"田上芳彦先生による研究社の本で、一般的な参考書では見落とされがちな文法・語法を入試の英文を使って解説しています。英文を細部まで正確に読みたい最上位層に向いています。",asin:"432745317X",short:"読解のための上級英文法",tier:3},
   {name:"英文解釈教室 新装版",note:"伊藤和夫先生による英文解釈の歴史的名著で、構文的にとても難しいことで有名です。今となっては古いので、まずは英文解釈クラシックをやり、それでも足りない人だけが手を出せば十分です。",asin:"4327764876",short:"英文解釈教室",tier:3,low3:true},
 ];
-const ARTICLE_OF = {
-  "大学受験のための英文熟考 上 改訂版":"kyodai-eigo-taisaku", "大学受験のための英文熟考 下 改訂版":"kyodai-eigo-taisaku",
-  "入門英文問題精講 4訂版":"kyodai-eigo-taisaku", "大学入試 英文解釈クラシック":"kyodai-eigo-taisaku",
-  "大学入試 基礎からの英文解釈クラシック":"kyodai-eigo-taisaku", "Realize 英文「解釈」演習99［発展レベル］":"kyodai-eigo-taisaku",
-  "難関大に合格する 英文解釈Code70":"kyodai-eigo-taisaku", "英文解体新書":"kyodai-eigo-taisaku", "英文解釈教室 新装版":"kyodai-eigo-taisaku",
-};
+const ARTICLE_OF = {};
+BOOKS.forEach(b => { ARTICLE_OF[b.name] = "eibun-kaishaku-sankousho"; });
 BOOKS.forEach(b => { if(ARTICLE_OF[b.name]) b.article = ARTICLE_OF[b.name]; });
 
 /* ============================================================
@@ -671,7 +667,7 @@ function routeHtml(){
   if(now) html += `今のあなたは<b>${now.short}</b>から始めましょう。`;
   else html += `${r.label}の${steps.length}冊はもう終えている段階です。次は下の本に進みましょう。`;
   if(isTopTwo()) html += `終えたら3冊目としてRealize 英文「解釈」演習99に進むのもおすすめです。`;
-  html += `</p><a class="article-link" href="articles/kyodai-eigo-taisaku.html">英文解釈のルートを記事で読む →</a></div>`;
+  html += `</p><a class="article-link" href="articles/eibun-kaishaku-sankousho.html">英文解釈のルートを記事で読む →</a></div>`;
   return html;
 }
 
