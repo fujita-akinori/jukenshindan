@@ -21,6 +21,7 @@ const PLAYLISTS = [
 ];
 
 const POSTS = [
+  { slug:"kanshoueki-ph.html", title:"緩衝液のpHの求め方と近似が使える条件｜高校教科書と大学教科書の2通りで導く【電離平衡】", description:"緩衝液のpHの式を共通イオン効果による方法と物質収支・電荷収支による方法の2通りで導き、薄めたときに近似が破れる条件とpHが変わりにくい理由を解説します。", playlist:"denri-heikou", ep:2, date:"2026-10-28", order:1 },
   { slug:"jakusan-ph-kinjishiki.html", title:"弱酸のpHの近似式の求め方｜高校教科書と大学教科書の2通りで導く【京大頻出・電離平衡】", description:"弱酸のpHの近似式を電離度による方法と物質収支・電荷収支による方法の2通りで導き、京大化学2002年度第2問（改題）で使い方を確かめます。", playlist:"denri-heikou", ep:1, date:"2026-10-26", order:1 },
   { slug:"junzouhou-gyakuzouhou.html", title:"順像法と逆像法の違いとは？実は同じものだと論理で示す【軌跡・領域】", description:"2007年東大理系第3問（改題）を順像法と逆像法の両方で解き比べ、2つが軌跡の定義の言い換えにすぎないことを論理で示します。", playlist:"kiseki-ryouiki", ep:1, date:"2026-10-24", order:1 },
 ];

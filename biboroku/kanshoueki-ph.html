@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- GA4:BEGIN -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2WNQN0ZF8D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2WNQN0ZF8D');
+</script>
+<!-- GA4:END -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>緩衝液のpHの求め方と近似が使える条件｜高校教科書と大学教科書の2通りで導く【電離平衡】 | 受験診断ドットコム</title>
+<meta name="description" content="緩衝液のpHの式[H+]=Ka×ca/csを高校教科書の共通イオン効果による方法と大学教科書の物質収支・電荷収支による方法の2通りで導き、近似が破れる条件とpHが変わりにくい理由を京大生が解説します。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css?v=c165c301">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js" onload="renderMathInElement(document.querySelector('.article-body'),{delimiters:[{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]})"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6837829466798350" crossorigin="anonymous"></script>
+<!-- SEO:BEGIN -->
+<link rel="canonical" href="https://jukenshindan.com/biboroku/kanshoueki-ph.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="受験診断ドットコム">
+<meta property="og:title" content="緩衝液のpHの求め方と近似が使える条件｜高校教科書と大学教科書の2通りで導く【電離平衡】 | 受験診断ドットコム">
+<meta property="og:description" content="緩衝液のpHの式[H+]=Ka×ca/csを高校教科書の共通イオン効果による方法と大学教科書の物質収支・電荷収支による方法の2通りで導き、近似が破れる条件とpHが変わりにくい理由を京大生が解説します。">
+<meta property="og:url" content="https://jukenshindan.com/biboroku/kanshoueki-ph.html">
+<meta property="og:image" content="https://jukenshindan.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="緩衝液のpHの求め方と近似が使える条件｜高校教科書と大学教科書の2通りで導く【電離平衡】 | 受験診断ドットコム">
+<meta name="twitter:description" content="緩衝液のpHの式[H+]=Ka×ca/csを高校教科書の共通イオン効果による方法と大学教科書の物質収支・電荷収支による方法の2通りで導き、近似が破れる条件とpHが変わりにくい理由を京大生が解説します。">
+<meta name="twitter:image" content="https://jukenshindan.com/og-image.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"緩衝液のpHの求め方と近似が使える条件｜高校教科書と大学教科書の2通りで導く【電離平衡】","description":"緩衝液のpHの式[H+]=Ka×ca/csを高校教科書の共通イオン効果による方法と大学教科書の物質収支・電荷収支による方法の2通りで導き、近似が破れる条件とpHが変わりにくい理由を京大生が解説します。","datePublished":"2026-10-28","dateModified":"2026-10-28","image":["https://jukenshindan.com/og-image.png"],"inLanguage":"ja","articleSection":"受験化学","mainEntityOfPage":{"@type":"WebPage","@id":"https://jukenshindan.com/biboroku/kanshoueki-ph.html"},"author":{"@type":"Organization","name":"受験診断ドットコム運営者（現役京大生）","url":"https://jukenshindan.com/about.html"},"publisher":{"@type":"Organization","name":"受験診断ドットコム","url":"https://jukenshindan.com/","logo":{"@type":"ImageObject","url":"https://jukenshindan.com/logo-mark.png"}},"isPartOf":{"@type":"CreativeWorkSeries","name":"近似で解く電離平衡","url":"https://jukenshindan.com/biboroku/#pl-denri-heikou"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ホーム","item":"https://jukenshindan.com/"},{"@type":"ListItem","position":2,"name":"京大生の備忘録","item":"https://jukenshindan.com/biboroku/"},{"@type":"ListItem","position":3,"name":"近似で解く電離平衡","item":"https://jukenshindan.com/biboroku/#pl-denri-heikou"},{"@type":"ListItem","position":4,"name":"緩衝液のpHの求め方と近似が使える条件｜高校教科書と大学教科書の2通りで導く【電離平衡】","item":"https://jukenshindan.com/biboroku/kanshoueki-ph.html"}]}</script>
+<!-- SEO:END -->
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="../index.html" class="logo"><img src="../logo-mark.png" class="mark" alt="受験診断ドットコム">受験診断ドットコム</a>
+    <nav class="nav-links">
+      <a href="../shindan-ichiran.html">診断一覧</a>
+      <a href="../articles/index.html">記事</a>
+      <!-- NAVBIBO:BEGIN --><a href="index.html">備忘録</a><!-- NAVBIBO:END -->
+      <a href="../contact.html">お問い合わせ</a>
+      <!-- NAVSEARCH:BEGIN --><a class="nav-search" href="../articles/index.html#search" aria-label="記事を検索" title="記事を検索"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="16.5" y1="16.5" x2="21" y2="21"></line></svg></a><!-- NAVSEARCH:END -->
+    </nav>
+  </div>
+</header>
+
+<main class="wrap page-wrap">
+<div class="paper-sheet">
+
+  <div class="article-header">
+<!-- CRUMBS:BEGIN -->
+    <nav class="crumbs" aria-label="パンくずリスト"><a href="../index.html">ホーム</a><span>›</span><a href="index.html">京大生の備忘録</a><span>›</span><a href="index.html#pl-denri-heikou">近似で解く電離平衡</a></nav>
+<!-- CRUMBS:END -->
+    <span class="tag">近似で解く電離平衡 #2</span>
+    <h1>緩衝液のpHの求め方と近似が使える条件｜高校教科書と大学教科書の2通りで導く【電離平衡】</h1>
+    <span class="meta">2026.10.28 公開</span>
+<!-- BYLINE:BEGIN -->
+    <span class="byline">執筆：<a href="../about.html">受験診断ドットコム運営者（現役京大生）</a></span>
+<!-- BYLINE:END -->
+  </div>
+
+  <div class="article-body">
+
+    <p><a href="jakusan-ph-kinjishiki.html">第1回</a>では弱酸のpHの近似式を物質収支と電荷収支の4本の式から導きました。第2回は緩衝液です。緩衝液のpHは \([\mathrm{H^+}]=K_a\dfrac{c_a}{c_s}\) で求めると習いますが、この式もやはり近似の産物です。第1回と同じ手順で導くと、どんなときに使えてどんなときに使えないのかがはっきりします。</p>
+
+    <h2>結論</h2>
+    <div class="point-box">
+      <p>弱酸HAの濃度を \(c_a\) 、その塩NaAの濃度を \(c_s\) とすると、緩衝液の \([\mathrm{H^+}]\) は次の式で表せます。</p>
+      \[[\mathrm{H^+}]=K_a\frac{c_a-[\mathrm{H^+}]+[\mathrm{OH^-}]}{c_s+[\mathrm{H^+}]-[\mathrm{OH^-}]}\]
+      <p>ここまでは近似を使っていません。\([\mathrm{H^+}]\) と \([\mathrm{OH^-}]\) が \(c_a\) と \(c_s\) に比べて十分小さければこれらを落として \([\mathrm{H^+}]=K_a\dfrac{c_a}{c_s}\) になります。近似は1種類だけで、溶液が薄すぎると破れます。</p>
+    </div>
+
+    <h2>高校教科書の導き方（共通イオン効果を使う）</h2>
+    <p>酢酸と酢酸ナトリウムの混合水溶液を例にします。酢酸ナトリウムは塩なので水中でほぼ完全に電離し、溶液中には酢酸イオンがたくさんあります。</p>
+    \[\mathrm{CH_3COONa}\longrightarrow\mathrm{CH_3COO^-}+\mathrm{Na^+}\]
+    <p>酢酸の電離平衡 \(\mathrm{CH_3COOH}\rightleftarrows\mathrm{CH_3COO^-}+\mathrm{H^+}\) は酢酸イオンが多いため左に偏り、酢酸はほとんど電離しなくなります。これを共通イオン効果といいます。そこで</p>
+    \[[\mathrm{CH_3COOH}]\approx c_a,\qquad [\mathrm{CH_3COO^-}]\approx c_s\]
+    <p>とみなして電離定数の式に入れると</p>
+    \[K_a=\frac{[\mathrm{H^+}]c_s}{c_a}\qquad\therefore\ [\mathrm{H^+}]=K_a\frac{c_a}{c_s},\quad \mathrm{pH}=\mathrm{p}K_a+\log_{10}\frac{c_s}{c_a}\]
+    <p>が得られます。「ほとんど電離しない」とはどの量に比べてなのかが書かれていない点に注意してください。<strong class="hl">この曖昧さが近似の破れる場面を見えにくくしています。</strong></p>
+
+    <h2>大学教科書の導き方（物質収支と電荷収支）</h2>
+    <p>第1回と同じく溶液中で成り立つ式をすべて書き出します。今度は \(\mathrm{Na^+}\) があるので式が1本増えて5本です。</p>
+    \[\begin{aligned}
+    &\text{物質収支（A）}\quad & c_a+c_s&=[\mathrm{HA}]+[\mathrm{A^-}]\\
+    &\text{物質収支（Na）}\quad & c_s&=[\mathrm{Na^+}]\\
+    &\text{電荷収支}\quad & [\mathrm{H^+}]+[\mathrm{Na^+}]&=[\mathrm{A^-}]+[\mathrm{OH^-}]\\
+    &\text{電離定数}\quad & K_a&=\frac{[\mathrm{H^+}][\mathrm{A^-}]}{[\mathrm{HA}]}\\
+    &\text{水のイオン積}\quad & K_w&=[\mathrm{H^+}][\mathrm{OH^-}]
+    \end{aligned}\]
+    <p>電荷収支に \([\mathrm{Na^+}]=c_s\) を入れると \([\mathrm{A^-}]\) が、それを物質収支に入れると \([\mathrm{HA}]\) が求まります。</p>
+    \[[\mathrm{A^-}]=c_s+[\mathrm{H^+}]-[\mathrm{OH^-}],\qquad [\mathrm{HA}]=c_a-[\mathrm{H^+}]+[\mathrm{OH^-}]\]
+    <p>これを電離定数の式に入れたものが結論の式です。ここまで近似は1つも使っていません。</p>
+
+    <h3>近似　電離と水の電離で動く量を無視する</h3>
+    <p>\([\mathrm{H^+}]\) と \([\mathrm{OH^-}]\) が \(c_a\) と \(c_s\) に比べて十分小さければ</p>
+    \[[\mathrm{A^-}]\approx c_s,\qquad [\mathrm{HA}]\approx c_a\qquad\therefore\ [\mathrm{H^+}]=K_a\frac{c_a}{c_s}\]
+    <p>となります。高校教科書の「ほとんど電離しない」の正体は<strong class="hl">「\([\mathrm{H^+}]\) と \([\mathrm{OH^-}]\) が \(c_a\) と \(c_s\) に比べて小さい」</strong>という条件だったわけです。</p>
+    <div class="callout">結論の式で \(c_s=0\) とし \([\mathrm{OH^-}]\) を落とすと \(K_a=\dfrac{[\mathrm{H^+}]^2}{c_a-[\mathrm{H^+}]}\) となり、第1回の弱酸の2次方程式に戻ります。逆に \(c_a=0\) とすると塩だけの水溶液になり、これは第3回で扱う塩の加水分解です。1本の式が弱酸・緩衝液・塩の3つをすべて含んでいます。</div>
+
+    <h2>2つの導き方を並べる</h2>
+    <div class="table-scroll"><table class="compare-table">
+      <thead><tr><th>段階</th><th>高校教科書の方法</th><th>大学教科書の方法</th></tr></thead>
+      <tbody>
+        <tr><td>出発点</td><td>塩は完全に電離・酸はほとんど電離しない</td><td>物質収支・電荷収支など5本の式</td></tr>
+        <tr><td>近似の中身</td><td>「ほとんど電離しない」（何と比べるかは書かない）</td><td>\([\mathrm{H^+}],[\mathrm{OH^-}]\ll c_a,c_s\)</td></tr>
+        <tr><td>得られる式</td><td>\([\mathrm{H^+}]=K_a\dfrac{c_a}{c_s}\)</td><td>\([\mathrm{H^+}]=K_a\dfrac{c_a}{c_s}\)</td></tr>
+        <tr><td>近似が破れたら</td><td>手がかりがない</td><td>結論の式に戻って解く</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2>緩衝液のpHが変わりにくい理由</h2>
+    <p>緩衝液に強酸を少し加えても、加えた \(\mathrm{H^+}\) は \(\mathrm{A^-}\) と反応して \(\mathrm{HA}\) になります。</p>
+    \[\mathrm{A^-}+\mathrm{H^+}\longrightarrow\mathrm{HA}\]
+    <p>このため変わるのは \(c_a\) と \(c_s\) の比だけです。酢酸（\(K_a=2.7\times10^{-5}\ \mathrm{mol/L}\)）と酢酸ナトリウムがともに \(0.10\ \mathrm{mol/L}\) の緩衝液に \(0.010\ \mathrm{mol/L}\) 分の塩酸を加えた場合を計算してみます（体積変化は無視します）。</p>
+    \[\mathrm{pH}=4.57+\log_{10}\frac{0.10-0.010}{0.10+0.010}\approx4.48\]
+    <p>pHは0.09しか下がりません。同じ量の塩酸を純水に加えればpHは7から2.0まで下がります。<strong class="hl">pHは比の対数で決まるので、比が少し動いてもpHはほとんど動かない</strong>というのが緩衝作用の仕組みです。</p>
+
+    <h2>近似が使えるかの確かめ方</h2>
+    <p>求めた \([\mathrm{H^+}]\) と \([\mathrm{OH^-}]\) が \(c_a\) と \(c_s\) の5%以下なら近似は使えます。酢酸と酢酸ナトリウムを同じ濃度で混ぜて全体を薄めていくと次のようになります。</p>
+    <div class="table-scroll"><table class="compare-table">
+      <thead><tr><th>\(c_a=c_s\)</th><th>近似式のpH</th><th>結論の式で解いたpH</th></tr></thead>
+      <tbody>
+        <tr><td>\(0.10\)</td><td>\(4.57\)</td><td>\(4.57\)</td></tr>
+        <tr><td>\(1.0\times10^{-3}\)</td><td>\(4.57\)</td><td>\(4.59\)</td></tr>
+        <tr><td>\(1.0\times10^{-4}\)</td><td>\(4.57\)</td><td>\(4.73\)</td></tr>
+        <tr><td>\(1.0\times10^{-5}\)</td><td>\(4.57\)</td><td>\(5.20\)</td></tr>
+      </tbody>
+    </table></div>
+    <p>近似式の上では濃度をいくら変えてもpHは変わりません。しかし実際には \(c_a\) と \(c_s\) が \([\mathrm{H^+}]\approx3\times10^{-5}\) に近づくと近似が破れ、pHがずれていきます。<strong class="hl">「緩衝液は薄めてもpHが変わらない」は近似が成り立つ範囲でだけ正しい</strong>と覚えておきましょう。</p>
+    <p>もう1つ破れやすいのは \(c_a\) と \(c_s\) の比が極端な場合です。たとえば \(c_a=0.10\) 、\(c_s=1.0\times10^{-3}\) では近似式のpHは2.57ですが、\([\mathrm{H^+}]\) が \(c_s\) より大きくなってしまうので近似は成り立たず、結論の式で解くと2.92になります。</p>
+
+    <h2>演習問題</h2>
+    <div class="point-box">
+      <span class="point-label">演習（オリジナル）</span>
+      <p>\(0.20\ \mathrm{mol/L}\) の酢酸水溶液 \(50\ \mathrm{mL}\) に \(0.10\ \mathrm{mol/L}\) の水酸化ナトリウム水溶液を \(50\ \mathrm{mL}\) 加えた。酢酸の電離定数を \(K_a=2.7\times10^{-5}\ \mathrm{mol/L}\) 、\(\log_{10}2.7=0.43\) とする。</p>
+      <p>(1) 得られた溶液のpHを求めよ。</p>
+      <p>(2) この溶液を水で1000倍に薄めた。(1)の近似がそのまま使えるかを判断せよ。</p>
+    </div>
+
+    <h3>(1) の解き方</h3>
+    <p>まず中和反応を済ませてから平衡を考えます。酢酸は \(0.20\times50=10\ \mathrm{mmol}\) 、水酸化ナトリウムは \(0.10\times50=5.0\ \mathrm{mmol}\) です。</p>
+    \[\mathrm{CH_3COOH}+\mathrm{NaOH}\longrightarrow\mathrm{CH_3COONa}+\mathrm{H_2O}\]
+    <p>反応後は酢酸 \(5.0\ \mathrm{mmol}\) と酢酸ナトリウム \(5.0\ \mathrm{mmol}\) が \(100\ \mathrm{mL}\) に溶けているので \(c_a=c_s=0.050\ \mathrm{mol/L}\) です。近似式より</p>
+    \[[\mathrm{H^+}]=K_a\frac{c_a}{c_s}=K_a=2.7\times10^{-5},\qquad \mathrm{pH}=5-0.43\approx4.6\]
+    <p>確かめると \([\mathrm{H^+}]=2.7\times10^{-5}\) は \(c_a=0.050\) の0.05%ほどなので近似は妥当です。酢酸のちょうど半分を中和した点ではいつも \(\mathrm{pH}=\mathrm{p}K_a\) になります。滴定曲線から \(K_a\) を読み取らせる問題はこの性質を使っています。</p>
+
+    <h3>(2) の解き方</h3>
+    <p>1000倍に薄めると \(c_a=c_s=5.0\times10^{-5}\ \mathrm{mol/L}\) です。近似式のままなら \([\mathrm{H^+}]=2.7\times10^{-5}\) ですが、これは \(c_a\) の半分を超えるので「\([\mathrm{H^+}]\ll c_a\)」が成り立たず近似は使えません。結論の式で \([\mathrm{OH^-}]\) だけを落とすと</p>
+    \[[\mathrm{H^+}]=K_a\frac{c_a-[\mathrm{H^+}]}{c_s+[\mathrm{H^+}]}\]
+    <p>という2次方程式になり、解くと \([\mathrm{H^+}]\approx1.5\times10^{-5}\) でpHは約4.8です。近似式より0.3ほど高くなります。</p>
+
+    <h2>よくある間違い</h2>
+    <div class="point-box">
+      <span class="point-label">中和前の量をそのまま使う</span>
+      <p>演習の(1)で酢酸 \(10\ \mathrm{mmol}\) と水酸化ナトリウム \(5.0\ \mathrm{mmol}\) をそのまま \(c_a\) と \(c_s\) に入れてしまうミスです。強塩基は先に弱酸と反応し終えるので、反応後に残った酸と生じた塩の量を使います。</p>
+    </div>
+    <div class="point-box">
+      <span class="point-label">濃度ではなく物質量で比をとってよい理由を忘れる</span>
+      <p>\(c_a/c_s\) は同じ溶液の中の比なので体積が約分され、物質量の比で計算してかまいません。ただし近似が使えるかの確かめには濃度が必要です。比だけで計算していると(2)のような薄い溶液で近似が破れたことに気づけません。</p>
+    </div>
+    <div class="point-box">
+      <span class="point-label">緩衝液ならいつでもpHが変わらないと思い込む</span>
+      <p>加えた強酸の量が \(c_s\) に近づくと \(\mathrm{A^-}\) が尽きて緩衝作用はなくなります。緩衝作用が働くのは加えた酸や塩基が \(c_a\) と \(c_s\) より十分少ない範囲だけです。</p>
+    </div>
+
+    <h2>この考え方をもっと学ぶなら</h2>
+    <p>物質収支と電荷収支から近似する考え方は駿台の石川正明先生の本でしっかり学べます。各本のレベルと使い方は<a href="../articles/ishikawa-masaaki-kagaku.html">石川正明の化学参考書まとめ</a>で詳しく解説しています。</p>
+    <div class="book-links">
+      <div class="book-link" data-book="原点からの化学 化学の理論〈改訂版〉" data-amz="https://www.amazon.co.jp/dp/4796116583?tag=jukenshindan-22">
+<!-- BOOKCOVER:BEGIN --><span class="bl-cover"><img src="https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/6589/9784796116589_1_4.jpg?_ex=400x400" alt="原点からの化学 化学の理論〈改訂版〉の表紙" width="72" height="102" loading="lazy" decoding="async"></span><!-- BOOKCOVER:END -->
+        <div class="bl-main"><a class="bl-name" href="../articles/ishikawa-masaaki-kagaku.html">原点からの化学 化学の理論</a><p>理論化学を原理から組み立て直す1冊です。緩衝液を電荷収支から考える見方を短い分量で身につけられます。</p><a class="bl-go" href="../articles/ishikawa-masaaki-kagaku.html">解説記事を読む →</a></div>
+      </div>
+      <div class="book-link" data-book="新理系の化学 上巻〈五訂版〉" data-amz="https://www.amazon.co.jp/dp/4796116664?tag=jukenshindan-22">
+<!-- BOOKCOVER:BEGIN --><span class="bl-cover"><img src="https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/6664/9784796116664_1_5.jpg?_ex=400x400" alt="新理系の化学 上巻〈五訂版〉の表紙" width="72" height="102" loading="lazy" decoding="async"></span><!-- BOOKCOVER:END -->
+        <div class="bl-main"><a class="bl-name" href="../articles/ishikawa-masaaki-kagaku.html">新理系の化学 上巻</a><p>理論化学を網羅した石川正明先生の本格派の参考書です。近似の根拠まで丁寧に書かれているので京大対策の辞書として使えます。</p><a class="bl-go" href="../articles/ishikawa-masaaki-kagaku.html">解説記事を読む →</a></div>
+      </div>
+    </div>
+    <p class="aff-disclosure bl-disclosure">当サイトは楽天アフィリエイトに参加しています。</p>
+
+  </div>
+
+<!-- PLAYLIST:BEGIN -->
+  <section class="bb-playlist" aria-label="再生リスト">
+    <div class="bb-playlist-head"><a href="index.html#pl-denri-heikou">再生リスト：近似で解く電離平衡</a><span>2 / 2</span></div>
+    <ol>
+      <li><a href="jakusan-ph-kinjishiki.html"><span class="ep">#1</span>弱酸のpHの近似式の求め方｜高校教科書と大学教科書の2通りで導く【京大頻出・電離平衡】</a></li>
+      <li class="now"><span aria-current="page"><span class="ep">#2</span>緩衝液のpHの求め方と近似が使える条件｜高校教科書と大学教科書の2通りで導く【電離平衡】</span></li>
+    </ol>
+    <p class="soon">次の回は準備中です。</p>
+    <div class="bb-next"><a href="jakusan-ph-kinjishiki.html">← 前の回</a></div>
+  </section>
+<!-- PLAYLIST:END -->
+  <div class="diag-cta">
+    <p>化学の参考書をどの順番で使うか迷ったら、参考書診断で今のレベルに合ったルートを確認してみましょう。</p>
+    <a href="../kagaku-shindan.html" class="btn btn-primary">化学の参考書診断を試す →</a>
+  </div>
+
+  <section class="related">
+    <h2 class="related-title">あわせて読みたい</h2>
+    <ul>
+      <li><a href="jakusan-ph-kinjishiki.html"><span class="r-tag">京大生の備忘録</span>弱酸のpHの近似式の求め方｜高校教科書と大学教科書の2通りで導く【京大頻出・電離平衡】</a></li>
+      <li><a href="../articles/kyodai-kagaku-taisaku.html"><span class="r-tag">勉強法</span>京大化学の対策と勉強法｜有機・平衡・結晶格子の頻出分野と京大入試詳解25年・石川正明の本の使い方</a></li>
+      <li><a href="../articles/kagaku-juumon.html"><span class="r-tag">参考書比較</span>化学の重要問題集のレベルと使い方｜A問題・B問題の難易度とセミナーとの接続を京大生が解説</a></li>
+    </ul>
+  </section>
+
+  </div>
+
+  <a href="index.html" class="back-to-list">← 京大生の備忘録に戻る</a>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>&copy; 2026 受験診断ドットコム</span>
+    <div class="footer-links">
+      <a href="../about.html">運営者情報</a>
+      <a href="../privacy-policy.html">プライバシーポリシー</a>
+      <a href="../contact.html">お問い合わせ</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../nav.js" defer></script>
+</body>
+</html>
