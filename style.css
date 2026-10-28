@@ -474,3 +474,7 @@ body.nav-open .nav-drawer{ transform:none; visibility:visible; }
 .paper-sheet .article-body .book-link a.bl-go{ font-size:13px; font-weight:700; color:var(--sheet-accent); text-decoration:none; }
 .paper-sheet .article-body .bl-disclosure{ font-size:11.5px; color:var(--sheet-muted); margin:0 0 22px; }
 
+
+/* 診断ページ下の解説 */
+.shindan-guide{ margin-top:64px; }
+.shindan-guide .article-body h3{ font-size:16px; }
