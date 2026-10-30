@@ -33,6 +33,8 @@ python3 scripts/build_site.py
 
 ## 記事を追加するとき
 
+原稿から公開までを通しでやるときは `/kiji`（記事）と `/biboroku`（備忘録）のスキルを使う。
+
 1. 既存記事（例 `articles/kyoutsuu-mochimono.html`）をひな形にして `articles/<ローマ字のslug>.html` を作る。head・ヘッダー・フッター・`diag-cta`・`related` の構成はそろえる
 2. `articles/articles-data.js` に1件追加する（slug・title・description・tag・date・order・subject）。tag は「参考書比較・勉強法・受験戦略・予備校」のどれか。subject は数学・英語・国語・化学・生物・物理・社会・情報のどれか（科目に関係なければ省略）
 3. 「あわせて読みたい」（`related`）には関連記事を3本手で選んで入れる
