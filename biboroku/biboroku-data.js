@@ -22,6 +22,7 @@ const PLAYLISTS = [
 ];
 
 const POSTS = [
+  { slug:"kumikaeka-motomekata.html", title:"組換え価の求め方｜連鎖した遺伝子の分離比を碁盤の目を書かずに確率で解く【遺伝】", description:"組換え価から配偶子の確率を決め、連鎖した遺伝子のF2の分離比を碁盤の目を書かずに求める方法を解説。[ab]の割合の平方根から組換え価を逆算する方法と相引・相反の見分け方まで紹介します。", playlist:"iden-kakuritsu", ep:2, date:"2026-11-04", order:2 },
   { slug:"iden-keisan-kakuritsu.html", title:"遺伝の計算問題の解き方｜自由交配・自家受精の分離比を碁盤の目を書かずに確率で求める【遺伝】", description:"遺伝の計算問題を碁盤の目を書かずに確率の掛け算で解く方法を解説。F2の優性個体どうしの自由交配（表なら256マス）を2行で解き、自家受精との違いと条件付き確率による家系図の解き方まで紹介します。", playlist:"iden-kakuritsu", ep:1, date:"2026-11-04", order:1 },
   { slug:"kanshoueki-ph.html", title:"緩衝液のpHの求め方と近似が使える条件｜高校教科書と大学教科書の2通りで導く【電離平衡】", description:"緩衝液のpHの式を共通イオン効果による方法と物質収支・電荷収支による方法の2通りで導き、薄めたときに近似が破れる条件とpHが変わりにくい理由を解説します。", playlist:"denri-heikou", ep:2, date:"2026-10-28", order:1 },
   { slug:"jakusan-ph-kinjishiki.html", title:"弱酸のpHの近似式の求め方｜高校教科書と大学教科書の2通りで導く【京大頻出・電離平衡】", description:"弱酸のpHの近似式を電離度による方法と物質収支・電荷収支による方法の2通りで導き、京大化学2002年度第2問（改題）で使い方を確かめます。", playlist:"denri-heikou", ep:1, date:"2026-10-26", order:1 },
