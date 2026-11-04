@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../style.css?v=5bd56d75">
+<link rel="stylesheet" href="../style.css?v=beba9d14">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js" onload="renderMathInElement(document.querySelector('.article-body'),{delimiters:[{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]})"></script>
@@ -83,7 +83,16 @@
     <h2>教科書の方法（碁盤の目）</h2>
     <p>AaBb どうしを交配する場合を考えます。AaBb がつくる配偶子は AB・Ab・aB・ab の4種類で比は \(1:1:1:1\) です。これを縦と横に並べて \(4\times4=16\) マスの表を作り、マスを数えると</p>
     \[[\mathrm{AB}]:[\mathrm{Ab}]:[\mathrm{aB}]:[\mathrm{ab}]=9:3:3:1\]
-    <p>が得られます。2遺伝子ならこれで十分です。しかし3遺伝子の AaBbCc どうしなら配偶子は8種類で表は64マスになり、マスを数え間違えずに終えるだけで一苦労です。</p>
+    <p>が得られます。実際の表は次のとおりです。</p>
+    <p class="punnett-legend"><span class="p-AB">[AB]</span><span class="p-Ab">[Ab]</span><span class="p-aB">[aB]</span><span class="p-ab">[ab]</span></p>
+    <div class="table-scroll"><table class="punnett" aria-label="AaBbどうしの交配の碁盤の目（16マス）">
+<tr><th scope="col">♀＼♂</th><th scope="col">AB</th><th scope="col">Ab</th><th scope="col">aB</th><th scope="col">ab</th></tr>
+<tr><th scope="row">AB</th><td class="p-AB">AABB</td><td class="p-AB">AABb</td><td class="p-AB">AaBB</td><td class="p-AB">AaBb</td></tr>
+<tr><th scope="row">Ab</th><td class="p-AB">AABb</td><td class="p-Ab">AAbb</td><td class="p-AB">AaBb</td><td class="p-Ab">Aabb</td></tr>
+<tr><th scope="row">aB</th><td class="p-AB">AaBB</td><td class="p-AB">AaBb</td><td class="p-aB">aaBB</td><td class="p-aB">aaBb</td></tr>
+<tr><th scope="row">ab</th><td class="p-AB">AaBb</td><td class="p-Ab">Aabb</td><td class="p-aB">aaBb</td><td class="p-ab">aabb</td></tr>
+</table></div>
+    <p>マスを色ごとに数えると \(9:3:3:1\) になっています。2遺伝子ならこれで十分です。しかし3遺伝子の AaBbCc どうしなら配偶子は8種類で表は64マスになり、マスを数え間違えずに終えるだけで一苦労です。</p>
 
     <h2>確率で解く方法</h2>
     <p>独立の法則とは「AとBの遺伝子が互いに無関係に配偶子に入る」ということです。確率の言葉でいえば2つの遺伝子の伝わり方は独立なので、それぞれの確率を掛けてよいことになります。</p>
@@ -110,6 +119,21 @@
 
     <h3>表で解こうとすると</h3>
     <p>F2の [AB] には AABB・AABb・AaBB・AaBb の4種類の遺伝子型が \(1:2:2:4\) で含まれています。自由交配では誰と誰が交配するかの組み合わせが \(4\times4=16\) 通りあり、それぞれに16マスの碁盤を書いて重みをつけて足すことになります。<strong class="hl">合計256マスで、試験時間内にやる量ではありません。</strong>先に [AB] 全体の配偶子の比 \(\mathrm{AB}:\mathrm{Ab}:\mathrm{aB}:\mathrm{ab}=4:2:2:1\) を出す工夫をしても \(9\times9=81\) マスが残ります。</p>
+    <p>その81マスの表が次です。配偶子の比 \(4:2:2:1\) を表すために AB を4回、Ab と aB を2回ずつ、ab を1回並べています。</p>
+    <p class="punnett-legend"><span class="p-AB">[AB]</span><span class="p-Ab">[Ab]</span><span class="p-aB">[aB]</span><span class="p-ab">[ab]</span></p>
+    <div class="table-scroll"><table class="punnett punnett-81" aria-label="F2の[AB]がつくる配偶子どうしの碁盤の目（81マス）">
+<tr><th scope="col">♀＼♂</th><th scope="col">AB</th><th scope="col">AB</th><th scope="col">AB</th><th scope="col">AB</th><th scope="col">Ab</th><th scope="col">Ab</th><th scope="col">aB</th><th scope="col">aB</th><th scope="col">ab</th></tr>
+<tr><th scope="row">AB</th><td class="p-AB">[AB]</td><td class="p-AB">[AB]</td><td class="p-AB">[AB]</td><td class="p-AB">[AB]</td><td class="p-AB">[AB]</td><td class="p-AB">[AB]</td><td class="p-AB">[AB]</td><td class="p-AB">[AB]</td><td class="p-AB">[AB]</td></tr>
+<tr><th scope="row">AB</th><td class="p-AB">[AB]</td><td class="p-AB">[AB]</td><td class="p-AB">[AB]</td><td class="p-AB">[AB]</td><td class="p-AB">[AB]</td><td class="p-AB">[AB]</td><td class="p-AB">[AB]</td><td class="p-AB">[AB]</td><td class="p-AB">[AB]</td></tr>
+<tr><th scope="row">AB</th><td class="p-AB">[AB]</td><td class="p-AB">[AB]</td><td class="p-AB">[AB]</td><td class="p-AB">[AB]</td><td class="p-AB">[AB]</td><td class="p-AB">[AB]</td><td class="p-AB">[AB]</td><td class="p-AB">[AB]</td><td class="p-AB">[AB]</td></tr>
+<tr><th scope="row">AB</th><td class="p-AB">[AB]</td><td class="p-AB">[AB]</td><td class="p-AB">[AB]</td><td class="p-AB">[AB]</td><td class="p-AB">[AB]</td><td class="p-AB">[AB]</td><td class="p-AB">[AB]</td><td class="p-AB">[AB]</td><td class="p-AB">[AB]</td></tr>
+<tr><th scope="row">Ab</th><td class="p-AB">[AB]</td><td class="p-AB">[AB]</td><td class="p-AB">[AB]</td><td class="p-AB">[AB]</td><td class="p-Ab">[Ab]</td><td class="p-Ab">[Ab]</td><td class="p-AB">[AB]</td><td class="p-AB">[AB]</td><td class="p-Ab">[Ab]</td></tr>
+<tr><th scope="row">Ab</th><td class="p-AB">[AB]</td><td class="p-AB">[AB]</td><td class="p-AB">[AB]</td><td class="p-AB">[AB]</td><td class="p-Ab">[Ab]</td><td class="p-Ab">[Ab]</td><td class="p-AB">[AB]</td><td class="p-AB">[AB]</td><td class="p-Ab">[Ab]</td></tr>
+<tr><th scope="row">aB</th><td class="p-AB">[AB]</td><td class="p-AB">[AB]</td><td class="p-AB">[AB]</td><td class="p-AB">[AB]</td><td class="p-AB">[AB]</td><td class="p-AB">[AB]</td><td class="p-aB">[aB]</td><td class="p-aB">[aB]</td><td class="p-aB">[aB]</td></tr>
+<tr><th scope="row">aB</th><td class="p-AB">[AB]</td><td class="p-AB">[AB]</td><td class="p-AB">[AB]</td><td class="p-AB">[AB]</td><td class="p-AB">[AB]</td><td class="p-AB">[AB]</td><td class="p-aB">[aB]</td><td class="p-aB">[aB]</td><td class="p-aB">[aB]</td></tr>
+<tr><th scope="row">ab</th><td class="p-AB">[AB]</td><td class="p-AB">[AB]</td><td class="p-AB">[AB]</td><td class="p-AB">[AB]</td><td class="p-Ab">[Ab]</td><td class="p-Ab">[Ab]</td><td class="p-aB">[aB]</td><td class="p-aB">[aB]</td><td class="p-ab">[ab]</td></tr>
+</table></div>
+    <p>色ごとに数えると [AB] が64マス、[Ab] と [aB] が8マスずつ、[ab] が1マスです。これだけ書いても答えは \(64:8:8:1\) の1行にすぎません。</p>
 
     <h3>確率で解くと</h3>
     <p>Aだけに注目します。F2の [A] の中では AA と Aa が \(1:2\) なので、[A] の個体がつくる配偶子が a である確率は</p>

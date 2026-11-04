@@ -480,3 +480,16 @@ body.nav-open .nav-drawer{ transform:none; visibility:visible; }
 /* 診断ページ下の解説 */
 .shindan-guide{ margin-top:64px; }
 .shindan-guide .article-body h3{ font-size:16px; }
+
+/* 備忘録：遺伝の碁盤の目 */
+.paper-sheet .punnett{ border-collapse:collapse; margin:0 auto; font-size:13px; font-variant-numeric:tabular-nums; }
+.paper-sheet .punnett th, .paper-sheet .punnett td{ border:1px solid var(--sheet-rule); padding:6px 8px; text-align:center; white-space:nowrap; color:var(--sheet-text); }
+.paper-sheet .punnett th{ background:#1b2130; color:#f6f1e4; font-weight:700; }
+.paper-sheet .punnett-81{ font-size:11px; }
+.paper-sheet .punnett-81 th, .paper-sheet .punnett-81 td{ padding:4px 5px; }
+.paper-sheet .p-AB{ background:rgba(61,111,180,0.16); }
+.paper-sheet .p-Ab{ background:rgba(75,139,107,0.18); }
+.paper-sheet .p-aB{ background:rgba(232,163,61,0.22); }
+.paper-sheet .p-ab{ background:rgba(178,58,58,0.18); }
+.paper-sheet .article-body .punnett-legend{ display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin:0 0 10px; font-size:12.5px; }
+.paper-sheet .punnett-legend span{ padding:2px 10px; border-radius:4px; }
