@@ -139,8 +139,17 @@ def crumb_ld(items):
 ORG = {"@type": "Organization", "name": SITE, "url": BASE + "/", "logo": {"@type": "ImageObject", "url": LOGO}}
 
 
+def og_image_of(rel):
+    """images/og/<slug>.jpg（1200x630）があればその記事専用のOGP画像にする。なければサイト共通の画像"""
+    stem = os.path.splitext(os.path.basename(rel))[0]
+    if os.path.exists(path(f"images/og/{stem}.jpg")):
+        return f"{BASE}/images/og/{stem}.jpg"
+    return OG_IMAGE
+
+
 def seo_head(rel, s, og_type="website", extra_ld=()):
     title, desc = meta_of(s)
+    og_image = og_image_of(rel)
     u = url_of(rel)
     e = lambda x: html.escape(x, quote=True)
     lines = [
@@ -150,14 +159,14 @@ def seo_head(rel, s, og_type="website", extra_ld=()):
         f'<meta property="og:title" content="{e(title)}">',
         f'<meta property="og:description" content="{e(desc)}">',
         f'<meta property="og:url" content="{u}">',
-        f'<meta property="og:image" content="{OG_IMAGE}">',
+        f'<meta property="og:image" content="{og_image}">',
         '<meta property="og:image:width" content="1200">',
         '<meta property="og:image:height" content="630">',
         '<meta property="og:locale" content="ja_JP">',
         '<meta name="twitter:card" content="summary_large_image">',
         f'<meta name="twitter:title" content="{e(title)}">',
         f'<meta name="twitter:description" content="{e(desc)}">',
-        f'<meta name="twitter:image" content="{OG_IMAGE}">',
+        f'<meta name="twitter:image" content="{og_image}">',
     ] + [jsonld(x) for x in extra_ld]
     return replace_block(s, "SEO", "\n".join(lines), anchor_before="</head>")
 
@@ -453,7 +462,7 @@ def build_articles(arts):
         title, desc = meta_of(s)
         article = {"@context": "https://schema.org", "@type": "Article", "headline": a["title"],
                    "description": desc, "datePublished": a["date"], "dateModified": modified,
-                   "image": [OG_IMAGE], "inLanguage": "ja", "articleSection": a["tag"],
+                   "image": [og_image_of(rel)], "inLanguage": "ja", "articleSection": a["tag"],
                    "mainEntityOfPage": {"@type": "WebPage", "@id": url_of(rel)},
                    "author": {"@type": "Organization", "name": AUTHOR_NAME, "url": BASE + "/about.html"},
                    "publisher": ORG}
