@@ -365,7 +365,7 @@
 <tr><td>超級</td><td>数学を極めたい人向け</td><td>2冊</td></tr>
 </tbody></table></div>
 <p>偏差値と志望校から今の段階と目標の段階を決め、その間をつなぐ本を優先して選びます。志望校が高くても今の偏差値から離れすぎた本は上位に出しません。難しすぎる本は解説を読んでも理解できず、時間だけを使ってしまうからです。</p>
-<p>網羅系の本は同じ役割の本が多いので志望校によって出し分けています。東大・京大などの最難関を志望する場合は発展問題まで厚いFocus Goldを、北大・東北大・名大などの旧帝大ではNEW ACTION LEGENDを、それ以外では収録問題を絞った青チャートを優先します。2冊の違いは<a href="articles/aoi-chart-vs-focus-gold.html">青チャートとFocus Goldの比較記事</a>で解説しています。</p>
+<p>網羅系の本は同じ役割の本が多いので志望校によって出し分けています。東大・京大などの最難関を志望する場合は発展問題まで厚いFocus Goldを、北大・東北大・名大などの旧帝大ではNEW ACTION LEGENDを、それ以外では収録問題を絞った青チャートを優先します。2冊の違いは<span data-hidden-link="<a href=&quot;articles/aoi-chart-vs-focus-gold.html&quot;>青チャートとFocus Goldの比較記事</a>">青チャートとFocus Goldの比較記事</span><!--/HL-->で解説しています。</p>
 <h2>診断結果の使い方</h2>
 <p>診断結果は「次にやる1冊」を決めるための出発点です。結果に出た本を全部やる必要はありません。まずは1位の本を1冊やり切ることを目標にしてください。</p>
 <p>参考書は1冊目を何周もして完璧にするのが基本ですが、2冊目以降は1周で次に進んでかまいません。詳しくは<a href="articles/sankousho-syuukaisuu.html">参考書は何周すべきかの記事</a>で解説しています。ネットでよく見る参考書ルートをそのままなぞっても伸びない理由は<a href="articles/sankousho-root-no-yami.html">参考書ルートの闇の記事</a>に書いています。</p>
@@ -535,17 +535,17 @@ const BOOKS = [
 
 /* 当サイトの解説記事がある本 */
 const ARTICLE_OF = {
-  "青チャート（チャート式 基礎からの数学）":"aoi-chart-vs-focus-gold", "青チャート（チャート式 基礎からの数学III+C）":"aoi-chart-vs-focus-gold", "Focus Gold":"focus-gold-tsukaikata",
+  "青チャート（チャート式 基礎からの数学）":"" /*HIDDEN:aoi-chart-vs-focus-gold*/, "青チャート（チャート式 基礎からの数学III+C）":"" /*HIDDEN:aoi-chart-vs-focus-gold*/, "Focus Gold":"" /*HIDDEN:focus-gold-tsukaikata*/,
   "文系の数学 良問プラチカ":"bunkei-purachika", "理系数学の良問プラチカ":"bunkei-purachika",
-  "1対1対応の演習（数学I・A/II・B）":"ichitaichi-tsukaikata", "1対1対応の演習（数学III）":"ichitaichi-tsukaikata", "新数学スタンダード演習":"ichitaichi-vs-shinsuta",
-  "合格る計算 数学I・A・II・B［数列］・C［ベクトル］":"ukaru-keisan-tsukaikata", "合格る計算 数学III・C［複素数平面・2次曲線］":"ukaru-keisan-tsukaikata", "数学の計算革命〈三訂版〉":"keisanryoku-9wari",
-  "難問ラプソディ":"sawaruna-sankousho-3sen", "入試数学の掌握（3部作）":"sawaruna-sankousho-3sen",
+  "1対1対応の演習（数学I・A/II・B）":"" /*HIDDEN:ichitaichi-tsukaikata*/, "1対1対応の演習（数学III）":"" /*HIDDEN:ichitaichi-tsukaikata*/, "新数学スタンダード演習":"ichitaichi-vs-shinsuta",
+  "合格る計算 数学I・A・II・B［数列］・C［ベクトル］":"" /*HIDDEN:ukaru-keisan-tsukaikata*/, "合格る計算 数学III・C［複素数平面・2次曲線］":"" /*HIDDEN:ukaru-keisan-tsukaikata*/, "数学の計算革命〈三訂版〉":"keisanryoku-9wari",
+  "難問ラプソディ":"" /*HIDDEN:sawaruna-sankousho-3sen*/, "入試数学の掌握（3部作）":"" /*HIDDEN:sawaruna-sankousho-3sen*/,
   "総合的研究 論理学で学ぶ数学":"suujaku-suukyou-ronri", "志田晶の 集合・論理、整数が面白いほどわかる本":"suujaku-suukyou-ronri",
   "真・解法への道":"shin-kaihou-eno-michi",
-  "世界一わかりやすい 京大の理系数学":"yobiko-no-jugyou-3sen", "世界一わかりやすい 京大の文系数学":"yobiko-no-jugyou-3sen"
+  "世界一わかりやすい 京大の理系数学":"" /*HIDDEN:yobiko-no-jugyou-3sen*/, "世界一わかりやすい 京大の文系数学":"" /*HIDDEN:yobiko-no-jugyou-3sen*/
 };
-Object.assign(ARTICLE_OF, {"やさしい理系数学":"yasashii-rikei-sugaku", "標準問題精講":"hyoujun-mondai-seikou-sugaku"});
-Object.assign(ARTICLE_OF, {"ハイレベル理系数学":"high-level-rikei-sugaku", "世界一わかりやすい 京大の理系数学":"sekaiichi-kyodai-rikei", "微積分 基礎の極意":"bisekibun-kiso-no-gokui", "入試数学の掌握（3部作）":"nyuushi-sugaku-no-shouaku", "マスターオブ整数":"master-of-seisuu"});
+Object.assign(ARTICLE_OF, {"やさしい理系数学":"" /*HIDDEN:yasashii-rikei-sugaku*/, "標準問題精講":"" /*HIDDEN:hyoujun-mondai-seikou-sugaku*/});
+Object.assign(ARTICLE_OF, {"ハイレベル理系数学":"" /*HIDDEN:high-level-rikei-sugaku*/, "世界一わかりやすい 京大の理系数学":"sekaiichi-kyodai-rikei", "微積分 基礎の極意":"" /*HIDDEN:bisekibun-kiso-no-gokui*/, "入試数学の掌握（3部作）":"" /*HIDDEN:nyuushi-sugaku-no-shouaku*/, "マスターオブ整数":"" /*HIDDEN:master-of-seisuu*/});
 Object.assign(ARTICLE_OF, {"入試数学「実力強化」問題集（駿台）":"yonemura-sugiyama-sugaku", "ハイレベル数学I・A・II・B・C［ベクトル］の完全攻略":"yonemura-sugiyama-sugaku", "ハイレベル数学III・C［平面上の曲線と複素数平面］の完全攻略":"yonemura-sugiyama-sugaku", "東大数学プレミアム":"yonemura-sugiyama-sugaku", "京大数学プレミアム":"yonemura-sugiyama-sugaku"});
 BOOKS.forEach(b => { if(ARTICLE_OF[b.name]) b.article = ARTICLE_OF[b.name]; });
 

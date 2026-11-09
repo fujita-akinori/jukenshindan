@@ -55,6 +55,7 @@ STATIC_PAGES = [  # (ファイル, パンくず名, sitemap に載せるか)
     ("contact.html", "お問い合わせ", True),
     ("privacy-policy.html", "プライバシーポリシー", True),
 ]
+STATIC_PAGES = [x for x in STATIC_PAGES if os.path.exists(os.path.join(ROOT, x[0]))]  # 審査中に _hidden/ へ移したページは飛ばす
 
 
 def path(*p):

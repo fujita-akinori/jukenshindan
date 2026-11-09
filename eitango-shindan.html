@@ -373,7 +373,7 @@
 <tr><td>医歯薬系</td><td>医学部・歯学部・薬学部</td><td>3冊</td></tr>
 <tr><td>熟語帳</td><td>熟語帳・表現集</td><td>6冊</td></tr>
 </tbody></table></div>
-<p>英作文や和訳が出る人に特におすすめしている単語帳は<a href="articles/leap-saikyou.html">LEAPの記事</a>で、熟語帳の先にある表現集は<a href="articles/idiomatic-300.html">IDIOMATIC 300の記事</a>で解説しています。</p>
+<p>英作文や和訳が出る人に特におすすめしている単語帳は<span data-hidden-link="<a href=&quot;articles/leap-saikyou.html&quot;>LEAPの記事</a>">LEAPの記事</span><!--/HL-->で、熟語帳の先にある表現集は<a href="articles/idiomatic-300.html">IDIOMATIC 300の記事</a>で解説しています。</p>
 <h2>診断結果の使い方</h2>
 <p>単語帳選びで迷い続けるより、1冊を決めて周回することのほうがずっと大切です。結果の1位の単語帳を選んだら、1周目は全部を完璧に覚えようとせず速く回すことを優先してください。2周目以降で例文や派生語まで広げていくと、無理なく定着します。</p>
 <h2>よくある質問</h2>
@@ -460,8 +460,8 @@ const BOOKS = [
   {name:"大学入試 飛躍のフレーズ IDIOMATIC 300",note:"駿台の山崎竜成先生による英語表現の参考書で、熟語帳ではなく英語として自然な言い回しやコロケーションを例文の中で覚える本です。覚える量は書名の300よりはるかに多く、完成までには半年から1年かかります。英作文や和訳で自然な英語を書けるようになりたい難関大志望者に向いています。",asin:"4757442106",kind:["jukugo"],jstyle:"hyougen",hasshin:3,hard:true},
 ];
 const ARTICLE_OF = {
-  "改訂版 必携英単語LEAP":"leap-saikyou",
-  "改訂版 必携英単語LEAP Basic":"leap-saikyou",
+  "改訂版 必携英単語LEAP":"" /*HIDDEN:leap-saikyou*/,
+  "改訂版 必携英単語LEAP Basic":"" /*HIDDEN:leap-saikyou*/,
   "大学入試 飛躍のフレーズ IDIOMATIC 300":"idiomatic-300",
 };
 BOOKS.forEach(b => { if(ARTICLE_OF[b.name]) b.article = ARTICLE_OF[b.name]; });

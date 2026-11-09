@@ -51,6 +51,7 @@ python3 scripts/build_site.py
 - 本文中に参考書が出てきたらなるべく表紙を載せる。記事末尾の `aff-box` に本を並べておけばビルド時に楽天の表紙が本文の見出し直後と枠内に自動で入る。Amazonリンクは必ず `tag=jukenshindan-22` を付ける
 - アフィリエイトリンクを含む記事には `pr-note`（PR表記）と `aff-disclosure` を入れる（既存記事と同じ形）
 - 2026年11月からAdSense審査が通るまで `scripts/affbox.py` の `AFF_ENABLED = False` でアフィリエイトを止めている。記事は普段どおり書いてよく、ビルドで購入リンク・PR表記・開示文が自動で外れる（表紙は楽天の通常リンクで残る）。承認後に True にしてビルドすれば全ページ元に戻る
+- 2026年11月の再審査中は薄い記事22本と `norma-keisan.html`・`kyoutsuu-countdown.html` を `_hidden/` に移して非公開にしている（Jekyllは `_` で始まるフォルダを公開しない）。一覧は `data/hidden.json`。承認後は `python3 scripts/hide_pages.py restore` → ビルドで全部元に戻る（関連記事・本文リンク・ナビ・診断の解説リンクも復元される）
 - AdSense再審査を意識し、運営者自身の経験・得点・具体的な手順など他サイトにない一次情報を厚くする。一般論の水増しはしない
 
 ## 京大生の備忘録（biboroku/）

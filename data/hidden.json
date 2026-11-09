@@ -1,0 +1,31 @@
+{
+ "_note": "AdSense審査中だけ非公開にするページ。scripts/hide_pages.py hide/restore で出し入れする",
+ "articles": [
+  "aoi-chart-vs-focus-gold.html",
+  "bisekibun-kiso-no-gokui.html",
+  "focus-gold-tsukaikata.html",
+  "high-level-rikei-sugaku.html",
+  "hyoujun-mondai-seikou-sugaku.html",
+  "ichitaichi-tsukaikata.html",
+  "kakureta-ryousho-3sen.html",
+  "kyoutsuu-chokuzenki.html",
+  "kyoutsuu-zenjitsu-toujitsu.html",
+  "kyoutsuu-go-sugoshikata.html",
+  "kyoutsuu-mochimono.html",
+  "master-of-seisuu.html",
+  "nyuushi-sugaku-no-shouaku.html",
+  "sawaruna-sankousho-3sen.html",
+  "zeppan-kami-sankousho-3sen.html",
+  "sougouteki-kenkyuu-series.html",
+  "suugaku-no-shinzui.html",
+  "yasashii-rikei-sugaku.html",
+  "yobiko-no-jugyou-3sen.html",
+  "leap-saikyou.html",
+  "ukaru-keisan-tsukaikata.html",
+  "kyoutsuu-kagaku.html"
+ ],
+ "pages": [
+  "norma-keisan.html",
+  "kyoutsuu-countdown.html"
+ ]
+}
