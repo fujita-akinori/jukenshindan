@@ -579,8 +579,9 @@ def _bibo_book_covers(s):
         name, amz = html.unescape(m.group(2)), html.unescape(m.group(3))
         r = rakuten.lookup(name, amz)
         cover = ""
-        if r["image"] and not affbox.INLINE_AFF_LINKS:
-            cover = (f'<span class="bl-cover"><img src="{e(r["image"].replace("_ex=200x200", "_ex=400x400"))}" alt="{e(name)}の表紙" width="72" height="102" loading="lazy" decoding="async"></span>')
+        if r["image"] and not affbox.AFF_ENABLED:
+            cover = (f'<a class="bl-cover" href="{e(affbox.plain_url(r["url"]))}" target="_blank" rel="noopener">'
+                     f'<img src="{e(r["image"].replace("_ex=200x200", "_ex=400x400"))}" alt="{e(name)}の表紙" width="72" height="102" loading="lazy" decoding="async"></a>')
         elif r["image"]:
             cover = (f'<a class="bl-cover" href="{e(r["url"])}" target="_blank" rel="sponsored noopener" aria-label="{e(name)}を楽天で見る">'
                      f'<img src="{e(r["image"].replace("_ex=200x200", "_ex=400x400"))}" alt="{e(name)}の表紙" width="72" height="102" loading="lazy" decoding="async">'
@@ -635,6 +636,7 @@ def build_bibo(posts, playlists):
             s = replace_block(s, "PLAYLIST", _bibo_playlist_panel(a, eps_of[a["playlist"]], pls[a["playlist"]]),
                               anchor_before='  <div class="diag-cta">')
         s = _bibo_book_covers(s)
+        s = __import__("affbox").bibo_toggle(s)
         modified = max(a["date"], git_date(rel))
         title, desc = meta_of(s)
         article = {"@context": "https://schema.org", "@type": "Article", "headline": a["title"],
